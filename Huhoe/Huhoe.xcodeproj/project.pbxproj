@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
 		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
-		A6E4DE3B27FDB3F30005266D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3A27FDB3F30005266D /* ViewController.swift */; };
-		A6E4DE3E27FDB3F30005266D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3C27FDB3F30005266D /* Main.storyboard */; };
+		A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */; };
+		A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3C27FDB3F30005266D /* HuhoeMainViewController.storyboard */; };
 		A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3F27FDB3F50005266D /* Assets.xcassets */; };
 		A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */; };
 		A6E4DE4E27FDB3F50005266D /* HuhoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */; };
@@ -39,8 +39,8 @@
 		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A6E4DE3A27FDB3F30005266D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A6E4DE3D27FDB3F30005266D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeMainViewController.swift; sourceTree = "<group>"; };
+		A6E4DE3D27FDB3F30005266D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/HuhoeMainViewController.storyboard; sourceTree = "<group>"; };
 		A6E4DE3F27FDB3F50005266D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6E4DE4227FDB3F50005266D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6E4DE4427FDB3F50005266D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,6 +76,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		084F769027FDB9DF00BAE500 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */,
+				A6E4DE4427FDB3F50005266D /* Info.plist */,
+				A6E4DE3F27FDB3F50005266D /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		084F769127FDB9FD00BAE500 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		084F769227FDBA0900BAE500 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		084F769327FDBB4D00BAE500 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				084F769527FDC26E00BAE500 /* Scene */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		084F769427FDBE7500BAE500 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE3627FDB3F30005266D /* AppDelegate.swift */,
+				A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		084F769527FDC26E00BAE500 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				084F769627FDC27600BAE500 /* HuhoeMain */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		084F769627FDC27600BAE500 /* HuhoeMain */ = {
+			isa = PBXGroup;
+			children = (
+				084F769727FDC2B600BAE500 /* View */,
+			);
+			path = HuhoeMain;
+			sourceTree = "<group>";
+		};
+		084F769727FDC2B600BAE500 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE3C27FDB3F30005266D /* HuhoeMainViewController.storyboard */,
+				A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A6E4DE2A27FDB3F30005266D = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +165,11 @@
 		A6E4DE3527FDB3F30005266D /* Huhoe */ = {
 			isa = PBXGroup;
 			children = (
-				A6E4DE3627FDB3F30005266D /* AppDelegate.swift */,
-				A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */,
-				A6E4DE3A27FDB3F30005266D /* ViewController.swift */,
-				A6E4DE3C27FDB3F30005266D /* Main.storyboard */,
-				A6E4DE3F27FDB3F50005266D /* Assets.xcassets */,
-				A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */,
-				A6E4DE4427FDB3F50005266D /* Info.plist */,
+				084F769427FDBE7500BAE500 /* Application */,
+				084F769327FDBB4D00BAE500 /* Presentation */,
+				084F769227FDBA0900BAE500 /* Data */,
+				084F769127FDB9FD00BAE500 /* Domain */,
+				084F769027FDB9DF00BAE500 /* Resource */,
 			);
 			path = Huhoe;
 			sourceTree = "<group>";
@@ -233,7 +297,7 @@
 			files = (
 				A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */,
 				A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */,
-				A6E4DE3E27FDB3F30005266D /* Main.storyboard in Resources */,
+				A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE3B27FDB3F30005266D /* ViewController.swift in Sources */,
+				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 			);
@@ -297,12 +361,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A6E4DE3C27FDB3F30005266D /* Main.storyboard */ = {
+		A6E4DE3C27FDB3F30005266D /* HuhoeMainViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				A6E4DE3D27FDB3F30005266D /* Base */,
 			);
-			name = Main.storyboard;
+			name = HuhoeMainViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */ = {
@@ -366,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -420,7 +484,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -439,10 +503,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RL265827ML;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Huhoe/Info.plist;
+				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = HuhoeMainViewController;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -454,7 +519,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -467,10 +532,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RL265827ML;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Huhoe/Info.plist;
+				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = HuhoeMainViewController;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -482,7 +548,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

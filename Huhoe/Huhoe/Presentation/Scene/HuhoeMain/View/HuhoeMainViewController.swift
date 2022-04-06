@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HuhoeMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
