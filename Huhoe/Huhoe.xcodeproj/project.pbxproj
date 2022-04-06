@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A6E4DE0127FD64D30005266D /* HuhoeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE0027FD64D30005266D /* HuhoeApp.swift */; };
+		A6E4DE0327FD64D30005266D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE0227FD64D30005266D /* ContentView.swift */; };
+		A6E4DE0527FD64D60005266D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE0427FD64D60005266D /* Assets.xcassets */; };
+		A6E4DE0827FD64D60005266D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE0727FD64D60005266D /* Preview Assets.xcassets */; };
+		A6E4DE1227FD64D60005266D /* HuhoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE1127FD64D60005266D /* HuhoeTests.swift */; };
+		A6E4DE1C27FD64D60005266D /* HuhoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE1B27FD64D60005266D /* HuhoeUITests.swift */; };
+		A6E4DE1E27FD64D60005266D /* HuhoeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE1D27FD64D60005266D /* HuhoeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A6E4DE0E27FD64D60005266D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6E4DDF527FD64D30005266D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6E4DDFC27FD64D30005266D;
+			remoteInfo = Huhoe;
+		};
+		A6E4DE1827FD64D60005266D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6E4DDF527FD64D30005266D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6E4DDFC27FD64D30005266D;
+			remoteInfo = Huhoe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A6E4DDFD27FD64D30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E4DE0027FD64D30005266D /* HuhoeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeApp.swift; sourceTree = "<group>"; };
+		A6E4DE0227FD64D30005266D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A6E4DE0427FD64D60005266D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A6E4DE0727FD64D60005266D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A6E4DE0D27FD64D60005266D /* HuhoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E4DE1127FD64D60005266D /* HuhoeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeTests.swift; sourceTree = "<group>"; };
+		A6E4DE1727FD64D60005266D /* HuhoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E4DE1B27FD64D60005266D /* HuhoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITests.swift; sourceTree = "<group>"; };
+		A6E4DE1D27FD64D60005266D /* HuhoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A6E4DDFA27FD64D30005266D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E4DE0A27FD64D60005266D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E4DE1427FD64D60005266D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A6E4DDF427FD64D30005266D = {
+			isa = PBXGroup;
+			children = (
+				A6E4DDFF27FD64D30005266D /* Huhoe */,
+				A6E4DE1027FD64D60005266D /* HuhoeTests */,
+				A6E4DE1A27FD64D60005266D /* HuhoeUITests */,
+				A6E4DDFE27FD64D30005266D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A6E4DDFE27FD64D30005266D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DDFD27FD64D30005266D /* Huhoe.app */,
+				A6E4DE0D27FD64D60005266D /* HuhoeTests.xctest */,
+				A6E4DE1727FD64D60005266D /* HuhoeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A6E4DDFF27FD64D30005266D /* Huhoe */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE0027FD64D30005266D /* HuhoeApp.swift */,
+				A6E4DE0227FD64D30005266D /* ContentView.swift */,
+				A6E4DE0427FD64D60005266D /* Assets.xcassets */,
+				A6E4DE0627FD64D60005266D /* Preview Content */,
+			);
+			path = Huhoe;
+			sourceTree = "<group>";
+		};
+		A6E4DE0627FD64D60005266D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE0727FD64D60005266D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A6E4DE1027FD64D60005266D /* HuhoeTests */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE1127FD64D60005266D /* HuhoeTests.swift */,
+			);
+			path = HuhoeTests;
+			sourceTree = "<group>";
+		};
+		A6E4DE1A27FD64D60005266D /* HuhoeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE1B27FD64D60005266D /* HuhoeUITests.swift */,
+				A6E4DE1D27FD64D60005266D /* HuhoeUITestsLaunchTests.swift */,
+			);
+			path = HuhoeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A6E4DDFC27FD64D30005266D /* Huhoe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6E4DE2127FD64D60005266D /* Build configuration list for PBXNativeTarget "Huhoe" */;
+			buildPhases = (
+				A6E4DDF927FD64D30005266D /* Sources */,
+				A6E4DDFA27FD64D30005266D /* Frameworks */,
+				A6E4DDFB27FD64D30005266D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Huhoe;
+			productName = Huhoe;
+			productReference = A6E4DDFD27FD64D30005266D /* Huhoe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A6E4DE0C27FD64D60005266D /* HuhoeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6E4DE2427FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeTests" */;
+			buildPhases = (
+				A6E4DE0927FD64D60005266D /* Sources */,
+				A6E4DE0A27FD64D60005266D /* Frameworks */,
+				A6E4DE0B27FD64D60005266D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6E4DE0F27FD64D60005266D /* PBXTargetDependency */,
+			);
+			name = HuhoeTests;
+			productName = HuhoeTests;
+			productReference = A6E4DE0D27FD64D60005266D /* HuhoeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A6E4DE1627FD64D60005266D /* HuhoeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A6E4DE2727FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeUITests" */;
+			buildPhases = (
+				A6E4DE1327FD64D60005266D /* Sources */,
+				A6E4DE1427FD64D60005266D /* Frameworks */,
+				A6E4DE1527FD64D60005266D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6E4DE1927FD64D60005266D /* PBXTargetDependency */,
+			);
+			name = HuhoeUITests;
+			productName = HuhoeUITests;
+			productReference = A6E4DE1727FD64D60005266D /* HuhoeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A6E4DDF527FD64D30005266D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					A6E4DDFC27FD64D30005266D = {
+						CreatedOnToolsVersion = 13.3;
+					};
+					A6E4DE0C27FD64D60005266D = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = A6E4DDFC27FD64D30005266D;
+					};
+					A6E4DE1627FD64D60005266D = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = A6E4DDFC27FD64D30005266D;
+					};
+				};
+			};
+			buildConfigurationList = A6E4DDF827FD64D30005266D /* Build configuration list for PBXProject "Huhoe" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A6E4DDF427FD64D30005266D;
+			productRefGroup = A6E4DDFE27FD64D30005266D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A6E4DDFC27FD64D30005266D /* Huhoe */,
+				A6E4DE0C27FD64D60005266D /* HuhoeTests */,
+				A6E4DE1627FD64D60005266D /* HuhoeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A6E4DDFB27FD64D30005266D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6E4DE0827FD64D60005266D /* Preview Assets.xcassets in Resources */,
+				A6E4DE0527FD64D60005266D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E4DE0B27FD64D60005266D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E4DE1527FD64D60005266D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6E4DDF927FD64D30005266D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6E4DE0327FD64D30005266D /* ContentView.swift in Sources */,
+				A6E4DE0127FD64D30005266D /* HuhoeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E4DE0927FD64D60005266D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6E4DE1227FD64D60005266D /* HuhoeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A6E4DE1327FD64D60005266D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6E4DE1E27FD64D60005266D /* HuhoeUITestsLaunchTests.swift in Sources */,
+				A6E4DE1C27FD64D60005266D /* HuhoeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A6E4DE0F27FD64D60005266D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6E4DDFC27FD64D30005266D /* Huhoe */;
+			targetProxy = A6E4DE0E27FD64D60005266D /* PBXContainerItemProxy */;
+		};
+		A6E4DE1927FD64D60005266D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6E4DDFC27FD64D30005266D /* Huhoe */;
+			targetProxy = A6E4DE1827FD64D60005266D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A6E4DE1F27FD64D60005266D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A6E4DE2027FD64D60005266D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A6E4DE2227FD64D60005266D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Huhoe/Preview Content\"";
+				DEVELOPMENT_TEAM = RL265827ML;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = limjs.Huhoe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A6E4DE2327FD64D60005266D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Huhoe/Preview Content\"";
+				DEVELOPMENT_TEAM = RL265827ML;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = limjs.Huhoe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A6E4DE2527FD64D60005266D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RL265827ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = limjs.HuhoeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Huhoe.app/Huhoe";
+			};
+			name = Debug;
+		};
+		A6E4DE2627FD64D60005266D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RL265827ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = limjs.HuhoeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Huhoe.app/Huhoe";
+			};
+			name = Release;
+		};
+		A6E4DE2827FD64D60005266D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RL265827ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = limjs.HuhoeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Huhoe;
+			};
+			name = Debug;
+		};
+		A6E4DE2927FD64D60005266D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RL265827ML;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = limjs.HuhoeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Huhoe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A6E4DDF827FD64D30005266D /* Build configuration list for PBXProject "Huhoe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6E4DE1F27FD64D60005266D /* Debug */,
+				A6E4DE2027FD64D60005266D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6E4DE2127FD64D60005266D /* Build configuration list for PBXNativeTarget "Huhoe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6E4DE2227FD64D60005266D /* Debug */,
+				A6E4DE2327FD64D60005266D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6E4DE2427FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6E4DE2527FD64D60005266D /* Debug */,
+				A6E4DE2627FD64D60005266D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A6E4DE2727FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A6E4DE2827FD64D60005266D /* Debug */,
+				A6E4DE2927FD64D60005266D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A6E4DDF527FD64D30005266D /* Project object */;
+}
