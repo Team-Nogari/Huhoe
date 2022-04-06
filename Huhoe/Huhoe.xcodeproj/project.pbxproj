@@ -7,61 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A6E4DE0127FD64D30005266D /* HuhoeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE0027FD64D30005266D /* HuhoeApp.swift */; };
-		A6E4DE0327FD64D30005266D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE0227FD64D30005266D /* ContentView.swift */; };
-		A6E4DE0527FD64D60005266D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE0427FD64D60005266D /* Assets.xcassets */; };
-		A6E4DE0827FD64D60005266D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE0727FD64D60005266D /* Preview Assets.xcassets */; };
-		A6E4DE1227FD64D60005266D /* HuhoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE1127FD64D60005266D /* HuhoeTests.swift */; };
-		A6E4DE1C27FD64D60005266D /* HuhoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE1B27FD64D60005266D /* HuhoeUITests.swift */; };
-		A6E4DE1E27FD64D60005266D /* HuhoeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE1D27FD64D60005266D /* HuhoeUITestsLaunchTests.swift */; };
+		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
+		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
+		A6E4DE3B27FDB3F30005266D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3A27FDB3F30005266D /* ViewController.swift */; };
+		A6E4DE3E27FDB3F30005266D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3C27FDB3F30005266D /* Main.storyboard */; };
+		A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3F27FDB3F50005266D /* Assets.xcassets */; };
+		A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */; };
+		A6E4DE4E27FDB3F50005266D /* HuhoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */; };
+		A6E4DE5827FDB3F50005266D /* HuhoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */; };
+		A6E4DE5A27FDB3F50005266D /* HuhoeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A6E4DE0E27FD64D60005266D /* PBXContainerItemProxy */ = {
+		A6E4DE4A27FDB3F50005266D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A6E4DDF527FD64D30005266D /* Project object */;
+			containerPortal = A6E4DE2B27FDB3F30005266D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A6E4DDFC27FD64D30005266D;
+			remoteGlobalIDString = A6E4DE3227FDB3F30005266D;
 			remoteInfo = Huhoe;
 		};
-		A6E4DE1827FD64D60005266D /* PBXContainerItemProxy */ = {
+		A6E4DE5427FDB3F50005266D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = A6E4DDF527FD64D30005266D /* Project object */;
+			containerPortal = A6E4DE2B27FDB3F30005266D /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A6E4DDFC27FD64D30005266D;
+			remoteGlobalIDString = A6E4DE3227FDB3F30005266D;
 			remoteInfo = Huhoe;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A6E4DDFD27FD64D30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6E4DE0027FD64D30005266D /* HuhoeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeApp.swift; sourceTree = "<group>"; };
-		A6E4DE0227FD64D30005266D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A6E4DE0427FD64D60005266D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A6E4DE0727FD64D60005266D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A6E4DE0D27FD64D60005266D /* HuhoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6E4DE1127FD64D60005266D /* HuhoeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeTests.swift; sourceTree = "<group>"; };
-		A6E4DE1727FD64D60005266D /* HuhoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6E4DE1B27FD64D60005266D /* HuhoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITests.swift; sourceTree = "<group>"; };
-		A6E4DE1D27FD64D60005266D /* HuhoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		A6E4DE3A27FDB3F30005266D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A6E4DE3D27FDB3F30005266D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A6E4DE3F27FDB3F50005266D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A6E4DE4227FDB3F50005266D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A6E4DE4427FDB3F50005266D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6E4DE4927FDB3F50005266D /* HuhoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeTests.swift; sourceTree = "<group>"; };
+		A6E4DE5327FDB3F50005266D /* HuhoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITests.swift; sourceTree = "<group>"; };
+		A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A6E4DDFA27FD64D30005266D /* Frameworks */ = {
+		A6E4DE3027FDB3F30005266D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6E4DE0A27FD64D60005266D /* Frameworks */ = {
+		A6E4DE4627FDB3F50005266D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6E4DE1427FD64D60005266D /* Frameworks */ = {
+		A6E4DE5027FDB3F50005266D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,58 +76,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A6E4DDF427FD64D30005266D = {
+		A6E4DE2A27FDB3F30005266D = {
 			isa = PBXGroup;
 			children = (
-				A6E4DDFF27FD64D30005266D /* Huhoe */,
-				A6E4DE1027FD64D60005266D /* HuhoeTests */,
-				A6E4DE1A27FD64D60005266D /* HuhoeUITests */,
-				A6E4DDFE27FD64D30005266D /* Products */,
+				A6E4DE3527FDB3F30005266D /* Huhoe */,
+				A6E4DE4C27FDB3F50005266D /* HuhoeTests */,
+				A6E4DE5627FDB3F50005266D /* HuhoeUITests */,
+				A6E4DE3427FDB3F30005266D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A6E4DDFE27FD64D30005266D /* Products */ = {
+		A6E4DE3427FDB3F30005266D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A6E4DDFD27FD64D30005266D /* Huhoe.app */,
-				A6E4DE0D27FD64D60005266D /* HuhoeTests.xctest */,
-				A6E4DE1727FD64D60005266D /* HuhoeUITests.xctest */,
+				A6E4DE3327FDB3F30005266D /* Huhoe.app */,
+				A6E4DE4927FDB3F50005266D /* HuhoeTests.xctest */,
+				A6E4DE5327FDB3F50005266D /* HuhoeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A6E4DDFF27FD64D30005266D /* Huhoe */ = {
+		A6E4DE3527FDB3F30005266D /* Huhoe */ = {
 			isa = PBXGroup;
 			children = (
-				A6E4DE0027FD64D30005266D /* HuhoeApp.swift */,
-				A6E4DE0227FD64D30005266D /* ContentView.swift */,
-				A6E4DE0427FD64D60005266D /* Assets.xcassets */,
-				A6E4DE0627FD64D60005266D /* Preview Content */,
+				A6E4DE3627FDB3F30005266D /* AppDelegate.swift */,
+				A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */,
+				A6E4DE3A27FDB3F30005266D /* ViewController.swift */,
+				A6E4DE3C27FDB3F30005266D /* Main.storyboard */,
+				A6E4DE3F27FDB3F50005266D /* Assets.xcassets */,
+				A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */,
+				A6E4DE4427FDB3F50005266D /* Info.plist */,
 			);
 			path = Huhoe;
 			sourceTree = "<group>";
 		};
-		A6E4DE0627FD64D60005266D /* Preview Content */ = {
+		A6E4DE4C27FDB3F50005266D /* HuhoeTests */ = {
 			isa = PBXGroup;
 			children = (
-				A6E4DE0727FD64D60005266D /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		A6E4DE1027FD64D60005266D /* HuhoeTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6E4DE1127FD64D60005266D /* HuhoeTests.swift */,
+				A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */,
 			);
 			path = HuhoeTests;
 			sourceTree = "<group>";
 		};
-		A6E4DE1A27FD64D60005266D /* HuhoeUITests */ = {
+		A6E4DE5627FDB3F50005266D /* HuhoeUITests */ = {
 			isa = PBXGroup;
 			children = (
-				A6E4DE1B27FD64D60005266D /* HuhoeUITests.swift */,
-				A6E4DE1D27FD64D60005266D /* HuhoeUITestsLaunchTests.swift */,
+				A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */,
+				A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */,
 			);
 			path = HuhoeUITests;
 			sourceTree = "<group>";
@@ -130,13 +130,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A6E4DDFC27FD64D30005266D /* Huhoe */ = {
+		A6E4DE3227FDB3F30005266D /* Huhoe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6E4DE2127FD64D60005266D /* Build configuration list for PBXNativeTarget "Huhoe" */;
+			buildConfigurationList = A6E4DE5D27FDB3F50005266D /* Build configuration list for PBXNativeTarget "Huhoe" */;
 			buildPhases = (
-				A6E4DDF927FD64D30005266D /* Sources */,
-				A6E4DDFA27FD64D30005266D /* Frameworks */,
-				A6E4DDFB27FD64D30005266D /* Resources */,
+				A6E4DE2F27FDB3F30005266D /* Sources */,
+				A6E4DE3027FDB3F30005266D /* Frameworks */,
+				A6E4DE3127FDB3F30005266D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -144,69 +144,69 @@
 			);
 			name = Huhoe;
 			productName = Huhoe;
-			productReference = A6E4DDFD27FD64D30005266D /* Huhoe.app */;
+			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A6E4DE0C27FD64D60005266D /* HuhoeTests */ = {
+		A6E4DE4827FDB3F50005266D /* HuhoeTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6E4DE2427FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeTests" */;
+			buildConfigurationList = A6E4DE6027FDB3F50005266D /* Build configuration list for PBXNativeTarget "HuhoeTests" */;
 			buildPhases = (
-				A6E4DE0927FD64D60005266D /* Sources */,
-				A6E4DE0A27FD64D60005266D /* Frameworks */,
-				A6E4DE0B27FD64D60005266D /* Resources */,
+				A6E4DE4527FDB3F50005266D /* Sources */,
+				A6E4DE4627FDB3F50005266D /* Frameworks */,
+				A6E4DE4727FDB3F50005266D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A6E4DE0F27FD64D60005266D /* PBXTargetDependency */,
+				A6E4DE4B27FDB3F50005266D /* PBXTargetDependency */,
 			);
 			name = HuhoeTests;
 			productName = HuhoeTests;
-			productReference = A6E4DE0D27FD64D60005266D /* HuhoeTests.xctest */;
+			productReference = A6E4DE4927FDB3F50005266D /* HuhoeTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A6E4DE1627FD64D60005266D /* HuhoeUITests */ = {
+		A6E4DE5227FDB3F50005266D /* HuhoeUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A6E4DE2727FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeUITests" */;
+			buildConfigurationList = A6E4DE6327FDB3F50005266D /* Build configuration list for PBXNativeTarget "HuhoeUITests" */;
 			buildPhases = (
-				A6E4DE1327FD64D60005266D /* Sources */,
-				A6E4DE1427FD64D60005266D /* Frameworks */,
-				A6E4DE1527FD64D60005266D /* Resources */,
+				A6E4DE4F27FDB3F50005266D /* Sources */,
+				A6E4DE5027FDB3F50005266D /* Frameworks */,
+				A6E4DE5127FDB3F50005266D /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A6E4DE1927FD64D60005266D /* PBXTargetDependency */,
+				A6E4DE5527FDB3F50005266D /* PBXTargetDependency */,
 			);
 			name = HuhoeUITests;
 			productName = HuhoeUITests;
-			productReference = A6E4DE1727FD64D60005266D /* HuhoeUITests.xctest */;
+			productReference = A6E4DE5327FDB3F50005266D /* HuhoeUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A6E4DDF527FD64D30005266D /* Project object */ = {
+		A6E4DE2B27FDB3F30005266D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
-					A6E4DDFC27FD64D30005266D = {
+					A6E4DE3227FDB3F30005266D = {
 						CreatedOnToolsVersion = 13.3;
 					};
-					A6E4DE0C27FD64D60005266D = {
+					A6E4DE4827FDB3F50005266D = {
 						CreatedOnToolsVersion = 13.3;
-						TestTargetID = A6E4DDFC27FD64D30005266D;
+						TestTargetID = A6E4DE3227FDB3F30005266D;
 					};
-					A6E4DE1627FD64D60005266D = {
+					A6E4DE5227FDB3F50005266D = {
 						CreatedOnToolsVersion = 13.3;
-						TestTargetID = A6E4DDFC27FD64D30005266D;
+						TestTargetID = A6E4DE3227FDB3F30005266D;
 					};
 				};
 			};
-			buildConfigurationList = A6E4DDF827FD64D30005266D /* Build configuration list for PBXProject "Huhoe" */;
+			buildConfigurationList = A6E4DE2E27FDB3F30005266D /* Build configuration list for PBXProject "Huhoe" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,36 +214,37 @@
 				en,
 				Base,
 			);
-			mainGroup = A6E4DDF427FD64D30005266D;
-			productRefGroup = A6E4DDFE27FD64D30005266D /* Products */;
+			mainGroup = A6E4DE2A27FDB3F30005266D;
+			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A6E4DDFC27FD64D30005266D /* Huhoe */,
-				A6E4DE0C27FD64D60005266D /* HuhoeTests */,
-				A6E4DE1627FD64D60005266D /* HuhoeUITests */,
+				A6E4DE3227FDB3F30005266D /* Huhoe */,
+				A6E4DE4827FDB3F50005266D /* HuhoeTests */,
+				A6E4DE5227FDB3F50005266D /* HuhoeUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A6E4DDFB27FD64D30005266D /* Resources */ = {
+		A6E4DE3127FDB3F30005266D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE0827FD64D60005266D /* Preview Assets.xcassets in Resources */,
-				A6E4DE0527FD64D60005266D /* Assets.xcassets in Resources */,
+				A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */,
+				A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */,
+				A6E4DE3E27FDB3F30005266D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6E4DE0B27FD64D60005266D /* Resources */ = {
+		A6E4DE4727FDB3F50005266D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6E4DE1527FD64D60005266D /* Resources */ = {
+		A6E4DE5127FDB3F50005266D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,49 +254,69 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A6E4DDF927FD64D30005266D /* Sources */ = {
+		A6E4DE2F27FDB3F30005266D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE0327FD64D30005266D /* ContentView.swift in Sources */,
-				A6E4DE0127FD64D30005266D /* HuhoeApp.swift in Sources */,
+				A6E4DE3B27FDB3F30005266D /* ViewController.swift in Sources */,
+				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
+				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6E4DE0927FD64D60005266D /* Sources */ = {
+		A6E4DE4527FDB3F50005266D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE1227FD64D60005266D /* HuhoeTests.swift in Sources */,
+				A6E4DE4E27FDB3F50005266D /* HuhoeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A6E4DE1327FD64D60005266D /* Sources */ = {
+		A6E4DE4F27FDB3F50005266D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE1E27FD64D60005266D /* HuhoeUITestsLaunchTests.swift in Sources */,
-				A6E4DE1C27FD64D60005266D /* HuhoeUITests.swift in Sources */,
+				A6E4DE5A27FDB3F50005266D /* HuhoeUITestsLaunchTests.swift in Sources */,
+				A6E4DE5827FDB3F50005266D /* HuhoeUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A6E4DE0F27FD64D60005266D /* PBXTargetDependency */ = {
+		A6E4DE4B27FDB3F50005266D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A6E4DDFC27FD64D30005266D /* Huhoe */;
-			targetProxy = A6E4DE0E27FD64D60005266D /* PBXContainerItemProxy */;
+			target = A6E4DE3227FDB3F30005266D /* Huhoe */;
+			targetProxy = A6E4DE4A27FDB3F50005266D /* PBXContainerItemProxy */;
 		};
-		A6E4DE1927FD64D60005266D /* PBXTargetDependency */ = {
+		A6E4DE5527FDB3F50005266D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A6E4DDFC27FD64D30005266D /* Huhoe */;
-			targetProxy = A6E4DE1827FD64D60005266D /* PBXContainerItemProxy */;
+			target = A6E4DE3227FDB3F30005266D /* Huhoe */;
+			targetProxy = A6E4DE5427FDB3F50005266D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		A6E4DE3C27FDB3F30005266D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6E4DE3D27FDB3F30005266D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A6E4DE4227FDB3F50005266D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		A6E4DE1F27FD64D60005266D /* Debug */ = {
+		A6E4DE5B27FDB3F50005266D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -355,7 +376,7 @@
 			};
 			name = Debug;
 		};
-		A6E4DE2027FD64D60005266D /* Release */ = {
+		A6E4DE5C27FDB3F50005266D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -409,20 +430,19 @@
 			};
 			name = Release;
 		};
-		A6E4DE2227FD64D60005266D /* Debug */ = {
+		A6E4DE5E27FDB3F50005266D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Huhoe/Preview Content\"";
 				DEVELOPMENT_TEAM = RL265827ML;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Huhoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -438,20 +458,19 @@
 			};
 			name = Debug;
 		};
-		A6E4DE2327FD64D60005266D /* Release */ = {
+		A6E4DE5F27FDB3F50005266D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Huhoe/Preview Content\"";
 				DEVELOPMENT_TEAM = RL265827ML;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = Huhoe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -467,7 +486,7 @@
 			};
 			name = Release;
 		};
-		A6E4DE2527FD64D60005266D /* Debug */ = {
+		A6E4DE6127FDB3F50005266D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -487,7 +506,7 @@
 			};
 			name = Debug;
 		};
-		A6E4DE2627FD64D60005266D /* Release */ = {
+		A6E4DE6227FDB3F50005266D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -507,7 +526,7 @@
 			};
 			name = Release;
 		};
-		A6E4DE2827FD64D60005266D /* Debug */ = {
+		A6E4DE6427FDB3F50005266D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -525,7 +544,7 @@
 			};
 			name = Debug;
 		};
-		A6E4DE2927FD64D60005266D /* Release */ = {
+		A6E4DE6527FDB3F50005266D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -546,43 +565,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A6E4DDF827FD64D30005266D /* Build configuration list for PBXProject "Huhoe" */ = {
+		A6E4DE2E27FDB3F30005266D /* Build configuration list for PBXProject "Huhoe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6E4DE1F27FD64D60005266D /* Debug */,
-				A6E4DE2027FD64D60005266D /* Release */,
+				A6E4DE5B27FDB3F50005266D /* Debug */,
+				A6E4DE5C27FDB3F50005266D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6E4DE2127FD64D60005266D /* Build configuration list for PBXNativeTarget "Huhoe" */ = {
+		A6E4DE5D27FDB3F50005266D /* Build configuration list for PBXNativeTarget "Huhoe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6E4DE2227FD64D60005266D /* Debug */,
-				A6E4DE2327FD64D60005266D /* Release */,
+				A6E4DE5E27FDB3F50005266D /* Debug */,
+				A6E4DE5F27FDB3F50005266D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6E4DE2427FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeTests" */ = {
+		A6E4DE6027FDB3F50005266D /* Build configuration list for PBXNativeTarget "HuhoeTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6E4DE2527FD64D60005266D /* Debug */,
-				A6E4DE2627FD64D60005266D /* Release */,
+				A6E4DE6127FDB3F50005266D /* Debug */,
+				A6E4DE6227FDB3F50005266D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A6E4DE2727FD64D60005266D /* Build configuration list for PBXNativeTarget "HuhoeUITests" */ = {
+		A6E4DE6327FDB3F50005266D /* Build configuration list for PBXNativeTarget "HuhoeUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A6E4DE2827FD64D60005266D /* Debug */,
-				A6E4DE2927FD64D60005266D /* Release */,
+				A6E4DE6427FDB3F50005266D /* Debug */,
+				A6E4DE6527FDB3F50005266D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A6E4DDF527FD64D30005266D /* Project object */;
+	rootObject = A6E4DE2B27FDB3F30005266D /* Project object */;
 }
