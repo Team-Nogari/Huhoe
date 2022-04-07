@@ -18,4 +18,9 @@ final class NetworkProvider {
         let network = Network<Ticker>(endPoint: apiEndPoint)
         return TickerNetwork(network: network)
     }
+    
+    func makeOrderBookNetwork() -> OrderBookNetwork {
+        let network = Network<OrderBook>(endPoint: apiEndPoint)
+        return OrderBookNetwork(network: network)
+    }
 }
