@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */; };
+		089E803927FF29750055364F /* TickerDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803827FF29750055364F /* TickerDTO+Mapping.swift */; };
+		089E803B27FF2A690055364F /* TickerResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803A27FF2A690055364F /* TickerResponseDTO+Mapping.swift */; };
 		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
 		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
 		A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */; };
@@ -16,9 +19,6 @@
 		A6E4DE4E27FDB3F50005266D /* HuhoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */; };
 		A6E4DE5827FDB3F50005266D /* HuhoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */; };
 		A6E4DE5A27FDB3F50005266D /* HuhoeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */; };
-		A6E4DE6A27FEB5A00005266D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6927FEB5A00005266D /* RxCocoa */; };
-		A6E4DE6C27FEB5A00005266D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6B27FEB5A00005266D /* RxRelay */; };
-		A6E4DE6E27FEB5A00005266D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6D27FEB5A00005266D /* RxSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TickerAllResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		089E803827FF29750055364F /* TickerDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TickerDTO+Mapping.swift"; sourceTree = "<group>"; };
+		089E803A27FF2A690055364F /* TickerResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TickerResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,9 +62,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE6E27FEB5A00005266D /* RxSwift in Frameworks */,
-				A6E4DE6C27FEB5A00005266D /* RxRelay in Frameworks */,
-				A6E4DE6A27FEB5A00005266D /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +102,7 @@
 		084F769227FDBA0900BAE500 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				089E803427FF233A0055364F /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -146,6 +147,24 @@
 				A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		089E803427FF233A0055364F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				089E803527FF24130055364F /* DataMapping */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		089E803527FF24130055364F /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */,
+				089E803A27FF2A690055364F /* TickerResponseDTO+Mapping.swift */,
+				089E803827FF29750055364F /* TickerDTO+Mapping.swift */,
+			);
+			path = DataMapping;
 			sourceTree = "<group>";
 		};
 		A6E4DE2A27FDB3F30005266D = {
@@ -214,9 +233,6 @@
 			);
 			name = Huhoe;
 			packageProductDependencies = (
-				A6E4DE6927FEB5A00005266D /* RxCocoa */,
-				A6E4DE6B27FEB5A00005266D /* RxRelay */,
-				A6E4DE6D27FEB5A00005266D /* RxSwift */,
 			);
 			productName = Huhoe;
 			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
@@ -291,7 +307,6 @@
 			);
 			mainGroup = A6E4DE2A27FDB3F30005266D;
 			packageReferences = (
-				A6E4DE6827FEB5A00005266D /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
@@ -337,7 +352,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
+				089E803B27FF2A690055364F /* TickerResponseDTO+Mapping.swift in Sources */,
+				089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
+				089E803927FF29750055364F /* TickerDTO+Mapping.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -682,35 +700,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A6E4DE6827FEB5A00005266D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A6E4DE6927FEB5A00005266D /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A6E4DE6827FEB5A00005266D /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		A6E4DE6B27FEB5A00005266D /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A6E4DE6827FEB5A00005266D /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		A6E4DE6D27FEB5A00005266D /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A6E4DE6827FEB5A00005266D /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A6E4DE2B27FDB3F30005266D /* Project object */;
 }
