@@ -25,6 +25,7 @@
 		A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7727FF11AF0005266D /* APIPath.swift */; };
 		A6E4DE7A27FF15DF0005266D /* URLSeesionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */; };
 		A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7C27FF17C40005266D /* NetworkError.swift */; };
+		A6E4DE8027FF29BB0005266D /* OrderBookNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7F27FF29BB0005266D /* OrderBookNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		A6E4DE7727FF11AF0005266D /* APIPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
 		A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSeesionProtocol.swift; sourceTree = "<group>"; };
 		A6E4DE7C27FF17C40005266D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A6E4DE7F27FF29BB0005266D /* OrderBookNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				A6E4DE7427FEEF640005266D /* TickerNetwork.swift */,
+				A6E4DE7F27FF29BB0005266D /* OrderBookNetwork.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
 				A6E4DE7027FEEAF40005266D /* NetworkProvider.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
+				A6E4DE8027FF29BB0005266D /* OrderBookNetwork.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
 				A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */,
