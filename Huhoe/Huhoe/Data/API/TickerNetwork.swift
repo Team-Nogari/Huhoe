@@ -6,12 +6,17 @@
 //
 
 import Foundation
+import RxSwift
 
 final class TickerNetwork {
     private let network: Network<Ticker>
     
     init(network: Network<Ticker>) {
         self.network = network
+    }
+    
+    func fetchTicker() -> Observable<[Ticker]> {
+        return network.fetch(.ticker)
     }
 }
 
