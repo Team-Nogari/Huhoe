@@ -18,7 +18,7 @@ final class Network<T: Decodable> {
     }
     
     func fetch(_ path: APIPath) -> Observable<[T]> {
-        let path = "\(endPoint)/\(path.orderCurrency)_\(path.paymentCurrency)"
+        let path = "\(endPoint)/\(path.path)/\(path.orderCurrency)_\(path.paymentCurrency)"
         guard let url = URL(string: path) else {
             return .empty()
         }

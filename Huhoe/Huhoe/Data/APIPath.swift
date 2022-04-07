@@ -12,6 +12,17 @@ enum APIPath {
     case orderBook
     case transactionHistory
     
+    var path: String {
+        switch self {
+        case .ticker:
+            return String(describing: APIPath.ticker)
+        case .orderBook:
+            return String(describing: APIPath.orderBook)
+        case .transactionHistory:
+            return String(describing: APIPath.transactionHistory)
+        }
+    }
+    
     var orderCurrency: String {
         switch self {
         case .ticker, .orderBook:
