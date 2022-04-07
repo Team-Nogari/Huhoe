@@ -13,4 +13,9 @@ final class NetworkProvider {
     init() {
         apiEndPoint = "https://api.bithumb.com/public"
     }
+    
+    func makeTickerNetwork() -> TickerNetwork {
+        let network = Network<Ticker>(apiEndPoint)
+        return TickerNetwork(network: network)
+    }
 }
