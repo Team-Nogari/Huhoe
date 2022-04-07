@@ -10,9 +10,11 @@ import RxSwift
 
 final class Network<T: Decodable> {
     private let endPoint: String
+    private let session: URLSeesionProtocol
     
-    init(_ endPoint: String) {
+    init(endPoint: String, session: URLSeesionProtocol = URLSession.shared) {
         self.endPoint = endPoint
+        self.session = session
     }
     
     func fetch(_ path: APIPath) -> Observable<[T]> {
@@ -21,8 +23,8 @@ final class Network<T: Decodable> {
             return .empty()
         }
         
-        return Observable<[T]>.create { emmiter in
-            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        return Observable<[T]>.create { [weak self] emmiter in
+            let task = self?.session.dataTask(with: url) { data, response, error in
                 if let error = error {
                     emmiter.onError(error)
                     return
@@ -43,10 +45,10 @@ final class Network<T: Decodable> {
                 emmiter.onNext(decodedData)
                 emmiter.onCompleted()
             }
-            task.resume()
+            task?.resume()
             
             return Disposables.create {
-                task.cancel()
+                task?.cancel()
             }
         }
     }
