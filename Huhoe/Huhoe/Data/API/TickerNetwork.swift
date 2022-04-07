@@ -9,14 +9,17 @@ import Foundation
 import RxSwift
 
 final class TickerNetwork {
-    private let network: Network<Ticker>
+    private let network: Network
     
-    init(network: Network<Ticker>) {
+    init(network: Network) {
         self.network = network
     }
     
-    func fetchTicker() -> Observable<[Ticker]> {
-        return network.fetch(.ticker)
+    func fetchTicker(with coinSymbol: String) -> Observable<[Ticker]> {
+        return network.fetch(.ticker, with: coinSymbol)
+            .map {
+                try! JSONDecoder().decode([Ticker].self, from: $0)
+            }
     }
 }
 

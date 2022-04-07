@@ -15,17 +15,17 @@ final class NetworkProvider {
     }
     
     func makeTickerNetwork() -> TickerNetwork {
-        let network = Network<Ticker>(endPoint: apiEndPoint)
+        let network = Network(endPoint: apiEndPoint)
         return TickerNetwork(network: network)
     }
     
-    func makeOrderBookNetwork() -> OrderBookNetwork {
-        let network = Network<OrderBook>(endPoint: apiEndPoint)
-        return OrderBookNetwork(network: network)
+    func makeTransactionHistoryNetwork() -> TransactionHistoryNetwork {
+        let network = Network(endPoint: apiEndPoint)
+        return TransactionHistoryNetwork(network: network)
     }
     
-    func makeTransactionHistoryNetwork() -> TransactionHistoryNetwork {
-        let network = Network<TransactionHistory>(endPoint: apiEndPoint)
-        return TransactionHistoryNetwork(network: network)
+    func makeCandlestickNetwork() -> CandlestickNetwork {
+        let network = Network(endPoint: apiEndPoint)
+        return CandlestickNetwork(network: network)
     }
 }

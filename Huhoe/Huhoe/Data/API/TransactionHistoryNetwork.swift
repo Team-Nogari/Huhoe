@@ -9,14 +9,17 @@ import Foundation
 import RxSwift
 
 final class TransactionHistoryNetwork {
-    private let network: Network<TransactionHistory>
+    private let network: Network
     
-    init(network: Network<TransactionHistory>) {
+    init(network: Network) {
         self.network = network
     }
     
-    func fetchTransactionHistory() -> Observable<[TransactionHistory]> {
-        return network.fetch(.transactionHistory)
+    func fetchTransactionHistory(with coinSymbol: String) -> Observable<[TransactionHistory]> {
+        return network.fetch(.transactionHistory, with: coinSymbol)
+            .map {
+                try! JSONDecoder().decode([TransactionHistory].self, from: $0)
+            }
     }
 }
 

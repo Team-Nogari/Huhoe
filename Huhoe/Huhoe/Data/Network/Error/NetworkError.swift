@@ -11,6 +11,7 @@ enum NetworkError: LocalizedError {
     case invalidRequest
     case invalidResponse
     case abnormalStatusCode(_ statusCode: Int)
+    case unknownError(_ error: Error)
     
     var errorDescription: String? {
         switch self {
@@ -20,6 +21,8 @@ enum NetworkError: LocalizedError {
             return "ERROR: Invalid Response"
         case .abnormalStatusCode(let statusCode):
             return "ERROR: Abnormal Status Code \(statusCode)"
+        case .unknownError(let error):
+            return "ERROR: Unknown Error - \(error.localizedDescription)"
         }
     }
 }

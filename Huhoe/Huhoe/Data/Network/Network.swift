@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class Network<T: Decodable> {
+final class Network {
     private let endPoint: String
     private let session: URLSeesionProtocol
     
@@ -17,32 +17,36 @@ final class Network<T: Decodable> {
         self.session = session
     }
     
-    func fetch(_ path: APIPath) -> Observable<[T]> {
-        let path = "\(endPoint)/\(path.path)/\(path.orderCurrency)_\(path.paymentCurrency)"
+    func fetch(_ path: APIPath, with coinSymbol: String) -> Observable<Data> {
+        let path = "\(endPoint)/\(path.path)/\(coinSymbol)_\(path.paymentCurrency)"
+        print(path)
         guard let url = URL(string: path) else {
             return .empty()
         }
         
-        return Observable<[T]>.create { [weak self] emmiter in
+        return Observable<Data>.create { [weak self] emmiter in
             let task = self?.session.dataTask(with: url) { data, response, error in
                 if let error = error {
-                    emmiter.onError(error)
+                    emmiter.onError(NetworkError.unknownError(error))
                     return
                 }
                 
-                guard let httpResponse = response as? HTTPURLResponse,
-                      (200..<300).contains(httpResponse.statusCode) else {
-                    emmiter.onError(error!)
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    emmiter.onError(NetworkError.invalidResponse)
                     return
                 }
                 
-                guard let data = data,
-                      let decodedData = try? JSONDecoder().decode([T].self, from: data) else {
-                    emmiter.onError(error!)
+                guard (200..<300).contains(httpResponse.statusCode) else {
+                    emmiter.onError(NetworkError.abnormalStatusCode(httpResponse.statusCode))
                     return
                 }
                 
-                emmiter.onNext(decodedData)
+                guard let data = data else {
+                    emmiter.onError(NetworkError.invalidResponse)
+                    return
+                }
+                
+                emmiter.onNext(data)
                 emmiter.onCompleted()
             }
             task?.resume()
