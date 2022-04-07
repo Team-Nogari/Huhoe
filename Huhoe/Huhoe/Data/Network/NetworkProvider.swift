@@ -23,4 +23,9 @@ final class NetworkProvider {
         let network = Network<OrderBook>(endPoint: apiEndPoint)
         return OrderBookNetwork(network: network)
     }
+    
+    func makeTransactionHistoryNetwork() -> TransactionHistoryNetwork {
+        let network = Network<TransactionHistory>(endPoint: apiEndPoint)
+        return TransactionHistoryNetwork(network: network)
+    }
 }
