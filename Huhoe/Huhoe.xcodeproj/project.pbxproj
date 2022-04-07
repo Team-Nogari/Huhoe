@@ -19,6 +19,7 @@
 		A6E4DE6A27FEB5A00005266D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6927FEB5A00005266D /* RxCocoa */; };
 		A6E4DE6C27FEB5A00005266D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6B27FEB5A00005266D /* RxRelay */; };
 		A6E4DE6E27FEB5A00005266D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6D27FEB5A00005266D /* RxSwift */; };
+		A6E4DE7027FEEAF40005266D /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		A6E4DE5327FDB3F50005266D /* HuhoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITests.swift; sourceTree = "<group>"; };
 		A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		084F769227FDBA0900BAE500 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A6E4DE7127FEEB540005266D /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -195,6 +198,14 @@
 				A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */,
 			);
 			path = HuhoeUITests;
+			sourceTree = "<group>";
+		};
+		A6E4DE7127FEEB540005266D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
+				A6E4DE7027FEEAF40005266D /* NetworkProvider.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 			);
