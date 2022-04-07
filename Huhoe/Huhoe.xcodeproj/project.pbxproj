@@ -24,6 +24,7 @@
 		A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7427FEEF640005266D /* TickerNetwork.swift */; };
 		A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7727FF11AF0005266D /* APIPath.swift */; };
 		A6E4DE7A27FF15DF0005266D /* URLSeesionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */; };
+		A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7C27FF17C40005266D /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		A6E4DE7427FEEF640005266D /* TickerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerNetwork.swift; sourceTree = "<group>"; };
 		A6E4DE7727FF11AF0005266D /* APIPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
 		A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSeesionProtocol.swift; sourceTree = "<group>"; };
+		A6E4DE7C27FF17C40005266D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				A6E4DE7227FEEEC00005266D /* Network.swift */,
 				A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */,
 				A6E4DE7B27FF171E0005266D /* Protocol */,
+				A6E4DE7E27FF17D30005266D /* Error */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -234,6 +237,14 @@
 				A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A6E4DE7E27FF17D30005266D /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE7C27FF17C40005266D /* NetworkError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +392,7 @@
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
+				A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */,
 				A6E4DE7A27FF15DF0005266D /* URLSeesionProtocol.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 			);
