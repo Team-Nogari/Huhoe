@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import RxSwift
 
 class HuhoeMainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let a = DefaultTickerRepository()
+        a.fetchTicker(coinSymbol: "ALL")
+        a.ticker?.subscribe(onNext: {
+            print($0)
+        })
     }
-
-
 }
 

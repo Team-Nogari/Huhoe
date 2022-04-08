@@ -18,7 +18,9 @@ final class TransactionHistoryNetwork {
     func fetchTransactionHistory(with coinSymbol: String) -> Observable<TransactionResponseDTO> {
         return network.fetch(.transactionHistory, with: coinSymbol)
             .map {
-                try! JSONDecoder().decode(TransactionResponseDTO.self, from: $0)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                try! decoder.decode(TransactionResponseDTO.self, from: $0)
             }
     }
 }
