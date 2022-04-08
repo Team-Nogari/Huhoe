@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Ticker All Response DTO
 
-struct TickerAllResponseDTO: Decodable {
+struct TickerResponseDTO: Decodable {
     let status: String
     let tickerDTO: [String: DynamicValue]
     
@@ -21,7 +21,7 @@ struct TickerAllResponseDTO: Decodable {
 
 // MARK: - Ticker DTO
 
-extension TickerAllResponseDTO {
+extension TickerResponseDTO {
     struct TickerDTO: Decodable {
         let openingPrice: String
         let closingPrice: String
@@ -55,7 +55,7 @@ extension TickerAllResponseDTO {
 
 // MARK: - Dynamic Value
 
-extension TickerAllResponseDTO {
+extension TickerResponseDTO {
     enum DynamicValue: Decodable {
         case string(String)
         case tickerData(TickerDTO)
@@ -77,5 +77,57 @@ extension TickerAllResponseDTO {
         enum DynamicError: Error {
             case noMatchingType
         }
+    }
+}
+
+extension TickerResponseDTO.DynamicValue {
+    var tickerData: TickerResponseDTO.TickerDTO? {
+        if case let .tickerData(tickerData) = self {
+            return tickerData
+        }
+        return nil
+    }
+}
+
+
+// MARK: - Mapping to Domain
+
+extension TickerResponseDTO {
+    func toDomain() -> TickerResponse {
+        var tickers = [Ticker]()
+        
+        tickerDTO.forEach { key, dynamicValue in
+            if let tickerDTO = dynamicValue.tickerData {
+                let ticker = tickerDTO.toDomain(coinSymbol: key)
+                tickers.append(ticker)
+            }
+        }
+
+        return TickerResponse(
+            status: status,
+            tickers: tickers
+        )
+    }
+}
+
+extension TickerResponseDTO.TickerDTO {
+    func toDomain(coinSymbol: String) -> Ticker {
+        return Ticker(
+            coinSymbol: coinSymbol,
+            openPirce: openingPrice.toDouble,
+            accTradeValue24Hour: accTradeValue24Hour.toDouble
+        )
+    }
+}
+
+// MARK: - Double Extention
+
+private extension String {
+    var toDouble: Double {
+        guard let convertedDouble = Double(self) else {
+            return Double.zero
+        }
+        
+        return convertedDouble
     }
 }

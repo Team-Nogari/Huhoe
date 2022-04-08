@@ -10,6 +10,8 @@
 		089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */; };
 		089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */; };
 		089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */; };
+		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
+		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
 		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
 		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
 		A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */; };
@@ -42,6 +44,8 @@
 		089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TickerAllResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CandlestickResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		08ACF49227FFD2C60007E134 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
+		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
 		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 		084F769127FDB9FD00BAE500 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				08ACF49127FFD2AB0007E134 /* Entities */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -102,7 +107,7 @@
 		084F769227FDBA0900BAE500 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				089E803427FF233A0055364F /* Network */,
+				089E803427FF233A0055364F /* NetworkDTO */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -149,12 +154,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		089E803427FF233A0055364F /* Network */ = {
+		089E803427FF233A0055364F /* NetworkDTO */ = {
 			isa = PBXGroup;
 			children = (
 				089E803527FF24130055364F /* DataMapping */,
 			);
-			path = Network;
+			path = NetworkDTO;
 			sourceTree = "<group>";
 		};
 		089E803527FF24130055364F /* DataMapping */ = {
@@ -165,6 +170,15 @@
 				089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */,
 			);
 			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		08ACF49127FFD2AB0007E134 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				08ACF49427FFD6050007E134 /* TickerResponse.swift */,
+				08ACF49227FFD2C60007E134 /* Ticker.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		A6E4DE2A27FDB3F30005266D = {
@@ -351,8 +365,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */,
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
 				089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */,
+				08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */,
 				089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */,
 				089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
