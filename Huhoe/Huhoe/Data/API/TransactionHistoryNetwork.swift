@@ -20,7 +20,7 @@ final class TransactionHistoryNetwork {
             .map {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                try! decoder.decode(TransactionResponseDTO.self, from: $0)
+                return try! decoder.decode(TransactionResponseDTO.self, from: $0) // 강제 수정 필요
             }
     }
 }

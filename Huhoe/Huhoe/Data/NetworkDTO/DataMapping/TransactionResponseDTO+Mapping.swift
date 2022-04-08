@@ -20,7 +20,7 @@ struct TransactionResponseDTO: Decodable {
 extension TransactionResponseDTO {
     struct TransactionDTO: Decodable {
         let transactionDate: String
-        let type: tradeType
+        let type: TradeType
         let unitsTraded: String
         let price: String
         let total: String
@@ -28,9 +28,9 @@ extension TransactionResponseDTO {
 }
 
 extension TransactionResponseDTO {
-    enum tradeType: Decodable {
-        case bid
-        case ask
+    enum TradeType: String, Decodable {
+        case bid = "bid"
+        case ask = "ask"
     }
 }
 

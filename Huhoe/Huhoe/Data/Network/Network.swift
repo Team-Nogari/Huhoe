@@ -24,8 +24,10 @@ final class Network {
             return .empty()
         }
         
+        let urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+        
         return Observable<Data>.create { [weak self] emmiter in
-            let task = self?.session.dataTask(with: url) { data, response, error in
+            let task = self?.session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
                     emmiter.onError(NetworkError.unknownError(error))
                     return

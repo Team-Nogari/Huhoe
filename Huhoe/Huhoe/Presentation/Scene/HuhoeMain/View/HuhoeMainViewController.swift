@@ -14,9 +14,9 @@ class HuhoeMainViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let a = DefaultTickerRepository()
-        a.fetchTicker(coinSymbol: "ALL")
-        a.ticker?.subscribe(onNext: {
+        let a = DefaultTransactionHistoryRepository()
+        a.fetchTransactionHistory(coinSymbol: ["GALA","ETH"])
+        a.transactionHistory?.subscribe(onNext: {
             print($0)
         })
     }
