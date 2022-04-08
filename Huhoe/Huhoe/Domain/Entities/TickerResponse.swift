@@ -8,6 +8,5 @@
 import Foundation
 
 struct TickerResponse {
-    let status: String
     let tickers: [Ticker]
 }

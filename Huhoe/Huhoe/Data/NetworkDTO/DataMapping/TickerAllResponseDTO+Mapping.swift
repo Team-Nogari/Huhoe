@@ -103,10 +103,7 @@ extension TickerResponseDTO {
             }
         }
 
-        return TickerResponse(
-            status: status,
-            tickers: tickers
-        )
+        return TickerResponse(tickers: tickers)
     }
 }
 
@@ -117,17 +114,5 @@ extension TickerResponseDTO.TickerDTO {
             openPirce: openingPrice.toDouble,
             accTradeValue24Hour: accTradeValue24Hour.toDouble
         )
-    }
-}
-
-// MARK: - Double Extention
-
-private extension String {
-    var toDouble: Double {
-        guard let convertedDouble = Double(self) else {
-            return Double.zero
-        }
-        
-        return convertedDouble
     }
 }

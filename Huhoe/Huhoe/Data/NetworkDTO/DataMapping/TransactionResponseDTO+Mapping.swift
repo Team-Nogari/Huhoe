@@ -20,9 +20,26 @@ struct TransactionResponseDTO: Decodable {
 extension TransactionResponseDTO {
     struct TransactionDTO: Decodable {
         let transactionDate: String
-        let type: String
+        let type: tradeType
         let unitsTraded: String
         let price: String
         let total: String
+    }
+}
+
+extension TransactionResponseDTO {
+    enum tradeType: Decodable {
+        case bid
+        case ask
+    }
+}
+
+extension TransactionResponseDTO {
+    func toDomain(coinSymbol: String) -> Transaction {
+        if let price = transactionDTO.filter({ $0.type == .bid }).last?.price.toDouble {
+            return Transaction(coinSymbol: coinSymbol, price: price)
+        }
+        
+        return Transaction(coinSymbol: coinSymbol, price: Double.zero)
     }
 }
