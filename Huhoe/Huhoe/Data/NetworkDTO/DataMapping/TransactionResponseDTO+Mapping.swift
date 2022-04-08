@@ -34,6 +34,8 @@ extension TransactionResponseDTO {
     }
 }
 
+// MARK: - Mapping to Domain
+
 extension TransactionResponseDTO {
     func toDomain(coinSymbol: String) -> Transaction {
         if let price = transactionDTO.filter({ $0.type == .bid }).last?.price.toDouble {
