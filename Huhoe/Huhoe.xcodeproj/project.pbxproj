@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
 		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
 		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
 		A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */; };
@@ -19,6 +20,13 @@
 		A6E4DE6A27FEB5A00005266D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6927FEB5A00005266D /* RxCocoa */; };
 		A6E4DE6C27FEB5A00005266D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6B27FEB5A00005266D /* RxRelay */; };
 		A6E4DE6E27FEB5A00005266D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A6E4DE6D27FEB5A00005266D /* RxSwift */; };
+		A6E4DE7027FEEAF40005266D /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */; };
+		A6E4DE7327FEEEC10005266D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7227FEEEC00005266D /* Network.swift */; };
+		A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7427FEEF640005266D /* TickerNetwork.swift */; };
+		A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7727FF11AF0005266D /* APIPath.swift */; };
+		A6E4DE7A27FF15DF0005266D /* URLSeesionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */; };
+		A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7C27FF17C40005266D /* NetworkError.swift */; };
+		A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
 		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +61,13 @@
 		A6E4DE5327FDB3F50005266D /* HuhoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITests.swift; sourceTree = "<group>"; };
 		A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		A6E4DE7227FEEEC00005266D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		A6E4DE7427FEEF640005266D /* TickerNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerNetwork.swift; sourceTree = "<group>"; };
+		A6E4DE7727FF11AF0005266D /* APIPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIPath.swift; sourceTree = "<group>"; };
+		A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSeesionProtocol.swift; sourceTree = "<group>"; };
+		A6E4DE7C27FF17C40005266D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +118,9 @@
 		084F769227FDBA0900BAE500 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				A6E4DE7727FF11AF0005266D /* APIPath.swift */,
+				A6E4DE7627FEEF680005266D /* API */,
+				A6E4DE7127FEEB540005266D /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -195,6 +214,43 @@
 				A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */,
 			);
 			path = HuhoeUITests;
+			sourceTree = "<group>";
+		};
+		A6E4DE7127FEEB540005266D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE7227FEEEC00005266D /* Network.swift */,
+				A6E4DE6F27FEEAF40005266D /* NetworkProvider.swift */,
+				A6E4DE7B27FF171E0005266D /* Protocol */,
+				A6E4DE7E27FF17D30005266D /* Error */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A6E4DE7627FEEF680005266D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE7427FEEF640005266D /* TickerNetwork.swift */,
+				A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */,
+				A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A6E4DE7B27FF171E0005266D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE7927FF15DF0005266D /* URLSeesionProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A6E4DE7E27FF17D30005266D /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				A6E4DE7C27FF17C40005266D /* NetworkError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,8 +392,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */,
+				A6E4DE7327FEEEC10005266D /* Network.swift in Sources */,
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
+				A6E4DE7027FEEAF40005266D /* NetworkProvider.swift in Sources */,
+				A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
+				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
+				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
+				A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */,
+				A6E4DE7A27FF15DF0005266D /* URLSeesionProtocol.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
