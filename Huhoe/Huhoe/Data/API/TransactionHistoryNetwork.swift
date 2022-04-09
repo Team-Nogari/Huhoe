@@ -15,12 +15,12 @@ final class TransactionHistoryNetwork {
         self.network = network
     }
     
-    func fetchTransactionHistory(with coinSymbol: String) -> Observable<[TransactionHistory]> {
+    func fetchTransactionHistory(with coinSymbol: String) -> Observable<TransactionResponseDTO> {
         return network.fetch(.transactionHistory, with: coinSymbol)
             .map {
-                try! JSONDecoder().decode([TransactionHistory].self, from: $0)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                return try! decoder.decode(TransactionResponseDTO.self, from: $0) // 강제 수정 필요
             }
     }
 }
-
-struct TransactionHistory: Decodable { }

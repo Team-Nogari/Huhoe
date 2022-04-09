@@ -17,7 +17,7 @@ enum APIPath {
         case .ticker:
             return String(describing: APIPath.ticker)
         case .transactionHistory:
-            return String(describing: APIPath.transactionHistory)
+            return "transaction_history"
         case .candlestick:
             return String(describing: APIPath.candlestick)
         }

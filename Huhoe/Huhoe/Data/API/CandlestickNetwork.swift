@@ -15,12 +15,11 @@ final class CandlestickNetwork {
         self.network = network
     }
     
-    func fetchCandlestick(with coinSymbol: String) -> Observable<[Candlestick]> {
+    func fetchCandlestick(with coinSymbol: String) -> Observable<CandlestickResponseDTO?> {
         return network.fetch(.candlestick, with: coinSymbol)
             .map {
-                try! JSONDecoder().decode([Candlestick].self, from: $0)
+                let data = try? JSONSerialization.jsonObject(with: $0) as? [String: Any]
+                return CandlestickResponseDTO(serializedData: data)
             }
     }
 }
-
-struct Candlestick: Decodable { }
