@@ -20,6 +20,8 @@
 		089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
+		08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA08732801223D00C94584 /* CandlestickRepository.swift */; };
+		08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */; };
 		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
 		A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */; };
 		A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */; };
@@ -69,6 +71,8 @@
 		089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CandlestickResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		08ACF49227FFD2C60007E134 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
+		08CA08732801223D00C94584 /* CandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickRepository.swift; sourceTree = "<group>"; };
+		08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCandlestickRepository.swift; sourceTree = "<group>"; };
 		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
 		A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryRepository.swift; sourceTree = "<group>"; };
 		A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryRepository.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 			children = (
 				089A927028002DC800728107 /* DefaultTickerRepository.swift */,
 				A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */,
+				08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			children = (
 				089A926E28002B2D00728107 /* TickerRepository.swift */,
 				A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */,
+				08CA08732801223D00C94584 /* CandlestickRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -487,6 +493,7 @@
 				089A927128002DC800728107 /* DefaultTickerRepository.swift in Sources */,
 				A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */,
 				A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */,
+				08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */,
 				A6E4DE7327FEEEC10005266D /* Network.swift in Sources */,
 				089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */,
 				08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */,
@@ -501,6 +508,7 @@
 				089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
+				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
 				A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */,
 				A6E4DE7D27FF17C40005266D /* NetworkError.swift in Sources */,
