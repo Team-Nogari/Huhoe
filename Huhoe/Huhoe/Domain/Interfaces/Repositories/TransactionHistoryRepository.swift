@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import RxRelay
 
 protocol TransactionHistoryRepository {
+    var transactionHistoryRelay: BehaviorRelay<[Transaction]> { get }
     func fetchTransactionHistory(coinSymbol: [String])
 }

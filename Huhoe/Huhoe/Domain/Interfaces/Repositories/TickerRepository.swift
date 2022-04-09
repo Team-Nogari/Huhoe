@@ -10,6 +10,6 @@ import RxSwift
 import RxRelay
 
 protocol TickerRepository {
-    var tickerRelay: BehaviorRelay<[Ticker]> { get set }
+    var tickerRelay: BehaviorRelay<[Ticker]> { get }
     func fetchTicker(coinSymbol: String)
 }

@@ -16,6 +16,7 @@ final class TransactionHistoryNetwork {
     }
     
     func fetchTransactionHistory(with coinSymbol: String) -> Observable<TransactionResponseDTO> {
+        Thread.sleep(forTimeInterval: 0.05) // API 요청 제한 문제때문에..
         return network.fetch(.transactionHistory, with: coinSymbol)
             .map {
                 let decoder = JSONDecoder()

@@ -6,12 +6,13 @@
 //
 
 import Foundation
-import UIKit
+import RxSwift
 
 final class CoinListUseCase {
     let tickerRepository: TickerRepository
     let transactionRepository: TransactionHistoryRepository
     let candlestickRepository: CandlestickRepository
+    private let disposeBag = DisposeBag()
     
     init(
         tickerRepository: TickerRepository = DefaultTickerRepository(),
@@ -25,27 +26,30 @@ final class CoinListUseCase {
 }
 
 extension CoinListUseCase {
-    func bind() {
+    func fetch() {
+        fetchCoinList()
+        
         tickerRepository.tickerRelay
             .asObservable()
+            .subscribe(on: ConcurrentDispatchQueueScheduler.init(queue: .global()))
             .subscribe(onNext: { [weak self] in
                 let symbols = $0.map {
                     $0.coinSymbol
                 }
                 self?.fetchTransactionHistroy(coinSymbols: symbols)
                 self?.fetchCoinPirceHistory(coinSymbols: symbols)
-            })
+            }).disposed(by: disposeBag)
     }
     
-    func fetchCoinList() {
+    private func fetchCoinList() {
         tickerRepository.fetchTicker(coinSymbol: "ALL")
     }
     
-    func fetchTransactionHistroy(coinSymbols: [String]) {
+    private func fetchTransactionHistroy(coinSymbols: [String]) {
         transactionRepository.fetchTransactionHistory(coinSymbol: coinSymbols)
     }
     
-    func fetchCoinPirceHistory(coinSymbols: [String]) {
+    private func fetchCoinPirceHistory(coinSymbols: [String]) {
         candlestickRepository.fetchCandlestick(coinSymbol: coinSymbols)
     }
 }

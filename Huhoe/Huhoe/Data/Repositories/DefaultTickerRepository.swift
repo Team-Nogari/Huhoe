@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 final class DefaultTickerRepository {
-    var tickerRelay = BehaviorRelay<[Ticker]>(value: [])
+    let tickerRelay = BehaviorRelay<[Ticker]>(value: [])
     private var disposeBag = DisposeBag()
     let network: TickerNetwork
     
