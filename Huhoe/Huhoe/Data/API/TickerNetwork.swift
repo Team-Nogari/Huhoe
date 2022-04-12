@@ -20,7 +20,7 @@ final class TickerNetwork {
             .map {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                return try! decoder.decode(TickerResponseDTO.self, from: $0)
+                return try! decoder.decode(TickerResponseDTO.self, from: $0) // 강제 수정 필요
             }
     }
 }
