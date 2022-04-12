@@ -16,7 +16,7 @@ final class CandlestickNetwork {
     }
     
     func fetchCandlestick(with coinSymbol: String) -> Observable<CandlestickResponseDTO?> {
-        Thread.sleep(forTimeInterval: 0.05) // API 요청 제한 문제때문에..
+        Thread.sleep(forTimeInterval: 0.015) // API 요청 제한
         return network.fetch(.candlestick, with: coinSymbol)
             .map {
                 let data = try? JSONSerialization.jsonObject(with: $0) as? [String: Any]

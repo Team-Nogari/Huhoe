@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 final class DefaultTransactionHistoryRepository {
-    let transactionHistoryRelay = BehaviorRelay<[Transaction]>(value: [])
+    let transactionHistoryRelay = PublishRelay<[Transaction]>()
     let network: TransactionHistoryNetwork
     private let disposeBag = DisposeBag()
     

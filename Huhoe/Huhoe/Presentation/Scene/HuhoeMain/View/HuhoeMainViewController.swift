@@ -10,11 +10,11 @@ import RxSwift
 
 class HuhoeMainViewController: UIViewController {
 //
-//    let a = DefaultTickerRepository()
-//    let b = DefaultTransactionHistoryRepository()
-//    let c = DefaultCandlestickRepository()
-//
-//    lazy var dd = CoinListUseCase(tickerRepository: a, transactionRepository: b, candlestickRepository: c)
+    let a = DefaultTickerRepository()
+    let b = DefaultTransactionHistoryRepository()
+    let c = DefaultCandlestickRepository()
+
+    lazy var dd = CoinListUseCase(tickerRepository: a, transactionRepository: b, candlestickRepository: c)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,23 +32,27 @@ class HuhoeMainViewController: UIViewController {
 //            print($0)
 //        })
         
-//        dd.fetch()
-//
+        dd.fetch()
+
 //        a.tickerRelay
 //            .subscribe(onNext: {
-//                print($0)
+//                print($0.count)
 //            })
 //
 //        b.transactionHistoryRelay
 //            .subscribe(onNext: {
-//                print($0)
+//                print($0.count)
 //            })
 //
 //        c.coinPriceHistoryRelay
 //            .subscribe(onNext: {
-//                print($0)
+//                print($0.count)
 //            })
-        
+//
+        dd.bind()
+            .subscribe(onNext: {
+                print($0[0].date.last, $0[0].priceHistory.last)
+            })
     }
 }
 

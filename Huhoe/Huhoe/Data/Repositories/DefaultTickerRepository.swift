@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 final class DefaultTickerRepository {
-    let tickerRelay = BehaviorRelay<[Ticker]>(value: [])
+    let tickerRelay = PublishRelay<[Ticker]>()
     private var disposeBag = DisposeBag()
     let network: TickerNetwork
     
@@ -26,11 +26,16 @@ final class DefaultTickerRepository {
 extension DefaultTickerRepository: TickerRepository {
     func fetchTicker(coinSymbol: String) {
         network.fetchTicker(with: coinSymbol)
-            .map { $0.toDomain().tickers
-                .sorted {
-                    $0.accTradeValue24Hour > $1.accTradeValue24Hour
-                }
-            }.subscribe(onNext: { [weak self] in
+            .map {
+                let tickersCount = $0.toDomain().tickers.count
+                
+                return $0.toDomain().tickers
+                    .sorted {
+                        $0.accTradeValue24Hour > $1.accTradeValue24Hour
+                    }
+                    .dropLast(tickersCount - 100)
+            }
+            .subscribe(onNext: { [weak self] in
                 self?.tickerRelay.accept($0)
             })
             .disposed(by: disposeBag)

@@ -26,6 +26,30 @@ final class CoinListUseCase {
 }
 
 extension CoinListUseCase {
+    func bind() -> Observable<[CoinInfo]> {
+        let tickerObservable = tickerRepository.tickerRelay.asObservable()
+        let transactionObservable = transactionRepository.transactionHistoryRelay.asObservable()
+        let candlestickObservable = candlestickRepository.coinPriceHistoryRelay.asObservable()
+        
+        return Observable.zip(tickerObservable, transactionObservable, candlestickObservable)
+            .map { tickers, transactions, coinPriceHistory -> [CoinInfo] in
+                var cellItems = [CoinInfo]()
+                
+                for index in tickers.indices {
+                    let cellItem = CoinInfo(
+                        symbol: tickers[index].coinSymbol,
+                        currentPrice: transactions[index].price,
+                        priceHistory: coinPriceHistory[index].price,
+                        date: coinPriceHistory[index].date
+                    )
+                    
+                    cellItems.append(cellItem)
+                }
+                
+                return cellItems
+            }
+    }
+    
     func fetch() {
         fetchCoinList()
         
@@ -52,4 +76,11 @@ extension CoinListUseCase {
     private func fetchCoinPirceHistory(coinSymbols: [String]) {
         candlestickRepository.fetchCandlestick(coinSymbol: coinSymbols)
     }
+}
+
+struct CoinInfo {
+    let symbol: String
+    let currentPrice: Double
+    let priceHistory: [Double]
+    let date: [Date]
 }

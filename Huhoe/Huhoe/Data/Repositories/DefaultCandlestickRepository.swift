@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 final class DefaultCandlestickRepository {
-    var coinPriceHistoryRelay = BehaviorRelay<[CoinPriceHistory]>(value: [])
+    var coinPriceHistoryRelay = PublishRelay<[CoinPriceHistory]>()
     let network: CandlestickNetwork
     private let disposeBag = DisposeBag()
     

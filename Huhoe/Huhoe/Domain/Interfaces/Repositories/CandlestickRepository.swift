@@ -9,7 +9,7 @@ import Foundation
 import RxRelay
 
 protocol CandlestickRepository {
-    var coinPriceHistoryRelay: BehaviorRelay<[CoinPriceHistory]> { get }
+    var coinPriceHistoryRelay: PublishRelay<[CoinPriceHistory]> { get }
     func fetchCandlestick(coinSymbol: [String])
 }
 
