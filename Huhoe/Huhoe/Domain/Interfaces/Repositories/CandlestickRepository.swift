@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import RxRelay
 
 protocol CandlestickRepository {
+    var coinPriceHistoryRelay: PublishRelay<[CoinPriceHistory]> { get }
     func fetchCandlestick(coinSymbol: [String])
 }
 

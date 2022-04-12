@@ -24,6 +24,7 @@
 		08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA052A28057A7500F7CD53 /* CoinListCell.swift */; };
 		08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA08732801223D00C94584 /* CandlestickRepository.swift */; };
 		08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */; };
+		08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA087828015EBE00C94584 /* CoinListUseCase.swift */; };
 		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
 		A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */; };
 		A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */; };
@@ -77,6 +78,7 @@
 		08BA052A28057A7500F7CD53 /* CoinListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListCell.swift; sourceTree = "<group>"; };
 		08CA08732801223D00C94584 /* CandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickRepository.swift; sourceTree = "<group>"; };
 		08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCandlestickRepository.swift; sourceTree = "<group>"; };
+		08CA087828015EBE00C94584 /* CoinListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListUseCase.swift; sourceTree = "<group>"; };
 		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
 		A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryRepository.swift; sourceTree = "<group>"; };
 		A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryRepository.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		084F769127FDB9FD00BAE500 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				08CA08772801588700C94584 /* UseCases */,
 				089A926C28002B0F00728107 /* Interfaces */,
 				08ACF49127FFD2AB0007E134 /* Entities */,
 			);
@@ -268,6 +271,14 @@
 				089A926227FFFEAA00728107 /* CoinPriceHistory.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		08CA08772801588700C94584 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				08CA087828015EBE00C94584 /* CoinListUseCase.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		A6E4DE2A27FDB3F30005266D = {
@@ -513,6 +524,7 @@
 				08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */,
 				089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */,
 				089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */,
+				08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,

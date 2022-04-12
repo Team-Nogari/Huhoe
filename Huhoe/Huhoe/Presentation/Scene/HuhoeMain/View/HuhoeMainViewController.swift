@@ -9,8 +9,14 @@ import UIKit
 import RxSwift
 
 class HuhoeMainViewController: UIViewController {
+//
+    let a = DefaultTickerRepository()
+    let b = DefaultTransactionHistoryRepository()
+    let c = DefaultCandlestickRepository()
 
     @IBOutlet weak var CoinListCollectionView: UICollectionView!
+    
+    lazy var dd = CoinListUseCase(tickerRepository: a, transactionRepository: b, candlestickRepository: c)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +28,13 @@ class HuhoeMainViewController: UIViewController {
 //            print($0)
 //        })
         
-        let b = DefaultCandlestickRepository()
-        b.fetchCandlestick(coinSymbol: ["GALA","ETH"])
-        b.coinPriceHistory?.subscribe(onNext: {
-            print($0)
-        })
-        
         let cellNib: UINib = UINib(nibName: "CoinListCell", bundle: nil)
         CoinListCollectionView.register(cellNib, forCellWithReuseIdentifier: "CoinListCell")
         CoinListCollectionView.dataSource = self
+        dd.bind()
+            .subscribe(onNext: {
+                print($0[0].date.last, $0[0].priceHistory.last)
+            })
     }
 }
 
