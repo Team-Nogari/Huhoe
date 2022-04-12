@@ -10,6 +10,8 @@ import RxSwift
 
 class HuhoeMainViewController: UIViewController {
 
+    @IBOutlet weak var CoinListCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,6 +27,22 @@ class HuhoeMainViewController: UIViewController {
         b.coinPriceHistory?.subscribe(onNext: {
             print($0)
         })
+        
+        let cellNib: UINib = UINib(nibName: "CoinListCell", bundle: nil)
+        CoinListCollectionView.register(cellNib, forCellWithReuseIdentifier: "CoinListCell")
+        CoinListCollectionView.dataSource = self
+    }
+}
+
+extension HuhoeMainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinListCell", for: indexPath)
+        
+        return cell
     }
 }
 
