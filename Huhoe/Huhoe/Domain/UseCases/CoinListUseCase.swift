@@ -78,7 +78,7 @@ extension CoinListUseCase {
     }
 }
 
-struct CoinInfo {
+struct CoinInfo: Hashable {
     let symbol: String
     let currentPrice: Double
     let priceHistory: [Double]

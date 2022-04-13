@@ -9,44 +9,53 @@ import UIKit
 import RxSwift
 
 class HuhoeMainViewController: UIViewController {
-//
-    let a = DefaultTickerRepository()
-    let b = DefaultTransactionHistoryRepository()
-    let c = DefaultCandlestickRepository()
+    private enum Section {
+        case main
+    }
 
-    @IBOutlet weak var CoinListCollectionView: UICollectionView!
-    
-    lazy var dd = CoinListUseCase(tickerRepository: a, transactionRepository: b, candlestickRepository: c)
+    @IBOutlet weak var coinListCollectionView: UICollectionView!
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfo>
+    private var dataSource: DiffableDataSource?
+    private let use = CoinListUseCase()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-//        let a = DefaultTransactionHistoryRepository()
-//        a.fetchTransactionHistory(coinSymbol: ["GALA","ETH"])
-//        a.transactionHistory?.subscribe(onNext: {
-//            print($0)
-//        })
-        
-        let cellNib: UINib = UINib(nibName: "CoinListCell", bundle: nil)
-        CoinListCollectionView.register(cellNib, forCellWithReuseIdentifier: "CoinListCell")
-        CoinListCollectionView.dataSource = self
-        dd.bind()
-            .subscribe(onNext: {
-                print($0[0].date.last, $0[0].priceHistory.last)
-            })
-    }
-}
-
-extension HuhoeMainViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        configureCollectionViewLayout()
+        configureCollectionViewDataSource()
+//        use.fetch()
+//        use.bind()
+//            .subscribe(onNext: { [weak self] in
+//                self?.applySnapShot($0)
+//            })
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoinListCell", for: indexPath)
+    private func configureCollectionViewLayout() {
+        var listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
+        listConfig.showsSeparators = false
+        coinListCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: listConfig)
+    }
+    
+    private func configureCollectionViewDataSource() {
+        typealias CellRegistration = UICollectionView.CellRegistration<CoinListCell, CoinInfo>
         
-        return cell
+        let cellNib = UINib(nibName: CoinListCell.identifier, bundle: nil)
+        
+        let coinListRegistration = CellRegistration(cellNib: cellNib) { cell, indexPath, itemIdentifier in
+//            print(cell.reuseIdentifier)
+        }
+        
+        dataSource = DiffableDataSource(collectionView: coinListCollectionView) { collectionView, indexPath, item in
+            return collectionView.dequeueConfiguredReusableCell(using: coinListRegistration, for: indexPath, item: item)
+        }
+    }
+    
+    private func applySnapShot(_ items: [CoinInfo]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, CoinInfo>()
+        
+        snapShot.appendSections([.main])
+        snapShot.appendItems(items, toSection: .main)
+        
+        dataSource?.apply(snapShot)
     }
 }
 
