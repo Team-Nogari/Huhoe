@@ -7,9 +7,8 @@
 
 import Foundation
 import RxSwift
-import RxRelay
 
 protocol TickerRepository {
-    var tickerRelay: PublishRelay<[Ticker]> { get }
-    func fetchTicker(coinSymbol: String)
+    var dataSource: TickerDataSource { get }
+    func fetchTicker(coinSymbol: String) -> Observable<[Ticker]>
 }

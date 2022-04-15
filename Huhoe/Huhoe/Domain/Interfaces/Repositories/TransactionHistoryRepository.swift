@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import RxRelay
+import RxSwift
 
 protocol TransactionHistoryRepository {
-    var transactionHistoryRelay: PublishRelay<[Transaction]> { get }
-    func fetchTransactionHistory(coinSymbol: [String])
+    var dataSource: TransactionHistoryDataSource { get }
+    func fetchTransactionHistory(coinSymbol: [String]) -> Observable<[Transaction]>
 }

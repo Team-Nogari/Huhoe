@@ -22,6 +22,9 @@
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
 		08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BA05282805770E00F7CD53 /* CoinListCell.xib */; };
 		08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA052A28057A7500F7CD53 /* CoinListCell.swift */; };
+		08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */; };
+		08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */; };
+		08C4BA8E2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */; };
 		08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA08732801223D00C94584 /* CandlestickRepository.swift */; };
 		08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */; };
 		08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA087828015EBE00C94584 /* CoinListUseCase.swift */; };
@@ -76,6 +79,9 @@
 		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
 		08BA05282805770E00F7CD53 /* CoinListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinListCell.xib; sourceTree = "<group>"; };
 		08BA052A28057A7500F7CD53 /* CoinListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListCell.swift; sourceTree = "<group>"; };
+		08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTickerDataSource.swift; sourceTree = "<group>"; };
+		08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryDataSource.swift; sourceTree = "<group>"; };
+		08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoinPriceHistoryDataSource.swift; sourceTree = "<group>"; };
 		08CA08732801223D00C94584 /* CandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickRepository.swift; sourceTree = "<group>"; };
 		08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCandlestickRepository.swift; sourceTree = "<group>"; };
 		08CA087828015EBE00C94584 /* CoinListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListUseCase.swift; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		084F769227FDBA0900BAE500 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				08C4BA882809385B00482CB7 /* Data Source */,
 				089A926B28002AD300728107 /* Repositories */,
 				089E803427FF233A0055364F /* NetworkDTO */,
 				A6E4DE7727FF11AF0005266D /* APIPath.swift */,
@@ -271,6 +278,16 @@
 				089A926227FFFEAA00728107 /* CoinPriceHistory.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		08C4BA882809385B00482CB7 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */,
+				08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */,
+				08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */,
+			);
+			path = "Data Source";
 			sourceTree = "<group>";
 		};
 		08CA08772801588700C94584 /* UseCases */ = {
@@ -520,12 +537,15 @@
 				A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */,
 				089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */,
 				089A925E27FFE2E100728107 /* Transaction.swift in Sources */,
+				08C4BA8E2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift in Sources */,
 				089A926127FFE43300728107 /* String+extension.swift in Sources */,
 				08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */,
 				089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */,
 				089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */,
 				08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */,
+				08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
+				08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,

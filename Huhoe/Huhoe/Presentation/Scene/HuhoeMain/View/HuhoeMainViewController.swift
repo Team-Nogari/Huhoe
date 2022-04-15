@@ -22,11 +22,23 @@ class HuhoeMainViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionViewLayout()
         configureCollectionViewDataSource()
-//        use.fetch()
-//        use.bind()
-//            .subscribe(onNext: { [weak self] in
-//                self?.applySnapShot($0)
-//            })
+        use.fetch()
+            .subscribe(onNext: { tickers, transactions, coinPriceHistory in
+                var cellItems = [CoinInfo]()
+                
+                for index in tickers.indices {
+                    let cellItem = CoinInfo(
+                        symbol: tickers[index].coinSymbol,
+                        currentPrice: transactions[index].price,
+                        priceHistory: coinPriceHistory[index].price,
+                        date: coinPriceHistory[index].date
+                    )
+                    
+                    cellItems.append(cellItem)
+                }
+                
+                self.applySnapShot(cellItems)
+            })
     }
     
     private func configureCollectionViewLayout() {

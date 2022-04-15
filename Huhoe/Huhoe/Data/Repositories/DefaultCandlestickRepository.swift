@@ -10,9 +10,8 @@ import RxSwift
 import RxRelay
 
 final class DefaultCandlestickRepository {
-    var coinPriceHistoryRelay = PublishRelay<[CoinPriceHistory]>()
+    var dataSource: CoinPriceHistoryDataSource = DefaultCoinPriceHistoryDataSource()
     let network: CandlestickNetwork
-    private let disposeBag = DisposeBag()
     
     init(network: CandlestickNetwork = NetworkProvider().makeCandlestickNetwork()) {
         self.network = network
@@ -20,14 +19,14 @@ final class DefaultCandlestickRepository {
 }
 
 extension DefaultCandlestickRepository: CandlestickRepository {
-    func fetchCandlestick(coinSymbol: [String]) {
+    func fetchCandlestick(coinSymbol: [String]) -> Observable<[CoinPriceHistory]> {
         let coinPriceHistoryObservables = coinSymbol.map { coin in
             network.fetchCandlestick(with: coin).compactMap { $0?.toDomain(coinSymbol: coin) }
         }
         
-        Observable.zip(coinPriceHistoryObservables)
-            .subscribe(onNext: { [weak self] in
-                self?.coinPriceHistoryRelay.accept($0)
-            }).disposed(by: disposeBag)
+        _ = Observable.zip(coinPriceHistoryObservables)
+            .map { self.dataSource.coinPriceHistory = $0 }
+        
+        return Observable.zip(coinPriceHistoryObservables)
     }
 }
