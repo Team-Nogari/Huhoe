@@ -9,6 +9,6 @@ import Foundation
 
 struct CoinPriceHistory {
     let coinSymbol: String
-    let date: [Date]
+    let date: [Double]
     let price: [Double]
 }

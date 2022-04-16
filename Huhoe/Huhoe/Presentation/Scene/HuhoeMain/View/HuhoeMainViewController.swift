@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class HuhoeMainViewController: UIViewController {
     private enum Section {
@@ -14,31 +15,37 @@ class HuhoeMainViewController: UIViewController {
     }
 
     @IBOutlet weak var coinListCollectionView: UICollectionView!
-    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfo>
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
     private var dataSource: DiffableDataSource?
-    private let use = CoinListUseCase()
+    
+    private let viewModel = HuhoeMainViewModel()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionViewLayout()
         configureCollectionViewDataSource()
-        use.fetch()
-            .subscribe(onNext: { tickers, transactions, coinPriceHistory in
-                var cellItems = [CoinInfo]()
-                
-                for index in tickers.indices {
-                    let cellItem = CoinInfo(
-                        symbol: tickers[index].coinSymbol,
-                        currentPrice: transactions[index].price,
-                        priceHistory: coinPriceHistory[index].price,
-                        date: coinPriceHistory[index].date
-                    )
-                    
-                    cellItems.append(cellItem)
-                }
-                
-                self.applySnapShot(cellItems)
+        
+        let date: Date = Date()
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let dateString = dateFormatter.string(from: date)
+        
+        let input = HuhoeMainViewModel.Input(
+            viewWillAppear: Observable.empty(),
+            changeMoney: Observable.just("10000"),
+            changeDate: Observable.just(dateString)
+        )
+        
+        let output = viewModel.transform(input)
+        output.coinInfo
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] in
+                self?.applySnapShot($0)
             })
+            .disposed(by: disposeBag)
     }
     
     private func configureCollectionViewLayout() {
@@ -48,7 +55,7 @@ class HuhoeMainViewController: UIViewController {
     }
     
     private func configureCollectionViewDataSource() {
-        typealias CellRegistration = UICollectionView.CellRegistration<CoinListCell, CoinInfo>
+        typealias CellRegistration = UICollectionView.CellRegistration<CoinListCell, CoinInfoItem>
         
         let cellNib = UINib(nibName: CoinListCell.identifier, bundle: nil)
         
@@ -61,8 +68,8 @@ class HuhoeMainViewController: UIViewController {
         }
     }
     
-    private func applySnapShot(_ items: [CoinInfo]) {
-        var snapShot = NSDiffableDataSourceSnapshot<Section, CoinInfo>()
+    private func applySnapShot(_ items: [CoinInfoItem]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, CoinInfoItem>()
         
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
