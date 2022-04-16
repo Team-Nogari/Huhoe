@@ -29,7 +29,7 @@ class HuhoeMainViewController: UIViewController {
         let date: Date = Date()
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH"
 
         let dateString = dateFormatter.string(from: date)
         
@@ -59,8 +59,9 @@ class HuhoeMainViewController: UIViewController {
         
         let cellNib = UINib(nibName: CoinListCell.identifier, bundle: nil)
         
-        let coinListRegistration = CellRegistration(cellNib: cellNib) { cell, indexPath, itemIdentifier in
-//            print(cell.reuseIdentifier)
+        let coinListRegistration = CellRegistration(cellNib: cellNib) { cell, indexPath, item in
+            print(item)
+            cell.configureCell(item: item)
         }
         
         dataSource = DiffableDataSource(collectionView: coinListCollectionView) { collectionView, indexPath, item in
@@ -77,4 +78,3 @@ class HuhoeMainViewController: UIViewController {
         dataSource?.apply(snapShot)
     }
 }
-

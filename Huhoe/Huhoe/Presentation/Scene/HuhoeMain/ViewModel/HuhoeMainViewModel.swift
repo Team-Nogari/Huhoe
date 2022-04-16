@@ -51,19 +51,16 @@ final class HuhoeMainViewModel: ViewModel {
                 var coinInfoItems = [CoinInfoItem]()
                 
                 let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd"
+                formatter.dateFormat = "yyyy-MM-dd HH"
                 formatter.locale = Locale(identifier: "ko_KR")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let date2 = formatter.date(from: dateString)
-                let asdf: TimeInterval = date2!.timeIntervalSince1970 + 54000
+                let asdf: TimeInterval = date2!.timeIntervalSince1970
                 
                 for index in coinInfo.0.indices {
-                    print(coinInfo.1[index].coinSymbol)
-                    print(asdf)
-                    print(coinInfo.2[index].date)
                     let dateIndex = coinInfo.2[index].date.firstIndex(of: asdf)!
                     let price = coinInfo.2[index].price[dateIndex]
-                    let quantity = price / Double(money)!
+                    let quantity = Double(money)! / price
                     let calculatedPrice = coinInfo.1[index].price * quantity
                     let profitAndLoss = (calculatedPrice - Double(money)!)
                     let rate = profitAndLoss / Double(money)! * 100
@@ -71,10 +68,10 @@ final class HuhoeMainViewModel: ViewModel {
                     let cellItem = CoinInfoItem(
                         coinName: coinInfo.0[index].coinSymbol,
                         coinSymbol: coinInfo.0[index].coinSymbol,
-                        calculatedPrice: "\(calculatedPrice)",
-                        rate: "\(rate) %",
-                        profitAndLoss: "\(profitAndLoss)",
-                        currentPrice: "\(coinInfo.1[index].price)"
+                        calculatedPrice: calculatedPrice,
+                        rate: rate,
+                        profitAndLoss: profitAndLoss,
+                        currentPrice: coinInfo.1[index].price
                     )
                     
                     coinInfoItems.append(cellItem)
@@ -87,11 +84,4 @@ final class HuhoeMainViewModel: ViewModel {
     }
 }
 
-struct CoinInfoItem: Hashable {
-    let coinName: String
-    let coinSymbol: String
-    let calculatedPrice: String
-    let rate: String
-    let profitAndLoss: String
-    let currentPrice: String
-}
+

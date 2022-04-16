@@ -114,7 +114,13 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <size key="customSize" width="408" height="59"/>
             <connections>
-                <outlet property="view" destination="9Vo-DQ-z7S" id="idz-Ca-Rka"/>
+                <outlet property="calculatedPriceLabel" destination="bId-u2-rIo" id="cZE-Fb-s6W"/>
+                <outlet property="coinNameLabel" destination="OW0-bH-l2J" id="Oaq-Tz-UXq"/>
+                <outlet property="coinSymbolLabel" destination="ete-Ih-RHa" id="ihb-r8-4Dh"/>
+                <outlet property="currentPriceLabel" destination="MjH-9T-e31" id="Moz-Sg-ebW"/>
+                <outlet property="profitAndLossLabel" destination="7Rv-zb-rTN" id="gxB-bh-RQf"/>
+                <outlet property="profitAndLossRateLabel" destination="c89-Ag-lgG" id="NUT-cW-kam"/>
+                <outlet property="roundedBackgroundView" destination="9Vo-DQ-z7S" id="idz-Ca-Rka"/>
             </connections>
             <point key="canvasLocation" x="146.37681159420291" y="234.70982142857142"/>
         </collectionViewCell>
