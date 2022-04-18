@@ -66,7 +66,7 @@ extension HuhoeMainViewController {
         
         let output = viewModel.transform(input)
         output.coinInfo
-            .retry()
+            .retry(5)
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] in
                 self?.applySnapShot($0)

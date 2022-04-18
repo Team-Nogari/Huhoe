@@ -18,26 +18,26 @@ struct CoinInfoItem: Hashable {
 
 extension CoinInfoItem {
     var calculatedPriceString: String {
-        return self.calculatedPrice.toString
+        return self.calculatedPrice.toString()
     }
     
     var rateString: String {
-        return self.rate.toString
+        return self.rate.toString(digit: 2)
     }
     
     var profitAndLossString: String {
-        return profitAndLoss.toString
+        return profitAndLoss.toString()
     }
     
     var currentPriceString: String {
-        return currentPrice.toString
+        return currentPrice.toString(digit: 4)
     }
 }
 
 private extension Double {
-    var toString: String {
+    func toString(digit: Int = 0) -> String {
         let numberFormatter = NumberFormatter()
-        numberFormatter.maximumFractionDigits = 4
+        numberFormatter.maximumFractionDigits = digit
         numberFormatter.numberStyle = .decimal
         
         return numberFormatter.string(for: self) ?? ""

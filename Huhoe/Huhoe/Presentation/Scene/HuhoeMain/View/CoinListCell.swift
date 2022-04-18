@@ -48,13 +48,3 @@ extension CoinListCell {
         }
     }
 }
-
-//extension UILabel {
-//    func isMinus()  {
-//        if let text = self.text,
-//           text.contains("-") {
-//            self.textColor = .systemBlue
-//        }
-//        self.textColor = .systemRed
-//    }
-//}

@@ -22,12 +22,11 @@ extension DefaultTickerRepository: TickerRepository {
         return network.fetchTicker(with: coinSymbol)
             .map {
                 let tickersCount = $0.toDomain().tickers.count
-                
                 let sortedTicker = $0.toDomain().tickers
                     .sorted {
                         $0.accTradeValue24Hour > $1.accTradeValue24Hour
                     }
-                    .dropLast(tickersCount - 100)
+                    .dropLast(tickersCount - 50)
                 
                 self.dataSource.tickers = Array(sortedTicker)
                 
