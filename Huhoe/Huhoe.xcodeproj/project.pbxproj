@@ -12,15 +12,16 @@
 		089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926227FFFEAA00728107 /* CoinPriceHistory.swift */; };
 		089A926F28002B2D00728107 /* TickerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926E28002B2D00728107 /* TickerRepository.swift */; };
 		089A927128002DC800728107 /* DefaultTickerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A927028002DC800728107 /* DefaultTickerRepository.swift */; };
-		089A9274280030BC00728107 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 089A9273280030BC00728107 /* RxCocoa */; };
-		089A9276280030BC00728107 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 089A9275280030BC00728107 /* RxRelay */; };
-		089A9278280030BC00728107 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 089A9277280030BC00728107 /* RxSwift */; };
 		089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */; };
 		089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */; };
 		089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
 		08B238D6280A8B4E0047D282 /* HuhoeMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B238D5280A8B4E0047D282 /* HuhoeMainViewModel.swift */; };
+		08B238D9280ABEAA0047D282 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08B238D8280ABEAA0047D282 /* RxCocoa */; };
+		08B238DB280ABEAA0047D282 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08B238DA280ABEAA0047D282 /* RxRelay */; };
+		08B238DD280ABEAA0047D282 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08B238DC280ABEAA0047D282 /* RxSwift */; };
+		08B238E0280ABF850047D282 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08B238E2280ABF850047D282 /* Localizable.strings */; };
 		08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BA05282805770E00F7CD53 /* CoinListCell.xib */; };
 		08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA052A28057A7500F7CD53 /* CoinListCell.swift */; };
 		08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */; };
@@ -80,6 +81,7 @@
 		08ACF49227FFD2C60007E134 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
 		08B238D5280A8B4E0047D282 /* HuhoeMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeMainViewModel.swift; sourceTree = "<group>"; };
+		08B238E1280ABF850047D282 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08BA05282805770E00F7CD53 /* CoinListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinListCell.xib; sourceTree = "<group>"; };
 		08BA052A28057A7500F7CD53 /* CoinListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListCell.swift; sourceTree = "<group>"; };
 		08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTickerDataSource.swift; sourceTree = "<group>"; };
@@ -119,9 +121,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				089A9278280030BC00728107 /* RxSwift in Frameworks */,
-				089A9276280030BC00728107 /* RxRelay in Frameworks */,
-				089A9274280030BC00728107 /* RxCocoa in Frameworks */,
+				08B238DD280ABEAA0047D282 /* RxSwift in Frameworks */,
+				08B238DB280ABEAA0047D282 /* RxRelay in Frameworks */,
+				08B238D9280ABEAA0047D282 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +150,7 @@
 				A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */,
 				A6E4DE4427FDB3F50005266D /* Info.plist */,
 				A6E4DE3F27FDB3F50005266D /* Assets.xcassets */,
+				08B238E2280ABF850047D282 /* Localizable.strings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -416,9 +419,9 @@
 			);
 			name = Huhoe;
 			packageProductDependencies = (
-				089A9273280030BC00728107 /* RxCocoa */,
-				089A9275280030BC00728107 /* RxRelay */,
-				089A9277280030BC00728107 /* RxSwift */,
+				08B238D8280ABEAA0047D282 /* RxCocoa */,
+				08B238DA280ABEAA0047D282 /* RxRelay */,
+				08B238DC280ABEAA0047D282 /* RxSwift */,
 			);
 			productName = Huhoe;
 			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
@@ -493,7 +496,7 @@
 			);
 			mainGroup = A6E4DE2A27FDB3F30005266D;
 			packageReferences = (
-				089A9272280030BC00728107 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				08B238D7280ABEAA0047D282 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
@@ -511,6 +514,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B238E0280ABF850047D282 /* Localizable.strings in Resources */,
 				A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */,
 				A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */,
 				08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */,
@@ -607,6 +611,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		08B238E2280ABF850047D282 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				08B238E1280ABF850047D282 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		A6E4DE3C27FDB3F30005266D /* HuhoeMainViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -916,7 +928,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		089A9272280030BC00728107 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		08B238D7280ABEAA0047D282 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -927,19 +939,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		089A9273280030BC00728107 /* RxCocoa */ = {
+		08B238D8280ABEAA0047D282 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089A9272280030BC00728107 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08B238D7280ABEAA0047D282 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		089A9275280030BC00728107 /* RxRelay */ = {
+		08B238DA280ABEAA0047D282 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089A9272280030BC00728107 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08B238D7280ABEAA0047D282 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
-		089A9277280030BC00728107 /* RxSwift */ = {
+		08B238DC280ABEAA0047D282 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089A9272280030BC00728107 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08B238D7280ABEAA0047D282 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

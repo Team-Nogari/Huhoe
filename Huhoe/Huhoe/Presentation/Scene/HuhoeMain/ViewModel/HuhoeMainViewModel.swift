@@ -46,7 +46,7 @@ final class HuhoeMainViewModel: ViewModel {
     }
     
     func transform(_ input: Input) -> Output {
-        let coinInfo = Observable.zip(useCase.fetch(), input.changeDate, input.changeMoney)
+        let coinInfo = Observable.combineLatest(useCase.fetch(), input.changeDate, input.changeMoney)
             .map { coinInfo, dateString, money -> [CoinInfoItem] in
                 var coinInfoItems = [CoinInfoItem]()
                 
@@ -54,11 +54,10 @@ final class HuhoeMainViewModel: ViewModel {
                 formatter.dateFormat = "yyyy-MM-dd HH"
                 formatter.locale = Locale(identifier: "ko_KR")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
-                let date2 = formatter.date(from: dateString)
-                let asdf: TimeInterval = date2!.timeIntervalSince1970
+                let timeInterval = formatter.date(from: dateString)?.timeIntervalSince1970
                 
                 for index in coinInfo.0.indices {
-                    let dateIndex = coinInfo.2[index].date.firstIndex(of: asdf)!
+                    let dateIndex = coinInfo.2[index].date.firstIndex(of: timeInterval!)!
                     let price = coinInfo.2[index].price[dateIndex]
                     let quantity = Double(money)! / price
                     let calculatedPrice = coinInfo.1[index].price * quantity
@@ -66,7 +65,7 @@ final class HuhoeMainViewModel: ViewModel {
                     let rate = profitAndLoss / Double(money)! * 100
                     
                     let cellItem = CoinInfoItem(
-                        coinName: coinInfo.0[index].coinSymbol,
+                        coinName: coinInfo.0[index].coinSymbol.localized,
                         coinSymbol: coinInfo.0[index].coinSymbol,
                         calculatedPrice: calculatedPrice,
                         rate: rate,
@@ -83,5 +82,3 @@ final class HuhoeMainViewModel: ViewModel {
         return Output(coinInfo: coinInfo)
     }
 }
-
-
