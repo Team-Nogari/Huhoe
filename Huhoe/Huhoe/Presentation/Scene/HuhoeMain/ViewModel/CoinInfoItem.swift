@@ -14,6 +14,7 @@ struct CoinInfoItem: Hashable {
     let rate: Double
     let profitAndLoss: Double
     let currentPrice: Double
+    let oldPrice: Double
 }
 
 extension CoinInfoItem {
@@ -31,6 +32,10 @@ extension CoinInfoItem {
     
     var currentPriceString: String {
         return currentPrice.toString(digit: 4)
+    }
+    
+    var oldPriceString: String {
+        return oldPrice.toString(digit: 4)
     }
 }
 

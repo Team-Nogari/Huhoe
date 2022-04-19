@@ -70,7 +70,8 @@ final class HuhoeMainViewModel: ViewModel {
                         calculatedPrice: calculatedPrice,
                         rate: rate,
                         profitAndLoss: profitAndLoss,
-                        currentPrice: coinInfo.1[index].price
+                        currentPrice: coinInfo.1[index].price,
+                        oldPrice: price
                     )
                     
                     coinInfoItems.append(cellItem)
