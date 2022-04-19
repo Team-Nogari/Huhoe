@@ -27,7 +27,7 @@ class CoinListCell: UICollectionViewCell {
 
 extension CoinListCell {
     private func configureLabels() {
-        calculatedPriceLabel.font = .preferredFont(forTextStyle: .title3).bold
+        calculatedPriceLabel.font = .preferredFont(forTextStyle: .title2).bold
     }
     
     func configureCell(item: CoinInfoItem) {

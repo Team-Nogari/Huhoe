@@ -17,6 +17,7 @@ final class HuhoeMainViewController: UIViewController {
         case main
     }
 
+    @IBOutlet weak var dateChangeButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
     private var dataSource: DiffableDataSource?
@@ -49,8 +50,25 @@ extension HuhoeMainViewController {
     
     private func bindViewModel() {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH"
-        let dateString = dateFormatter.string(from: Date())
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        let textRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
+        
+        dateChangeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let alert = UIAlertController(title: "날짜 선택", message: nil, preferredStyle: .alert)
+                
+                alert.addDatePicker(mode: .date, date: nil) {
+                    let dateString = dateFormatter.string(from: $0)
+                    self?.dateChangeButton.setTitle(dateString, for: .normal)
+                    textRelay.accept(dateString)
+                }
+                
+                let action = UIAlertAction(title: "DONE", style: .default)
+                
+                alert.addAction(action)
+                self?.present(alert, animated: true)
+            }).disposed(by: disposeBag)
+            
         
         // MARK: - Input
         
@@ -59,7 +77,7 @@ extension HuhoeMainViewController {
             changeMoney: moneyTextField.rx.text.orEmpty.map {
                 $0.onlyNumber
             }.asObservable(),
-            changeDate: Observable.just(dateString)
+            changeDate: textRelay.asObservable()
         )
         
         // MARK: - Output
@@ -117,5 +135,12 @@ extension HuhoeMainViewController {
 private extension String {
     var onlyNumber: String {
         return self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+    }
+}
+
+extension UIAlertController {
+    func addDatePicker(mode: UIDatePicker.Mode, date: Date?, minimumDate: Date? = nil, maximumDate: Date? = nil, action: DatePickerViewController.Action?) {
+        let datePicker = DatePickerViewController(mode: mode, action: action)
+        setValue(datePicker, forKey: "contentViewController")
     }
 }

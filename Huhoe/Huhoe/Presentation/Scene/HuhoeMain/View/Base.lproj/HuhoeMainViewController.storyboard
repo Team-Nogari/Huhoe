@@ -41,7 +41,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSc-2f-xfM">
                                 <rect key="frame" x="20" y="144" width="374" height="47"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="2020.04.12" buttonSize="large">
+                                <buttonConfiguration key="configuration" style="filled" title="2022.04.18" buttonSize="large">
                                     <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" name="ButtonColor"/>
@@ -59,7 +59,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="In5-2s-g3J">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="In5-2s-g3J">
                                 <rect key="frame" x="10" y="342" width="394" height="554"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="51n-Cd-ZgQ">
@@ -117,6 +117,7 @@
                     <navigationItem key="navigationItem" id="Mqv-1m-e4O"/>
                     <connections>
                         <outlet property="coinListCollectionView" destination="In5-2s-g3J" id="RSB-pv-p6z"/>
+                        <outlet property="dateChangeButton" destination="pSc-2f-xfM" id="RM5-FV-Hii"/>
                         <outlet property="moneyTextField" destination="y7v-4l-fbj" id="Nde-n9-PPf"/>
                     </connections>
                 </viewController>

@@ -51,7 +51,7 @@ final class HuhoeMainViewModel: ViewModel {
                 var coinInfoItems = [CoinInfoItem]()
                 
                 let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd HH"
+                formatter.dateFormat = "yyyy.MM.dd"
                 formatter.locale = Locale(identifier: "ko_KR")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let timeInterval = formatter.date(from: dateString)?.timeIntervalSince1970
