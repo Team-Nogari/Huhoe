@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q0B-9o-Fkc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q0B-9o-Fkc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -39,28 +39,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSc-2f-xfM">
-                                <rect key="frame" x="20" y="144" width="374" height="47"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="2022.04.18" buttonSize="large">
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" name="ButtonColor"/>
-                                </buttonConfiguration>
+                                <rect key="frame" x="20" y="144" width="374" height="54"/>
+                                <color key="backgroundColor" name="ButtonColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="2022.04.18">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이 정도 샀더라면.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xMV-BU-pqG">
-                                <rect key="frame" x="20" y="211" width="142" height="24"/>
+                                <rect key="frame" x="20" y="218" width="142" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 아..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVm-KZ-Qej">
-                                <rect key="frame" x="20" y="310" width="74.5" height="24"/>
+                                <rect key="frame" x="20" y="323.5" width="74.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="In5-2s-g3J">
-                                <rect key="frame" x="10" y="342" width="394" height="554"/>
+                                <rect key="frame" x="10" y="355.5" width="394" height="540.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="51n-Cd-ZgQ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -80,7 +80,7 @@
                                 </cells>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y7v-4l-fbj" customClass="MoneyTextField" customModule="Huhoe" customModuleProvider="target">
-                                <rect key="frame" x="20" y="243" width="374" height="47"/>
+                                <rect key="frame" x="20" y="250" width="374" height="53.5"/>
                                 <color key="backgroundColor" name="ButtonColor"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,6 +110,7 @@
                             <constraint firstItem="tte-EA-0Sx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="knB-lZ-1GP"/>
                             <constraint firstItem="In5-2s-g3J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="pyk-7w-o71"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tUO-bF-JNm" secondAttribute="trailing" constant="20" id="sZr-kY-PQg"/>
+                            <constraint firstItem="pSc-2f-xfM" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.13" id="tp7-b0-5Yr"/>
                             <constraint firstItem="y7v-4l-fbj" firstAttribute="height" secondItem="pSc-2f-xfM" secondAttribute="height" id="ufj-Xv-k3x"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y7v-4l-fbj" secondAttribute="trailing" constant="20" id="wnG-yj-5pM"/>
                         </constraints>

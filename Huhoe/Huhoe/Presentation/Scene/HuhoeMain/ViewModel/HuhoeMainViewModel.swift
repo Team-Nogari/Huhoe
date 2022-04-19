@@ -57,29 +57,39 @@ final class HuhoeMainViewModel: ViewModel {
                 let timeInterval = formatter.date(from: dateString)?.timeIntervalSince1970
                 
                 for index in coinInfo.0.indices {
-                    let dateIndex = coinInfo.2[index].date.firstIndex(of: timeInterval!)!
-                    let price = coinInfo.2[index].price[dateIndex]
-                    let quantity = Double(money)! / price
-                    let calculatedPrice = coinInfo.1[index].price * quantity
-                    let profitAndLoss = (calculatedPrice - Double(money)!)
-                    let rate = profitAndLoss / Double(money)! * 100
-                    
-                    let cellItem = CoinInfoItem(
-                        coinName: coinInfo.0[index].coinSymbol.localized,
-                        coinSymbol: coinInfo.0[index].coinSymbol,
-                        calculatedPrice: calculatedPrice,
-                        rate: rate,
-                        profitAndLoss: profitAndLoss,
-                        currentPrice: coinInfo.1[index].price,
-                        oldPrice: price
-                    )
-                    
-                    coinInfoItems.append(cellItem)
+                    if let timeInterval = timeInterval,
+                       let dateIndex = coinInfo.2[index].date.firstIndex(of: timeInterval),
+                       let price = coinInfo.2[index].price[safe: dateIndex],
+                       let money = Double(money)
+                    {
+                        let quantity = money / price
+                        let calculatedPrice = coinInfo.1[index].price * quantity
+                        let profitAndLoss = calculatedPrice - money
+                        let rate = profitAndLoss / money * 100
+                        
+                        let cellItem = CoinInfoItem(
+                            coinName: coinInfo.0[index].coinSymbol.localized,
+                            coinSymbol: coinInfo.0[index].coinSymbol,
+                            calculatedPrice: calculatedPrice,
+                            rate: rate,
+                            profitAndLoss: profitAndLoss,
+                            currentPrice: coinInfo.1[index].price,
+                            oldPrice: price
+                        )
+                        
+                        coinInfoItems.append(cellItem)
+                    }
                 }
                 
                 return coinInfoItems
             }
         
         return Output(coinInfo: coinInfo)
+    }
+}
+
+private extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
     }
 }

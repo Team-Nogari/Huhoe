@@ -35,10 +35,20 @@ final class HuhoeMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDateChangeButton()
+        
         configureCollectionViewLayout()
         configureCollectionViewDataSource()
         
         bindViewModel()
+    }
+}
+
+// MARK: - Configure View
+
+extension HuhoeMainViewController {
+    private func configureDateChangeButton() {
+        dateChangeButton.layer.cornerRadius = 6
     }
 }
 
@@ -51,19 +61,22 @@ extension HuhoeMainViewController {
     private func bindViewModel() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateChangeButton.setTitle(dateFormatter.string(from: Date().yesterday), for: .normal)
         let textRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
         
         dateChangeButton.rx.tap
             .subscribe(onNext: { [weak self] in
+                let selectedDate = dateFormatter.date(from: textRelay.value)
+                
                 let alert = UIAlertController(title: "날짜 선택", message: nil, preferredStyle: .alert)
                 
-                alert.addDatePicker(mode: .date, date: nil) {
+                alert.addDatePicker(date: selectedDate) {
                     let dateString = dateFormatter.string(from: $0)
                     self?.dateChangeButton.setTitle(dateString, for: .normal)
                     textRelay.accept(dateString)
                 }
                 
-                let action = UIAlertAction(title: "DONE", style: .default)
+                let action = UIAlertAction(title: "선택", style: .default)
                 
                 alert.addAction(action)
                 self?.present(alert, animated: true)
@@ -130,7 +143,7 @@ extension HuhoeMainViewController {
     }
 }
 
-// MARK: - Collection View Methods
+// MARK: - Private Extension
 
 private extension String {
     var onlyNumber: String {
@@ -138,9 +151,12 @@ private extension String {
     }
 }
 
-extension UIAlertController {
-    func addDatePicker(mode: UIDatePicker.Mode, date: Date?, minimumDate: Date? = nil, maximumDate: Date? = nil, action: DatePickerViewController.Action?) {
-        let datePicker = DatePickerViewController(mode: mode, action: action)
+private extension UIAlertController {
+    func addDatePicker(
+        date: Date?,
+        action: DatePickerViewController.Action?
+    ) {
+        let datePicker = DatePickerViewController(date: date, action: action)
         setValue(datePicker, forKey: "contentViewController")
     }
 }
