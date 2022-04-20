@@ -40,10 +40,16 @@ final class MoneyTextField: UITextField {
     
     private func configureBind() {
         self.rx.text.asObservable()
+            .filter { $0 != nil }
+            .map { $0! }
+            .filter { $0 != "" }
             .subscribe(onNext: { [weak self] in
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                self?.moneyLabel.text = (numberFormatter.string(for: Double($0!)!) ?? "") + " 원"
+                
+                let number = Double($0)
+                
+                self?.moneyLabel.text = (numberFormatter.string(for: number) ?? "") + " 원"
             }).disposed(by: disposeBag)
     }
 }

@@ -36,11 +36,12 @@ final class HuhoeMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDateChangeButton()
-        
-        configureCollectionViewLayout()
-        configureCollectionViewDataSource()
+        configureCollectionView()
         
         bindViewModel()
+        bindTapGesture()
+        
+        moneyTextField.delegate = self
     }
 }
 
@@ -49,6 +50,13 @@ final class HuhoeMainViewController: UIViewController {
 extension HuhoeMainViewController {
     private func configureDateChangeButton() {
         dateChangeButton.layer.cornerRadius = 6
+    }
+    
+    private func configureCollectionView() {
+        configureCollectionViewLayout()
+        configureCollectionViewDataSource()
+        
+        coinListCollectionView.keyboardDismissMode = .onDrag
     }
 }
 
@@ -85,11 +93,15 @@ extension HuhoeMainViewController {
         
         // MARK: - Input
         
+        let moneyObservable = moneyTextField.rx.text
+            .filter { $0 != nil }
+            .map { $0! }
+            .filter { $0 != "" }
+            .asObservable()
+        
         let input = HuhoeMainViewModel.Input(
             viewWillAppear: Observable.empty(),
-            changeMoney: moneyTextField.rx.text.orEmpty.map {
-                $0.onlyNumber
-            }.asObservable(),
+            changeMoney: moneyObservable,
             changeDate: textRelay.asObservable()
         )
         
@@ -140,6 +152,29 @@ extension HuhoeMainViewController {
         snapShot.appendItems(items, toSection: .main)
         
         dataSource?.apply(snapShot)
+    }
+}
+
+// MARK: - Keyboard
+
+extension HuhoeMainViewController {
+    func bindTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        view.addGestureRecognizer(tapGesture)
+        
+        tapGesture.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - TextField Delegate
+
+extension HuhoeMainViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.text)
     }
 }
 
