@@ -17,7 +17,7 @@ final class HuhoeMainViewController: UIViewController {
         case main
     }
 
-    @IBOutlet weak var dateChangeButton: UIButton!
+    @IBOutlet private weak var dateChangeButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
     private var dataSource: DiffableDataSource?
@@ -39,9 +39,8 @@ final class HuhoeMainViewController: UIViewController {
         configureCollectionView()
         
         bindViewModel()
+        bindCollectionView()
         bindTapGesture()
-        
-        moneyTextField.delegate = self
     }
 }
 
@@ -67,6 +66,9 @@ extension HuhoeMainViewController {
     // MARK: - Bind ViewModel
     
     private func bindViewModel() {
+        
+        // MARK: - Input
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
         dateChangeButton.setTitle(dateFormatter.string(from: Date().yesterday), for: .normal)
@@ -90,9 +92,6 @@ extension HuhoeMainViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
             
-        
-        // MARK: - Input
-        
         let moneyObservable = moneyTextField.rx.text
             .filter { $0 != nil }
             .map { $0! }
@@ -113,6 +112,20 @@ extension HuhoeMainViewController {
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] in
                 self?.applySnapShot($0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindCollectionView() {
+        coinListCollectionView.rx.itemSelected
+            .subscribe(onNext: { [weak self] in
+                // TODO: 화면 전환 시 데이터 전달 방법 개선
+                let item = self?.dataSource?.itemIdentifier(for: $0)
+                
+                let vc = self?.storyboard?.instantiateViewController(withIdentifier: "Test")
+                vc?.title = item?.coinSymbol
+                self?.navigationController?.isNavigationBarHidden = false
+                self?.navigationController?.show(vc!, sender: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -158,8 +171,9 @@ extension HuhoeMainViewController {
 // MARK: - Keyboard
 
 extension HuhoeMainViewController {
-    func bindTapGesture() {
+    private func bindTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         
         tapGesture.rx.event
@@ -167,14 +181,6 @@ extension HuhoeMainViewController {
                 self?.view.endEditing(true)
             })
             .disposed(by: disposeBag)
-    }
-}
-
-// MARK: - TextField Delegate
-
-extension HuhoeMainViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text)
     }
 }
 

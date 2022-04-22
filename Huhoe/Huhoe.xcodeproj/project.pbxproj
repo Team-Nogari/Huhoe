@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		089A912828126F54006D2710 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 089A912728126F54006D2710 /* RxCocoa */; };
+		089A912A28126F54006D2710 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 089A912928126F54006D2710 /* RxRelay */; };
+		089A912C28126F54006D2710 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 089A912B28126F54006D2710 /* RxSwift */; };
 		089A925E27FFE2E100728107 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A925D27FFE2E100728107 /* Transaction.swift */; };
 		089A926127FFE43300728107 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926027FFE43300728107 /* String+extension.swift */; };
 		089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926227FFFEAA00728107 /* CoinPriceHistory.swift */; };
@@ -15,9 +18,6 @@
 		089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */; };
 		089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */; };
 		089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */; };
-		08AA7C89280EE6F700305CED /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA7C88280EE6F700305CED /* RxCocoa */; };
-		08AA7C8B280EE6F700305CED /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA7C8A280EE6F700305CED /* RxRelay */; };
-		08AA7C8D280EE6F700305CED /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08AA7C8C280EE6F700305CED /* RxSwift */; };
 		08AA7C8F280F039000305CED /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA7C8E280F039000305CED /* Date+extension.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
@@ -127,9 +127,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08AA7C8D280EE6F700305CED /* RxSwift in Frameworks */,
-				08AA7C8B280EE6F700305CED /* RxRelay in Frameworks */,
-				08AA7C89280EE6F700305CED /* RxCocoa in Frameworks */,
+				089A912C28126F54006D2710 /* RxSwift in Frameworks */,
+				089A912A28126F54006D2710 /* RxRelay in Frameworks */,
+				089A912828126F54006D2710 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,9 +428,9 @@
 			);
 			name = Huhoe;
 			packageProductDependencies = (
-				08AA7C88280EE6F700305CED /* RxCocoa */,
-				08AA7C8A280EE6F700305CED /* RxRelay */,
-				08AA7C8C280EE6F700305CED /* RxSwift */,
+				089A912728126F54006D2710 /* RxCocoa */,
+				089A912928126F54006D2710 /* RxRelay */,
+				089A912B28126F54006D2710 /* RxSwift */,
 			);
 			productName = Huhoe;
 			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
@@ -505,7 +505,7 @@
 			);
 			mainGroup = A6E4DE2A27FDB3F30005266D;
 			packageReferences = (
-				08AA7C87280EE6F700305CED /* XCRemoteSwiftPackageReference "RxSwift" */,
+				089A912628126F54006D2710 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
@@ -940,7 +940,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		08AA7C87280EE6F700305CED /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		089A912628126F54006D2710 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -951,19 +951,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		08AA7C88280EE6F700305CED /* RxCocoa */ = {
+		089A912728126F54006D2710 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AA7C87280EE6F700305CED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 089A912628126F54006D2710 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		08AA7C8A280EE6F700305CED /* RxRelay */ = {
+		089A912928126F54006D2710 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AA7C87280EE6F700305CED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 089A912628126F54006D2710 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
-		08AA7C8C280EE6F700305CED /* RxSwift */ = {
+		089A912B28126F54006D2710 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AA7C87280EE6F700305CED /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 089A912628126F54006D2710 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
