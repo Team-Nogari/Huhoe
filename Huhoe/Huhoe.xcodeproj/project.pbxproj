@@ -10,6 +10,8 @@
 		089A912828126F54006D2710 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 089A912728126F54006D2710 /* RxCocoa */; };
 		089A912A28126F54006D2710 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 089A912928126F54006D2710 /* RxRelay */; };
 		089A912C28126F54006D2710 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 089A912B28126F54006D2710 /* RxSwift */; };
+		089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */; };
+		089A9132281305B2006D2710 /* HuhoeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */; };
 		089A925E27FFE2E100728107 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A925D27FFE2E100728107 /* Transaction.swift */; };
 		089A926127FFE43300728107 /* String+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926027FFE43300728107 /* String+extension.swift */; };
 		089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926227FFFEAA00728107 /* CoinPriceHistory.swift */; };
@@ -73,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HuhoeDetailViewController.storyboard; sourceTree = "<group>"; };
+		089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDetailViewController.swift; sourceTree = "<group>"; };
 		089A925D27FFE2E100728107 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		089A926027FFE43300728107 /* String+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+extension.swift"; sourceTree = "<group>"; };
 		089A926227FFFEAA00728107 /* CoinPriceHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinPriceHistory.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 		084F769527FDC26E00BAE500 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				089A912D2813025A006D2710 /* HuhoeDetail */,
 				084F769627FDC27600BAE500 /* HuhoeMain */,
 			);
 			path = Scene;
@@ -227,6 +232,23 @@
 				08BA052A28057A7500F7CD53 /* CoinListCell.swift */,
 				A652E610280D93C600738DAD /* MoneyTextField.swift */,
 				A652E614280EB2EC00738DAD /* DatePickerViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		089A912D2813025A006D2710 /* HuhoeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				089A912E2813026E006D2710 /* View */,
+			);
+			path = HuhoeDetail;
+			sourceTree = "<group>";
+		};
+		089A912E2813026E006D2710 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */,
+				089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -527,6 +549,7 @@
 				A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */,
 				A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */,
 				08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */,
+				089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */,
 				A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -573,6 +596,7 @@
 				089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */,
 				A691D560280AB77F005BFCB3 /* CoinInfoItem.swift in Sources */,
 				08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */,
+				089A9132281305B2006D2710 /* HuhoeDetailViewController.swift in Sources */,
 				08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */,

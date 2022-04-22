@@ -122,10 +122,12 @@ extension HuhoeMainViewController {
                 // TODO: 화면 전환 시 데이터 전달 방법 개선
                 let item = self?.dataSource?.itemIdentifier(for: $0)
                 
-                let vc = self?.storyboard?.instantiateViewController(withIdentifier: "Test")
-                vc?.title = item?.coinSymbol
+                let viewControllerName = "HuhoeDetailViewController"
+                let storyboard = UIStoryboard(name: viewControllerName, bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName)
+                viewController.title = item?.coinSymbol
                 self?.navigationController?.isNavigationBarHidden = false
-                self?.navigationController?.show(vc!, sender: nil)
+                self?.navigationController?.show(viewController, sender: nil)
             })
             .disposed(by: disposeBag)
     }
