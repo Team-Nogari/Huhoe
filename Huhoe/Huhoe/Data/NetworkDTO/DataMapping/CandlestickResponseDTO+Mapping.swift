@@ -61,7 +61,7 @@ extension CandlestickResponseDTO {
     func toDomain(coinSymbol: String) -> CoinPriceHistory {
         let dates = candlestickDTO
             .map { $0.time * 0.001 }
-            .map { Date(timeIntervalSince1970: $0)}
+//            .map { Date(timeIntervalSince1970: $0)}
         
         let price = candlestickDTO
             .map{ $0.openPrice.toDouble }

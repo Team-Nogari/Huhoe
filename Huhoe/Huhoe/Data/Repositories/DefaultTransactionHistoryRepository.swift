@@ -10,9 +10,8 @@ import RxSwift
 import RxRelay
 
 final class DefaultTransactionHistoryRepository {
-    let transactionHistoryRelay = PublishRelay<[Transaction]>()
+    var dataSource: TransactionHistoryDataSource = DefaultTransactionHistoryDataSource()
     let network: TransactionHistoryNetwork
-    private let disposeBag = DisposeBag()
     
     init(network: TransactionHistoryNetwork = NetworkProvider().makeTransactionHistoryNetwork()) {
         self.network = network
@@ -20,14 +19,14 @@ final class DefaultTransactionHistoryRepository {
 }
 
 extension DefaultTransactionHistoryRepository: TransactionHistoryRepository {
-    func fetchTransactionHistory(coinSymbol: [String]) {
+    func fetchTransactionHistory(coinSymbol: [String]) -> Observable<[Transaction]> {
         let transactionObservables = coinSymbol.map { coin in
             network.fetchTransactionHistory(with: coin).map { $0.toDomain(coinSymbol: coin) }
         }
         
-        Observable.zip(transactionObservables)
-            .subscribe(onNext: { [weak self] in
-                self?.transactionHistoryRelay.accept($0)
-            }).disposed(by: disposeBag)
+        _ = Observable.zip(transactionObservables)
+            .map { self.dataSource.transactionHistory = $0 }
+        
+        return Observable.zip(transactionObservables)
     }
 }

@@ -26,59 +26,32 @@ final class CoinListUseCase {
 }
 
 extension CoinListUseCase {
-    func bind() -> Observable<[CoinInfo]> {
-        let tickerObservable = tickerRepository.tickerRelay.asObservable()
-        let transactionObservable = transactionRepository.transactionHistoryRelay.asObservable()
-        let candlestickObservable = candlestickRepository.coinPriceHistoryRelay.asObservable()
-        
-        return Observable.zip(tickerObservable, transactionObservable, candlestickObservable)
-            .map { tickers, transactions, coinPriceHistory -> [CoinInfo] in
-                var cellItems = [CoinInfo]()
-                
-                for index in tickers.indices {
-                    let cellItem = CoinInfo(
-                        symbol: tickers[index].coinSymbol,
-                        currentPrice: transactions[index].price,
-                        priceHistory: coinPriceHistory[index].price,
-                        date: coinPriceHistory[index].date
-                    )
-                    
-                    cellItems.append(cellItem)
-                }
-                
-                return cellItems
-            }
-    }
-    
-    func fetch() {
-        fetchCoinList()
-        
-        tickerRepository.tickerRelay
-            .asObservable()
-            .subscribe(on: ConcurrentDispatchQueueScheduler.init(queue: .global()))
-            .subscribe(onNext: { [weak self] in
-                let symbols = $0.map {
+    func fetch() -> Observable<([Ticker], [Transaction], [CoinPriceHistory])> {
+        let tickerObservable = tickerRepository.fetchTicker(coinSymbol: "ALL")
+            
+        let transactionObservable = tickerObservable
+            .flatMap { tickers -> Observable<[Transaction]> in
+                let symbols = tickers.map {
                     $0.coinSymbol
                 }
-                self?.fetchTransactionHistroy(coinSymbols: symbols)
-                self?.fetchCoinPirceHistory(coinSymbols: symbols)
-            }).disposed(by: disposeBag)
-    }
-    
-    private func fetchCoinList() {
-        tickerRepository.fetchTicker(coinSymbol: "ALL")
-    }
-    
-    private func fetchTransactionHistroy(coinSymbols: [String]) {
-        transactionRepository.fetchTransactionHistory(coinSymbol: coinSymbols)
-    }
-    
-    private func fetchCoinPirceHistory(coinSymbols: [String]) {
-        candlestickRepository.fetchCandlestick(coinSymbol: coinSymbols)
+                
+                return self.transactionRepository.fetchTransactionHistory(coinSymbol: symbols)
+            }
+        
+        let coinPriceHistoryObservable = tickerObservable
+            .flatMap { tickers -> Observable<[CoinPriceHistory]> in
+                let symbols = tickers.map {
+                    $0.coinSymbol
+                }
+                
+                return self.candlestickRepository.fetchCandlestick(coinSymbol: symbols)
+            }
+        
+        return Observable.zip(tickerObservable, transactionObservable, coinPriceHistoryObservable)
     }
 }
 
-struct CoinInfo {
+struct CoinInfo: Hashable {
     let symbol: String
     let currentPrice: Double
     let priceHistory: [Double]

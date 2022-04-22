@@ -7,37 +7,30 @@
 
 import Foundation
 import RxSwift
-import RxRelay
 
 final class DefaultTickerRepository {
-    let tickerRelay = PublishRelay<[Ticker]>()
-    private var disposeBag = DisposeBag()
+    var dataSource: TickerDataSource = DefaultTickerDatsSource()
     let network: TickerNetwork
     
     init(network: TickerNetwork = NetworkProvider().makeTickerNetwork()) {
         self.network = network
     }
-    
-    deinit {
-        disposeBag = DisposeBag()
-    }
 }
 
 extension DefaultTickerRepository: TickerRepository {
-    func fetchTicker(coinSymbol: String) {
-        network.fetchTicker(with: coinSymbol)
+    func fetchTicker(coinSymbol: String) -> Observable<[Ticker]> {
+        return network.fetchTicker(with: coinSymbol)
             .map {
                 let tickersCount = $0.toDomain().tickers.count
-                
-                return $0.toDomain().tickers
+                let sortedTicker = $0.toDomain().tickers
                     .sorted {
                         $0.accTradeValue24Hour > $1.accTradeValue24Hour
                     }
-                    .dropLast(tickersCount - 100)
+                    .dropLast(tickersCount - 50)
+                
+                self.dataSource.tickers = Array(sortedTicker)
+                
+                return Array(sortedTicker)
             }
-            .subscribe(onNext: { [weak self] in
-                self?.tickerRelay.accept($0)
-            })
-            .disposed(by: disposeBag)
     }
 }

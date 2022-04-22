@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import RxRelay
+import RxSwift
 
 protocol CandlestickRepository {
-    var coinPriceHistoryRelay: PublishRelay<[CoinPriceHistory]> { get }
-    func fetchCandlestick(coinSymbol: [String])
+    var dataSource: CoinPriceHistoryDataSource { get }
+    func fetchCandlestick(coinSymbol: [String]) -> Observable<[CoinPriceHistory]>
 }
 
