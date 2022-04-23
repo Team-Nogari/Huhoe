@@ -141,6 +141,14 @@
                             <constraint firstItem="aDr-XX-Gf4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="vdF-ZG-b7k"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="coinHistoryCollectionView" destination="aDr-XX-Gf4" id="0jV-uk-Z3s"/>
+                        <outlet property="currentPriceLabel" destination="lJ7-F4-mKE" id="reS-4g-rLK"/>
+                        <outlet property="dateChangeButton" destination="nag-lS-d2L" id="sMG-rU-6W1"/>
+                        <outlet property="moneyTextField" destination="8dT-EW-g5D" id="FvZ-iE-Xb6"/>
+                        <outlet property="pastPriceLabel" destination="UBd-gA-btl" id="20F-42-XuA"/>
+                        <outlet property="pastQuantityLabel" destination="f0M-wP-Pej" id="CtN-ak-y51"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
