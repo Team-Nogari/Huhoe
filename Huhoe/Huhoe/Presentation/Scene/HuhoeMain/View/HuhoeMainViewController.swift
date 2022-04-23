@@ -188,12 +188,6 @@ extension HuhoeMainViewController {
 
 // MARK: - Private Extension
 
-private extension String {
-    var onlyNumber: String {
-        return self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
-    }
-}
-
 private extension UIAlertController {
     func addDatePicker(
         date: Date?,

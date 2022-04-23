@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class HuhoeDetailViewController: UIViewController {
     
@@ -39,13 +41,59 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var pastQuantityLabel: UILabel!
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
     
+    // MARK: - ViewModel
+    
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackButton()
         configureDateChangeButton()
         configureCollectionView()
         
+        bindViewModel()
+        bindTapGesture()
+        
         applySnapShot(tempItems)
+    }
+}
+
+// MARK: - View Model Methods
+
+extension HuhoeDetailViewController {
+    
+    // MARK: - Bind ViewModel
+    
+    private func bindViewModel() {
+        
+        // MARK: - Input
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd"
+        dateChangeButton.setTitle(dateFormatter.string(from: Date().yesterday), for: .normal)
+        let textRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
+        
+        dateChangeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let selectedDate = dateFormatter.date(from: textRelay.value)
+                
+                let alert = UIAlertController(title: "날짜 선택", message: nil, preferredStyle: .alert)
+                
+                alert.addDatePicker(date: selectedDate) {
+                    let dateString = dateFormatter.string(from: $0)
+                    self?.dateChangeButton.setTitle(dateString, for: .normal)
+                    textRelay.accept(dateString)
+                }
+                
+                let action = UIAlertAction(title: "선택", style: .default)
+                
+                alert.addAction(action)
+                self?.present(alert, animated: true)
+            }).disposed(by: disposeBag)
+        
+        // MARK: - Output
+        
+        
     }
 }
 
@@ -103,5 +151,34 @@ extension HuhoeDetailViewController {
         snapShot.appendItems(items, toSection: .main)
         
         dataSource?.apply(snapShot)
+    }
+}
+
+// MARK: - Keyboard
+
+extension HuhoeDetailViewController {
+    private func bindTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: nil)
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+        
+        tapGesture.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.view.endEditing(true)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+
+// MARK: - Private Extension
+
+private extension UIAlertController {
+    func addDatePicker(
+        date: Date?,
+        action: DatePickerViewController.Action?
+    ) {
+        let datePicker = DatePickerViewController(date: date, action: action)
+        setValue(datePicker, forKey: "contentViewController")
     }
 }
