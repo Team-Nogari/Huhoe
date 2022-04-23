@@ -8,7 +8,7 @@
 import UIKit
 
 final class CoinHistoryCell: UICollectionViewCell {
-    static let identifier = String(describing: CoinListCell.self)
+    static let identifier = String(describing: CoinHistoryCell.self)
     
     @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var dateLabel: UILabel!
@@ -18,6 +18,6 @@ final class CoinHistoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.roundedBackgroundView.layer.cornerRadius = 8
-        self.contentView.bounds.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+//        self.contentView.bounds.inset(by: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
     }
 }

@@ -15,8 +15,20 @@ final class HuhoeDetailViewController: UIViewController {
         case main
     }
         
-    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinHistoryItem>
     private var dataSource: DiffableDataSource?
+    
+    struct CoinHistoryItem: Hashable {
+        let name: String
+    }
+    
+    private let tempItems: [CoinHistoryItem] = [
+        CoinHistoryItem(name: "1"),
+        CoinHistoryItem(name: "2"),
+        CoinHistoryItem(name: "3"),
+        CoinHistoryItem(name: "4"),
+        CoinHistoryItem(name: "5")
+    ]
     
     // MARK: - IBOutlet
     
@@ -32,6 +44,8 @@ final class HuhoeDetailViewController: UIViewController {
         configureBackButton()
         configureDateChangeButton()
         configureCollectionView()
+        
+        applySnapShot(tempItems)
     }
 }
 
@@ -65,9 +79,9 @@ extension HuhoeDetailViewController {
     }
     
     private func configureCollectionViewDataSource() {
-        typealias CellRegistration = UICollectionView.CellRegistration<CoinListCell, CoinInfoItem> // 임시 Item
+        typealias CellRegistration = UICollectionView.CellRegistration<CoinHistoryCell, CoinHistoryItem> // 임시 Item
         
-        let cellNib = UINib(nibName: CoinListCell.identifier, bundle: nil)
+        let cellNib = UINib(nibName: CoinHistoryCell.identifier, bundle: nil)
         
         let coinListRegistration = CellRegistration(cellNib: cellNib) { cell, indexPath, item in
             // 임시
@@ -82,8 +96,8 @@ extension HuhoeDetailViewController {
         }
     }
     
-    private func applySnapShot(_ items: [CoinInfoItem]) {
-        var snapShot = NSDiffableDataSourceSnapshot<Section, CoinInfoItem>()
+    private func applySnapShot(_ items: [CoinHistoryItem]) {
+        var snapShot = NSDiffableDataSourceSnapshot<Section, CoinHistoryItem>()
         
         snapShot.appendSections([.main])
         snapShot.appendItems(items, toSection: .main)
