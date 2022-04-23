@@ -42,6 +42,12 @@ final class HuhoeMainViewController: UIViewController {
         bindCollectionView()
         bindTapGesture()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
 }
 
 // MARK: - Configure View
