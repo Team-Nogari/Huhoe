@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 final class CandlestickNetwork {
-    private let network: Network
+    private let network: HttpNetwork
     
-    init(network: Network) {
+    init(network: HttpNetwork) {
         self.network = network
     }
     

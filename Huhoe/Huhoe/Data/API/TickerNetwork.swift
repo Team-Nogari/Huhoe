@@ -9,9 +9,9 @@ import Foundation
 import RxSwift
 
 final class TickerNetwork {
-    private let network: Network
+    private let network: HttpNetwork
     
-    init(network: Network) {
+    init(network: HttpNetwork) {
         self.network = network
     }
     

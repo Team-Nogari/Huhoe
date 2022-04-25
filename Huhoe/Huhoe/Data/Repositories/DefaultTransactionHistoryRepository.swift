@@ -13,7 +13,7 @@ final class DefaultTransactionHistoryRepository {
     var dataSource: TransactionHistoryDataSource = DefaultTransactionHistoryDataSource()
     let network: TransactionHistoryNetwork
     
-    init(network: TransactionHistoryNetwork = NetworkProvider().makeTransactionHistoryNetwork()) {
+    init(network: TransactionHistoryNetwork = HttpNetworkProvider().makeTransactionHistoryNetwork()) {
         self.network = network
     }
 }
