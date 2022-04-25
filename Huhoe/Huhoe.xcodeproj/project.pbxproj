@@ -37,6 +37,7 @@
 		A66028D128169AB900B249EA /* TransactionWebSocketResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D028169AB900B249EA /* TransactionWebSocketResponseDTO.swift */; };
 		A66028D62816A42400B249EA /* WebSocketNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D52816A42400B249EA /* WebSocketNetwork.swift */; };
 		A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */; };
+		A66028DB2816B67300B249EA /* WebSocketNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028DA2816B67300B249EA /* WebSocketNetworkProvider.swift */; };
 		A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */; };
 		A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */; };
 		A691D560280AB77F005BFCB3 /* CoinInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */; };
@@ -103,6 +104,7 @@
 		A66028D028169AB900B249EA /* TransactionWebSocketResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebSocketResponseDTO.swift; sourceTree = "<group>"; };
 		A66028D52816A42400B249EA /* WebSocketNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketNetwork.swift; sourceTree = "<group>"; };
 		A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionWebSocketProtocol.swift; sourceTree = "<group>"; };
+		A66028DA2816B67300B249EA /* WebSocketNetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketNetworkProvider.swift; sourceTree = "<group>"; };
 		A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryRepository.swift; sourceTree = "<group>"; };
 		A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryRepository.swift; sourceTree = "<group>"; };
 		A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoItem.swift; sourceTree = "<group>"; };
@@ -183,7 +185,6 @@
 				08C4BA882809385B00482CB7 /* Data Source */,
 				089A926B28002AD300728107 /* Repositories */,
 				089E803427FF233A0055364F /* NetworkDTO */,
-				A6E4DE7727FF11AF0005266D /* APIPath.swift */,
 				A6E4DE7627FEEF680005266D /* API */,
 				A6E4DE7127FEEB540005266D /* Network */,
 			);
@@ -354,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				A66028D52816A42400B249EA /* WebSocketNetwork.swift */,
+				A66028DA2816B67300B249EA /* WebSocketNetworkProvider.swift */,
 				A66028D92816A44800B249EA /* Protocol */,
 			);
 			path = WebSocket;
@@ -420,6 +422,7 @@
 		A6E4DE7127FEEB540005266D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A6E4DE7727FF11AF0005266D /* APIPath.swift */,
 				A66028D42816A40300B249EA /* WebSocket */,
 				A66028D32816A3E100B249EA /* HTTP */,
 			);
@@ -629,6 +632,7 @@
 				08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */,
 				A6E4DE7A27FF15DF0005266D /* URLSessionProtocol.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
+				A66028DB2816B67300B249EA /* WebSocketNetworkProvider.swift in Sources */,
 				08B238D6280A8B4E0047D282 /* HuhoeMainViewModel.swift in Sources */,
 				089A926F28002B2D00728107 /* TickerRepository.swift in Sources */,
 			);
