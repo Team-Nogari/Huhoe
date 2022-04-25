@@ -13,4 +13,8 @@ final class WebSocketNetworkProvider {
     init() {
         self.apiEndPoint = "wss://pubwss.bithumb.com/pub/ws"
     }
+    
+//    func makeTransactionWebSocketNetwork() {
+//        
+//    }
 }

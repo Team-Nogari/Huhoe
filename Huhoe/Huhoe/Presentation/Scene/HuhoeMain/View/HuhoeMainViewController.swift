@@ -26,7 +26,7 @@ final class HuhoeMainViewController: UIViewController {
     
     private let viewModel = HuhoeMainViewModel()
     private let disposeBag = DisposeBag()
-    
+    let qwe = WebSocketNetwork() // Test
     // MARK: - Text Field
     
     @IBOutlet private weak var moneyTextField: UITextField!
@@ -41,6 +41,12 @@ final class HuhoeMainViewController: UIViewController {
         bindViewModel()
         bindCollectionView()
         bindTapGesture()
+        
+        qwe.connect()
+        
+        qwe.subject.subscribe(onNext: { dd in // Test
+            print(String(data: dd, encoding: .utf8)!)
+        }).disposed(by: disposeBag)
     }
 }
 
