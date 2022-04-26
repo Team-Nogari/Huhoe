@@ -26,7 +26,7 @@ final class HuhoeMainViewController: UIViewController {
     
     private let viewModel = HuhoeMainViewModel()
     private let disposeBag = DisposeBag()
-    let qwe = WebSocketNetwork() // Test
+    let qwe = WebSocketNetwork(endPoint: "wss://pubwss.bithumb.com/pub/ws") // Test
     // MARK: - Text Field
     
     @IBOutlet private weak var moneyTextField: UITextField!

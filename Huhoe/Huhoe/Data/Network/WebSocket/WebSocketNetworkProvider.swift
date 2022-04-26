@@ -14,7 +14,7 @@ final class WebSocketNetworkProvider {
         self.apiEndPoint = "wss://pubwss.bithumb.com/pub/ws"
     }
     
-    func makeTransactionWebSocketNetwork(coinSymbols: [String]) -> TransactionWebSocketNetwork {
+    func makeTransactionWebSocketNetwork() -> TransactionWebSocketNetwork {
         let network = WebSocketNetwork(endPoint: apiEndPoint)
         return TransactionWebSocketNetwork(network: network)
     }

@@ -15,7 +15,7 @@ final class WebSocketNetwork {
     
     var subject = PublishSubject<Data>() // 구독시 동일한 데이터 공유를 위해 서브젝트 사용
     
-    init(endPoint: String = "wss://pubwss.bithumb.com/pub/ws", session: URLSession = .shared) {
+    init(endPoint: String, session: URLSession = .shared) {
         self.endPoint = endPoint
         self.session = session
     }
@@ -33,16 +33,15 @@ final class WebSocketNetwork {
     }
     
     func send(to path: String, with symbols: [String]) {
-        symbols.forEach {
-            let message = #"{"type":"\#(path)", "symbols":["\#($0)"]}"#
-            guard let data = message.data(using: .utf8) else {
-                return
-            }
-            
-            task?.send(.data(data)) { err in
-                if let err = err {
-                    print(err)
-                }
+        let symbolsTransformed = symbols.map { "\"\($0)\"" }.joined(separator: ", ")
+        let message = #"{"type":"\#(path)", "symbols":[\#(symbolsTransformed)]}"#
+        guard let data = message.data(using: .utf8) else {
+            return
+        }
+        
+        task?.send(.data(data)) { err in
+            if let err = err {
+                print(err)
             }
         }
     }
@@ -51,7 +50,6 @@ final class WebSocketNetwork {
         self.task?.receive { [weak self] result in
             switch result {
             case .success(let message):
-                print(message)
                 
                 switch message {
                 case .data(let data):
