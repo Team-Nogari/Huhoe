@@ -43,6 +43,7 @@ final class HuhoeMainViewController: UIViewController {
         bindTapGesture()
         
         qwe.connect()
+        qwe.send(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
         
         qwe.subject.subscribe(onNext: { dd in // Test
             print(String(data: dd, encoding: .utf8)!)
