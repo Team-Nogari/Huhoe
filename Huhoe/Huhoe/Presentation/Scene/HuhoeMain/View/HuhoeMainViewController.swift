@@ -26,7 +26,7 @@ final class HuhoeMainViewController: UIViewController {
     
     private let viewModel = HuhoeMainViewModel()
     private let disposeBag = DisposeBag()
-    let qwe = WebSocketNetwork(endPoint: "wss://pubwss.bithumb.com/pub/ws") // Test
+    let qwe = WebSocketNetworkService() // Test
     // MARK: - Text Field
     
     @IBOutlet private weak var moneyTextField: UITextField!
@@ -42,10 +42,10 @@ final class HuhoeMainViewController: UIViewController {
         bindCollectionView()
         bindTapGesture()
         
-        qwe.connect()
-        qwe.send(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
+        qwe.connect(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
+//        qwe.send(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
         
-        qwe.subject.subscribe(onNext: { dd in // Test
+        qwe.webSocketDataSubject.subscribe(onNext: { dd in // Test
             print(String(data: dd, encoding: .utf8)!)
         }).disposed(by: disposeBag)
     }

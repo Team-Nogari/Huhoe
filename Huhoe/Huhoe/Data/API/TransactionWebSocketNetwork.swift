@@ -9,13 +9,18 @@ import Foundation
 import RxSwift
 
 final class TransactionWebSocketNetwork {
-    private let network: WebSocketNetwork
+    private let network: WebSocketNetworkService
     
-    init(network: WebSocketNetwork) {
+    init(network: WebSocketNetworkService) {
         self.network = network
     }
     
-//    func sendTransaction(with coinsymbol: [String]) -> Observable<TransactionResponseDTO> {
-//
-//    }
+    func fetchTransaction(with coinsymbol: [String]) -> Observable<TransactionWebSocketResponseDTO> {
+        return network.webSocketDataSubject
+            .map {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                return try decoder.decode(TransactionWebSocketResponseDTO.self, from: $0)
+            }
+    }
 }
