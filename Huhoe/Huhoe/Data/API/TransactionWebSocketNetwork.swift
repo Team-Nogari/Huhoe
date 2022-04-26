@@ -15,7 +15,9 @@ final class TransactionWebSocketNetwork {
         self.network = network
     }
     
-    func fetchTransaction(with coinsymbol: [String]) -> Observable<TransactionWebSocketResponseDTO> {
+    func fetchTransaction(with coinsymbols: [String]) -> Observable<TransactionWebSocketResponseDTO> {
+        network.connect(to: "transaction", with: coinsymbols)
+        
         return network.webSocketDataSubject
             .map {
                 let decoder = JSONDecoder()

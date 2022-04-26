@@ -17,6 +17,7 @@ final class HuhoeMainViewController: UIViewController {
         case main
     }
 
+    @IBOutlet private weak var testButton: UIButton!
     @IBOutlet private weak var dateChangeButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
@@ -42,12 +43,11 @@ final class HuhoeMainViewController: UIViewController {
         bindCollectionView()
         bindTapGesture()
         
-        qwe.connect(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
-//        qwe.send(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
-        
-        qwe.webSocketDataSubject.subscribe(onNext: { dd in // Test
-            print(String(data: dd, encoding: .utf8)!)
-        }).disposed(by: disposeBag)
+//        qwe.connect(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
+//        
+//        qwe.webSocketDataSubject.subscribe(onNext: { dd in // Test
+//            print(String(data: dd, encoding: .utf8)!)
+//        }).disposed(by: disposeBag)
     }
 }
 
@@ -105,8 +105,9 @@ extension HuhoeMainViewController {
             .filter { $0 != "" }
             .asObservable()
         
+        
         let input = HuhoeMainViewModel.Input(
-            viewWillAppear: Observable.empty(),
+            viewWillAppear: testButton.rx.tap.asObservable(),
             changeMoney: moneyObservable,
             changeDate: textRelay.asObservable()
         )
@@ -121,6 +122,11 @@ extension HuhoeMainViewController {
                 self?.applySnapShot($0)
             })
             .disposed(by: disposeBag)
+        
+        output.test
+            .subscribe(onNext: { [weak self] in
+                print($0.price)
+            }).disposed(by: disposeBag)
     }
     
     private func bindCollectionView() {

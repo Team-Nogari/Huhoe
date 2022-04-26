@@ -32,9 +32,11 @@ final class HuhoeMainViewModel: ViewModel {
     
     final class Output {
         let coinInfo: Observable<[CoinInfoItem]>
+        let test: Observable<RealTimeCoinPrice>
         
-        init(coinInfo: Observable<[CoinInfoItem]>) {
+        init(coinInfo: Observable<[CoinInfoItem]>, test: Observable<RealTimeCoinPrice>) {
             self.coinInfo = coinInfo
+            self.test = test
         }
     }
     
@@ -84,7 +86,11 @@ final class HuhoeMainViewModel: ViewModel {
                 return coinInfoItems
             }
         
-        return Output(coinInfo: coinInfo)
+        let test = input.viewWillAppear.flatMap {
+            return self.useCase.fetchTransactionWebSocket(with: ["BTC_KRW", "ETH_KRW"])
+        }
+        
+        return Output(coinInfo: coinInfo, test: test)
     }
 }
 
