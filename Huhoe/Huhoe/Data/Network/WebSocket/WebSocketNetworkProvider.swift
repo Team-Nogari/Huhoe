@@ -15,7 +15,7 @@ final class WebSocketNetworkProvider {
     }
     
     func makeTransactionWebSocketNetwork(coinSymbols: [String]) -> TransactionWebSocketNetwork {
-        let network = WebSocketNetwork()
+        let network = WebSocketNetwork(endPoint: apiEndPoint)
         return TransactionWebSocketNetwork(network: network)
     }
 }
