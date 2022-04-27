@@ -50,21 +50,16 @@ final class WebSocketNetworkService {
     
     private func listen() {
         self.task?.receive { [weak self] result in
-            switch result {
-            case .success(let message):
-                
-                switch message {
-                case .data(let data):
-                    self?.webSocketDataSubject.onNext(data)
-                case .string(let str):
-                    self?.webSocketDataSubject.onNext(str.data(using: .utf8) ?? Data())
-                    
-                default:
-                    break
-                }
-                
-            case .failure(let error):
-                self?.webSocketDataSubject.onError(error)
+            guard let message = result.value else {
+                print(result.error?.localizedDescription as Any)
+                return
+            }
+            
+            switch message {
+            case .string(let str):
+                self?.webSocketDataSubject.onNext(str.data(using: .utf8) ?? Data())
+            default:
+                break
             }
             
             self?.listen()

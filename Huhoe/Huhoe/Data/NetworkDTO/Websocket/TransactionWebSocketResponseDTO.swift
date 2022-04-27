@@ -11,9 +11,9 @@ struct TransactionWebSocketResponseDTO: Decodable {
     let type: String
     let transactionWebSocketData: TransactionWebSocketData
     
-    enum Codingkeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case type
-        case transactionData = "content"
+        case transactionWebSocketData = "content"
     }
 }
 
@@ -57,13 +57,13 @@ struct RealTimeCoinPrice {
 }
 
 extension TransactionWebSocketResponseDTO {
-    func toDomain(coinSymbol: String) -> RealTimeCoinPrice {
-        if let price = transactionWebSocketData.list.map { $0.price.toDouble }.first {
-            return RealTimeCoinPrice(coinSymbol: coinSymbol, price: price)
+    func toDomain() -> RealTimeCoinPrice {
+        if let item = transactionWebSocketData.list.first {
+            return RealTimeCoinPrice(coinSymbol: item.coinSymbol, price: item.price.toDouble)
         }
         
         return RealTimeCoinPrice(
-            coinSymbol: coinSymbol,
+            coinSymbol: "",
             price: Double.zero
         )
     }

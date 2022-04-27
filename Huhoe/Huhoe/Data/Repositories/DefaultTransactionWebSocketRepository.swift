@@ -18,10 +18,11 @@ final class DefaultTransactionWebSocketRepository {
     func fetchTransaction(with coinsymbols: [String]) -> Observable<RealTimeCoinPrice> {
         let transactionObservable = network.fetchTransaction(with: coinsymbols)
             .compactMap { data in
-                coinsymbols.map { coin in
-                    data.toDomain(coinSymbol: coin)
-                }.first
+                data?.toDomain()
             }
+            .filter { $0 != nil }
+            .map { $0! }
+        
         return transactionObservable
     }
 }

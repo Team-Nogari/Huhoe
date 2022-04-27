@@ -15,14 +15,15 @@ final class TransactionWebSocketNetwork {
         self.network = network
     }
     
-    func fetchTransaction(with coinsymbols: [String]) -> Observable<TransactionWebSocketResponseDTO> {
+    func fetchTransaction(with coinsymbols: [String]) -> Observable<TransactionWebSocketResponseDTO?> {
         network.connect(to: "transaction", with: coinsymbols)
         
         return network.webSocketDataSubject
+            .asObservable()
             .map {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                return try decoder.decode(TransactionWebSocketResponseDTO.self, from: $0)
+                return try? decoder.decode(TransactionWebSocketResponseDTO.self, from: $0)
             }
     }
 }
