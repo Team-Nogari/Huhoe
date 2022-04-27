@@ -18,6 +18,5 @@ final class CoinHistoryCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         self.roundedBackgroundView.layer.cornerRadius = 8
-//        self.contentView.bounds.inset(by: UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16))
     }
 }

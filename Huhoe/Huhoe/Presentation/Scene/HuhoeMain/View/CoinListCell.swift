@@ -21,7 +21,6 @@ class CoinListCell: UICollectionViewCell {
     override func awakeFromNib() {
         configureLabels()
         self.roundedBackgroundView.layer.cornerRadius = 8
-        self.contentView.bounds.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
     }
 }
 
