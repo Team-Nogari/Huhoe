@@ -57,10 +57,3 @@ extension CoinListUseCase {
         return transactionWebSocketRepository.fetchTransaction(with: coinSymbols)
     }
 }
-
-struct CoinInfo: Hashable {
-    let symbol: String
-    let currentPrice: Double
-    let priceHistory: [Double]
-    let date: [Date]
-}

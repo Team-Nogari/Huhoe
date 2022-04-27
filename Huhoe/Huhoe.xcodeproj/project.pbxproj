@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834ED872813989000BD6D8C /* CoinHistoryCell.swift */; };
+		0834ED8A281398B400BD6D8C /* CoinHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */; };
 		084BF6A32818EFE600916465 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 084BF6A22818EFE600916465 /* RxCocoa */; };
 		084BF6A52818EFE600916465 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 084BF6A42818EFE600916465 /* RxRelay */; };
 		084BF6A72818EFE600916465 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 084BF6A62818EFE600916465 /* RxSwift */; };
 		084BF6A928191C6300916465 /* Result+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF6A828191C6300916465 /* Result+extension.swift */; };
-		0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834ED872813989000BD6D8C /* CoinHistoryCell.swift */; };
-		0834ED8A281398B400BD6D8C /* CoinHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */; };
 		089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */; };
 		089A9132281305B2006D2710 /* HuhoeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */; };
 		089A925E27FFE2E100728107 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A925D27FFE2E100728107 /* Transaction.swift */; };
@@ -46,6 +46,7 @@
 		A66028DF28182A8E00B249EA /* DefaultTransactionWebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028DE28182A8E00B249EA /* DefaultTransactionWebSocketRepository.swift */; };
 		A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */; };
 		A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */; };
+		A665996A281988AE00285E84 /* HuhoeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */; };
 		A691D560280AB77F005BFCB3 /* CoinInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */; };
 		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
 		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
@@ -83,9 +84,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		084BF6A828191C6300916465 /* Result+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+extension.swift"; sourceTree = "<group>"; };
 		0834ED872813989000BD6D8C /* CoinHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryCell.swift; sourceTree = "<group>"; };
 		0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinHistoryCell.xib; sourceTree = "<group>"; };
+		084BF6A828191C6300916465 /* Result+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+extension.swift"; sourceTree = "<group>"; };
 		089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HuhoeDetailViewController.storyboard; sourceTree = "<group>"; };
 		089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDetailViewController.swift; sourceTree = "<group>"; };
 		089A925D27FFE2E100728107 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		A66028DE28182A8E00B249EA /* DefaultTransactionWebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionWebSocketRepository.swift; sourceTree = "<group>"; };
 		A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryRepository.swift; sourceTree = "<group>"; };
 		A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryRepository.swift; sourceTree = "<group>"; };
+		A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDetailViewModel.swift; sourceTree = "<group>"; };
 		A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoItem.swift; sourceTree = "<group>"; };
 		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		089A912D2813025A006D2710 /* HuhoeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				A66599682819889400285E84 /* ViewModel */,
 				089A912E2813026E006D2710 /* View */,
 			);
 			path = HuhoeDetail;
@@ -400,6 +403,14 @@
 				A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A66599682819889400285E84 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A6E4DE2A27FDB3F30005266D = {
@@ -645,6 +656,7 @@
 				A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */,
 				08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */,
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
+				A665996A281988AE00285E84 /* HuhoeDetailViewModel.swift in Sources */,
 				A6E4DE7027FEEAF40005266D /* HttpNetworkProvider.swift in Sources */,
 				A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */,
 				089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */,
