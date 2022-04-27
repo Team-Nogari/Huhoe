@@ -45,7 +45,7 @@ final class HuhoeMainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = true
     }
@@ -139,7 +139,7 @@ extension HuhoeMainViewController {
                 let storyboard = UIStoryboard(name: viewControllerName, bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName)
                 viewController.title = item?.coinSymbol
-                self?.navigationController?.isNavigationBarHidden = false
+                
                 self?.navigationController?.show(viewController, sender: nil)
             })
             .disposed(by: disposeBag)
