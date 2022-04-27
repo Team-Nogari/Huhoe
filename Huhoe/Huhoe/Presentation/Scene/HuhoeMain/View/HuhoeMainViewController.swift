@@ -42,6 +42,12 @@ final class HuhoeMainViewController: UIViewController {
         bindCollectionView()
         bindTapGesture()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.isNavigationBarHidden = true
+    }
 }
 
 // MARK: - Configure View
@@ -122,10 +128,12 @@ extension HuhoeMainViewController {
                 // TODO: 화면 전환 시 데이터 전달 방법 개선
                 let item = self?.dataSource?.itemIdentifier(for: $0)
                 
-                let vc = self?.storyboard?.instantiateViewController(withIdentifier: "Test")
-                vc?.title = item?.coinSymbol
+                let viewControllerName = "HuhoeDetailViewController"
+                let storyboard = UIStoryboard(name: viewControllerName, bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName)
+                viewController.title = item?.coinSymbol
                 self?.navigationController?.isNavigationBarHidden = false
-                self?.navigationController?.show(vc!, sender: nil)
+                self?.navigationController?.show(viewController, sender: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -185,12 +193,6 @@ extension HuhoeMainViewController {
 }
 
 // MARK: - Private Extension
-
-private extension String {
-    var onlyNumber: String {
-        return self.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
-    }
-}
 
 private extension UIAlertController {
     func addDatePicker(
