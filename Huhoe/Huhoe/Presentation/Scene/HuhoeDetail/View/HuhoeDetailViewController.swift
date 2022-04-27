@@ -42,7 +42,7 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
     
     // MARK: - ViewModel
-    
+    var viewModel: HuhoeDetailViewModel?
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -55,6 +55,12 @@ final class HuhoeDetailViewController: UIViewController {
         bindTapGesture()
         
         applySnapShot(tempItems)
+        
+        let dd = viewModel?.useCase.candlestickRepository.dataSource.coinPriceHistory.filter {
+            $0!.coinSymbol == title!
+        }
+        
+        print(dd)
     }
     
     override func viewWillAppear(_ animated: Bool) {

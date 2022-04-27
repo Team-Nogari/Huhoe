@@ -132,15 +132,23 @@ extension HuhoeMainViewController {
     private func bindCollectionView() {
         coinListCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
                 // TODO: 화면 전환 시 데이터 전달 방법 개선
-                let item = self?.dataSource?.itemIdentifier(for: $0)
+                let item = self.dataSource?.itemIdentifier(for: $0)
                 
                 let viewControllerName = "HuhoeDetailViewController"
                 let storyboard = UIStoryboard(name: viewControllerName, bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName)
                 viewController.title = item?.coinSymbol
                 
-                self?.navigationController?.show(viewController, sender: nil)
+                guard let detailViewController = viewController as? HuhoeDetailViewController else {
+                    return
+                }
+                let detailUseCase = CoinDetailUseCase(candlestickRepository: self.viewModel.useCase.candlestickRepository)
+                detailViewController.viewModel = HuhoeDetailViewModel(useCase: detailUseCase)
+                
+                self.navigationController?.show(detailViewController, sender: nil)
             })
             .disposed(by: disposeBag)
     }

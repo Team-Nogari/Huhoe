@@ -8,9 +8,9 @@
 import Foundation
 
 protocol CoinPriceHistoryDataSource {
-    var coinPriceHistory: [CoinPriceHistory] { get set }
+    var coinPriceHistory: [CoinPriceHistory?] { get set }
 }
 
 class DefaultCoinPriceHistoryDataSource: CoinPriceHistoryDataSource {
-    var coinPriceHistory = [CoinPriceHistory]()
+    var coinPriceHistory = [CoinPriceHistory?]()
 }

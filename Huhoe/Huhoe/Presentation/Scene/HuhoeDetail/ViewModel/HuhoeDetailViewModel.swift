@@ -17,7 +17,12 @@ final class HuhoeDetailViewModel: ViewModel {
         
     }
     
+    let useCase: CoinDetailUseCase
     var disposeBag: DisposeBag = DisposeBag()
+    
+    init(useCase: CoinDetailUseCase = CoinDetailUseCase()) {
+        self.useCase = useCase
+    }
     
     func transform(_ input: Input) -> Output {
         return Output()
