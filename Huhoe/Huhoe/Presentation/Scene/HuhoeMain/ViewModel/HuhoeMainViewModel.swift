@@ -86,7 +86,7 @@ final class HuhoeMainViewModel: ViewModel {
                 return coinInfoItems
             }
         
-        let test = input.viewWillAppear.flatMap {
+        let test = input.viewWillAppear.debug().flatMap {
             return self.useCase.fetchTransactionWebSocket(with: ["BTC_KRW", "ETH_KRW"])
         }
         

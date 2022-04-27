@@ -54,8 +54,6 @@ extension CoinListUseCase {
     }
     
     func fetchTransactionWebSocket(with coinSymbols: [String]) -> Observable<RealTimeCoinPrice> {
-        
-        
         return transactionWebSocketRepository.fetchTransaction(with: coinSymbols)
     }
 }

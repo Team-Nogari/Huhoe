@@ -42,12 +42,6 @@ final class HuhoeMainViewController: UIViewController {
         bindViewModel()
         bindCollectionView()
         bindTapGesture()
-        
-//        qwe.connect(to: "transaction", with: ["BTC_KRW", "ETH_KRW"])
-//        
-//        qwe.webSocketDataSubject.subscribe(onNext: { dd in // Test
-//            print(String(data: dd, encoding: .utf8)!)
-//        }).disposed(by: disposeBag)
     }
 }
 
@@ -124,6 +118,7 @@ extension HuhoeMainViewController {
             .disposed(by: disposeBag)
         
         output.test
+            .debug()
             .subscribe(onNext: { [weak self] in
                 print($0.price)
             }).disposed(by: disposeBag)
