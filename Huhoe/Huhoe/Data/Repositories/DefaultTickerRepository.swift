@@ -12,7 +12,7 @@ final class DefaultTickerRepository {
     var dataSource: TickerDataSource = DefaultTickerDatsSource()
     let network: TickerNetwork
     
-    init(network: TickerNetwork = NetworkProvider().makeTickerNetwork()) {
+    init(network: TickerNetwork = HttpNetworkProvider().makeTickerNetwork()) {
         self.network = network
     }
 }

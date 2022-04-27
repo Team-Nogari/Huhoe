@@ -12,16 +12,19 @@ final class CoinListUseCase {
     let tickerRepository: TickerRepository
     let transactionRepository: TransactionHistoryRepository
     let candlestickRepository: CandlestickRepository
+    let transactionWebSocketRepository: DefaultTransactionWebSocketRepository // 추상화 필요
     private let disposeBag = DisposeBag()
     
     init(
         tickerRepository: TickerRepository = DefaultTickerRepository(),
         transactionRepository: TransactionHistoryRepository = DefaultTransactionHistoryRepository(),
-        candlestickRepository: CandlestickRepository = DefaultCandlestickRepository()
+        candlestickRepository: CandlestickRepository = DefaultCandlestickRepository(),
+        transactionWebSocketRepository: DefaultTransactionWebSocketRepository = DefaultTransactionWebSocketRepository()
     ) {
         self.tickerRepository = tickerRepository
         self.transactionRepository = transactionRepository
         self.candlestickRepository = candlestickRepository
+        self.transactionWebSocketRepository = transactionWebSocketRepository
     }
 }
 
@@ -48,6 +51,10 @@ extension CoinListUseCase {
             }
         
         return Observable.zip(tickerObservable, transactionObservable, coinPriceHistoryObservable)
+    }
+    
+    func fetchTransactionWebSocket(with coinSymbols: [String]) -> Observable<RealTimeCoinPrice> {
+        return transactionWebSocketRepository.fetchTransaction(with: coinSymbols)
     }
 }
 

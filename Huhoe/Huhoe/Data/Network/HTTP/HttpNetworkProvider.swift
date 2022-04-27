@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NetworkProvider {
+final class HttpNetworkProvider {
     private let apiEndPoint: String
     
     init() {
@@ -15,17 +15,17 @@ final class NetworkProvider {
     }
     
     func makeTickerNetwork() -> TickerNetwork {
-        let network = Network(endPoint: apiEndPoint)
+        let network = HttpNetwork(endPoint: apiEndPoint)
         return TickerNetwork(network: network)
     }
     
     func makeTransactionHistoryNetwork() -> TransactionHistoryNetwork {
-        let network = Network(endPoint: apiEndPoint)
+        let network = HttpNetwork(endPoint: apiEndPoint)
         return TransactionHistoryNetwork(network: network)
     }
     
     func makeCandlestickNetwork() -> CandlestickNetwork {
-        let network = Network(endPoint: apiEndPoint)
+        let network = HttpNetwork(endPoint: apiEndPoint)
         return CandlestickNetwork(network: network)
     }
 }

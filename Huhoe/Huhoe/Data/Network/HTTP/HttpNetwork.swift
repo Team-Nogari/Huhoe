@@ -8,11 +8,11 @@
 import Foundation
 import RxSwift
 
-final class Network {
+final class HttpNetwork {
     private let endPoint: String
-    private let session: URLSeesionProtocol
+    private let session: URLSessionProtocol
     
-    init(endPoint: String, session: URLSeesionProtocol = URLSession.shared) {
+    init(endPoint: String, session: URLSessionProtocol = URLSession.shared) {
         self.endPoint = endPoint
         self.session = session
     }
@@ -29,22 +29,22 @@ final class Network {
         return Observable<Data>.create { [weak self] emmiter in
             let task = self?.session.dataTask(with: urlRequest) { data, response, error in
                 if let error = error {
-                    emmiter.onError(NetworkError.unknownError(error))
+                    emmiter.onError(HttpNetworkError.unknownError(error))
                     return
                 }
                 
                 guard let httpResponse = response as? HTTPURLResponse else {
-                    emmiter.onError(NetworkError.invalidResponse)
+                    emmiter.onError(HttpNetworkError.invalidResponse)
                     return
                 }
                 
                 guard (200..<300).contains(httpResponse.statusCode) else {
-                    emmiter.onError(NetworkError.abnormalStatusCode(httpResponse.statusCode))
+                    emmiter.onError(HttpNetworkError.abnormalStatusCode(httpResponse.statusCode))
                     return
                 }
                 
                 guard let data = data else {
-                    emmiter.onError(NetworkError.invalidResponse)
+                    emmiter.onError(HttpNetworkError.invalidResponse)
                     return
                 }
                 

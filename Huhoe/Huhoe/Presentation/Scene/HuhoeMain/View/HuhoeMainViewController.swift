@@ -17,6 +17,7 @@ final class HuhoeMainViewController: UIViewController {
         case main
     }
 
+    @IBOutlet private weak var testButton: UIButton!
     @IBOutlet private weak var dateChangeButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
@@ -26,7 +27,7 @@ final class HuhoeMainViewController: UIViewController {
     
     private let viewModel = HuhoeMainViewModel()
     private let disposeBag = DisposeBag()
-    
+    let qwe = WebSocketNetworkService() // Test
     // MARK: - Text Field
     
     @IBOutlet private weak var moneyTextField: UITextField!
@@ -104,8 +105,9 @@ extension HuhoeMainViewController {
             .filter { $0 != "" }
             .asObservable()
         
+        
         let input = HuhoeMainViewModel.Input(
-            viewWillAppear: Observable.empty(),
+            viewWillAppear: testButton.rx.tap.asObservable(),
             changeMoney: moneyObservable,
             changeDate: textRelay.asObservable()
         )
@@ -120,6 +122,11 @@ extension HuhoeMainViewController {
                 self?.applySnapShot($0)
             })
             .disposed(by: disposeBag)
+        
+        output.test
+            .subscribe(onNext: { [weak self] in
+                print($0)
+            }).disposed(by: disposeBag)
     }
     
     private func bindCollectionView() {

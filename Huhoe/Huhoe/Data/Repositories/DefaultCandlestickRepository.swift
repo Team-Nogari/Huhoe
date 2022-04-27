@@ -13,7 +13,7 @@ final class DefaultCandlestickRepository {
     var dataSource: CoinPriceHistoryDataSource = DefaultCoinPriceHistoryDataSource()
     let network: CandlestickNetwork
     
-    init(network: CandlestickNetwork = NetworkProvider().makeCandlestickNetwork()) {
+    init(network: CandlestickNetwork = HttpNetworkProvider().makeCandlestickNetwork()) {
         self.network = network
     }
 }
