@@ -42,9 +42,15 @@ final class HuhoeDetailViewModel: ViewModel {
     func transform(_ input: Input) -> Output {
         let realTimePriceObservable = useCase.fetchTransactionWebSocket(with: [selectedCoinSymbol])
             .map {
-                String($0.price)
+                $0.price
+            }
+        let coinPriceHistoryObservable = useCase.fetchCoinPriceHistory(with: selectedCoinSymbol)
+        
+        let realTimePriceStringObservalbe = realTimePriceObservable
+            .map {
+                $0.toString(digit: 4) + "원"
             }
         
-        return Output(realTimePrice: realTimePriceObservable)
+        return Output(realTimePrice: realTimePriceStringObservalbe)
     }
 }

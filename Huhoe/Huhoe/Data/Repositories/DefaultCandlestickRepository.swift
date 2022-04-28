@@ -29,4 +29,15 @@ extension DefaultCandlestickRepository: CandlestickRepository {
         
         return Observable.zip(coinPriceHistoryObservables)
     }
+    
+    func fetchCoinPriceHistory(with coinSymbol: String) -> Observable<CoinPriceHistory> {
+        guard let coinPriceHistory = dataSource.coinPriceHistory
+                .filter({ $0?.coinSymbol == coinSymbol }).first
+        else {
+            return .empty()
+        }
+        
+        return Observable.just(coinPriceHistory)
+            .filterNil()
+    }
 }

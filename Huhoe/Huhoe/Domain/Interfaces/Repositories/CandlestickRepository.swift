@@ -11,5 +11,6 @@ import RxSwift
 protocol CandlestickRepository {
     var dataSource: CoinPriceHistoryDataSource { get }
     func fetchCandlestick(coinSymbol: [String]) -> Observable<[CoinPriceHistory]>
+    func fetchCoinPriceHistory(with coinSymbol: String) -> Observable<CoinPriceHistory>
 }
 
