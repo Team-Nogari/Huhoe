@@ -25,6 +25,10 @@ extension String {
         return formatter.date(from: self)?.timeIntervalSince1970 ?? .zero
     }
     
+    var removeComma: String {
+        return self.replacingOccurrences(of: ",", with: "")
+    }
+    
     var localized: String {
         return NSLocalizedString(self, tableName: "Localizable", value: self, comment: "")
     }

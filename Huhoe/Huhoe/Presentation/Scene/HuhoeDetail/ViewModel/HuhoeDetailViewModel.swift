@@ -26,13 +26,19 @@ final class HuhoeDetailViewModel: ViewModel {
     final class Output {
         let realTimePrice: Observable<String>
         let priceAndQuantity: Observable<PriceAndQuantity>
+        let todayCoinInfo: Observable<CoinHistoryItem>
+        let symbol: String
         
         init(
             realTimePrice: Observable<String>,
-            priceAndQuantity: Observable<PriceAndQuantity>
+            priceAndQuantity: Observable<PriceAndQuantity>,
+            todayCoinInfo: Observable<CoinHistoryItem>,
+            symbol: String
         ) {
             self.realTimePrice = realTimePrice
             self.priceAndQuantity = priceAndQuantity
+            self.todayCoinInfo = todayCoinInfo
+            self.symbol = symbol
         }
     }
     
@@ -63,9 +69,20 @@ final class HuhoeDetailViewModel: ViewModel {
             priceHistoryObservable: coinPriceHistoryObservable
         )
         
+        let todayCoinInfoObservable = Observable.combineLatest(realTimePriceObservable, priceAndQuantityObservable, input.changeMoney)
+            .map { realTimePrice, pastPriceAndQuantity, money -> CoinHistoryItem in
+                let calculatedPrice = realTimePrice * pastPriceAndQuantity.quantity.removeComma.toDouble
+                let profitAndLoss = calculatedPrice - money.toDouble
+                let rate = profitAndLoss / money.toDouble * 100
+                
+                return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+            }
+        
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
-            priceAndQuantity: priceAndQuantityObservable
+            priceAndQuantity: priceAndQuantityObservable,
+            todayCoinInfo: todayCoinInfoObservable,
+            symbol: selectedCoinSymbol
         )
     }
 }
@@ -79,12 +96,11 @@ extension HuhoeDetailViewModel {
             .map { [weak self] dateString, money, priceHistory -> PriceAndQuantity in
                 if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
                    let price = priceHistory.price[safe: dateIndex],
-                   let money = Double(money),
-                   let symbol = self?.selectedCoinSymbol
+                   let money = Double(money)
                 {
                     let quantity = money / price
                     
-                    return (price.toString(), quantity.toString(digit: 4) + " \(symbol)")
+                    return (price.toString(), quantity.toString(digit: 4))
                 }
                 
                 return (String(), String())
