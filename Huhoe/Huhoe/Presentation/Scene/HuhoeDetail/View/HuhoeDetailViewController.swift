@@ -13,8 +13,9 @@ final class HuhoeDetailViewController: UIViewController {
     
     // MARK: - Collection View
     
-    private enum Section {
-        case main
+    private enum Section: String, CaseIterable {
+        case today = "오늘"
+        case past = "과거"
     }
         
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinHistoryItem>
@@ -31,6 +32,9 @@ final class HuhoeDetailViewController: UIViewController {
         CoinHistoryItem(name: "4"),
         CoinHistoryItem(name: "5")
     ]
+    
+    private let tempItem: CoinHistoryItem = CoinHistoryItem(name: "6")
+    
     
     // MARK: - IBOutlet
     
@@ -54,7 +58,7 @@ final class HuhoeDetailViewController: UIViewController {
         bindViewModel()
         bindTapGesture()
         
-        applySnapShot(tempItems)
+        applySnapShot(tempItems, tempItem)
         
         let dd = viewModel?.useCase.candlestickRepository.dataSource.coinPriceHistory.filter {
             $0!.coinSymbol == title!
@@ -123,6 +127,13 @@ extension HuhoeDetailViewController {
         output?.realTimePrice
             .bind(to: currentPriceLabel.rx.text)
             .disposed(by: disposeBag)
+        
+        output?.realTimePrice
+            .subscribe(onNext: { [weak self] in
+                let item = CoinHistoryItem(name: $0)
+                self?.applySnapShot(self!.tempItems, item)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -150,7 +161,8 @@ extension HuhoeDetailViewController {
 
 extension HuhoeDetailViewController {
     private func configureCollectionViewLayout() {
-        var listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
+        var listConfig = UICollectionLayoutListConfiguration(appearance: .grouped)
+        listConfig.headerMode = .supplementary
         listConfig.showsSeparators = false
         coinHistoryCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: listConfig)
     }
@@ -171,13 +183,34 @@ extension HuhoeDetailViewController {
                 item: item
             )
         }
+        
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
+//            headerView.backgroundColor = .red
+            var configuration = headerView.defaultContentConfiguration()
+            configuration.text = Section.allCases[indexPath.section].rawValue
+            configuration.textProperties.font = .preferredFont(forTextStyle: .title2).bold
+            configuration.textProperties.color = .label
+            headerView.contentConfiguration = configuration
+        }
+        
+        
+        dataSource?.supplementaryViewProvider = { collectionView, elementKind, indexPath in
+            if elementKind == UICollectionView.elementKindSectionHeader {
+                return collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+            } else {
+                return nil
+            }
+        }
     }
     
-    private func applySnapShot(_ items: [CoinHistoryItem]) {
+    private func applySnapShot(_ items: [CoinHistoryItem], _ item: CoinHistoryItem) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, CoinHistoryItem>()
         
-        snapShot.appendSections([.main])
-        snapShot.appendItems(items, toSection: .main)
+        snapShot.appendSections([.today])
+        snapShot.appendItems([item], toSection: .today)
+        
+        snapShot.appendSections([.past])
+        snapShot.appendItems(items, toSection: .past)
         
         dataSource?.apply(snapShot)
     }
