@@ -100,10 +100,9 @@ extension HuhoeMainViewController {
             }).disposed(by: disposeBag)
             
         let moneyObservable = moneyTextField.rx.text
-            .filter { $0 != nil }
-            .map { $0! }
-            .filter { $0 != "" }
+            .orEmpty
             .asObservable()
+            .filter { $0 != "" }
         
         
         let input = HuhoeMainViewModel.Input(

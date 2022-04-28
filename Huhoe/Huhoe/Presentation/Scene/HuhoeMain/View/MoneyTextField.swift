@@ -39,10 +39,9 @@ final class MoneyTextField: UITextField {
     }
     
     private func configureBind() {
-        self.rx.text.asObservable()
-            .filter { $0 != nil }
-            .map { $0! }
-            .filter { $0 != "" }
+        self.rx.text
+            .orEmpty
+            .asObservable()
             .subscribe(onNext: { [weak self] in
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal

@@ -20,8 +20,7 @@ final class DefaultTransactionWebSocketRepository {
             .compactMap { data in
                 data?.toDomain()
             }
-            .filter { $0 != nil }
-            .map { $0! }
+            .filterNil()
         
         return transactionObservable
     }
