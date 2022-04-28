@@ -22,3 +22,8 @@ final class CoinDetailUseCase {
     }
 }
 
+extension CoinDetailUseCase {
+    func fetchTransactionWebSocket(with coinSymbols: [String]) -> Observable<RealTimeCoinPrice> {
+        return transactionWebSocketRepository.fetchTransaction(with: coinSymbols)
+    }
+}

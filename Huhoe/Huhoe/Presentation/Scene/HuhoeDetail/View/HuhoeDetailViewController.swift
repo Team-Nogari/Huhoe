@@ -103,9 +103,26 @@ extension HuhoeDetailViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
         
+        
+        let moneyObservable = moneyTextField.rx.text
+            .orEmpty
+            .asObservable()
+            .filter { $0 != "" }
+        
+        let input = HuhoeDetailViewModel.Input(
+            changeData: textRelay.asObservable(),
+            changeMoney: moneyObservable,
+            viewDidAppear: Observable.empty()
+        )
+        
+        
         // MARK: - Output
         
+        let output = viewModel?.transform(input)
         
+        output?.realTimePrice
+            .bind(to: currentPriceLabel.rx.text)
+            .disposed(by: disposeBag)
     }
 }
 

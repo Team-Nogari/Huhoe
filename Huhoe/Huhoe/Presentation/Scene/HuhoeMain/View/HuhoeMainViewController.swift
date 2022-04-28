@@ -121,11 +121,6 @@ extension HuhoeMainViewController {
                 self?.applySnapShot($0)
             })
             .disposed(by: disposeBag)
-        
-        output.test
-            .subscribe(onNext: { [weak self] in
-                print($0)
-            }).disposed(by: disposeBag)
     }
     
     private func bindCollectionView() {
@@ -145,7 +140,7 @@ extension HuhoeMainViewController {
                     return
                 }
                 let detailUseCase = CoinDetailUseCase(candlestickRepository: self.viewModel.useCase.candlestickRepository)
-                detailViewController.viewModel = HuhoeDetailViewModel(useCase: detailUseCase)
+                detailViewController.viewModel = HuhoeDetailViewModel(selectedCoinSymbol: ((item?.coinSymbol ?? "") + "_KRW"), useCase: detailUseCase)
                 
                 self.navigationController?.show(detailViewController, sender: nil)
             })
