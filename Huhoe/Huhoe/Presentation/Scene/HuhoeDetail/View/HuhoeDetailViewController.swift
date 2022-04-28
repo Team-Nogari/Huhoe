@@ -59,12 +59,6 @@ final class HuhoeDetailViewController: UIViewController {
         bindTapGesture()
         
         applySnapShot(tempItems, tempItem)
-        
-        let dd = viewModel?.useCase.candlestickRepository.dataSource.coinPriceHistory.filter {
-            $0!.coinSymbol == title!
-        }
-        
-        print(dd)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,7 +113,6 @@ extension HuhoeDetailViewController {
             viewDidAppear: Observable.empty()
         )
         
-        
         // MARK: - Output
         
         let output = viewModel?.transform(input)
@@ -132,6 +125,15 @@ extension HuhoeDetailViewController {
             .subscribe(onNext: { [weak self] in
                 let item = CoinHistoryItem(name: $0)
                 self?.applySnapShot(self!.tempItems, item)
+            })
+            .disposed(by: disposeBag)
+        
+        output?.priceAndQuantity
+            .debug()
+            .asDriver(onErrorJustReturn: (String(), String()))
+            .drive(onNext: { [weak self] price, quantity in
+                self?.pastPriceLabel.text = price + " 원"
+                self?.pastQuantityLabel.text = quantity 
             })
             .disposed(by: disposeBag)
     }
@@ -161,7 +163,7 @@ extension HuhoeDetailViewController {
 
 extension HuhoeDetailViewController {
     private func configureCollectionViewLayout() {
-        var listConfig = UICollectionLayoutListConfiguration(appearance: .grouped)
+        var listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
         listConfig.headerMode = .supplementary
         listConfig.showsSeparators = false
         coinHistoryCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: listConfig)
@@ -185,7 +187,6 @@ extension HuhoeDetailViewController {
         }
         
         let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { headerView, elementKind, indexPath in
-//            headerView.backgroundColor = .red
             var configuration = headerView.defaultContentConfiguration()
             configuration.text = Section.allCases[indexPath.section].rawValue
             configuration.textProperties.font = .preferredFont(forTextStyle: .title2).bold

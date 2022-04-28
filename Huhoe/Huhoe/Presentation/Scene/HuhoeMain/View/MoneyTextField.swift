@@ -18,7 +18,7 @@ final class MoneyTextField: UITextField {
         label.font = .preferredFont(forTextStyle: .headline)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "1,000"
+        label.text = "10,000"
         return label
     }()
     

@@ -140,7 +140,7 @@ extension HuhoeMainViewController {
                     return
                 }
                 let detailUseCase = CoinDetailUseCase(candlestickRepository: self.viewModel.useCase.candlestickRepository)
-                detailViewController.viewModel = HuhoeDetailViewModel(selectedCoinSymbol: ((item?.coinSymbol ?? "") + "_KRW"), useCase: detailUseCase)
+                detailViewController.viewModel = HuhoeDetailViewModel(selectedCoinSymbol: ((item?.coinSymbol ?? "")), useCase: detailUseCase)
                 
                 self.navigationController?.show(detailViewController, sender: nil)
             })
