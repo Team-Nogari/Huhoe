@@ -71,8 +71,8 @@ final class HuhoeDetailViewModel: ViewModel {
         
         let todayCoinInfoObservable = makeTodayCoinInfoObservable(
             realTimePriceObservable: realTimePriceObservable,
-            priceAndQuantityObservable: priceAndQuantityObservable,
-            changeMoneyObservable: input.changeMoney
+            input: input,
+            priceHistoryObservable: coinPriceHistoryObservable
         )
         
         return Output(
@@ -105,19 +105,31 @@ extension HuhoeDetailViewModel {
     
     private func makeTodayCoinInfoObservable(
         realTimePriceObservable: Observable<Double>,
-        priceAndQuantityObservable: Observable<PriceAndQuantity>,
-        changeMoneyObservable: Observable<String>
+        input: Input,
+        priceHistoryObservable: Observable<CoinPriceHistory>
     ) -> Observable<CoinHistoryItem> {
         return Observable.combineLatest(
                    realTimePriceObservable,
-                   Observable.zip(priceAndQuantityObservable, changeMoneyObservable)
+                   input.changeData,
+                   input.changeMoney,
+                   priceHistoryObservable
                )
-               .map { realTimePrice, pastPriceAndQuantity -> CoinHistoryItem in
-                    let calculatedPrice = realTimePrice * pastPriceAndQuantity.0.quantity
-                    let profitAndLoss = calculatedPrice - pastPriceAndQuantity.1.toDouble
-                    let rate = profitAndLoss / pastPriceAndQuantity.1.toDouble * 100
-                    
-                    return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+               .map { realTimePrice, dateString, money, priceHistory -> CoinHistoryItem in
+                   if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
+                      let price = priceHistory.price[safe: dateIndex],
+                      let money = Double(money)
+                   {
+                       print("previous Money: ", money)
+                       let quantity = money / price
+                       
+                       let calculatedPrice = realTimePrice * quantity
+                       let profitAndLoss = calculatedPrice - money
+                       let rate = profitAndLoss / money * 100
+                       
+                       return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+                   }
+                   
+                   return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
                }
     }
 }
