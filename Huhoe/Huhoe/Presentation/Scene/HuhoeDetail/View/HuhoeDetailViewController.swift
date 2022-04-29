@@ -118,15 +118,14 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
         
         output?.priceAndQuantity
-            .asDriver(onErrorJustReturn: (String(), String()))
+            .asDriver(onErrorJustReturn: (Double.zero, Double.zero))
             .drive(onNext: { [weak self] price, quantity in
-                self?.pastPriceLabel.text = price + " 원"
-                self?.pastQuantityLabel.text = quantity + (" \( output?.symbol ?? "")")
+                self?.pastPriceLabel.text = price.toString(digit: 4) + " 원"
+                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \( output?.symbol ?? "")")
             })
             .disposed(by: disposeBag)
         
         output?.todayCoinInfo
-            .debug()
             .subscribe(onNext: { [weak self] in
                 self?.applySnapShot(self!.tempItems, $0)
             })

@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 final class HuhoeDetailViewModel: ViewModel {
-    typealias PriceAndQuantity = (price: String, quantity: String)
+    typealias PriceAndQuantity = (price: Double, quantity: Double)
     
     final class Input {
         let changeData: Observable<String>
@@ -69,14 +69,11 @@ final class HuhoeDetailViewModel: ViewModel {
             priceHistoryObservable: coinPriceHistoryObservable
         )
         
-        let todayCoinInfoObservable = Observable.combineLatest(realTimePriceObservable, priceAndQuantityObservable, input.changeMoney)
-            .map { realTimePrice, pastPriceAndQuantity, money -> CoinHistoryItem in
-                let calculatedPrice = realTimePrice * pastPriceAndQuantity.quantity.removeComma.toDouble
-                let profitAndLoss = calculatedPrice - money.toDouble
-                let rate = profitAndLoss / money.toDouble * 100
-                
-                return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
-            }
+        let todayCoinInfoObservable = makeTodayCoinInfoObservable(
+            realTimePriceObservable: realTimePriceObservable,
+            priceAndQuantityObservable: priceAndQuantityObservable,
+            changeMoneyObservable: input.changeMoney
+        )
         
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
@@ -93,17 +90,34 @@ extension HuhoeDetailViewModel {
         priceHistoryObservable: Observable<CoinPriceHistory>
     ) -> Observable<PriceAndQuantity> {
         return Observable.combineLatest(input.changeData, input.changeMoney, priceHistoryObservable)
-            .map { [weak self] dateString, money, priceHistory -> PriceAndQuantity in
+            .map { dateString, money, priceHistory -> PriceAndQuantity in
                 if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
                    let price = priceHistory.price[safe: dateIndex],
                    let money = Double(money)
                 {
                     let quantity = money / price
-                    
-                    return (price.toString(), quantity.toString(digit: 4))
+                    return (price, quantity)
                 }
                 
-                return (String(), String())
+                return (.zero, .zero)
             }
+    }
+    
+    private func makeTodayCoinInfoObservable(
+        realTimePriceObservable: Observable<Double>,
+        priceAndQuantityObservable: Observable<PriceAndQuantity>,
+        changeMoneyObservable: Observable<String>
+    ) -> Observable<CoinHistoryItem> {
+        return Observable.combineLatest(
+                   realTimePriceObservable,
+                   Observable.zip(priceAndQuantityObservable, changeMoneyObservable)
+               )
+               .map { realTimePrice, pastPriceAndQuantity -> CoinHistoryItem in
+                    let calculatedPrice = realTimePrice * pastPriceAndQuantity.0.quantity
+                    let profitAndLoss = calculatedPrice - pastPriceAndQuantity.1.toDouble
+                    let rate = profitAndLoss / pastPriceAndQuantity.1.toDouble * 100
+                    
+                    return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+               }
     }
 }
