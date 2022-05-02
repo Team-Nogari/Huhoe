@@ -7,7 +7,7 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
+import RxRelay
 
 final class MoneyTextField: UITextField {
     private let disposeBag = DisposeBag()
@@ -22,10 +22,57 @@ final class MoneyTextField: UITextField {
         return label
     }()
     
+    // MARK: - Override Methods
+ 
+    override var text: String? {
+        get {
+            guard let text = super.text,
+                  let number = Double(text)
+            else {
+                return super.text
+            }
+            
+            moneyLabel.text = number.toString() + " 원"
+            
+            return super.text
+        }
+        set {
+            super.text = newValue
+        }
+    }
+    
     override func awakeFromNib() {
         configureLayout()
-        configureBind()
+        filterTextBind()
     }
+    
+    // MARK: - Private Methods
+    
+    private func filterTextBind() {
+        self.rx.text
+            .scan("") { previous, new in
+                if previous.count == 1 && new == "" {
+                    return "0"
+                }
+                
+                if previous == "0" && new != "0" {
+                    return new?.deletingPrefix("0") ?? ""
+                }
+                
+                return new ?? ""
+            }
+            .map { text in
+                if text.count > 10 {
+                    return String(text.prefix(10))
+                } else {
+                    return text
+                }
+            }
+            .bind(to: self.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    // MARK: - Private Methods
     
     private func configureLayout() {
         addSubview(moneyLabel)
@@ -37,18 +84,13 @@ final class MoneyTextField: UITextField {
             moneyLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
-    
-    private func configureBind() {
-        self.rx.text
-            .orEmpty
-            .asObservable()
-            .subscribe(onNext: { [weak self] in
-                let numberFormatter = NumberFormatter()
-                numberFormatter.numberStyle = .decimal
-                
-                let number = Double($0)
-                
-                self?.moneyLabel.text = (numberFormatter.string(for: number) ?? "") + " 원"
-            }).disposed(by: disposeBag)
+}
+
+// MARK: - Private Extension
+
+private extension String {
+    func deletingPrefix(_ prefix: String) -> String {
+        guard self.hasPrefix(prefix) else { return self }
+        return String(self.dropFirst(prefix.count))
     }
 }

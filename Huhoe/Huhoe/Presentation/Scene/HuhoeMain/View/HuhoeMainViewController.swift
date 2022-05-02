@@ -99,15 +99,19 @@ extension HuhoeMainViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
             
-        let moneyObservable = moneyTextField.rx.text
+        let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
+        moneyTextField.rx.text
             .orEmpty
-            .asObservable()
-            .filter { $0 != "" }
+            .filter { $0 != "" && $0 != "0" && $0.count <= 10}
+            .subscribe(onNext: {
+                moneyTextFieldRelay.accept($0)
+            })
+            .disposed(by: disposeBag)
         
         
         let input = HuhoeMainViewModel.Input(
             viewWillAppear: testButton.rx.tap.asObservable(),
-            changeMoney: moneyObservable,
+            changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             changeDate: textRelay.asObservable()
         )
         

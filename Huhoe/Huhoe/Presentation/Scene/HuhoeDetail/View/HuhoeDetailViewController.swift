@@ -97,73 +97,18 @@ extension HuhoeDetailViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
         
-        
-//        moneyTextField.rx.text.orEmpty
-//            .observe(on: MainScheduler.asyncInstance)
-//            .skip(1)
-//            .map { s -> Double in
-//                let dd = s.removeComma.toDouble
-//                return dd
-//            }
-//            .filter { d -> Bool in
-//                let b = d < 10000000001 && d > 0
-//                return b
-//            }
-//            .map { d -> String in
-//                let s = d.toString()
-//                return s
-//            }
-//            .subscribe(onNext: {
-//                print($0)
-//                self.moneyTextField.text = $0
-//            })
-//            .disposed(by: disposeBag)
-        
-//        moneyTextField.rx.text.orEmpty
-//            .scan("") { (previous, new) -> String in
-//                print("previos: ", previous, new)
-//                if new.count > 8 {
-//                    return previous ?? String(new.prefix(8))
-//                } else {
-//                    return new
-//                }
-//            }
-//            .subscribe(moneyTextField.rx.text)
-//            .disposed(by: disposeBag)
-        
-        let dd = BehaviorRelay<String>(value: moneyTextField.text!)
+        let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
         moneyTextField.rx.text
             .orEmpty
-            .filter { $0 != "" }
+            .filter { $0 != "" && $0 != "0" && $0.count <= 10}
             .subscribe(onNext: {
-                dd.accept($0)
-            })
-            .disposed(by: disposeBag)
-        
-//        let moneyObservable = moneyTextField.rx.text
-//            .orEmpty
-//            .asObservable()
-//            .filter { $0 != "" }
-        
-        moneyTextField.rx.text.orEmpty
-            .skip(1)
-            .scan("") { (previous, new) -> String in
-                print("previos new: ", previous, new)
-                if new.count > 8 {
-                    return previous ?? String(new.prefix(8))
-                } else {
-                    return new
-                }
-            }
-            .subscribe(onNext: {
-                print("previos textField: ", $0)
-                self.moneyTextField.text = $0
+                moneyTextFieldRelay.accept($0)
             })
             .disposed(by: disposeBag)
         
         let input = HuhoeDetailViewModel.Input(
             changeData: textRelay.asObservable(),
-            changeMoney: dd.asObservable(),
+            changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             viewDidAppear: Observable.empty()
         )
         
@@ -184,6 +129,7 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
         
         output?.todayCoinInfo
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] in
                 self?.applySnapShot(self!.tempItems, $0)
             })
