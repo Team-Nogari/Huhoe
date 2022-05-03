@@ -8,38 +8,49 @@
 import UIKit
 
 class ChartImageView: UIImageView {
-    private let xUnit = 10
-    
     // MARK: - Method
     
     func drawChart(coinHistory: CoinPriceHistory) {
-        getSize(numberOfData: coinHistory.price.count)
+        let xUnit: Double = 10
+        let yUnit: Double = setYUnit(with: coinHistory.price)
+        
+        let price = coinHistory.price.map {
+            $0 - coinHistory.price.min()!
+        }
+        
+        getSize(numberOfData: coinHistory.price.count, xUnit: xUnit)
         
         guard let context = pathContext() else {
             return
         }
         
-        context.move(to: CGPoint(x: 100, y: 100))
-        context.addLine(to: CGPoint(x: 200, y: 200))
-        context.setLineWidth(CGFloat(5))
-        context.setStrokeColor(UIColor.red.cgColor)
+        var previoudPoint = CGPoint(x: 0, y: frame.size.height - (coinHistory.price[0] * yUnit))
+        
+        price.enumerated().forEach { index, price in
+            let nextPoint = CGPoint(x: xUnit * Double(index), y: frame.size.height - (price * yUnit))
+            
+            context.move(to: previoudPoint)
+            context.addLine(to: nextPoint)
+            
+            previoudPoint = nextPoint
+        }
         context.strokePath()
         
-        print(setYUnit(with: coinHistory.price))
-
         setImage(with: context)
     }
     
     // MARK: - Privete Method
     
-    private func getSize(numberOfData: Int) {
-        frame.size.width = CGFloat(numberOfData * xUnit)
+    private func getSize(numberOfData: Int, xUnit: Double) {
+        frame.size.width = CGFloat(numberOfData * Int(xUnit))
     }
     
     private func pathContext() -> CGContext? {
         UIGraphicsBeginImageContext(layer.frame.size)
         let context = UIGraphicsGetCurrentContext()
         context?.beginPath()
+        context?.setLineWidth(CGFloat(3))
+        context?.setStrokeColor(UIColor.red.cgColor)
         
         return context
     }
