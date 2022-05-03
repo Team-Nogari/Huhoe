@@ -10,9 +10,7 @@ import UIKit
 class ChartImageView: UIImageView {
     private let xUnit = 10
     
-    private func getSize(numberOfData: Int) {
-        frame.size.width = CGFloat(numberOfData * xUnit)
-    }
+    // MARK: - Method
     
     func drawChart(coinHistory: CoinPriceHistory) {
         getSize(numberOfData: coinHistory.price.count)
@@ -26,8 +24,16 @@ class ChartImageView: UIImageView {
         context.setLineWidth(CGFloat(5))
         context.setStrokeColor(UIColor.red.cgColor)
         context.strokePath()
+        
+        print(setYUnit(with: coinHistory.price))
 
         setImage(with: context)
+    }
+    
+    // MARK: - Privete Method
+    
+    private func getSize(numberOfData: Int) {
+        frame.size.width = CGFloat(numberOfData * xUnit)
     }
     
     private func pathContext() -> CGContext? {
@@ -36,6 +42,18 @@ class ChartImageView: UIImageView {
         context?.beginPath()
         
         return context
+    }
+    
+    private func setYUnit(with price: [Double]) -> Double {
+        guard let min = price.min(),
+              let max = price.max()
+        else {
+            return CGFloat.zero
+        }
+        
+        let yUnit = layer.frame.height / (max - min)
+        
+        return yUnit
     }
     
     private func setImage(with context: CGContext) {
