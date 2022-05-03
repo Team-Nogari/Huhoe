@@ -10,21 +10,19 @@ import UIKit
 class ChartImageView: UIImageView {
     // MARK: - Method
     
-    func drawChart(coinHistory: CoinPriceHistory) {
+    func drawChart(price: [Double]) {
         let xUnit: Double = 10
-        let yUnit: Double = setYUnit(with: coinHistory.price)
+        let yUnit: Double = setYUnit(with: price)
         
-        let price = coinHistory.price.map {
-            $0 - coinHistory.price.min()!
+        let price = price.map {
+            $0 - price.min()!
         }
-        
-        getSize(numberOfData: coinHistory.price.count, xUnit: xUnit)
         
         guard let context = pathContext() else {
             return
         }
         
-        var previoudPoint = CGPoint(x: 0, y: frame.size.height - (coinHistory.price[0] * yUnit))
+        var previoudPoint = CGPoint(x: 0, y: frame.size.height - (price[0] * yUnit))
         
         price.enumerated().forEach { index, price in
             let nextPoint = CGPoint(x: xUnit * Double(index), y: frame.size.height - (price * yUnit))

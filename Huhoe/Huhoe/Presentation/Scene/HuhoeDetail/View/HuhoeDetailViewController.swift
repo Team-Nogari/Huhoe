@@ -41,6 +41,7 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var pastPriceLabel: UILabel!
     @IBOutlet private weak var pastQuantityLabel: UILabel!
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
+    @IBOutlet private weak var chartScrollView: UIScrollView!
     @IBOutlet private weak var chartImageView: ChartImageView!
     
     // MARK: - ViewModel
@@ -136,10 +137,29 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        output?.coinHistory
-            .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] in
-                self?.chartImageView.drawChart(coinHistory: $0)
+//        output?.coinHistory
+//            .observe(on: MainScheduler.asyncInstance)
+//            .subscribe(onNext: { [weak self] in
+//                self?.chartImageView.drawChart(coinHistory: $0)
+//            })
+//            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(output!.coinHistory, chartScrollView.rx.contentOffset)
+            .skip(1)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] coinHistory, offset in
+                let startRate = offset.x / self!.chartScrollView.contentSize.width
+                let endRate = (offset.x + self!.chartScrollView.frame.width) / self!.chartScrollView.contentSize.width
+                let dataFirstIndex = Double(coinHistory.price.count) * startRate
+                let dataLastIndex = Double(coinHistory.price.count) * endRate
+                
+                print("데이터 배열 시작 인덱스 : \(Int(dataFirstIndex))")
+                print("데이터 배열 마지막 인덱스 : \(Int(dataLastIndex))")
+                
+                let price = coinHistory.price[Int(dataFirstIndex)...Int(dataLastIndex)]
+                print(price)
+                
+                self?.chartImageView.drawChart(price: Array(price))
             })
             .disposed(by: disposeBag)
     }
