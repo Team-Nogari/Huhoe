@@ -44,6 +44,8 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var chartScrollView: UIScrollView!
     @IBOutlet private weak var chartImageView: ChartImageView!
     
+    @IBOutlet private weak var chartOldDateLabel: UILabel!
+    @IBOutlet private weak var chartLatestDateLabel: UILabel!
     // MARK: - ViewModel
     var viewModel: HuhoeDetailViewModel?
     private let disposeBag = DisposeBag()
@@ -151,17 +153,32 @@ extension HuhoeDetailViewController {
                 let startRate = offset.x / self!.chartScrollView.contentSize.width
                 let dataFirstIndex = Double(coinHistory.price.count) * startRate
                 
-                var price = [Double]()
+                var dateRange: ClosedRange = 0...1
                 
                 if Int(dataFirstIndex) + 40 >= coinHistory.price.count {
-                    price = Array(coinHistory.price[Int(dataFirstIndex)...coinHistory.price.count - 1])
+                    dateRange = Int(dataFirstIndex)...coinHistory.price.count - 1
                 } else {
-                    price = Array(coinHistory.price[Int(dataFirstIndex)...Int(dataFirstIndex) + 40])
+                    dateRange = Int(dataFirstIndex)...Int(dataFirstIndex) + 40
                 }
+                
+                let price = Array(coinHistory.price[dateRange])
+                
+                self?.chartOldDateLabel.text = coinHistory.date[dateRange.min()!].toDateString()
+                self?.chartLatestDateLabel.text = coinHistory.date[dateRange.max()!].toDateString()
                 
                 self?.chartImageView.drawChart(price: Array(price), offsetX: offset.x)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+private extension Double {
+    func toDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        let date = Date(timeIntervalSince1970: self)
+        
+        return formatter.string(from: date)
     }
 }
 
