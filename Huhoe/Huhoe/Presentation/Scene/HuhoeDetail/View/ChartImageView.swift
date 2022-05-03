@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ChartImageView: UIImageView {
+final class ChartImageView: UIImageView {
+    
     // MARK: - Method
     
     func drawChart(price: [Double], offsetX: Double) {
@@ -29,12 +30,13 @@ class ChartImageView: UIImageView {
             
             context.move(to: previoudPoint)
             context.addLine(to: nextPoint)
+            context.closePath()
             
             previoudPoint = nextPoint
         }
         context.strokePath()
         
-        setImage(with: context)
+        setImage()
     }
     
     // MARK: - Privete Method
@@ -67,9 +69,7 @@ class ChartImageView: UIImageView {
         return yUnit
     }
     
-    private func setImage(with context: CGContext) {
-        context.closePath()
-        
+    private func setImage() {
         image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
     }

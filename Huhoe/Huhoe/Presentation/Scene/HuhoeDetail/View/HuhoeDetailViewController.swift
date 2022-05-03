@@ -31,8 +31,6 @@ final class HuhoeDetailViewController: UIViewController {
         CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 7)
     ]
     
-    
-    
     // MARK: - IBOutlet
     
     @IBOutlet private weak var currentPriceLabel: UILabel!
@@ -138,13 +136,6 @@ extension HuhoeDetailViewController {
                 self?.applySnapShot(self!.tempItems, $0) // 강제 언래핑 수정
             })
             .disposed(by: disposeBag)
-        
-//        output?.coinHistory
-//            .observe(on: MainScheduler.asyncInstance)
-//            .subscribe(onNext: { [weak self] in
-//                self?.chartImageView.drawChart(coinHistory: $0)
-//            })
-//            .disposed(by: disposeBag)
         
         Observable.combineLatest(output!.coinHistory, chartScrollView.rx.contentOffset.changed)
             .observe(on: MainScheduler.instance)
