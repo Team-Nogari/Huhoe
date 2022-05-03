@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -112,10 +112,10 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5E-Wf-cLk">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5E-Wf-cLk">
                                 <rect key="frame" x="0.0" y="90" width="414" height="248.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-4f-ll8">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-4f-ll8" customClass="ChartImageView" customModule="Huhoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="1915" height="248.5"/>
                                         <imageReference key="image" image="testImage" symbolScale="default"/>
                                     </imageView>
@@ -156,6 +156,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="chartImageView" destination="LLU-4f-ll8" id="ZsL-Ac-oxl"/>
                         <outlet property="coinHistoryCollectionView" destination="aDr-XX-Gf4" id="0jV-uk-Z3s"/>
                         <outlet property="currentPriceLabel" destination="lJ7-F4-mKE" id="reS-4g-rLK"/>
                         <outlet property="dateChangeButton" destination="nag-lS-d2L" id="sMG-rU-6W1"/>

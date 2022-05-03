@@ -12,12 +12,12 @@ final class HuhoeDetailViewModel: ViewModel {
     typealias PriceAndQuantity = (price: Double, quantity: Double)
     
     final class Input {
-        let changeData: Observable<String>
+        let changeDate: Observable<String>
         let changeMoney: Observable<String>
         let viewDidAppear: Observable<String>
         
-        init(changeData: Observable<String>, changeMoney: Observable<String>, viewDidAppear: Observable<String>) {
-            self.changeData = changeData
+        init(changeDate: Observable<String>, changeMoney: Observable<String>, viewDidAppear: Observable<String>) {
+            self.changeDate = changeDate
             self.changeMoney = changeMoney
             self.viewDidAppear = viewDidAppear
         }
@@ -27,17 +27,20 @@ final class HuhoeDetailViewModel: ViewModel {
         let realTimePrice: Observable<String>
         let priceAndQuantity: Observable<PriceAndQuantity>
         let todayCoinInfo: Observable<CoinHistoryItem>
+        let coinHistory: Observable<CoinPriceHistory>
         let symbol: String
         
         init(
             realTimePrice: Observable<String>,
             priceAndQuantity: Observable<PriceAndQuantity>,
             todayCoinInfo: Observable<CoinHistoryItem>,
+            coinHistory: Observable<CoinPriceHistory>,
             symbol: String
         ) {
             self.realTimePrice = realTimePrice
             self.priceAndQuantity = priceAndQuantity
             self.todayCoinInfo = todayCoinInfo
+            self.coinHistory = coinHistory
             self.symbol = symbol
         }
     }
@@ -79,6 +82,7 @@ final class HuhoeDetailViewModel: ViewModel {
             realTimePrice: realTimePriceStringObservalbe,
             priceAndQuantity: priceAndQuantityObservable,
             todayCoinInfo: todayCoinInfoObservable,
+            coinHistory: coinPriceHistoryObservable,
             symbol: selectedCoinSymbol
         )
     }
@@ -89,7 +93,7 @@ extension HuhoeDetailViewModel {
         input: Input,
         priceHistoryObservable: Observable<CoinPriceHistory>
     ) -> Observable<PriceAndQuantity> {
-        return Observable.combineLatest(input.changeData, input.changeMoney, priceHistoryObservable)
+        return Observable.combineLatest(input.changeDate, input.changeMoney, priceHistoryObservable)
             .map { dateString, money, priceHistory -> PriceAndQuantity in
                 if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
                    let price = priceHistory.price[safe: dateIndex],
@@ -110,7 +114,7 @@ extension HuhoeDetailViewModel {
     ) -> Observable<CoinHistoryItem> {
         return Observable.combineLatest(
                    realTimePriceObservable,
-                   input.changeData,
+                   input.changeDate,
                    input.changeMoney,
                    priceHistoryObservable
                )
@@ -119,7 +123,6 @@ extension HuhoeDetailViewModel {
                       let price = priceHistory.price[safe: dateIndex],
                       let money = Double(money)
                    {
-                       print("previous Money: ", money)
                        let quantity = money / price
                        
                        let calculatedPrice = realTimePrice * quantity

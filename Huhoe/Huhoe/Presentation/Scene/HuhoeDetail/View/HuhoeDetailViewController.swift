@@ -41,6 +41,7 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var pastPriceLabel: UILabel!
     @IBOutlet private weak var pastQuantityLabel: UILabel!
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
+    @IBOutlet private weak var chartImageView: ChartImageView!
     
     // MARK: - ViewModel
     var viewModel: HuhoeDetailViewModel?
@@ -107,7 +108,7 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
         
         let input = HuhoeDetailViewModel.Input(
-            changeData: textRelay.asObservable(),
+            changeDate: textRelay.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             viewDidAppear: Observable.empty()
         )
@@ -131,7 +132,14 @@ extension HuhoeDetailViewController {
         output?.todayCoinInfo
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] in
-                self?.applySnapShot(self!.tempItems, $0)
+                self?.applySnapShot(self!.tempItems, $0) // 강제 언래핑 수정
+            })
+            .disposed(by: disposeBag)
+        
+        output?.coinHistory
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] in
+                self?.chartImageView.drawChart(coinHistory: $0)
             })
             .disposed(by: disposeBag)
     }
