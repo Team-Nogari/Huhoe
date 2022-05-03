@@ -26,7 +26,7 @@ extension DefaultTickerRepository: TickerRepository {
                     .sorted {
                         $0.accTradeValue24Hour > $1.accTradeValue24Hour
                     }
-                    .dropLast(tickersCount - 5)
+                    .dropLast(tickersCount - 6)
                 
                 self.dataSource.tickers = Array(sortedTicker)
                 

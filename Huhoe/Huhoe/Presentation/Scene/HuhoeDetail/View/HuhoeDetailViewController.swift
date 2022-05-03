@@ -144,22 +144,22 @@ extension HuhoeDetailViewController {
 //            })
 //            .disposed(by: disposeBag)
         
-        Observable.combineLatest(output!.coinHistory, chartScrollView.rx.contentOffset)
-            .skip(1)
+        Observable.combineLatest(output!.coinHistory, chartScrollView.rx.contentOffset.changed)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] coinHistory, offset in
+                self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: 10)
                 let startRate = offset.x / self!.chartScrollView.contentSize.width
-                let endRate = (offset.x + self!.chartScrollView.frame.width) / self!.chartScrollView.contentSize.width
                 let dataFirstIndex = Double(coinHistory.price.count) * startRate
-                let dataLastIndex = Double(coinHistory.price.count) * endRate
                 
-                print("데이터 배열 시작 인덱스 : \(Int(dataFirstIndex))")
-                print("데이터 배열 마지막 인덱스 : \(Int(dataLastIndex))")
+                var price = [Double]()
                 
-                let price = coinHistory.price[Int(dataFirstIndex)...Int(dataLastIndex)]
-                print(price)
+                if Int(dataFirstIndex) + 40 >= coinHistory.price.count {
+                    price = Array(coinHistory.price[Int(dataFirstIndex)...coinHistory.price.count - 1])
+                } else {
+                    price = Array(coinHistory.price[Int(dataFirstIndex)...Int(dataFirstIndex) + 40])
+                }
                 
-                self?.chartImageView.drawChart(price: Array(price))
+                self?.chartImageView.drawChart(price: Array(price), offsetX: offset.x)
             })
             .disposed(by: disposeBag)
     }

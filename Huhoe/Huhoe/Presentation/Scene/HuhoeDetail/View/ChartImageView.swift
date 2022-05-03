@@ -10,7 +10,7 @@ import UIKit
 class ChartImageView: UIImageView {
     // MARK: - Method
     
-    func drawChart(price: [Double]) {
+    func drawChart(price: [Double], offsetX: Double) {
         let xUnit: Double = 10
         let yUnit: Double = setYUnit(with: price)
         
@@ -25,7 +25,7 @@ class ChartImageView: UIImageView {
         var previoudPoint = CGPoint(x: 0, y: frame.size.height - (price[0] * yUnit))
         
         price.enumerated().forEach { index, price in
-            let nextPoint = CGPoint(x: xUnit * Double(index), y: frame.size.height - (price * yUnit))
+            let nextPoint = CGPoint(x: xUnit * Double(index) + offsetX, y: frame.size.height - (price * yUnit))
             
             context.move(to: previoudPoint)
             context.addLine(to: nextPoint)
@@ -39,7 +39,7 @@ class ChartImageView: UIImageView {
     
     // MARK: - Privete Method
     
-    private func getSize(numberOfData: Int, xUnit: Double) {
+    func getSize(numberOfData: Int, xUnit: Double) {
         frame.size.width = CGFloat(numberOfData * Int(xUnit))
     }
     
@@ -47,8 +47,10 @@ class ChartImageView: UIImageView {
         UIGraphicsBeginImageContext(layer.frame.size)
         let context = UIGraphicsGetCurrentContext()
         context?.beginPath()
-        context?.setLineWidth(CGFloat(3))
-        context?.setStrokeColor(UIColor.red.cgColor)
+        context?.setLineCap(.round)
+        context?.setLineJoin(.round)
+        context?.setLineWidth(CGFloat(5))
+        context?.setStrokeColor(UIColor.systemRed.cgColor)
         
         return context
     }
