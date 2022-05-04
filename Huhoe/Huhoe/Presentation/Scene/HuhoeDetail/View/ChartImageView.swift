@@ -12,7 +12,7 @@ final class ChartImageView: UIImageView {
     // MARK: - Method
     
     func drawChart(price: [Double], offsetX: Double) {
-        let xUnit: Double = 10
+        let xUnit: Double = UIScreen.main.bounds.width / CGFloat(price.count)
         let yUnit: Double = setYUnit(with: price)
         
         let price = price.map {
@@ -23,10 +23,10 @@ final class ChartImageView: UIImageView {
             return
         }
         
-        var previoudPoint = CGPoint(x: 0, y: frame.size.height - (price[0] * yUnit))
+        var previoudPoint = CGPoint(x: offsetX, y: frame.size.height - (price[0] * yUnit) - 15)
         
         price.enumerated().forEach { index, price in
-            let nextPoint = CGPoint(x: xUnit * Double(index) + offsetX, y: frame.size.height - (price * yUnit))
+            let nextPoint = CGPoint(x: (xUnit - CGFloat(1.0)) * Double(index) + offsetX, y: frame.size.height - (price * yUnit) - 15)
             
             context.move(to: previoudPoint)
             context.addLine(to: nextPoint)
@@ -65,7 +65,7 @@ final class ChartImageView: UIImageView {
             return CGFloat.zero
         }
         
-        let yUnit = layer.frame.height / (max - min)
+        let yUnit = (layer.frame.height - 75) / (max - min)
         
         return yUnit
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		081EF55228225FD600836E6B /* ChartPriceAndDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081EF55128225FD600836E6B /* ChartPriceAndDateView.swift */; };
 		0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834ED872813989000BD6D8C /* CoinHistoryCell.swift */; };
 		0834ED8A281398B400BD6D8C /* CoinHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */; };
 		084BF6A928191C6300916465 /* Result+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF6A828191C6300916465 /* Result+extension.swift */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		081EF55128225FD600836E6B /* ChartPriceAndDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPriceAndDateView.swift; sourceTree = "<group>"; };
 		0834ED872813989000BD6D8C /* CoinHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryCell.swift; sourceTree = "<group>"; };
 		0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinHistoryCell.xib; sourceTree = "<group>"; };
 		084BF6A828191C6300916465 /* Result+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+extension.swift"; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				0834ED872813989000BD6D8C /* CoinHistoryCell.swift */,
 				A6626C0F2820FAC8001F9917 /* ChartImageView.swift */,
 				A601695D28223E6A00A7EA08 /* ChartScrollView.swift */,
+				081EF55128225FD600836E6B /* ChartPriceAndDateView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */,
 				084BF6A928191C6300916465 /* Result+extension.swift in Sources */,
 				A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */,
+				081EF55228225FD600836E6B /* ChartPriceAndDateView.swift in Sources */,
 				0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */,
 				08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */,
 				08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */,

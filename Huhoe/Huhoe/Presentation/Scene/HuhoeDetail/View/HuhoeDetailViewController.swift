@@ -152,10 +152,10 @@ extension HuhoeDetailViewController {
                 
                 var dateRange: ClosedRange = 0...1
                 
-                if Int(dataFirstIndex) + 40 >= coinHistory.price.count {
-                    dateRange = Int(dataFirstIndex)...coinHistory.price.count - 1
+                if Int(dataFirstIndex.rounded()) + 30 >= coinHistory.price.count {
+                    dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
                 } else {
-                    dateRange = Int(dataFirstIndex)...Int(dataFirstIndex) + 40
+                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 30
                 }
                 
                 let reversedPrice = Array(coinHistory.price.reversed())
@@ -180,6 +180,7 @@ extension HuhoeDetailViewController {
                 let price = reversedPrice[Int(dataIndex)]
                 let date = reversedDate[Int(dataIndex)].toDateString()
                 
+                self?.chartScrollView.moveFloatingPriceAndDateView(offsetX: pointX, price: price.toString(), date: date)
                 print("price", price, "date", date)
             })
             .disposed(by: disposeBag)

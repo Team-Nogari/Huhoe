@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,6 +27,38 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5E-Wf-cLk" customClass="ChartScrollView" customModule="Huhoe" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="90" width="414" height="227.5"/>
                                 <subviews>
+                                    <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Q6-9J-4oI" customClass="ChartPriceAndDateView" customModule="Huhoe" customModuleProvider="target">
+                                        <rect key="frame" x="157" y="0.0" width="100" height="38"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZs-4C-BOo">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="14.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZfY-mY-mBr">
+                                                <rect key="frame" x="0.0" y="14.5" width="100" height="14.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ZfY-mY-mBr" firstAttribute="leading" secondItem="0Q6-9J-4oI" secondAttribute="leading" id="4qL-mQ-3hX"/>
+                                            <constraint firstAttribute="width" constant="100" id="Dxr-9U-Lsu"/>
+                                            <constraint firstItem="bZs-4C-BOo" firstAttribute="leading" secondItem="0Q6-9J-4oI" secondAttribute="leading" id="LSE-9b-kqe"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZfY-mY-mBr" secondAttribute="trailing" id="Ozg-OD-wyV"/>
+                                            <constraint firstItem="ZfY-mY-mBr" firstAttribute="top" secondItem="bZs-4C-BOo" secondAttribute="bottom" id="UKG-8I-bxH"/>
+                                            <constraint firstItem="bZs-4C-BOo" firstAttribute="top" secondItem="0Q6-9J-4oI" secondAttribute="top" id="aTz-Uf-6Qv"/>
+                                            <constraint firstAttribute="trailing" secondItem="bZs-4C-BOo" secondAttribute="trailing" id="jUR-sa-Yve"/>
+                                            <constraint firstAttribute="height" constant="38" id="l6u-YA-9GD"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="bZs-4C-BOo" id="8oB-68-Uce"/>
+                                            <outlet property="priceLabel" destination="ZfY-mY-mBr" id="Btk-Zh-vyM"/>
+                                        </connections>
+                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-4f-ll8" customClass="ChartImageView" customModule="Huhoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="424" height="227.5"/>
                                     </imageView>
@@ -41,6 +73,9 @@
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="SpX-o7-rDZ"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="9Bo-AY-gVx"/>
+                                <connections>
+                                    <outlet property="priceAndDateView" destination="0Q6-9J-4oI" id="zQV-0T-BVn"/>
+                                </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0a-mF-C2B">
                                 <rect key="frame" x="8" y="325.5" width="4" height="17"/>
