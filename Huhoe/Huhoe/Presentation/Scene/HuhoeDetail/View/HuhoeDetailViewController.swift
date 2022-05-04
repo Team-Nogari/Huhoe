@@ -54,6 +54,7 @@ final class HuhoeDetailViewController: UIViewController {
         configureLabel()
         configureDateChangeButton()
         configureCollectionView()
+        configureChartView()
         
         bindViewModel()
         bindTapGesture()
@@ -152,10 +153,12 @@ extension HuhoeDetailViewController {
                     dateRange = Int(dataFirstIndex)...Int(dataFirstIndex) + 40
                 }
                 
-                let price = Array(coinHistory.price[dateRange])
+                let reversedPrice = Array(coinHistory.price.reversed())
+                let reversedDate = Array(coinHistory.date.reversed())
+                let price = reversedPrice[dateRange]
                 
-                self?.chartOldDateLabel.text = coinHistory.date[dateRange.min()!].toDateString()
-                self?.chartLatestDateLabel.text = coinHistory.date[dateRange.max()!].toDateString()
+                self?.chartOldDateLabel.text = reversedDate[dateRange.max()!].toDateString()
+                self?.chartLatestDateLabel.text = reversedDate[dateRange.min()!].toDateString()
                 
                 self?.chartImageView.drawChart(price: Array(price), offsetX: offset.x)
             })
@@ -194,6 +197,13 @@ extension HuhoeDetailViewController {
     
     private func configureLabel() {
         currentPriceLabel.font = .preferredFont(forTextStyle: .title1).bold
+    }
+    
+    private func configureChartView() {
+        UIView.animate(withDuration: 0.0, animations: {
+            self.chartScrollView.transform = CGAffineTransform(rotationAngle: .pi)
+            self.chartImageView.transform = CGAffineTransform(rotationAngle: .pi)
+        })
     }
 }
 

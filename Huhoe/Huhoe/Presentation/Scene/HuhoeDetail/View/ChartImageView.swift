@@ -71,7 +71,7 @@ final class ChartImageView: UIImageView {
     }
     
     private func setImage() {
-        image = UIGraphicsGetImageFromCurrentImageContext()
+        image = UIGraphicsGetImageFromCurrentImageContext()?.withHorizontallyFlippedOrientation()
         UIGraphicsEndImageContext()
     }
 }
