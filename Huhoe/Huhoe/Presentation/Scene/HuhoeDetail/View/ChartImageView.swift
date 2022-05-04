@@ -15,7 +15,7 @@ final class ChartImageView: UIImageView {
         let xUnit: Double = UIScreen.main.bounds.width / CGFloat(price.count)
         let yUnit: Double = setYUnit(with: price)
         
-        let price = price.map {
+        let simplifiedPrice = price.map {
             $0 - price.min()!
         }
         
@@ -23,16 +23,33 @@ final class ChartImageView: UIImageView {
             return
         }
         
-        var previoudPoint = CGPoint(x: offsetX, y: frame.size.height - (price[0] * yUnit) - 15)
+        var previousPoint = CGPoint(
+            x: offsetX + xUnit,
+            y: frame.size.height - (simplifiedPrice[0] * yUnit) - 15
+        )
         
-        price.enumerated().forEach { index, price in
-            let nextPoint = CGPoint(x: (xUnit - CGFloat(1.0)) * Double(index) + offsetX, y: frame.size.height - (price * yUnit) - 15)
+        let firstPoint = CGPoint(
+            x: offsetX + (xUnit * 2),
+            y: frame.size.height - (simplifiedPrice[1] * yUnit) - 15
+        )
+        
+        context.move(to: previousPoint)
+        context.addLine(to: firstPoint)
+        context.closePath()
+        
+        previousPoint = firstPoint
+        
+        for index in 2..<simplifiedPrice.count {
+            let nextPoint = CGPoint(
+                x: xUnit * Double(index + 1) + offsetX,
+                y: frame.size.height - (simplifiedPrice[index] * yUnit) - 15
+            )
             
-            context.move(to: previoudPoint)
+            context.move(to: previousPoint)
             context.addLine(to: nextPoint)
             context.closePath()
             
-            previoudPoint = nextPoint
+            previousPoint = nextPoint
         }
         context.strokePath()
         

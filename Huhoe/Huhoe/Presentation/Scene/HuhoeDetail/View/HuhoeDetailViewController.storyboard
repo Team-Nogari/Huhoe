@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45,000,000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJ7-F4-mKE">
-                                <rect key="frame" x="16" y="52" width="382" height="30"/>
+                                <rect key="frame" x="16" y="44" width="382" height="30"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5E-Wf-cLk" customClass="ChartScrollView" customModule="Huhoe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="90" width="414" height="227.5"/>
+                                <rect key="frame" x="0.0" y="82" width="414" height="227.5"/>
                                 <subviews>
                                     <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Q6-9J-4oI" customClass="ChartPriceAndDateView" customModule="Huhoe" customModuleProvider="target">
                                         <rect key="frame" x="157" y="0.0" width="100" height="38"/>
@@ -59,7 +59,7 @@
                                             <outlet property="priceLabel" destination="ZfY-mY-mBr" id="Btk-Zh-vyM"/>
                                         </connections>
                                     </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-4f-ll8" customClass="ChartImageView" customModule="Huhoe" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LLU-4f-ll8" customClass="ChartImageView" customModule="Huhoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="424" height="227.5"/>
                                     </imageView>
                                 </subviews>
@@ -78,26 +78,26 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0a-mF-C2B">
-                                <rect key="frame" x="8" y="325.5" width="4" height="17"/>
+                                <rect key="frame" x="8" y="317.5" width="4" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3o-lp-dE7">
-                                <rect key="frame" x="402" y="325.5" width="4" height="17"/>
+                                <rect key="frame" x="402" y="317.5" width="4" height="17"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2q-Xb-3Q0">
-                                <rect key="frame" x="8" y="346.5" width="398" height="1"/>
+                                <rect key="frame" x="8" y="336.5" width="398" height="1"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="WoQ-jc-wMp"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7m-V7-hzZ">
-                                <rect key="frame" x="8" y="358.5" width="398" height="29"/>
+                                <rect key="frame" x="8" y="350.5" width="398" height="29"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nag-lS-d2L">
                                         <rect key="frame" x="0.0" y="0.0" width="199" height="29"/>
@@ -128,7 +128,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-tL-Y3k">
-                                <rect key="frame" x="8" y="395.5" width="398" height="34"/>
+                                <rect key="frame" x="8" y="387.5" width="398" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8dT-EW-g5D" customClass="MoneyTextField" customModule="Huhoe" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="199" height="34"/>
@@ -158,13 +158,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="언제 팔았어?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjR-x9-VS1">
-                                <rect key="frame" x="8" y="445.5" width="102" height="24"/>
+                                <rect key="frame" x="8" y="437.5" width="102" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aDr-XX-Gf4">
-                                <rect key="frame" x="10" y="477.5" width="394" height="418.5"/>
+                                <rect key="frame" x="10" y="469.5" width="394" height="426.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p4j-0w-I9P">
                                     <size key="itemSize" width="128" height="128"/>
@@ -194,7 +194,7 @@
                             <constraint firstItem="z5E-Wf-cLk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6f8-tC-lrG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aDr-XX-Gf4" secondAttribute="trailing" constant="10" id="7OS-zy-38B"/>
                             <constraint firstItem="Zgc-tL-Y3k" firstAttribute="top" secondItem="S7m-V7-hzZ" secondAttribute="bottom" constant="8" id="BAx-Mw-rkW"/>
-                            <constraint firstItem="a2q-Xb-3Q0" firstAttribute="top" secondItem="y0a-mF-C2B" secondAttribute="bottom" constant="4" id="COF-m3-4Rb"/>
+                            <constraint firstItem="a2q-Xb-3Q0" firstAttribute="top" secondItem="y0a-mF-C2B" secondAttribute="bottom" constant="2" id="COF-m3-4Rb"/>
                             <constraint firstItem="VjR-x9-VS1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="Iae-sk-fas"/>
                             <constraint firstItem="z5E-Wf-cLk" firstAttribute="top" secondItem="lJ7-F4-mKE" secondAttribute="bottom" constant="8" id="Il4-56-cd3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="a2q-Xb-3Q0" secondAttribute="trailing" constant="8" id="In1-6h-BNQ"/>
@@ -205,7 +205,7 @@
                             <constraint firstItem="VjR-x9-VS1" firstAttribute="top" secondItem="Zgc-tL-Y3k" secondAttribute="bottom" constant="16" id="b0N-9y-VOX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="z5E-Wf-cLk" secondAttribute="trailing" id="bfX-9l-iFO"/>
                             <constraint firstItem="a2q-Xb-3Q0" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="bjj-x7-dr4"/>
-                            <constraint firstItem="lJ7-F4-mKE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="cb0-ir-PRO"/>
+                            <constraint firstItem="lJ7-F4-mKE" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="cb0-ir-PRO"/>
                             <constraint firstItem="aDr-XX-Gf4" firstAttribute="top" secondItem="VjR-x9-VS1" secondAttribute="bottom" constant="8" id="cuL-1N-Njv"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="S7m-V7-hzZ" secondAttribute="trailing" constant="8" id="dk6-GB-Lk6"/>
                             <constraint firstItem="S7m-V7-hzZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="gGb-0U-hgv"/>

@@ -140,28 +140,34 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset)
-            .filter({ _, offset in
-                offset != CGPoint(x: 0, y: 0)
+        output.coinHistory
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] coinHistory in
+                let xUnit: Double = UIScreen.main.bounds.width / CGFloat(30)
+                self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit)
             })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] coinHistory, offset in
-                self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: 10)
-                let startRate = offset.x / self!.chartScrollView.contentSize.width
+                let pointX = offset.x == 0.0 ? 1 : offset.x
+                
+                let startRate = pointX / self!.chartScrollView.contentSize.width
                 let dataFirstIndex = Double(coinHistory.price.count) * startRate
                 
                 var dateRange: ClosedRange = 0...1
                 
-                if Int(dataFirstIndex.rounded()) + 30 >= coinHistory.price.count {
+                if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
                     dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
                 } else {
-                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 30
+                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
                 }
                 
                 let reversedPrice = Array(coinHistory.price.reversed())
                 let reversedDate = Array(coinHistory.date.reversed())
                 let price = reversedPrice[dateRange]
-                
+            
                 self?.chartOldDateLabel.text = reversedDate[dateRange.max()!].toDateString()
                 self?.chartLatestDateLabel.text = reversedDate[dateRange.min()!].toDateString()
                 
@@ -170,6 +176,7 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
         
         Observable.combineLatest(output.coinHistory, chartScrollView.touchPointRelay)
+            .skip(1)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] coinHistory, pointX in
                 let startRate = pointX / self!.chartScrollView.contentSize.width
