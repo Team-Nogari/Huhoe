@@ -144,7 +144,7 @@ extension HuhoeDetailViewController {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] coinHistory in
                 let xUnit: Double = UIScreen.main.bounds.width / CGFloat(30)
-                self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit)
+                self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit.rounded(.down))
             })
             .disposed(by: disposeBag)
         

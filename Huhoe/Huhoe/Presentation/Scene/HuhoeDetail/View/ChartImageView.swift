@@ -12,7 +12,7 @@ final class ChartImageView: UIImageView {
     // MARK: - Method
     
     func drawChart(price: [Double], offsetX: Double) {
-        let xUnit: Double = UIScreen.main.bounds.width / CGFloat(price.count)
+        let xUnit: Double = (UIScreen.main.bounds.width / CGFloat(price.count)).rounded(.down)
         let yUnit: Double = setYUnit(with: price)
         
         let simplifiedPrice = price.map {

@@ -19,7 +19,7 @@ final class ChartScrollView: UIScrollView {
     
     let lineLayer: CALayer = {
         let layer = CALayer()
-        layer.backgroundColor = UIColor.red.cgColor
+        layer.backgroundColor = UIColor.label.cgColor
         return layer
     }()
     
