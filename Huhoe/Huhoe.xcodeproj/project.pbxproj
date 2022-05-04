@@ -40,6 +40,7 @@
 		08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA08732801223D00C94584 /* CandlestickRepository.swift */; };
 		08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */; };
 		08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA087828015EBE00C94584 /* CoinListUseCase.swift */; };
+		A601695E28223E6B00A7EA08 /* ChartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A601695D28223E6A00A7EA08 /* ChartScrollView.swift */; };
 		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
 		A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E610280D93C600738DAD /* MoneyTextField.swift */; };
 		A652E615280EB2EC00738DAD /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E614280EB2EC00738DAD /* DatePickerViewController.swift */; };
@@ -121,6 +122,7 @@
 		08CA08732801223D00C94584 /* CandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickRepository.swift; sourceTree = "<group>"; };
 		08CA0875280122D100C94584 /* DefaultCandlestickRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCandlestickRepository.swift; sourceTree = "<group>"; };
 		08CA087828015EBE00C94584 /* CoinListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListUseCase.swift; sourceTree = "<group>"; };
+		A601695D28223E6A00A7EA08 /* ChartScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScrollView.swift; sourceTree = "<group>"; };
 		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
 		A652E610280D93C600738DAD /* MoneyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTextField.swift; sourceTree = "<group>"; };
 		A652E614280EB2EC00738DAD /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */,
 				0834ED872813989000BD6D8C /* CoinHistoryCell.swift */,
 				A6626C0F2820FAC8001F9917 /* ChartImageView.swift */,
+				A601695D28223E6A00A7EA08 /* ChartScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */,
 				08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */,
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
+				A601695E28223E6B00A7EA08 /* ChartScrollView.swift in Sources */,
 				A665996A281988AE00285E84 /* HuhoeDetailViewModel.swift in Sources */,
 				A6E4DE7027FEEAF40005266D /* HttpNetworkProvider.swift in Sources */,
 				A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */,

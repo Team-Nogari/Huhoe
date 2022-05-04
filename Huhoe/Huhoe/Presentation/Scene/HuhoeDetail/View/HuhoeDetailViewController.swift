@@ -39,7 +39,7 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var pastPriceLabel: UILabel!
     @IBOutlet private weak var pastQuantityLabel: UILabel!
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
-    @IBOutlet private weak var chartScrollView: UIScrollView!
+    @IBOutlet private weak var chartScrollView: ChartScrollView!
     @IBOutlet private weak var chartImageView: ChartImageView!
     
     @IBOutlet private weak var chartOldDateLabel: UILabel!
@@ -117,29 +117,34 @@ extension HuhoeDetailViewController {
         
         // MARK: - Output
         
-        let output = viewModel?.transform(input)
+        guard let output = viewModel?.transform(input) else {
+            return
+        }
         
-        output?.realTimePrice
+        output.realTimePrice
             .bind(to: currentPriceLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output?.priceAndQuantity
+        output.priceAndQuantity
             .asDriver(onErrorJustReturn: (Double.zero, Double.zero))
             .drive(onNext: { [weak self] price, quantity in
                 self?.pastPriceLabel.text = price.toString(digit: 4) + " 원"
-                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \( output?.symbol ?? "")")
+                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \(output.symbol)")
             })
             .disposed(by: disposeBag)
         
-        output?.todayCoinInfo
+        output.todayCoinInfo
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] in
                 self?.applySnapShot(self!.tempItems, $0) // 강제 언래핑 수정
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output!.coinHistory, chartScrollView.rx.contentOffset.changed)
-            .observe(on: MainScheduler.instance)
+        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset)
+            .filter({ _, offset in
+                offset != CGPoint(x: 0, y: 0)
+            })
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] coinHistory, offset in
                 self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: 10)
                 let startRate = offset.x / self!.chartScrollView.contentSize.width
@@ -161,6 +166,21 @@ extension HuhoeDetailViewController {
                 self?.chartLatestDateLabel.text = reversedDate[dateRange.min()!].toDateString()
                 
                 self?.chartImageView.drawChart(price: Array(price), offsetX: offset.x)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(output.coinHistory, chartScrollView.touchPointRelay)
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] coinHistory, pointX in
+                let startRate = pointX / self!.chartScrollView.contentSize.width
+                let dataIndex = Double(coinHistory.price.count) * startRate
+                
+                let reversedPrice = Array(coinHistory.price.reversed())
+                let reversedDate = Array(coinHistory.date.reversed())
+                let price = reversedPrice[Int(dataIndex)]
+                let date = reversedDate[Int(dataIndex)].toDateString()
+                
+                print("price", price, "date", date)
             })
             .disposed(by: disposeBag)
     }
