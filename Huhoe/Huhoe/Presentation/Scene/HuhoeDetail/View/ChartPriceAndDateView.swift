@@ -12,7 +12,7 @@ class ChartPriceAndDateView: UIView {
     @IBOutlet private weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
-        dateLabel.font = .preferredFont(forTextStyle: .caption1)
+        dateLabel.font = .preferredFont(forTextStyle: .caption1).bold
         dateLabel.textColor = .systemGray
         priceLabel.font = .preferredFont(forTextStyle: .subheadline).bold
     }

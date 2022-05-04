@@ -41,9 +41,18 @@ final class ChartScrollView: UIScrollView {
     func moveFloatingPriceAndDateView(offsetX: Double, price: String, date: String) {
         priceAndDateView.isHidden = false
         priceAndDateView.setLabelText(price: price, date: date)
+        
+        var pointX = offsetX - (priceAndDateView.frame.width / CGFloat(2))
+                
+        if offsetX - contentOffset.x > frame.width * 0.85 {
+            pointX = contentOffset.x + frame.width - priceAndDateView.frame.width
+        } else if offsetX - contentOffset.x < frame.width * 0.15 {
+            pointX = contentOffset.x
+        }
+        
         UIView.animate(withDuration: 0.2) {
             self.priceAndDateView.transform = CGAffineTransform(
-                translationX: offsetX - 50, y: self.frame.height - CGFloat(38.0)
+                translationX: pointX, y: self.frame.height - CGFloat(38.0)
             ).rotated(by: .pi)
         }
         
