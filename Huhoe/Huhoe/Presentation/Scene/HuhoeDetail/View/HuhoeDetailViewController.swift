@@ -31,8 +31,6 @@ final class HuhoeDetailViewController: UIViewController {
         CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 7)
     ]
     
-    
-    
     // MARK: - IBOutlet
     
     @IBOutlet private weak var currentPriceLabel: UILabel!
@@ -41,7 +39,11 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var pastPriceLabel: UILabel!
     @IBOutlet private weak var pastQuantityLabel: UILabel!
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
+    @IBOutlet private weak var chartScrollView: ChartScrollView!
+    @IBOutlet private weak var chartImageView: ChartImageView!
     
+    @IBOutlet private weak var chartOldDateLabel: UILabel!
+    @IBOutlet private weak var chartLatestDateLabel: UILabel!
     // MARK: - ViewModel
     var viewModel: HuhoeDetailViewModel?
     private let disposeBag = DisposeBag()
@@ -52,6 +54,7 @@ final class HuhoeDetailViewController: UIViewController {
         configureLabel()
         configureDateChangeButton()
         configureCollectionView()
+        configureChartView()
         
         bindViewModel()
         bindTapGesture()
@@ -107,33 +110,97 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
         
         let input = HuhoeDetailViewModel.Input(
-            changeData: textRelay.asObservable(),
+            changeDate: textRelay.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             viewDidAppear: Observable.empty()
         )
         
         // MARK: - Output
         
-        let output = viewModel?.transform(input)
+        guard let output = viewModel?.transform(input) else {
+            return
+        }
         
-        output?.realTimePrice
+        output.realTimePrice
             .bind(to: currentPriceLabel.rx.text)
             .disposed(by: disposeBag)
         
-        output?.priceAndQuantity
+        output.priceAndQuantity
             .asDriver(onErrorJustReturn: (Double.zero, Double.zero))
             .drive(onNext: { [weak self] price, quantity in
                 self?.pastPriceLabel.text = price.toString(digit: 4) + " 원"
-                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \( output?.symbol ?? "")")
+                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \(output.symbol)")
             })
             .disposed(by: disposeBag)
         
-        output?.todayCoinInfo
+        output.todayCoinInfo
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] in
-                self?.applySnapShot(self!.tempItems, $0)
+                self?.applySnapShot(self!.tempItems, $0) // 강제 언래핑 수정
             })
             .disposed(by: disposeBag)
+        
+        output.coinHistory
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] coinHistory in
+                let xUnit: Double = UIScreen.main.bounds.width / CGFloat(30)
+                self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset)
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] coinHistory, offset in
+                let pointX = offset.x == 0.0 ? 1 : offset.x
+                
+                let startRate = pointX / self!.chartScrollView.contentSize.width
+                let dataFirstIndex = Double(coinHistory.price.count) * startRate
+                
+                var dateRange: ClosedRange = 0...1
+                
+                if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
+                    dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
+                } else {
+                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
+                }
+                
+                let reversedPrice = Array(coinHistory.price.reversed())
+                let reversedDate = Array(coinHistory.date.reversed())
+                let price = reversedPrice[dateRange]
+            
+                self?.chartOldDateLabel.text = reversedDate[dateRange.max()!].toDateString()
+                self?.chartLatestDateLabel.text = reversedDate[dateRange.min()!].toDateString()
+                
+                self?.chartImageView.drawChart(price: Array(price), offsetX: offset.x)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(output.coinHistory, chartScrollView.touchPointRelay)
+            .skip(1)
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] coinHistory, pointX in
+                let startRate = pointX / self!.chartScrollView.contentSize.width
+                let dataIndex = Double(coinHistory.price.count) * startRate
+                
+                let reversedPrice = Array(coinHistory.price.reversed())
+                let reversedDate = Array(coinHistory.date.reversed())
+                let price = reversedPrice[Int(dataIndex)]
+                let date = reversedDate[Int(dataIndex)].toDateString()
+                
+                self?.chartScrollView.moveFloatingPriceAndDateView(offsetX: pointX, price: price.toString(), date: date)
+                print("price", price, "date", date)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+private extension Double {
+    func toDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        let date = Date(timeIntervalSince1970: self)
+        
+        return formatter.string(from: date)
     }
 }
 
@@ -158,6 +225,13 @@ extension HuhoeDetailViewController {
     
     private func configureLabel() {
         currentPriceLabel.font = .preferredFont(forTextStyle: .title1).bold
+    }
+    
+    private func configureChartView() {
+        UIView.animate(withDuration: 0.0, animations: {
+            self.chartScrollView.transform = CGAffineTransform(rotationAngle: .pi)
+            self.chartImageView.transform = CGAffineTransform(rotationAngle: .pi)
+        })
     }
 }
 

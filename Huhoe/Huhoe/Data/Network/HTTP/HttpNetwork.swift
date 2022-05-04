@@ -19,7 +19,6 @@ final class HttpNetwork {
     
     func fetch(_ path: APIPath, with coinSymbol: String) -> Observable<Data> {
         let path = "\(endPoint)/\(path.path)/\(coinSymbol)_\(path.paymentCurrency)"
-        print(path)
         guard let url = URL(string: path) else {
             return .empty()
         }
