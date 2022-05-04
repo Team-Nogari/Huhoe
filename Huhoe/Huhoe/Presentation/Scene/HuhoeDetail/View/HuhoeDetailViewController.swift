@@ -13,24 +13,25 @@ final class HuhoeDetailViewController: UIViewController {
     
     // MARK: - Collection View
     
-    private enum Section {
-        case main
+    private enum Section: String, CaseIterable {
+        case today = "오늘"
+        case past = "과거"
     }
         
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinHistoryItem>
     private var dataSource: DiffableDataSource?
     
-    struct CoinHistoryItem: Hashable {
-        let name: String
-    }
-    
     private let tempItems: [CoinHistoryItem] = [
-        CoinHistoryItem(name: "1"),
-        CoinHistoryItem(name: "2"),
-        CoinHistoryItem(name: "3"),
-        CoinHistoryItem(name: "4"),
-        CoinHistoryItem(name: "5")
+        CoinHistoryItem(date: "1", calculatedPrice: 1, rate: 1, profitAndLoss: 1),
+        CoinHistoryItem(date: "2", calculatedPrice: 2, rate: 2, profitAndLoss: 2),
+        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 3),
+        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 4),
+        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 5),
+        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 6),
+        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 7)
     ]
+    
+    
     
     // MARK: - IBOutlet
     
@@ -42,19 +43,18 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
     
     // MARK: - ViewModel
-    
+    var viewModel: HuhoeDetailViewModel?
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackButton()
+        configureLabel()
         configureDateChangeButton()
         configureCollectionView()
         
         bindViewModel()
         bindTapGesture()
-        
-        applySnapShot(tempItems)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,9 +97,43 @@ extension HuhoeDetailViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
         
+        let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
+        moneyTextField.rx.text
+            .orEmpty
+            .filter { $0 != "" && $0 != "0" && $0.count <= 10}
+            .subscribe(onNext: {
+                moneyTextFieldRelay.accept($0)
+            })
+            .disposed(by: disposeBag)
+        
+        let input = HuhoeDetailViewModel.Input(
+            changeData: textRelay.asObservable(),
+            changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
+            viewDidAppear: Observable.empty()
+        )
+        
         // MARK: - Output
         
+        let output = viewModel?.transform(input)
         
+        output?.realTimePrice
+            .bind(to: currentPriceLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output?.priceAndQuantity
+            .asDriver(onErrorJustReturn: (Double.zero, Double.zero))
+            .drive(onNext: { [weak self] price, quantity in
+                self?.pastPriceLabel.text = price.toString(digit: 4) + " 원"
+                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \( output?.symbol ?? "")")
+            })
+            .disposed(by: disposeBag)
+        
+        output?.todayCoinInfo
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] in
+                self?.applySnapShot(self!.tempItems, $0)
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -121,6 +155,10 @@ extension HuhoeDetailViewController {
         
         coinHistoryCollectionView.keyboardDismissMode = .onDrag
     }
+    
+    private func configureLabel() {
+        currentPriceLabel.font = .preferredFont(forTextStyle: .title1).bold
+    }
 }
 
 // MARK: - Collecion View Methods
@@ -133,12 +171,12 @@ extension HuhoeDetailViewController {
     }
     
     private func configureCollectionViewDataSource() {
-        typealias CellRegistration = UICollectionView.CellRegistration<CoinHistoryCell, CoinHistoryItem> // 임시 Item
+        typealias CellRegistration = UICollectionView.CellRegistration<CoinHistoryCell, CoinHistoryItem>
         
         let cellNib = UINib(nibName: CoinHistoryCell.identifier, bundle: nil)
         
         let coinListRegistration = CellRegistration(cellNib: cellNib) { cell, indexPath, item in
-            // 임시
+            cell.configureCell(item: item)
         }
         
         dataSource = DiffableDataSource(collectionView: coinHistoryCollectionView) { collectionView, indexPath, item in
@@ -150,11 +188,14 @@ extension HuhoeDetailViewController {
         }
     }
     
-    private func applySnapShot(_ items: [CoinHistoryItem]) {
+    private func applySnapShot(_ items: [CoinHistoryItem], _ item: CoinHistoryItem) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, CoinHistoryItem>()
         
-        snapShot.appendSections([.main])
-        snapShot.appendItems(items, toSection: .main)
+        snapShot.appendSections([.today])
+        snapShot.appendItems([item], toSection: .today)
+        
+        snapShot.appendSections([.past])
+        snapShot.appendItems(items, toSection: .past)
         
         dataSource?.apply(snapShot)
     }

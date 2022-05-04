@@ -99,16 +99,19 @@ extension HuhoeMainViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
             
-        let moneyObservable = moneyTextField.rx.text
-            .filter { $0 != nil }
-            .map { $0! }
-            .filter { $0 != "" }
-            .asObservable()
+        let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
+        moneyTextField.rx.text
+            .orEmpty
+            .filter { $0 != "" && $0 != "0" && $0.count <= 10}
+            .subscribe(onNext: {
+                moneyTextFieldRelay.accept($0)
+            })
+            .disposed(by: disposeBag)
         
         
         let input = HuhoeMainViewModel.Input(
             viewWillAppear: testButton.rx.tap.asObservable(),
-            changeMoney: moneyObservable,
+            changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             changeDate: textRelay.asObservable()
         )
         
@@ -122,25 +125,28 @@ extension HuhoeMainViewController {
                 self?.applySnapShot($0)
             })
             .disposed(by: disposeBag)
-        
-        output.test
-            .subscribe(onNext: { [weak self] in
-                print($0)
-            }).disposed(by: disposeBag)
     }
     
     private func bindCollectionView() {
         coinListCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                
                 // TODO: 화면 전환 시 데이터 전달 방법 개선
-                let item = self?.dataSource?.itemIdentifier(for: $0)
+                let item = self.dataSource?.itemIdentifier(for: $0)
                 
                 let viewControllerName = "HuhoeDetailViewController"
                 let storyboard = UIStoryboard(name: viewControllerName, bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName)
                 viewController.title = item?.coinSymbol
                 
-                self?.navigationController?.show(viewController, sender: nil)
+                guard let detailViewController = viewController as? HuhoeDetailViewController else {
+                    return
+                }
+                let detailUseCase = CoinDetailUseCase(candlestickRepository: self.viewModel.useCase.candlestickRepository)
+                detailViewController.viewModel = HuhoeDetailViewModel(selectedCoinSymbol: ((item?.coinSymbol ?? "")), useCase: detailUseCase)
+                
+                self.navigationController?.show(detailViewController, sender: nil)
             })
             .disposed(by: disposeBag)
     }

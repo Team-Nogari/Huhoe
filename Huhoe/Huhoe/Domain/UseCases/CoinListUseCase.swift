@@ -52,15 +52,4 @@ extension CoinListUseCase {
         
         return Observable.zip(tickerObservable, transactionObservable, coinPriceHistoryObservable)
     }
-    
-    func fetchTransactionWebSocket(with coinSymbols: [String]) -> Observable<RealTimeCoinPrice> {
-        return transactionWebSocketRepository.fetchTransaction(with: coinSymbols)
-    }
-}
-
-struct CoinInfo: Hashable {
-    let symbol: String
-    let currentPrice: Double
-    let priceHistory: [Double]
-    let date: [Date]
 }

@@ -38,13 +38,3 @@ extension CoinInfoItem {
         return oldPrice.toString(digit: 4)
     }
 }
-
-private extension Double {
-    func toString(digit: Int = 0) -> String {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.maximumFractionDigits = digit
-        numberFormatter.numberStyle = .decimal
-        
-        return numberFormatter.string(for: self) ?? ""
-    }
-}

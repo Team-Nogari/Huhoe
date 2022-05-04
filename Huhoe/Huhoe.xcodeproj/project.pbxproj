@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		084BF6A32818EFE600916465 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 084BF6A22818EFE600916465 /* RxCocoa */; };
-		084BF6A52818EFE600916465 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 084BF6A42818EFE600916465 /* RxRelay */; };
-		084BF6A72818EFE600916465 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 084BF6A62818EFE600916465 /* RxSwift */; };
-		084BF6A928191C6300916465 /* Result+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF6A828191C6300916465 /* Result+extension.swift */; };
 		0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834ED872813989000BD6D8C /* CoinHistoryCell.swift */; };
 		0834ED8A281398B400BD6D8C /* CoinHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */; };
+		084BF6A928191C6300916465 /* Result+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF6A828191C6300916465 /* Result+extension.swift */; };
+		084BF6AC28198D5D00916465 /* CoinDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084BF6AB28198D5D00916465 /* CoinDetailUseCase.swift */; };
 		089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */; };
 		089A9132281305B2006D2710 /* HuhoeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */; };
 		089A925E27FFE2E100728107 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A925D27FFE2E100728107 /* Transaction.swift */; };
@@ -23,6 +21,12 @@
 		089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */; };
 		089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */; };
 		089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */; };
+		08A100FA281A33DF0038BA8F /* Observable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A100F9281A33DF0038BA8F /* Observable+extension.swift */; };
+		08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A100FB281A755D0038BA8F /* Double+extension.swift */; };
+		08A100FF281A9DF20038BA8F /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08A100FE281A9DF20038BA8F /* RxCocoa */; };
+		08A10101281A9DF20038BA8F /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08A10100281A9DF20038BA8F /* RxRelay */; };
+		08A10103281A9DF20038BA8F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08A10102281A9DF20038BA8F /* RxSwift */; };
+		08A10105281AC41D0038BA8F /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10104281AC41D0038BA8F /* Array+extension.swift */; };
 		08AA7C8F280F039000305CED /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA7C8E280F039000305CED /* Date+extension.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
@@ -46,6 +50,9 @@
 		A66028DF28182A8E00B249EA /* DefaultTransactionWebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028DE28182A8E00B249EA /* DefaultTransactionWebSocketRepository.swift */; };
 		A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */; };
 		A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */; };
+		A665996A281988AE00285E84 /* HuhoeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */; };
+		A665996D281A92C800285E84 /* UIFont+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A665996C281A92C800285E84 /* UIFont+extension.swift */; };
+		A665996F281AD5D300285E84 /* CoinHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A665996E281AD5D300285E84 /* CoinHistoryItem.swift */; };
 		A691D560280AB77F005BFCB3 /* CoinInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */; };
 		A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3627FDB3F30005266D /* AppDelegate.swift */; };
 		A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE3827FDB3F30005266D /* SceneDelegate.swift */; };
@@ -83,9 +90,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		084BF6A828191C6300916465 /* Result+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+extension.swift"; sourceTree = "<group>"; };
 		0834ED872813989000BD6D8C /* CoinHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryCell.swift; sourceTree = "<group>"; };
 		0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinHistoryCell.xib; sourceTree = "<group>"; };
+		084BF6A828191C6300916465 /* Result+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+extension.swift"; sourceTree = "<group>"; };
+		084BF6AB28198D5D00916465 /* CoinDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailUseCase.swift; sourceTree = "<group>"; };
 		089A912F281305A4006D2710 /* HuhoeDetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HuhoeDetailViewController.storyboard; sourceTree = "<group>"; };
 		089A9131281305B2006D2710 /* HuhoeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDetailViewController.swift; sourceTree = "<group>"; };
 		089A925D27FFE2E100728107 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
@@ -96,6 +104,9 @@
 		089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TickerAllResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransactionResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CandlestickResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		08A100F9281A33DF0038BA8F /* Observable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+extension.swift"; sourceTree = "<group>"; };
+		08A100FB281A755D0038BA8F /* Double+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+extension.swift"; sourceTree = "<group>"; };
+		08A10104281AC41D0038BA8F /* Array+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extension.swift"; sourceTree = "<group>"; };
 		08AA7C8E280F039000305CED /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		08ACF49227FFD2C60007E134 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
@@ -119,6 +130,9 @@
 		A66028DE28182A8E00B249EA /* DefaultTransactionWebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionWebSocketRepository.swift; sourceTree = "<group>"; };
 		A66520832800649200783C58 /* DefaultTransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryRepository.swift; sourceTree = "<group>"; };
 		A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryRepository.swift; sourceTree = "<group>"; };
+		A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDetailViewModel.swift; sourceTree = "<group>"; };
+		A665996C281A92C800285E84 /* UIFont+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+extension.swift"; sourceTree = "<group>"; };
+		A665996E281AD5D300285E84 /* CoinHistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryItem.swift; sourceTree = "<group>"; };
 		A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoItem.swift; sourceTree = "<group>"; };
 		A6E4DE3327FDB3F30005266D /* Huhoe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Huhoe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE3627FDB3F30005266D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,9 +161,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				084BF6A72818EFE600916465 /* RxSwift in Frameworks */,
-				084BF6A52818EFE600916465 /* RxRelay in Frameworks */,
-				084BF6A32818EFE600916465 /* RxCocoa in Frameworks */,
+				08A10103281A9DF20038BA8F /* RxSwift in Frameworks */,
+				08A10101281A9DF20038BA8F /* RxRelay in Frameworks */,
+				08A100FF281A9DF20038BA8F /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +268,7 @@
 		089A912D2813025A006D2710 /* HuhoeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				A66599682819889400285E84 /* ViewModel */,
 				089A912E2813026E006D2710 /* View */,
 			);
 			path = HuhoeDetail;
@@ -276,6 +291,10 @@
 				089A926027FFE43300728107 /* String+extension.swift */,
 				08AA7C8E280F039000305CED /* Date+extension.swift */,
 				084BF6A828191C6300916465 /* Result+extension.swift */,
+				08A100F9281A33DF0038BA8F /* Observable+extension.swift */,
+				08A100FB281A755D0038BA8F /* Double+extension.swift */,
+				A665996C281A92C800285E84 /* UIFont+extension.swift */,
+				08A10104281AC41D0038BA8F /* Array+extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -362,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				08CA087828015EBE00C94584 /* CoinListUseCase.swift */,
+				084BF6AB28198D5D00916465 /* CoinDetailUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -400,6 +420,15 @@
 				A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A66599682819889400285E84 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */,
+				A665996E281AD5D300285E84 /* CoinHistoryItem.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A6E4DE2A27FDB3F30005266D = {
@@ -506,9 +535,9 @@
 			);
 			name = Huhoe;
 			packageProductDependencies = (
-				084BF6A22818EFE600916465 /* RxCocoa */,
-				084BF6A42818EFE600916465 /* RxRelay */,
-				084BF6A62818EFE600916465 /* RxSwift */,
+				08A100FE281A9DF20038BA8F /* RxCocoa */,
+				08A10100281A9DF20038BA8F /* RxRelay */,
+				08A10102281A9DF20038BA8F /* RxSwift */,
 			);
 			productName = Huhoe;
 			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
@@ -583,7 +612,7 @@
 			);
 			mainGroup = A6E4DE2A27FDB3F30005266D;
 			packageReferences = (
-				084BF6A12818EFE600916465 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				08A100FD281A9DF20038BA8F /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
@@ -637,7 +666,10 @@
 				084BF6A928191C6300916465 /* Result+extension.swift in Sources */,
 				A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */,
 				0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */,
+				08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */,
 				08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */,
+				08A100FA281A33DF0038BA8F /* Observable+extension.swift in Sources */,
+				A665996F281AD5D300285E84 /* CoinHistoryItem.swift in Sources */,
 				A6E4DE7327FEEEC10005266D /* HttpNetwork.swift in Sources */,
 				A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */,
 				089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */,
@@ -645,6 +677,7 @@
 				A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */,
 				08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */,
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
+				A665996A281988AE00285E84 /* HuhoeDetailViewModel.swift in Sources */,
 				A6E4DE7027FEEAF40005266D /* HttpNetworkProvider.swift in Sources */,
 				A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */,
 				089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */,
@@ -663,6 +696,7 @@
 				A66028D62816A42400B249EA /* WebSocketNetworkService.swift in Sources */,
 				A66028DD2816B78D00B249EA /* TransactionWebSocketNetwork.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
+				084BF6AC28198D5D00916465 /* CoinDetailUseCase.swift in Sources */,
 				08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,
@@ -674,6 +708,8 @@
 				A6E4DE7A27FF15DF0005266D /* URLSessionProtocol.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
 				08B238D6280A8B4E0047D282 /* HuhoeMainViewModel.swift in Sources */,
+				A665996D281A92C800285E84 /* UIFont+extension.swift in Sources */,
+				08A10105281AC41D0038BA8F /* Array+extension.swift in Sources */,
 				089A926F28002B2D00728107 /* TickerRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -859,7 +895,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL265827ML;
+				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -888,7 +924,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL265827ML;
+				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1028,7 +1064,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		084BF6A12818EFE600916465 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		08A100FD281A9DF20038BA8F /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -1039,19 +1075,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		084BF6A22818EFE600916465 /* RxCocoa */ = {
+		08A100FE281A9DF20038BA8F /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 084BF6A12818EFE600916465 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08A100FD281A9DF20038BA8F /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		084BF6A42818EFE600916465 /* RxRelay */ = {
+		08A10100281A9DF20038BA8F /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 084BF6A12818EFE600916465 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08A100FD281A9DF20038BA8F /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
-		084BF6A62818EFE600916465 /* RxSwift */ = {
+		08A10102281A9DF20038BA8F /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 084BF6A12818EFE600916465 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08A100FD281A9DF20038BA8F /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

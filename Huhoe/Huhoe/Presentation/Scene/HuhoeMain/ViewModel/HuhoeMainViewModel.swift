@@ -32,11 +32,9 @@ final class HuhoeMainViewModel: ViewModel {
     
     final class Output {
         let coinInfo: Observable<[CoinInfoItem]>
-        let test: Observable<RealTimeCoinPrice>
         
-        init(coinInfo: Observable<[CoinInfoItem]>, test: Observable<RealTimeCoinPrice>) {
+        init(coinInfo: Observable<[CoinInfoItem]>) {
             self.coinInfo = coinInfo
-            self.test = test
         }
     }
     
@@ -52,15 +50,8 @@ final class HuhoeMainViewModel: ViewModel {
             .map { coinInfo, dateString, money -> [CoinInfoItem] in
                 var coinInfoItems = [CoinInfoItem]()
                 
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy.MM.dd"
-                formatter.locale = Locale(identifier: "ko_KR")
-                formatter.timeZone = TimeZone(abbreviation: "KST")
-                let timeInterval = formatter.date(from: dateString)?.timeIntervalSince1970
-                
                 for index in coinInfo.0.indices {
-                    if let timeInterval = timeInterval,
-                       let dateIndex = coinInfo.2[index].date.firstIndex(of: timeInterval),
+                    if let dateIndex = coinInfo.2[index].date.firstIndex(of: dateString.toTimeInterval),
                        let price = coinInfo.2[index].price[safe: dateIndex],
                        let money = Double(money)
                     {
@@ -86,16 +77,6 @@ final class HuhoeMainViewModel: ViewModel {
                 return coinInfoItems
             }
         
-        let test = input.viewWillAppear.debug().flatMap {
-            return self.useCase.fetchTransactionWebSocket(with: ["BTC_KRW", "ETH_KRW"])
-        }
-        
-        return Output(coinInfo: coinInfo, test: test)
-    }
-}
-
-private extension Array {
-    subscript (safe index: Int) -> Element? {
-        return indices ~= index ? self[index] : nil
+        return Output(coinInfo: coinInfo)
     }
 }

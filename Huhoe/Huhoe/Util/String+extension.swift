@@ -16,6 +16,19 @@ extension String {
         return convertedDouble
     }
     
+    var toTimeInterval: TimeInterval {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = TimeZone(abbreviation: "KST")
+        
+        return formatter.date(from: self)?.timeIntervalSince1970 ?? .zero
+    }
+    
+    var removeComma: String {
+        return self.replacingOccurrences(of: ",", with: "")
+    }
+    
     var localized: String {
         return NSLocalizedString(self, tableName: "Localizable", value: self, comment: "")
     }

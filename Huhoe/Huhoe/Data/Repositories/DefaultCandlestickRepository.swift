@@ -7,7 +7,6 @@
 
 import Foundation
 import RxSwift
-import RxRelay
 
 final class DefaultCandlestickRepository {
     var dataSource: CoinPriceHistoryDataSource = DefaultCoinPriceHistoryDataSource()
@@ -21,12 +20,24 @@ final class DefaultCandlestickRepository {
 extension DefaultCandlestickRepository: CandlestickRepository {
     func fetchCandlestick(coinSymbol: [String]) -> Observable<[CoinPriceHistory]> {
         let coinPriceHistoryObservables = coinSymbol.map { coin in
-            network.fetchCandlestick(with: coin).compactMap { $0?.toDomain(coinSymbol: coin) }
+            network.fetchCandlestick(with: coin).compactMap { [weak self] dto -> CoinPriceHistory? in
+                let coinPriceHistory = dto?.toDomain(coinSymbol: coin)
+                self?.dataSource.coinPriceHistory.append(coinPriceHistory)
+                return coinPriceHistory
+            }
         }
         
-        _ = Observable.zip(coinPriceHistoryObservables)
-            .map { self.dataSource.coinPriceHistory = $0 }
-        
         return Observable.zip(coinPriceHistoryObservables)
+    }
+    
+    func fetchCoinPriceHistory(with coinSymbol: String) -> Observable<CoinPriceHistory> {
+        guard let coinPriceHistory = dataSource.coinPriceHistory
+                .filter({ $0?.coinSymbol == coinSymbol }).first
+        else {
+            return .empty()
+        }
+        
+        return Observable.just(coinPriceHistory)
+            .filterNil()
     }
 }
