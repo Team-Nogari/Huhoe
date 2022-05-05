@@ -94,38 +94,10 @@ final class HuhoeDetailViewModel: ViewModel {
             priceHistoryObservable: coinPriceHistoryObservable
         )
         
-        let chartInformationObservable = Observable.combineLatest(
-            coinPriceHistoryObservable,
-            input.scrollViewDidAppear
-        ).map { coinHistory, contentSizeInformation -> ChartInformation in
-            let contentWidth = contentSizeInformation.0
-            let contentOffsetX = contentSizeInformation.1
-            
-            let pointX = contentOffsetX == 0.0 ? 1 : contentOffsetX
-            
-            let startRate = pointX / contentWidth
-            
-            let dataFirstIndex = Double(coinHistory.price.count) * startRate
-
-            var dateRange: ClosedRange = 0...1
-
-            if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
-                dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
-            } else {
-                dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
-            }
-
-            let reversedPrice = Array(coinHistory.price.reversed())
-            let reversedDate = Array(coinHistory.date.reversed())
-            let price = reversedPrice[dateRange]
-            
-            return ChartInformation(
-                price: Array(price),
-                oldestDate: reversedDate[dateRange.max()!].toDateString(),
-                latestDate: reversedDate[dateRange.min()!].toDateString(),
-                pointX: pointX
-            )
-        }
+        let chartInformationObservable = makeChartInformationObservable(
+            coinPriceHistoryObservable: coinPriceHistoryObservable,
+            input: input
+        )
         
         let ChartPriceAndDateViewInformationObservable = Observable.combineLatest(
             coinPriceHistoryObservable,
@@ -207,5 +179,44 @@ extension HuhoeDetailViewModel {
                    
                    return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
                }
+    }
+    
+    private func makeChartInformationObservable(
+        coinPriceHistoryObservable: Observable<CoinPriceHistory>,
+        input: Input
+    ) -> Observable<ChartInformation> {
+        return Observable.combineLatest(
+            coinPriceHistoryObservable,
+            input.scrollViewDidAppear
+        )
+        .map { coinHistory, contentSizeInformation -> ChartInformation in
+            let contentWidth = contentSizeInformation.0
+            let contentOffsetX = contentSizeInformation.1
+            
+            let pointX = contentOffsetX == 0.0 ? 1 : contentOffsetX
+            
+            let startRate = pointX / contentWidth
+            
+            let dataFirstIndex = Double(coinHistory.price.count) * startRate
+            
+            var dateRange: ClosedRange = 0...1
+            
+            if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
+                dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
+            } else {
+                dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
+            }
+            
+            let reversedPrice = Array(coinHistory.price.reversed())
+            let reversedDate = Array(coinHistory.date.reversed())
+            let price = reversedPrice[dateRange]
+            
+            return ChartInformation(
+                price: Array(price),
+                oldestDate: reversedDate[dateRange.max()!].toDateString(),
+                latestDate: reversedDate[dateRange.min()!].toDateString(),
+                pointX: pointX
+            )
+        }
     }
 }
