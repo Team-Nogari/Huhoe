@@ -45,6 +45,7 @@
 		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
 		A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E610280D93C600738DAD /* MoneyTextField.swift */; };
 		A652E615280EB2EC00738DAD /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E614280EB2EC00738DAD /* DatePickerViewController.swift */; };
+		A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655A1F92823AFAA000A0FEC /* ChartInformation.swift */; };
 		A66028D128169AB900B249EA /* TransactionWebSocketResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D028169AB900B249EA /* TransactionWebSocketResponseDTO.swift */; };
 		A66028D62816A42400B249EA /* WebSocketNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D52816A42400B249EA /* WebSocketNetworkService.swift */; };
 		A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */; };
@@ -128,6 +129,7 @@
 		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
 		A652E610280D93C600738DAD /* MoneyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTextField.swift; sourceTree = "<group>"; };
 		A652E614280EB2EC00738DAD /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
+		A655A1F92823AFAA000A0FEC /* ChartInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInformation.swift; sourceTree = "<group>"; };
 		A66028D028169AB900B249EA /* TransactionWebSocketResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebSocketResponseDTO.swift; sourceTree = "<group>"; };
 		A66028D52816A42400B249EA /* WebSocketNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketNetworkService.swift; sourceTree = "<group>"; };
 		A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionWebSocketProtocol.swift; sourceTree = "<group>"; };
@@ -436,6 +438,7 @@
 			children = (
 				A6659969281988AE00285E84 /* HuhoeDetailViewModel.swift */,
 				A665996E281AD5D300285E84 /* CoinHistoryItem.swift */,
+				A655A1F92823AFAA000A0FEC /* ChartInformation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
+				A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */,
 				08AA7C8F280F039000305CED /* Date+extension.swift in Sources */,
 				A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */,
 				A6E4DE7D27FF17C40005266D /* HttpNetworkError.swift in Sources */,

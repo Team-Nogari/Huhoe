@@ -134,13 +134,6 @@ final class HuhoeDetailViewModel: ViewModel {
     }
 }
 
-struct ChartInformation {
-    let price: [Double]
-    let oldestDate: String
-    let latestDate: String
-    let pointX: Double
-}
-
 extension HuhoeDetailViewModel {
     private func makePriceAndQuantityObservable(
         input: Input,
