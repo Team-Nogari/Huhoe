@@ -217,16 +217,6 @@ extension HuhoeDetailViewController {
     }
 }
 
-extension Double {
-    func toDateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
-        let date = Date(timeIntervalSince1970: self)
-        
-        return formatter.string(from: date)
-    }
-}
-
 // MARK: - Configure View
 
 extension HuhoeDetailViewController {
