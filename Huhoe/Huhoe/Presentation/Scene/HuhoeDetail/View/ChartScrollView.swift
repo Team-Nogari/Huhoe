@@ -15,7 +15,7 @@ final class ChartScrollView: UIScrollView {
     @IBOutlet private weak var priceAndDateView: ChartPriceAndDateView!
     
     // MARK: - Property
-    let touchPointRelay: BehaviorRelay<Double> = BehaviorRelay<Double>(value: 0)
+    let touchPointRelay: PublishRelay<Double> = PublishRelay<Double>()
     
     let lineLayer: CALayer = {
         let layer = CALayer()

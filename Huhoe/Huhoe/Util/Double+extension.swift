@@ -15,4 +15,12 @@ extension Double {
         
         return numberFormatter.string(for: self) ?? ""
     }
+    
+    func toDateString() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        let date = Date(timeIntervalSince1970: self)
+        
+        return formatter.string(from: date)
+    }
 }
