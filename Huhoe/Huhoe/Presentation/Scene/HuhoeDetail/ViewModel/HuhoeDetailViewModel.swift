@@ -16,17 +16,20 @@ final class HuhoeDetailViewModel: ViewModel {
         let changeMoney: Observable<String>
         let viewDidAppear: Observable<String>
         let scrollViewDidAppear: Observable<(Double, Double)>
+        let didTapScrollView: Observable<(Double, Double)>
         
         init(
             changeDate: Observable<String>,
             changeMoney: Observable<String>,
             viewDidAppear: Observable<String>,
-            scrollViewDidAppear: Observable<(Double, Double)>
+            scrollViewDidAppear: Observable<(Double, Double)>,
+            didTapScrollView: Observable<(Double, Double)>
         ) {
             self.changeDate = changeDate
             self.changeMoney = changeMoney
             self.viewDidAppear = viewDidAppear
             self.scrollViewDidAppear = scrollViewDidAppear
+            self.didTapScrollView = didTapScrollView
         }
     }
     

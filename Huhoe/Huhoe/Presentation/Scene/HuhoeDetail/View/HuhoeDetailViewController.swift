@@ -111,6 +111,7 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
         
         let scrollViewContentSize = chartScrollView.rx.observe(CGSize.self, "contentSize")
+        
         let scrollViewDidAppear = Observable.combineLatest(scrollViewContentSize, chartScrollView.rx.contentOffset)
             .skip(1)
             .map { contentSize, offset -> (Double, Double) in
@@ -121,11 +122,22 @@ extension HuhoeDetailViewController {
                 return (Double(contentWidth), Double(offset.x))
             }
         
+        let didTapScrollView = Observable.combineLatest(scrollViewContentSize, chartScrollView.touchPointRelay)
+            .skip(1)
+            .map { contentSize, touchPointX -> (Double, Double) in
+                guard let contentWidth = contentSize?.width else {
+                    return (0, touchPointX)
+                }
+                
+                return (Double(contentWidth), touchPointX)
+            }
+        
         let input = HuhoeDetailViewModel.Input(
             changeDate: textRelay.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             viewDidAppear: Observable.empty(),
-            scrollViewDidAppear: scrollViewDidAppear
+            scrollViewDidAppear: scrollViewDidAppear,
+            didTapScrollView: didTapScrollView.asObservable()
         )
         
         // MARK: - Output
