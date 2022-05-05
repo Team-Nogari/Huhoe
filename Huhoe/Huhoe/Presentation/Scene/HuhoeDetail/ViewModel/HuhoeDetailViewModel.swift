@@ -39,6 +39,7 @@ final class HuhoeDetailViewModel: ViewModel {
         let todayCoinInfo: Observable<CoinHistoryItem>
         let coinHistory: Observable<CoinPriceHistory>
         let chartInformation: Observable<ChartInformation>
+        let chartPriceAndDateViewInformation: Observable<ChartPriceAndDateViewInformation>
         let symbol: String
         
         init(
@@ -47,6 +48,7 @@ final class HuhoeDetailViewModel: ViewModel {
             todayCoinInfo: Observable<CoinHistoryItem>,
             coinHistory: Observable<CoinPriceHistory>,
             chartInformation: Observable<ChartInformation>,
+            chartPriceAndDateViewInformation: Observable<ChartPriceAndDateViewInformation>,
             symbol: String
         ) {
             self.realTimePrice = realTimePrice
@@ -54,6 +56,7 @@ final class HuhoeDetailViewModel: ViewModel {
             self.todayCoinInfo = todayCoinInfo
             self.coinHistory = coinHistory
             self.chartInformation = chartInformation
+            self.chartPriceAndDateViewInformation = chartPriceAndDateViewInformation
             self.symbol = symbol
         }
     }
@@ -124,15 +127,44 @@ final class HuhoeDetailViewModel: ViewModel {
             )
         }
         
+        let ChartPriceAndDateViewInformationObservable = Observable.combineLatest(
+            coinPriceHistoryObservable,
+            input.didTapScrollView
+        ).map { coinHistory, scrollViewInformation -> ChartPriceAndDateViewInformation in
+            let contentWidth = scrollViewInformation.0
+            let touchPoint = scrollViewInformation.1
+            
+            let startRate = touchPoint / contentWidth
+            let dataIndex = Double(coinHistory.price.count) * startRate
+            
+            let reversedPrice = Array(coinHistory.price.reversed())
+            let reversedDate = Array(coinHistory.date.reversed())
+            let price = reversedPrice[Int(dataIndex)].toString()
+            let date = reversedDate[Int(dataIndex)].toDateString()
+            
+            return ChartPriceAndDateViewInformation(
+                price: price,
+                date: date,
+                pointX: touchPoint
+            )
+        }
+        
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
             priceAndQuantity: priceAndQuantityObservable,
             todayCoinInfo: todayCoinInfoObservable,
             coinHistory: coinPriceHistoryObservable,
             chartInformation: chartInformationObservable,
+            chartPriceAndDateViewInformation: ChartPriceAndDateViewInformationObservable,
             symbol: selectedCoinSymbol
         )
     }
+}
+
+struct ChartPriceAndDateViewInformation {
+    let price: String
+    let date: String
+    let pointX: Double
 }
 
 extension HuhoeDetailViewModel {

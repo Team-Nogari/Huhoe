@@ -122,8 +122,7 @@ extension HuhoeDetailViewController {
                 return (Double(contentWidth), Double(offset.x))
             }
         
-        let didTapScrollView = Observable.combineLatest(scrollViewContentSize, chartScrollView.touchPointRelay)
-            .skip(1)
+        let didTapScrollView = Observable.combineLatest(scrollViewContentSize, chartScrollView.touchPointRelay) 
             .map { contentSize, touchPointX -> (Double, Double) in
                 guard let contentWidth = contentSize?.width else {
                     return (0, touchPointX)
@@ -186,20 +185,14 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.coinHistory, chartScrollView.touchPointRelay)
-            .skip(1)
+        output.chartPriceAndDateViewInformation
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] coinHistory, pointX in
-                let startRate = pointX / self!.chartScrollView.contentSize.width
-                let dataIndex = Double(coinHistory.price.count) * startRate
+            .subscribe(onNext: { [weak self] chartPriceAndDateViewInformation in
+                let price = chartPriceAndDateViewInformation.price
+                let date = chartPriceAndDateViewInformation.date
+                let pointX = chartPriceAndDateViewInformation.pointX
                 
-                let reversedPrice = Array(coinHistory.price.reversed())
-                let reversedDate = Array(coinHistory.date.reversed())
-                let price = reversedPrice[Int(dataIndex)]
-                let date = reversedDate[Int(dataIndex)].toDateString()
-                
-                self?.chartScrollView.moveFloatingPriceAndDateView(offsetX: pointX, price: price.toString(), date: date)
-                print("price", price, "date", date)
+                self?.chartScrollView.moveFloatingPriceAndDateView(offsetX: pointX, price: price, date: date)
             })
             .disposed(by: disposeBag)
     }
