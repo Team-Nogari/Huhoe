@@ -15,11 +15,18 @@ final class HuhoeDetailViewModel: ViewModel {
         let changeDate: Observable<String>
         let changeMoney: Observable<String>
         let viewDidAppear: Observable<String>
+        let scrollViewDidAppear: Observable<Double>
         
-        init(changeDate: Observable<String>, changeMoney: Observable<String>, viewDidAppear: Observable<String>) {
+        init(
+            changeDate: Observable<String>,
+            changeMoney: Observable<String>,
+            viewDidAppear: Observable<String>,
+            scrollViewDidAppear: Observable<Double>
+        ) {
             self.changeDate = changeDate
             self.changeMoney = changeMoney
             self.viewDidAppear = viewDidAppear
+            self.scrollViewDidAppear = scrollViewDidAppear
         }
     }
     
@@ -77,6 +84,8 @@ final class HuhoeDetailViewModel: ViewModel {
             input: input,
             priceHistoryObservable: coinPriceHistoryObservable
         )
+        
+        let scrollViewDidAppearObservable = Observable.combineLatest(coinPriceHistoryObservable, input.scrollViewDidAppear)
         
         return Output(
             realTimePrice: realTimePriceStringObservalbe,

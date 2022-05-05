@@ -109,10 +109,14 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
+        let scrollViewDidAppear = chartScrollView.rx.contentOffset
+            .map { Double($0.x) }
+        
         let input = HuhoeDetailViewModel.Input(
             changeDate: textRelay.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
-            viewDidAppear: Observable.empty()
+            viewDidAppear: Observable.empty(),
+            scrollViewDidAppear: scrollViewDidAppear.asObservable()
         )
         
         // MARK: - Output
@@ -148,7 +152,7 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset)
+        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset) // 수정중
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] coinHistory, offset in
                 let pointX = offset.x == 0.0 ? 1 : offset.x
