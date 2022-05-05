@@ -11,6 +11,7 @@ import RxCocoa
 
 final class HuhoeDetailViewController: UIViewController {
     
+    
     // MARK: - Collection View
     
     private enum Section: String, CaseIterable {
@@ -109,14 +110,22 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        let scrollViewDidAppear = chartScrollView.rx.contentOffset
-            .map { Double($0.x) }
+        let scrollViewContentSize = chartScrollView.rx.observe(CGSize.self, "contentSize")
+        let scrollViewDidAppear = Observable.combineLatest(scrollViewContentSize, chartScrollView.rx.contentOffset)
+            .skip(1)
+            .map { contentSize, offset -> (Double, Double) in
+                guard let contentWidth = contentSize?.width else {
+                    return (0, Double(offset.x))
+                }
+                
+                return (Double(contentWidth), Double(offset.x))
+            }
         
         let input = HuhoeDetailViewModel.Input(
             changeDate: textRelay.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             viewDidAppear: Observable.empty(),
-            scrollViewDidAppear: scrollViewDidAppear.asObservable()
+            scrollViewDidAppear: scrollViewDidAppear
         )
         
         // MARK: - Output
@@ -152,32 +161,42 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset) // 수정중
+        output.chartInformation
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] coinHistory, offset in
-                let pointX = offset.x == 0.0 ? 1 : offset.x
+            .subscribe(onNext: { [weak self] chartInformation in
+                self?.chartOldDateLabel.text = chartInformation.oldestDate
+                self?.chartLatestDateLabel.text = chartInformation.latestDate
                 
-                let startRate = pointX / self!.chartScrollView.contentSize.width
-                let dataFirstIndex = Double(coinHistory.price.count) * startRate
-                
-                var dateRange: ClosedRange = 0...1
-                
-                if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
-                    dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
-                } else {
-                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
-                }
-                
-                let reversedPrice = Array(coinHistory.price.reversed())
-                let reversedDate = Array(coinHistory.date.reversed())
-                let price = reversedPrice[dateRange]
-            
-                self?.chartOldDateLabel.text = reversedDate[dateRange.max()!].toDateString()
-                self?.chartLatestDateLabel.text = reversedDate[dateRange.min()!].toDateString()
-                
-                self?.chartImageView.drawChart(price: Array(price), offsetX: offset.x)
+                self?.chartImageView.drawChart(
+                    price: chartInformation.price,
+                    offsetX: chartInformation.pointX
+                )
             })
             .disposed(by: disposeBag)
+        
+//        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset) // 수정중
+//            .observe(on: MainScheduler.asyncInstance)
+//            .subscribe(onNext: { [weak self] coinHistory, offset in
+//                let pointX = offset.x == 0.0 ? 1 : offset.x
+//
+//                let startRate = pointX / self!.chartScrollView.contentSize.width
+//                let dataFirstIndex = Double(coinHistory.price.count) * startRate
+//
+//                var dateRange: ClosedRange = 0...1
+//
+//                if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
+//                    dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
+//                } else {
+//                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
+//                }
+//
+//                let reversedPrice = Array(coinHistory.price.reversed())
+//                let reversedDate = Array(coinHistory.date.reversed())
+//                let price = reversedPrice[dateRange]
+//
+//
+//            })
+//            .disposed(by: disposeBag)
         
         Observable.combineLatest(output.coinHistory, chartScrollView.touchPointRelay)
             .skip(1)
@@ -198,7 +217,7 @@ extension HuhoeDetailViewController {
     }
 }
 
-private extension Double {
+extension Double {
     func toDateString() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"

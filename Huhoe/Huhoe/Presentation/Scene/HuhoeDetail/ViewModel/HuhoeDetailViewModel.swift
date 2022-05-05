@@ -10,18 +10,20 @@ import RxSwift
 
 final class HuhoeDetailViewModel: ViewModel {
     typealias PriceAndQuantity = (price: Double, quantity: Double)
+//    typealias ChartInformation = (coinPriceHistory: [Double], offsetX: Double)
+//    typealias ChartScrollViewInformation = (contentWidth: Double, offsetX: Double)
     
     final class Input {
         let changeDate: Observable<String>
         let changeMoney: Observable<String>
         let viewDidAppear: Observable<String>
-        let scrollViewDidAppear: Observable<Double>
+        let scrollViewDidAppear: Observable<(Double, Double)>
         
         init(
             changeDate: Observable<String>,
             changeMoney: Observable<String>,
             viewDidAppear: Observable<String>,
-            scrollViewDidAppear: Observable<Double>
+            scrollViewDidAppear: Observable<(Double, Double)>
         ) {
             self.changeDate = changeDate
             self.changeMoney = changeMoney
@@ -35,6 +37,7 @@ final class HuhoeDetailViewModel: ViewModel {
         let priceAndQuantity: Observable<PriceAndQuantity>
         let todayCoinInfo: Observable<CoinHistoryItem>
         let coinHistory: Observable<CoinPriceHistory>
+        let chartInformation: Observable<ChartInformation>
         let symbol: String
         
         init(
@@ -42,12 +45,14 @@ final class HuhoeDetailViewModel: ViewModel {
             priceAndQuantity: Observable<PriceAndQuantity>,
             todayCoinInfo: Observable<CoinHistoryItem>,
             coinHistory: Observable<CoinPriceHistory>,
+            chartInformation: Observable<ChartInformation>,
             symbol: String
         ) {
             self.realTimePrice = realTimePrice
             self.priceAndQuantity = priceAndQuantity
             self.todayCoinInfo = todayCoinInfo
             self.coinHistory = coinHistory
+            self.chartInformation = chartInformation
             self.symbol = symbol
         }
     }
@@ -85,16 +90,55 @@ final class HuhoeDetailViewModel: ViewModel {
             priceHistoryObservable: coinPriceHistoryObservable
         )
         
-        let scrollViewDidAppearObservable = Observable.combineLatest(coinPriceHistoryObservable, input.scrollViewDidAppear)
+        let chartInformationObservable = Observable.combineLatest(
+            coinPriceHistoryObservable,
+            input.scrollViewDidAppear
+        ).map { coinHistory, contentSizeInformation -> ChartInformation in
+            let contentWidth = contentSizeInformation.0
+            let contentOffsetX = contentSizeInformation.1
+            
+            let pointX = contentOffsetX == 0.0 ? 1 : contentOffsetX
+            
+            let startRate = pointX / contentWidth
+            
+            let dataFirstIndex = Double(coinHistory.price.count) * startRate
+
+            var dateRange: ClosedRange = 0...1
+
+            if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
+                dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
+            } else {
+                dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
+            }
+
+            let reversedPrice = Array(coinHistory.price.reversed())
+            let reversedDate = Array(coinHistory.date.reversed())
+            let price = reversedPrice[dateRange]
+            
+            return ChartInformation(
+                price: Array(price),
+                oldestDate: reversedDate[dateRange.max()!].toDateString(),
+                latestDate: reversedDate[dateRange.min()!].toDateString(),
+                pointX: pointX
+            )
+        }
         
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
             priceAndQuantity: priceAndQuantityObservable,
             todayCoinInfo: todayCoinInfoObservable,
             coinHistory: coinPriceHistoryObservable,
+            chartInformation: chartInformationObservable,
             symbol: selectedCoinSymbol
         )
     }
+}
+
+struct ChartInformation {
+    let price: [Double]
+    let oldestDate: String
+    let latestDate: String
+    let pointX: Double
 }
 
 extension HuhoeDetailViewModel {
