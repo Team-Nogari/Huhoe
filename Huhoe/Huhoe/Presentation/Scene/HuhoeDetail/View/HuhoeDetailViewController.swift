@@ -174,30 +174,6 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-//        Observable.combineLatest(output.coinHistory, chartScrollView.rx.contentOffset) // 수정중
-//            .observe(on: MainScheduler.asyncInstance)
-//            .subscribe(onNext: { [weak self] coinHistory, offset in
-//                let pointX = offset.x == 0.0 ? 1 : offset.x
-//
-//                let startRate = pointX / self!.chartScrollView.contentSize.width
-//                let dataFirstIndex = Double(coinHistory.price.count) * startRate
-//
-//                var dateRange: ClosedRange = 0...1
-//
-//                if Int(dataFirstIndex.rounded()) + 29 >= coinHistory.price.count {
-//                    dateRange = Int(dataFirstIndex.rounded())...coinHistory.price.count - 1
-//                } else {
-//                    dateRange = Int(dataFirstIndex.rounded())...Int(dataFirstIndex.rounded()) + 29
-//                }
-//
-//                let reversedPrice = Array(coinHistory.price.reversed())
-//                let reversedDate = Array(coinHistory.date.reversed())
-//                let price = reversedPrice[dateRange]
-//
-//
-//            })
-//            .disposed(by: disposeBag)
-        
         Observable.combineLatest(output.coinHistory, chartScrollView.touchPointRelay)
             .skip(1)
             .observe(on: MainScheduler.asyncInstance)

@@ -10,8 +10,6 @@ import RxSwift
 
 final class HuhoeDetailViewModel: ViewModel {
     typealias PriceAndQuantity = (price: Double, quantity: Double)
-//    typealias ChartInformation = (coinPriceHistory: [Double], offsetX: Double)
-//    typealias ChartScrollViewInformation = (contentWidth: Double, offsetX: Double)
     
     final class Input {
         let changeDate: Observable<String>
