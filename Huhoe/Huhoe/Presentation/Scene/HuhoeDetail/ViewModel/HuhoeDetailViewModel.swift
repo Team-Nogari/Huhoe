@@ -99,27 +99,10 @@ final class HuhoeDetailViewModel: ViewModel {
             input: input
         )
         
-        let ChartPriceAndDateViewInformationObservable = Observable.combineLatest(
-            coinPriceHistoryObservable,
-            input.didTapScrollView
-        ).map { coinHistory, scrollViewInformation -> ChartPriceAndDateViewInformation in
-            let contentWidth = scrollViewInformation.0
-            let touchPoint = scrollViewInformation.1
-            
-            let startRate = touchPoint / contentWidth
-            let dataIndex = Double(coinHistory.price.count) * startRate
-            
-            let reversedPrice = Array(coinHistory.price.reversed())
-            let reversedDate = Array(coinHistory.date.reversed())
-            let price = reversedPrice[Int(dataIndex)].toString()
-            let date = reversedDate[Int(dataIndex)].toDateString()
-            
-            return ChartPriceAndDateViewInformation(
-                price: price,
-                date: date,
-                pointX: touchPoint
-            )
-        }
+        let chartPriceAndDateViewInformationObservable = makeChartPriceAndDateViewInformationObservable(
+            coinPriceHistoryObservable: coinPriceHistoryObservable,
+            input: input
+        )
         
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
@@ -127,7 +110,7 @@ final class HuhoeDetailViewModel: ViewModel {
             todayCoinInfo: todayCoinInfoObservable,
             coinHistory: coinPriceHistoryObservable,
             chartInformation: chartInformationObservable,
-            chartPriceAndDateViewInformation: ChartPriceAndDateViewInformationObservable,
+            chartPriceAndDateViewInformation: chartPriceAndDateViewInformationObservable,
             symbol: selectedCoinSymbol
         )
     }
@@ -138,18 +121,22 @@ extension HuhoeDetailViewModel {
         input: Input,
         priceHistoryObservable: Observable<CoinPriceHistory>
     ) -> Observable<PriceAndQuantity> {
-        return Observable.combineLatest(input.changeDate, input.changeMoney, priceHistoryObservable)
-            .map { dateString, money, priceHistory -> PriceAndQuantity in
-                if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
-                   let price = priceHistory.price[safe: dateIndex],
-                   let money = Double(money)
-                {
-                    let quantity = money / price
-                    return (price, quantity)
-                }
-                
-                return (.zero, .zero)
+        return Observable.combineLatest(
+            input.changeDate,
+            input.changeMoney,
+            priceHistoryObservable
+        )
+        .map { dateString, money, priceHistory -> PriceAndQuantity in
+            if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
+                let price = priceHistory.price[safe: dateIndex],
+                let money = Double(money)
+            {
+                let quantity = money / price
+                return (price, quantity)
             }
+                
+            return (.zero, .zero)
+        }
     }
     
     private func makeTodayCoinInfoObservable(
@@ -162,23 +149,23 @@ extension HuhoeDetailViewModel {
                    input.changeDate,
                    input.changeMoney,
                    priceHistoryObservable
-               )
-               .map { realTimePrice, dateString, money, priceHistory -> CoinHistoryItem in
-                   if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
-                      let price = priceHistory.price[safe: dateIndex],
-                      let money = Double(money)
-                   {
-                       let quantity = money / price
+        )
+        .map { realTimePrice, dateString, money, priceHistory -> CoinHistoryItem in
+            if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
+                let price = priceHistory.price[safe: dateIndex],
+                let money = Double(money)
+            {
+                let quantity = money / price
                        
-                       let calculatedPrice = realTimePrice * quantity
-                       let profitAndLoss = calculatedPrice - money
-                       let rate = profitAndLoss / money * 100
+                let calculatedPrice = realTimePrice * quantity
+                let profitAndLoss = calculatedPrice - money
+                let rate = profitAndLoss / money * 100
                        
-                       return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
-                   }
+                return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+            }
                    
-                   return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
-               }
+            return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
+        }
     }
     
     private func makeChartInformationObservable(
@@ -216,6 +203,33 @@ extension HuhoeDetailViewModel {
                 oldestDate: reversedDate[dateRange.max()!].toDateString(),
                 latestDate: reversedDate[dateRange.min()!].toDateString(),
                 pointX: pointX
+            )
+        }
+    }
+    
+    private func makeChartPriceAndDateViewInformationObservable(
+        coinPriceHistoryObservable: Observable<CoinPriceHistory>,
+        input: Input
+    ) -> Observable<ChartPriceAndDateViewInformation> {
+        return Observable.combineLatest(
+            coinPriceHistoryObservable,
+            input.didTapScrollView
+        ).map { coinHistory, scrollViewInformation -> ChartPriceAndDateViewInformation in
+            let contentWidth = scrollViewInformation.0
+            let touchPoint = scrollViewInformation.1
+            
+            let startRate = touchPoint / contentWidth
+            let dataIndex = Double(coinHistory.price.count) * startRate
+            
+            let reversedPrice = Array(coinHistory.price.reversed())
+            let reversedDate = Array(coinHistory.date.reversed())
+            let price = reversedPrice[Int(dataIndex)].toString()
+            let date = reversedDate[Int(dataIndex)].toDateString()
+            
+            return ChartPriceAndDateViewInformation(
+                price: price,
+                date: date,
+                pointX: touchPoint
             )
         }
     }
