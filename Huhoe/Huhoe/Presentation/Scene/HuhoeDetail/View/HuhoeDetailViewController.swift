@@ -78,9 +78,12 @@ extension HuhoeDetailViewController {
         
         // MARK: - Input
         
+        moneyTextField.text = viewModel?.selectedCoinInformation.coinInvestmentMoney
+        currentPriceLabel.text = viewModel?.selectedCoinInformation.coinCurrentPrice
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
-        dateChangeButton.setTitle(dateFormatter.string(from: Date().yesterday), for: .normal)
+        dateChangeButton.setTitle(viewModel?.selectedCoinInformation.coinInvestmentDate ?? "", for: .normal)
         let textRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
         
         dateChangeButton.rx.tap
@@ -157,7 +160,14 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        output.coinHistoryInformation
+        Observable.combineLatest(output.currentCoinHistoryInformation, output.pastCoinHistoryInformation)
+            .observe(on: MainScheduler.asyncInstance)
+            .subscribe(onNext: { [weak self] current, past in
+                self?.applySnapShot(current, past)
+            })
+            .disposed(by: disposeBag)
+        
+        Observable.combineLatest(output.todayCoinHistoryInformation, output.pastCoinHistoryInformation)
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] today, past in
                 self?.applySnapShot(today, past)
