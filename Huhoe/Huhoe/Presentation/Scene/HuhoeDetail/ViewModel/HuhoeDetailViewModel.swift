@@ -36,7 +36,7 @@ final class HuhoeDetailViewModel: ViewModel {
     final class Output {
         let realTimePrice: Observable<String>
         let priceAndQuantity: Observable<PriceAndQuantity>
-        let todayCoinInfo: Observable<CoinHistoryItem>
+        let coinHistoryInformation: Observable<(CoinHistoryItem, [CoinHistoryItem])>
         let coinHistory: Observable<CoinPriceHistory>
         let chartInformation: Observable<ChartInformation>
         let chartPriceAndDateViewInformation: Observable<ChartPriceAndDateViewInformation>
@@ -45,7 +45,7 @@ final class HuhoeDetailViewModel: ViewModel {
         init(
             realTimePrice: Observable<String>,
             priceAndQuantity: Observable<PriceAndQuantity>,
-            todayCoinInfo: Observable<CoinHistoryItem>,
+            coinHistoryInformation: Observable<(CoinHistoryItem, [CoinHistoryItem])>,
             coinHistory: Observable<CoinPriceHistory>,
             chartInformation: Observable<ChartInformation>,
             chartPriceAndDateViewInformation: Observable<ChartPriceAndDateViewInformation>,
@@ -53,7 +53,7 @@ final class HuhoeDetailViewModel: ViewModel {
         ) {
             self.realTimePrice = realTimePrice
             self.priceAndQuantity = priceAndQuantity
-            self.todayCoinInfo = todayCoinInfo
+            self.coinHistoryInformation = coinHistoryInformation
             self.coinHistory = coinHistory
             self.chartInformation = chartInformation
             self.chartPriceAndDateViewInformation = chartPriceAndDateViewInformation
@@ -88,10 +88,21 @@ final class HuhoeDetailViewModel: ViewModel {
             priceHistoryObservable: coinPriceHistoryObservable
         )
         
-        let todayCoinInfoObservable = makeTodayCoinInfoObservable(
+        let todayCoinHistoryInformationObservable = makeTodayCoinInfoObservable(
             realTimePriceObservable: realTimePriceObservable,
             input: input,
             priceHistoryObservable: coinPriceHistoryObservable
+        )
+        
+        let pastCoinHistoryInformationObservable = makePastCoinInfoObservable(
+            input: input,
+            quantity: priceAndQuantityObservable,
+            priceHistoryObservable: coinPriceHistoryObservable
+        )
+        
+        let coinHistoryInformation = Observable.combineLatest(
+            todayCoinHistoryInformationObservable,
+            pastCoinHistoryInformationObservable
         )
         
         let chartInformationObservable = makeChartInformationObservable(
@@ -107,7 +118,7 @@ final class HuhoeDetailViewModel: ViewModel {
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
             priceAndQuantity: priceAndQuantityObservable,
-            todayCoinInfo: todayCoinInfoObservable,
+            coinHistoryInformation: coinHistoryInformation,
             coinHistory: coinPriceHistoryObservable,
             chartInformation: chartInformationObservable,
             chartPriceAndDateViewInformation: chartPriceAndDateViewInformationObservable,
@@ -165,6 +176,43 @@ extension HuhoeDetailViewModel {
             }
                    
             return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
+        }
+    }
+    
+    private func makePastCoinInfoObservable(
+        input: Input,
+        quantity: Observable<PriceAndQuantity>,
+        priceHistoryObservable: Observable<CoinPriceHistory>
+    ) -> Observable<[CoinHistoryItem]> {
+        return Observable.combineLatest(
+                   input.changeDate,
+                   input.changeMoney,
+                   quantity,
+                   priceHistoryObservable
+        )
+        .map { dateString, money, quantity, priceHistory -> [CoinHistoryItem] in
+            let filteredDates = priceHistory.date
+                .filter { $0 > dateString.toTimeInterval }
+                .map { $0.toDateString() }
+                .filter { $0.hasSuffix(".01") }
+            
+            var coinHistoryItems = [CoinHistoryItem]()
+            
+            filteredDates.forEach { filterDate in
+                if let dateIndex = priceHistory.date.firstIndex(of: filterDate.toTimeInterval),
+                   let price = priceHistory.price[safe: dateIndex],
+                   let money = Double(money)
+                {
+                    let calculatedPrice = price * quantity.quantity
+                    let profitAndLoss = calculatedPrice - money
+                    let rate = profitAndLoss / money * 100
+                    
+                    let item = CoinHistoryItem(date: filterDate, calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+                    coinHistoryItems.append(item)
+                }
+            }
+                   
+            return coinHistoryItems
         }
     }
     

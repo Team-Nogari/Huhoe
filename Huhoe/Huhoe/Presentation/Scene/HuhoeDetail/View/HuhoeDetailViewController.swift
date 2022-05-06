@@ -157,10 +157,10 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        output.todayCoinInfo
+        output.coinHistoryInformation
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { [weak self] in
-                self?.applySnapShot(self!.tempItems, $0) // 강제 언래핑 수정
+            .subscribe(onNext: { [weak self] today, past in
+                self?.applySnapShot(today, past)
             })
             .disposed(by: disposeBag)
         
@@ -256,14 +256,14 @@ extension HuhoeDetailViewController {
         }
     }
     
-    private func applySnapShot(_ items: [CoinHistoryItem], _ item: CoinHistoryItem) {
+    private func applySnapShot(_ today: CoinHistoryItem, _ past: [CoinHistoryItem]) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, CoinHistoryItem>()
         
         snapShot.appendSections([.today])
-        snapShot.appendItems([item], toSection: .today)
+        snapShot.appendItems([today], toSection: .today)
         
         snapShot.appendSections([.past])
-        snapShot.appendItems(items, toSection: .past)
+        snapShot.appendItems(past, toSection: .past)
         
         dataSource?.apply(snapShot)
     }
