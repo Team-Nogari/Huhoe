@@ -75,6 +75,7 @@
 		A6E4DE7A27FF15DF0005266D /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7927FF15DF0005266D /* URLSessionProtocol.swift */; };
 		A6E4DE7D27FF17C40005266D /* HttpNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7C27FF17C40005266D /* HttpNetworkError.swift */; };
 		A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */; };
+		A6EA67D228251C4B006FE5DC /* SelectedCoinInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		A6E4DE7927FF15DF0005266D /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		A6E4DE7C27FF17C40005266D /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
 		A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryNetwork.swift; sourceTree = "<group>"; };
+		A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCoinInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 			children = (
 				08B238D5280A8B4E0047D282 /* HuhoeMainViewModel.swift */,
 				A691D55F280AB77F005BFCB3 /* CoinInfoItem.swift */,
+				A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6EA67D228251C4B006FE5DC /* SelectedCoinInformation.swift in Sources */,
 				089A927128002DC800728107 /* DefaultTickerRepository.swift in Sources */,
 				A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */,
 				084BF6A928191C6300916465 /* Result+extension.swift in Sources */,

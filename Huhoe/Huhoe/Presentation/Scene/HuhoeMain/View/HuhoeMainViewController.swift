@@ -144,7 +144,20 @@ extension HuhoeMainViewController {
                     return
                 }
                 let detailUseCase = CoinDetailUseCase(candlestickRepository: self.viewModel.useCase.candlestickRepository)
-                detailViewController.viewModel = HuhoeDetailViewModel(selectedCoinSymbol: ((item?.coinSymbol ?? "")), useCase: detailUseCase)
+                
+                let selectedCoin = SelectedCoinInformation(
+                    coinSymbol: item?.coinSymbol ?? "",
+                    coinCurrentPrice: item?.currentPriceString ?? "",
+                    coinInvestmentDate: self.dateChangeButton.titleLabel?.text ?? "",
+                    coinInvestmentMoney: self.moneyTextField.text ?? ""
+                )
+                
+                print(selectedCoin)
+                    
+                detailViewController.viewModel = HuhoeDetailViewModel(
+                    selectedCoinInformation: selectedCoin,
+                    useCase: detailUseCase
+                ) // 코인 가격, 선택 날짜, 투자금액
                 
                 self.navigationController?.show(detailViewController, sender: nil)
             })

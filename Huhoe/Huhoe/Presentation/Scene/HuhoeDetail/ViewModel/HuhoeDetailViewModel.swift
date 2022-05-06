@@ -64,19 +64,19 @@ final class HuhoeDetailViewModel: ViewModel {
     let useCase: CoinDetailUseCase
     var disposeBag: DisposeBag = DisposeBag()
     
-    private let selectedCoinSymbol: String
+    private let selectedCoinInformation: SelectedCoinInformation
     
-    init(selectedCoinSymbol: String, useCase: CoinDetailUseCase = CoinDetailUseCase()) {
-        self.selectedCoinSymbol = selectedCoinSymbol
+    init(selectedCoinInformation: SelectedCoinInformation, useCase: CoinDetailUseCase = CoinDetailUseCase()) {
+        self.selectedCoinInformation = selectedCoinInformation
         self.useCase = useCase
     }
     
     func transform(_ input: Input) -> Output {
-        let realTimePriceObservable = useCase.fetchTransactionWebSocket(with: [selectedCoinSymbol + "_KRW"])
+        let realTimePriceObservable = useCase.fetchTransactionWebSocket(with: [selectedCoinInformation.coinSymbol + "_KRW"])
             .map {
                 $0.price
             }
-        let coinPriceHistoryObservable = useCase.fetchCoinPriceHistory(with: selectedCoinSymbol)
+        let coinPriceHistoryObservable = useCase.fetchCoinPriceHistory(with: selectedCoinInformation.coinSymbol)
         
         let realTimePriceStringObservalbe = realTimePriceObservable
             .map {
@@ -122,7 +122,7 @@ final class HuhoeDetailViewModel: ViewModel {
             coinHistory: coinPriceHistoryObservable,
             chartInformation: chartInformationObservable,
             chartPriceAndDateViewInformation: chartPriceAndDateViewInformationObservable,
-            symbol: selectedCoinSymbol
+            symbol: selectedCoinInformation.coinSymbol
         )
     }
 }
