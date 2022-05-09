@@ -149,6 +149,7 @@ extension HuhoeDetailViewController {
         }
         
         output.realTimePrice
+            .observe(on: MainScheduler.asyncInstance)
             .bind(to: currentPriceLabel.rx.text)
             .disposed(by: disposeBag)
         
@@ -162,6 +163,7 @@ extension HuhoeDetailViewController {
         
         Observable.combineLatest(output.currentCoinHistoryInformation, output.pastCoinHistoryInformation)
             .observe(on: MainScheduler.asyncInstance)
+            .take(1)
             .subscribe(onNext: { [weak self] current, past in
                 self?.applySnapShot(current, past)
             })

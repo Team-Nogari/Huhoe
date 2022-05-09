@@ -51,7 +51,7 @@ final class HuhoeMainViewModel: ViewModel {
                 var coinInfoItems = [CoinInfoItem]()
                 
                 for index in coinInfo.0.indices {
-                    if let dateIndex = coinInfo.2[index].date.firstIndex(of: dateString.toTimeInterval),
+                    if let dateIndex = coinInfo.2[index].date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
                        let price = coinInfo.2[index].price[safe: dateIndex],
                        let money = Double(money)
                     {

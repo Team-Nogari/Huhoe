@@ -76,6 +76,7 @@
 		A6E4DE7D27FF17C40005266D /* HttpNetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE7C27FF17C40005266D /* HttpNetworkError.swift */; };
 		A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */; };
 		A6EA67D228251C4B006FE5DC /* SelectedCoinInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */; };
+		A6EA67D428294E6B006FE5DC /* HuhoeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +167,7 @@
 		A6E4DE7C27FF17C40005266D /* HttpNetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkError.swift; sourceTree = "<group>"; };
 		A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryNetwork.swift; sourceTree = "<group>"; };
 		A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCoinInformation.swift; sourceTree = "<group>"; };
+		A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +312,7 @@
 				08A100FB281A755D0038BA8F /* Double+extension.swift */,
 				A665996C281A92C800285E84 /* UIFont+extension.swift */,
 				08A10104281AC41D0038BA8F /* Array+extension.swift */,
+				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -722,6 +725,7 @@
 				084BF6AC28198D5D00916465 /* CoinDetailUseCase.swift in Sources */,
 				08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
+				A6EA67D428294E6B006FE5DC /* HuhoeDateFormatter.swift in Sources */,
 				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
 				A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */,
