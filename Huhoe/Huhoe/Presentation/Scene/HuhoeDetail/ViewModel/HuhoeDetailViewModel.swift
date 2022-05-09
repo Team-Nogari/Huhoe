@@ -36,7 +36,9 @@ final class HuhoeDetailViewModel: ViewModel {
     final class Output {
         let realTimePrice: Observable<String>
         let priceAndQuantity: Observable<PriceAndQuantity>
-        let coinHistoryInformation: Observable<(CoinHistoryItem, [CoinHistoryItem])>
+        let currentCoinHistoryInformation: Observable<CoinHistoryItem>
+        let todayCoinHistoryInformation: Observable<CoinHistoryItem>
+        let pastCoinHistoryInformation: Observable<[CoinHistoryItem]>
         let coinHistory: Observable<CoinPriceHistory>
         let chartInformation: Observable<ChartInformation>
         let chartPriceAndDateViewInformation: Observable<ChartPriceAndDateViewInformation>
@@ -45,7 +47,9 @@ final class HuhoeDetailViewModel: ViewModel {
         init(
             realTimePrice: Observable<String>,
             priceAndQuantity: Observable<PriceAndQuantity>,
-            coinHistoryInformation: Observable<(CoinHistoryItem, [CoinHistoryItem])>,
+            currentCoinHistoryInformation: Observable<CoinHistoryItem>,
+            todayCoinHistoryInformation: Observable<CoinHistoryItem>,
+            pastCoinHistoryInformation: Observable<[CoinHistoryItem]>,
             coinHistory: Observable<CoinPriceHistory>,
             chartInformation: Observable<ChartInformation>,
             chartPriceAndDateViewInformation: Observable<ChartPriceAndDateViewInformation>,
@@ -53,7 +57,9 @@ final class HuhoeDetailViewModel: ViewModel {
         ) {
             self.realTimePrice = realTimePrice
             self.priceAndQuantity = priceAndQuantity
-            self.coinHistoryInformation = coinHistoryInformation
+            self.currentCoinHistoryInformation = currentCoinHistoryInformation
+            self.todayCoinHistoryInformation = todayCoinHistoryInformation
+            self.pastCoinHistoryInformation = pastCoinHistoryInformation
             self.coinHistory = coinHistory
             self.chartInformation = chartInformation
             self.chartPriceAndDateViewInformation = chartPriceAndDateViewInformation
@@ -64,19 +70,19 @@ final class HuhoeDetailViewModel: ViewModel {
     let useCase: CoinDetailUseCase
     var disposeBag: DisposeBag = DisposeBag()
     
-    private let selectedCoinSymbol: String
+    let selectedCoinInformation: SelectedCoinInformation
     
-    init(selectedCoinSymbol: String, useCase: CoinDetailUseCase = CoinDetailUseCase()) {
-        self.selectedCoinSymbol = selectedCoinSymbol
+    init(selectedCoinInformation: SelectedCoinInformation, useCase: CoinDetailUseCase = CoinDetailUseCase()) {
+        self.selectedCoinInformation = selectedCoinInformation
         self.useCase = useCase
     }
     
     func transform(_ input: Input) -> Output {
-        let realTimePriceObservable = useCase.fetchTransactionWebSocket(with: [selectedCoinSymbol + "_KRW"])
+        let realTimePriceObservable = useCase.fetchTransactionWebSocket(with: [selectedCoinInformation.coinSymbol + "_KRW"])
             .map {
                 $0.price
             }
-        let coinPriceHistoryObservable = useCase.fetchCoinPriceHistory(with: selectedCoinSymbol)
+        let coinPriceHistoryObservable = useCase.fetchCoinPriceHistory(with: selectedCoinInformation.coinSymbol)
         
         let realTimePriceStringObservalbe = realTimePriceObservable
             .map {
@@ -84,6 +90,11 @@ final class HuhoeDetailViewModel: ViewModel {
             }
         
         let priceAndQuantityObservable = makePriceAndQuantityObservable(
+            input: input,
+            priceHistoryObservable: coinPriceHistoryObservable
+        )
+        
+        let currentCoinHistoryInformationObservable = makeCurrentCoinInfoObservable(
             input: input,
             priceHistoryObservable: coinPriceHistoryObservable
         )
@@ -100,11 +111,6 @@ final class HuhoeDetailViewModel: ViewModel {
             priceHistoryObservable: coinPriceHistoryObservable
         )
         
-        let coinHistoryInformation = Observable.combineLatest(
-            todayCoinHistoryInformationObservable,
-            pastCoinHistoryInformationObservable
-        )
-        
         let chartInformationObservable = makeChartInformationObservable(
             coinPriceHistoryObservable: coinPriceHistoryObservable,
             input: input
@@ -118,11 +124,13 @@ final class HuhoeDetailViewModel: ViewModel {
         return Output(
             realTimePrice: realTimePriceStringObservalbe,
             priceAndQuantity: priceAndQuantityObservable,
-            coinHistoryInformation: coinHistoryInformation,
+            currentCoinHistoryInformation: currentCoinHistoryInformationObservable,
+            todayCoinHistoryInformation: todayCoinHistoryInformationObservable,
+            pastCoinHistoryInformation: pastCoinHistoryInformationObservable,
             coinHistory: coinPriceHistoryObservable,
             chartInformation: chartInformationObservable,
             chartPriceAndDateViewInformation: chartPriceAndDateViewInformationObservable,
-            symbol: selectedCoinSymbol
+            symbol: selectedCoinInformation.coinSymbol
         )
     }
 }
@@ -138,7 +146,7 @@ extension HuhoeDetailViewModel {
             priceHistoryObservable
         )
         .map { dateString, money, priceHistory -> PriceAndQuantity in
-            if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
+            if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
                 let price = priceHistory.price[safe: dateIndex],
                 let money = Double(money)
             {
@@ -162,7 +170,7 @@ extension HuhoeDetailViewModel {
                    priceHistoryObservable
         )
         .map { realTimePrice, dateString, money, priceHistory -> CoinHistoryItem in
-            if let dateIndex = priceHistory.date.firstIndex(of: dateString.toTimeInterval),
+            if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
                 let price = priceHistory.price[safe: dateIndex],
                 let money = Double(money)
             {
@@ -192,14 +200,14 @@ extension HuhoeDetailViewModel {
         )
         .map { dateString, money, quantity, priceHistory -> [CoinHistoryItem] in
             let filteredDates = priceHistory.date
-                .filter { $0 > dateString.toTimeInterval }
-                .map { $0.toDateString() }
+                .filter { $0 > HuhoeDateFormatter.shared.toTimeInterval(str: dateString) }
+                .map { HuhoeDateFormatter.shared.toDateString(timeInterval: $0) }
                 .filter { $0.hasSuffix(".01") }
             
             var coinHistoryItems = [CoinHistoryItem]()
             
             filteredDates.forEach { filterDate in
-                if let dateIndex = priceHistory.date.firstIndex(of: filterDate.toTimeInterval),
+                if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: filterDate)),
                    let price = priceHistory.price[safe: dateIndex],
                    let money = Double(money)
                 {
@@ -213,6 +221,33 @@ extension HuhoeDetailViewModel {
             }
                    
             return coinHistoryItems
+        }
+    }
+    
+    private func makeCurrentCoinInfoObservable(
+        input: Input,
+        priceHistoryObservable: Observable<CoinPriceHistory>
+    ) -> Observable<CoinHistoryItem> {
+        return Observable.combineLatest(
+                   input.changeDate,
+                   input.changeMoney,
+                   priceHistoryObservable
+        )
+        .map { dateString, money, priceHistory -> CoinHistoryItem in
+            if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
+                let price = priceHistory.price[safe: dateIndex],
+                let money = Double(money)
+            {
+                let quantity = money / price
+                       
+                let calculatedPrice = self.selectedCoinInformation.coinCurrentPrice.removeComma.toDouble * quantity
+                let profitAndLoss = calculatedPrice - money
+                let rate = profitAndLoss / money * 100
+                       
+                return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+            }
+                   
+            return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
         }
     }
     
@@ -248,8 +283,8 @@ extension HuhoeDetailViewModel {
             
             return ChartInformation(
                 price: Array(price),
-                oldestDate: reversedDate[dateRange.max()!].toDateString(),
-                latestDate: reversedDate[dateRange.min()!].toDateString(),
+                oldestDate: HuhoeDateFormatter.shared.toDateString(timeInterval: reversedDate[dateRange.max()!]),
+                latestDate: HuhoeDateFormatter.shared.toDateString(timeInterval: reversedDate[dateRange.min()!]),
                 pointX: pointX
             )
         }
@@ -262,7 +297,8 @@ extension HuhoeDetailViewModel {
         return Observable.combineLatest(
             coinPriceHistoryObservable,
             input.didTapScrollView
-        ).map { coinHistory, scrollViewInformation -> ChartPriceAndDateViewInformation in
+        )
+        .map { coinHistory, scrollViewInformation -> ChartPriceAndDateViewInformation in
             let contentWidth = scrollViewInformation.0
             let touchPoint = scrollViewInformation.1
             
@@ -272,7 +308,7 @@ extension HuhoeDetailViewModel {
             let reversedPrice = Array(coinHistory.price.reversed())
             let reversedDate = Array(coinHistory.date.reversed())
             let price = reversedPrice[Int(dataIndex)].toString()
-            let date = reversedDate[Int(dataIndex)].toDateString()
+            let date = HuhoeDateFormatter.shared.toDateString(timeInterval: reversedDate[Int(dataIndex)])
             
             return ChartPriceAndDateViewInformation(
                 price: price,
@@ -282,3 +318,4 @@ extension HuhoeDetailViewModel {
         }
     }
 }
+
