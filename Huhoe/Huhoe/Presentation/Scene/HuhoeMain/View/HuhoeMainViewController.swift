@@ -138,7 +138,6 @@ extension HuhoeMainViewController {
                 let viewControllerName = "HuhoeDetailViewController"
                 let storyboard = UIStoryboard(name: viewControllerName, bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: viewControllerName)
-                viewController.title = item?.coinSymbol
                 
                 guard let detailViewController = viewController as? HuhoeDetailViewController else {
                     return

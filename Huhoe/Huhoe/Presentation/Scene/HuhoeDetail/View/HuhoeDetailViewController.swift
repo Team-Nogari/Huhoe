@@ -21,17 +21,7 @@ final class HuhoeDetailViewController: UIViewController {
         
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinHistoryItem>
     private var dataSource: DiffableDataSource?
-    
-    private let tempItems: [CoinHistoryItem] = [
-        CoinHistoryItem(date: "1", calculatedPrice: 1, rate: 1, profitAndLoss: 1),
-        CoinHistoryItem(date: "2", calculatedPrice: 2, rate: 2, profitAndLoss: 2),
-        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 3),
-        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 4),
-        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 5),
-        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 6),
-        CoinHistoryItem(date: "3", calculatedPrice: 3, rate: 3, profitAndLoss: 7)
-    ]
-    
+   
     // MARK: - IBOutlet
     
     @IBOutlet private weak var currentPriceLabel: UILabel!
@@ -51,6 +41,7 @@ final class HuhoeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureTitel()
         configureBackButton()
         configureLabel()
         configureDateChangeButton()
@@ -79,7 +70,7 @@ extension HuhoeDetailViewController {
         // MARK: - Input
         
         moneyTextField.text = viewModel?.selectedCoinInformation.coinInvestmentMoney
-        currentPriceLabel.text = viewModel?.selectedCoinInformation.coinCurrentPrice
+        currentPriceLabel.text = (viewModel?.selectedCoinInformation.coinCurrentPrice ?? "") + " 원"
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd"
@@ -213,6 +204,20 @@ extension HuhoeDetailViewController {
 // MARK: - Configure View
 
 extension HuhoeDetailViewController {
+    private func configureTitel() {
+        let titleView: UILabel = {
+            let label = UILabel()
+            label.attributedText = NSMutableAttributedString()
+                .text(viewModel?.selectedCoinInformation.coinSymbol.localized ?? "", fontStyle: .title2)
+                .text(" ")
+                .colorText(viewModel?.selectedCoinInformation.coinSymbol ?? "", color: .gray, fontStyle: .title2)
+            
+            return label
+        }()
+        
+        navigationItem.titleView = titleView
+    }
+    
     private func configureBackButton() {
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.topItem?.title = String()

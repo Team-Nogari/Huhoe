@@ -28,9 +28,10 @@
 		08AA7C8F280F039000305CED /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA7C8E280F039000305CED /* Date+extension.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
-		08AD9E152824F1B0001BEFA2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08AD9E142824F1B0001BEFA2 /* RxCocoa */; };
-		08AD9E172824F1B0001BEFA2 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08AD9E162824F1B0001BEFA2 /* RxRelay */; };
-		08AD9E192824F1B0001BEFA2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08AD9E182824F1B0001BEFA2 /* RxSwift */; };
+		08AD9E1C282950B6001BEFA2 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 08AD9E1B282950B6001BEFA2 /* RxCocoa */; };
+		08AD9E1E282950B6001BEFA2 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 08AD9E1D282950B6001BEFA2 /* RxRelay */; };
+		08AD9E20282950B6001BEFA2 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 08AD9E1F282950B6001BEFA2 /* RxSwift */; };
+		08AD9E2228295370001BEFA2 /* NSMutableAttributedString+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */; };
 		08B238D6280A8B4E0047D282 /* HuhoeMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B238D5280A8B4E0047D282 /* HuhoeMainViewModel.swift */; };
 		08B238E0280ABF850047D282 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08B238E2280ABF850047D282 /* Localizable.strings */; };
 		08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BA05282805770E00F7CD53 /* CoinListCell.xib */; };
@@ -118,6 +119,7 @@
 		08AA7C8E280F039000305CED /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		08ACF49227FFD2C60007E134 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
+		08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+extension.swift"; sourceTree = "<group>"; };
 		08B238D5280A8B4E0047D282 /* HuhoeMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeMainViewModel.swift; sourceTree = "<group>"; };
 		08B238E1280ABF850047D282 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08BA05282805770E00F7CD53 /* CoinListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinListCell.xib; sourceTree = "<group>"; };
@@ -175,9 +177,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08AD9E192824F1B0001BEFA2 /* RxSwift in Frameworks */,
-				08AD9E172824F1B0001BEFA2 /* RxRelay in Frameworks */,
-				08AD9E152824F1B0001BEFA2 /* RxCocoa in Frameworks */,
+				08AD9E20282950B6001BEFA2 /* RxSwift in Frameworks */,
+				08AD9E1E282950B6001BEFA2 /* RxRelay in Frameworks */,
+				08AD9E1C282950B6001BEFA2 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +315,7 @@
 				A665996C281A92C800285E84 /* UIFont+extension.swift */,
 				08A10104281AC41D0038BA8F /* Array+extension.swift */,
 				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
+				08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -556,9 +559,9 @@
 			);
 			name = Huhoe;
 			packageProductDependencies = (
-				08AD9E142824F1B0001BEFA2 /* RxCocoa */,
-				08AD9E162824F1B0001BEFA2 /* RxRelay */,
-				08AD9E182824F1B0001BEFA2 /* RxSwift */,
+				08AD9E1B282950B6001BEFA2 /* RxCocoa */,
+				08AD9E1D282950B6001BEFA2 /* RxRelay */,
+				08AD9E1F282950B6001BEFA2 /* RxSwift */,
 			);
 			productName = Huhoe;
 			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
@@ -633,7 +636,7 @@
 			);
 			mainGroup = A6E4DE2A27FDB3F30005266D;
 			packageReferences = (
-				08AD9E132824F1B0001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				08AD9E1A282950B6001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
@@ -718,6 +721,7 @@
 				A691D560280AB77F005BFCB3 /* CoinInfoItem.swift in Sources */,
 				08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */,
 				089A9132281305B2006D2710 /* HuhoeDetailViewController.swift in Sources */,
+				08AD9E2228295370001BEFA2 /* NSMutableAttributedString+extension.swift in Sources */,
 				08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */,
 				A66028D62816A42400B249EA /* WebSocketNetworkService.swift in Sources */,
 				A66028DD2816B78D00B249EA /* TransactionWebSocketNetwork.swift in Sources */,
@@ -1092,7 +1096,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		08AD9E132824F1B0001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		08AD9E1A282950B6001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -1103,19 +1107,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		08AD9E142824F1B0001BEFA2 /* RxCocoa */ = {
+		08AD9E1B282950B6001BEFA2 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AD9E132824F1B0001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08AD9E1A282950B6001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		08AD9E162824F1B0001BEFA2 /* RxRelay */ = {
+		08AD9E1D282950B6001BEFA2 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AD9E132824F1B0001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08AD9E1A282950B6001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
-		08AD9E182824F1B0001BEFA2 /* RxSwift */ = {
+		08AD9E1F282950B6001BEFA2 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08AD9E132824F1B0001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 08AD9E1A282950B6001BEFA2 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
