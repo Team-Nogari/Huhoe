@@ -71,7 +71,7 @@ extension HuhoeMainViewController {
         titleLabel.adjustsFontForContentSizeCategory = true
         
         hintLabels.forEach {
-            $0.font = UIFont.withKOHIBaeum(dynamicFont: .callout)
+            $0.font = UIFont.withKOHIBaeum(dynamicFont: .headline)
             $0.adjustsFontForContentSizeCategory = true
         }
     }
