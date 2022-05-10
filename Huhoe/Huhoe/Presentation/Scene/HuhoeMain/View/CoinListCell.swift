@@ -18,6 +18,8 @@ class CoinListCell: UICollectionViewCell {
     @IBOutlet private weak var currentPriceLabel: UILabel!
     @IBOutlet private weak var oldPriceLabel: UILabel!
     
+    @IBOutlet private var hintLabels: [UILabel]!
+    
     override func awakeFromNib() {
         configureLabels()
         self.roundedBackgroundView.layer.cornerRadius = 8
@@ -26,7 +28,25 @@ class CoinListCell: UICollectionViewCell {
 
 extension CoinListCell {
     private func configureLabels() {
-        calculatedPriceLabel.font = .preferredFont(forTextStyle: .title2).bold
+        calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
+        calculatedPriceLabel.adjustsFontForContentSizeCategory = true
+        
+        profitAndLossLabel.font = UIFont.withKOHIBaeum(dynamicFont: .callout)
+        profitAndLossLabel.adjustsFontForContentSizeCategory = true
+        
+        profitAndLossRateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .callout)
+        profitAndLossRateLabel.adjustsFontForContentSizeCategory = true
+        
+        currentPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        currentPriceLabel.adjustsFontForContentSizeCategory = true
+        
+        oldPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        oldPriceLabel.adjustsFontForContentSizeCategory = true
+        
+        hintLabels.forEach {
+            $0.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+            $0.adjustsFontForContentSizeCategory = true
+        }
     }
     
     func configureCell(item: CoinInfoItem) {

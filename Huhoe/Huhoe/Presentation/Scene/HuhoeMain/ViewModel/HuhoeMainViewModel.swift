@@ -21,10 +21,8 @@ final class HuhoeMainViewModel: ViewModel {
     final class Input {
         let changeMoney: Observable<String>
         let changeDate: Observable<String>
-        let viewWillAppear: Observable<Void>
         
-        init(viewWillAppear: Observable<Void>, changeMoney: Observable<String>, changeDate: Observable<String>) {
-            self.viewWillAppear = viewWillAppear
+        init(changeMoney: Observable<String>, changeDate: Observable<String>) {
             self.changeMoney = changeMoney
             self.changeDate = changeDate
         }

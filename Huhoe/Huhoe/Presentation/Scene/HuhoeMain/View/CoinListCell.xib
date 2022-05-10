@@ -139,6 +139,8 @@
                 <outlet property="profitAndLossLabel" destination="7Rv-zb-rTN" id="gxB-bh-RQf"/>
                 <outlet property="profitAndLossRateLabel" destination="c89-Ag-lgG" id="NUT-cW-kam"/>
                 <outlet property="roundedBackgroundView" destination="9Vo-DQ-z7S" id="idz-Ca-Rka"/>
+                <outletCollection property="hintLabels" destination="fLu-Mf-W4y" collectionClass="NSMutableArray" id="q6c-Lr-dTl"/>
+                <outletCollection property="hintLabels" destination="013-SP-0FW" collectionClass="NSMutableArray" id="bwQ-Q0-Dz7"/>
             </connections>
             <point key="canvasLocation" x="273.1884057971015" y="237.72321428571428"/>
         </collectionViewCell>

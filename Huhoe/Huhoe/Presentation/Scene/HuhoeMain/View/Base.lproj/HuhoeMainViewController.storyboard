@@ -120,7 +120,10 @@
                         <outlet property="coinListCollectionView" destination="In5-2s-g3J" id="RSB-pv-p6z"/>
                         <outlet property="dateChangeButton" destination="pSc-2f-xfM" id="RM5-FV-Hii"/>
                         <outlet property="moneyTextField" destination="y7v-4l-fbj" id="Nde-n9-PPf"/>
-                        <outlet property="testButton" destination="tUO-bF-JNm" id="XI0-Fd-eeS"/>
+                        <outlet property="titleLabel" destination="xQW-1s-9Jx" id="2yQ-0w-jS2"/>
+                        <outletCollection property="hintLabels" destination="tte-EA-0Sx" collectionClass="NSMutableArray" id="iN3-zu-99K"/>
+                        <outletCollection property="hintLabels" destination="xMV-BU-pqG" collectionClass="NSMutableArray" id="WFA-yg-GfD"/>
+                        <outletCollection property="hintLabels" destination="XVm-KZ-Qej" collectionClass="NSMutableArray" id="sRg-2T-V0F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
