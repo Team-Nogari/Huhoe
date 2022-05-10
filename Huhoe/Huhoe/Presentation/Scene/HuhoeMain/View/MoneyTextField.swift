@@ -15,7 +15,8 @@ final class MoneyTextField: UITextField {
     private let moneyLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = UIFont.withKOHIBaeum(dynamicFont: .body)
+        label.adjustsFontForContentSizeCategory = true
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "10,000"

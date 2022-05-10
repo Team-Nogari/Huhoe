@@ -8,6 +8,14 @@
 import UIKit
 
 extension UIFont {
+    static func withKOHIBaeum(dynamicFont: CustomDynamicFont) -> UIFont {
+        guard let font = UIFont(name: "KOHIBaeum", size: dynamicFont.size) else {
+            return UIFont()
+        }
+        
+        return UIFontMetrics(forTextStyle: dynamicFont.style).scaledFont(for: font)
+    }
+    
     func withTraits(traits: UIFontDescriptor.SymbolicTraits) -> UIFont {
         if let descriptor = fontDescriptor.withSymbolicTraits(traits) {
             return UIFont(descriptor: descriptor, size: 0)

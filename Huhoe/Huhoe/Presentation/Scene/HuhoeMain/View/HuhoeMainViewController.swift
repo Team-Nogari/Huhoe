@@ -16,8 +16,12 @@ final class HuhoeMainViewController: UIViewController {
     private enum Section {
         case main
     }
-
-    @IBOutlet private weak var testButton: UIButton!
+    
+    // MARK: - Hint Labels
+    
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private var hintLabels: [UILabel]!
+    
     @IBOutlet private weak var dateChangeButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
@@ -37,6 +41,7 @@ final class HuhoeMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDateChangeButton()
+        configureLabel()
         configureCollectionView()
         
         bindViewModel()
@@ -56,6 +61,19 @@ final class HuhoeMainViewController: UIViewController {
 extension HuhoeMainViewController {
     private func configureDateChangeButton() {
         dateChangeButton.layer.cornerRadius = 6
+        dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
+        dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
+        
+    }
+    
+    private func configureLabel() {
+        titleLabel.font = UIFont.withKOHIBaeum(dynamicFont: .largeTitle)
+        titleLabel.adjustsFontForContentSizeCategory = true
+        
+        hintLabels.forEach {
+            $0.font = UIFont.withKOHIBaeum(dynamicFont: .headline)
+            $0.adjustsFontForContentSizeCategory = true
+        }
     }
     
     private func configureCollectionView() {
@@ -110,7 +128,6 @@ extension HuhoeMainViewController {
         
         
         let input = HuhoeMainViewModel.Input(
-            viewWillAppear: testButton.rx.tap.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             changeDate: textRelay.asObservable()
         )

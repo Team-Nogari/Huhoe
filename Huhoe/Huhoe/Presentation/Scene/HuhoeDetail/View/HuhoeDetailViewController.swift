@@ -33,6 +33,8 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var chartScrollView: ChartScrollView!
     @IBOutlet private weak var chartImageView: ChartImageView!
     
+    @IBOutlet private var hintLabels: [UILabel]!
+    @IBOutlet private weak var collectionViewHintLabel: UILabel!
     @IBOutlet private weak var chartOldDateLabel: UILabel!
     @IBOutlet private weak var chartLatestDateLabel: UILabel!
     // MARK: - ViewModel
@@ -41,7 +43,7 @@ final class HuhoeDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTitel()
+        configureTitle()
         configureBackButton()
         configureLabel()
         configureDateChangeButton()
@@ -204,13 +206,13 @@ extension HuhoeDetailViewController {
 // MARK: - Configure View
 
 extension HuhoeDetailViewController {
-    private func configureTitel() {
+    private func configureTitle() {
         let titleView: UILabel = {
             let label = UILabel()
             label.attributedText = NSMutableAttributedString()
-                .text(viewModel?.selectedCoinInformation.coinSymbol.localized ?? "", fontStyle: .title2)
+                .text(viewModel?.selectedCoinInformation.coinSymbol.localized ?? "")
                 .text(" ")
-                .colorText(viewModel?.selectedCoinInformation.coinSymbol ?? "", color: .gray, fontStyle: .title2)
+                .colorText(viewModel?.selectedCoinInformation.coinSymbol ?? "", color: .gray)
             
             return label
         }()
@@ -224,6 +226,8 @@ extension HuhoeDetailViewController {
     }
     
     private func configureDateChangeButton() {
+        dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
+        dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
         dateChangeButton.layer.cornerRadius = 6
     }
     
@@ -235,7 +239,28 @@ extension HuhoeDetailViewController {
     }
     
     private func configureLabel() {
-        currentPriceLabel.font = .preferredFont(forTextStyle: .title1).bold
+        currentPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title1)
+        currentPriceLabel.adjustsFontForContentSizeCategory = true
+        
+        chartOldDateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .callout)
+        chartOldDateLabel.adjustsFontForContentSizeCategory = true
+        
+        chartLatestDateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .callout)
+        chartLatestDateLabel.adjustsFontForContentSizeCategory = true
+        
+        pastPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        pastPriceLabel.adjustsFontForContentSizeCategory = true
+        
+        pastQuantityLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        pastQuantityLabel.adjustsFontForContentSizeCategory = true
+        
+        hintLabels.forEach {
+            $0.font = UIFont.withKOHIBaeum(dynamicFont: .caption1)
+            $0.adjustsFontForContentSizeCategory = true
+        }
+        
+        collectionViewHintLabel.font = UIFont.withKOHIBaeum(dynamicFont: .headline)
+        collectionViewHintLabel.adjustsFontForContentSizeCategory = true
     }
     
     private func configureChartView() {
@@ -314,3 +339,4 @@ private extension UIAlertController {
         setValue(datePicker, forKey: "contentViewController")
     }
 }
+
