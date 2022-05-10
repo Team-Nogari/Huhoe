@@ -22,10 +22,17 @@ final class CoinHistoryCell: UICollectionViewCell {
     }
     
     private func configureLabels() {
-        calculatedPriceLabel.font = .preferredFont(forTextStyle: .title2).bold
-        dateLabel.font = .preferredFont(forTextStyle: .title3).bold
-        profitAndLossLabel.font = .preferredFont(forTextStyle: .subheadline).bold
-        profitAndLossRateLabel.font = .preferredFont(forTextStyle: .subheadline).bold
+        calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
+        calculatedPriceLabel.adjustsFontForContentSizeCategory = true
+        
+        dateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title3)
+        dateLabel.adjustsFontForContentSizeCategory = true
+        
+        profitAndLossLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        profitAndLossLabel.adjustsFontForContentSizeCategory = true
+        
+        profitAndLossRateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        profitAndLossRateLabel.adjustsFontForContentSizeCategory = true
     }
     
     func configureCell(item: CoinHistoryItem) {

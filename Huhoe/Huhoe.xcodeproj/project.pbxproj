@@ -78,6 +78,8 @@
 		A6E4DE8227FF2C950005266D /* TransactionHistoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */; };
 		A6EA67D228251C4B006FE5DC /* SelectedCoinInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */; };
 		A6EA67D428294E6B006FE5DC /* HuhoeDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */; };
+		A6EA67D6282A0362006FE5DC /* KOHIBaeum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A6EA67D5282A0362006FE5DC /* KOHIBaeum.ttf */; };
+		A6EA67D9282A34A8006FE5DC /* CustomDynamicFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +172,8 @@
 		A6E4DE8127FF2C950005266D /* TransactionHistoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryNetwork.swift; sourceTree = "<group>"; };
 		A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCoinInformation.swift; sourceTree = "<group>"; };
 		A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeDateFormatter.swift; sourceTree = "<group>"; };
+		A6EA67D5282A0362006FE5DC /* KOHIBaeum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KOHIBaeum.ttf; sourceTree = "<group>"; };
+		A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDynamicFont.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +209,7 @@
 			children = (
 				A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */,
 				A6E4DE4427FDB3F50005266D /* Info.plist */,
+				A6EA67D5282A0362006FE5DC /* KOHIBaeum.ttf */,
 				A6E4DE3F27FDB3F50005266D /* Assets.xcassets */,
 				08B238E2280ABF850047D282 /* Localizable.strings */,
 			);
@@ -253,6 +258,7 @@
 		084F769527FDC26E00BAE500 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A6EA67D7282A348F006FE5DC /* Common */,
 				089A912D2813025A006D2710 /* HuhoeDetail */,
 				084F769627FDC27600BAE500 /* HuhoeMain */,
 			);
@@ -314,8 +320,8 @@
 				08A100FB281A755D0038BA8F /* Double+extension.swift */,
 				A665996C281A92C800285E84 /* UIFont+extension.swift */,
 				08A10104281AC41D0038BA8F /* Array+extension.swift */,
-				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
 				08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */,
+				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -542,6 +548,14 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		A6EA67D7282A348F006FE5DC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -660,6 +674,7 @@
 				A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */,
 				08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */,
 				089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */,
+				A6EA67D6282A0362006FE5DC /* KOHIBaeum.ttf in Resources */,
 				A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -701,6 +716,7 @@
 				089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */,
 				A66028D128169AB900B249EA /* TransactionWebSocketResponseDTO.swift in Sources */,
 				A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */,
+				A6EA67D9282A34A8006FE5DC /* CustomDynamicFont.swift in Sources */,
 				08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */,
 				A6E4DE3B27FDB3F30005266D /* HuhoeMainViewController.swift in Sources */,
 				A601695E28223E6B00A7EA08 /* ChartScrollView.swift in Sources */,
