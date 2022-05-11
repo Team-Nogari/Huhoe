@@ -94,21 +94,19 @@ extension HuhoeMainViewController {
         
         // MARK: - Input
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        dateChangeButton.setTitle(dateFormatter.string(from: Date().yesterday), for: .normal)
-        let textRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
-        
+        dateChangeButton.setTitle(HuhoeDateFormatter.shared.toDateString(date: Date().yesterday), for: .normal)
+        let dateTextRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
+                
         dateChangeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let selectedDate = dateFormatter.date(from: textRelay.value)
+                let selectedDate = HuhoeDateFormatter.shared.toDate(str: dateTextRelay.value)
                 
                 let alert = UIAlertController(title: "날짜 선택", message: nil, preferredStyle: .alert)
                 
                 alert.addDatePicker(date: selectedDate) {
-                    let dateString = dateFormatter.string(from: $0)
+                    let dateString = HuhoeDateFormatter.shared.toDateString(date: $0)
                     self?.dateChangeButton.setTitle(dateString, for: .normal)
-                    textRelay.accept(dateString)
+                    dateTextRelay.accept(dateString)
                 }
                 
                 let action = UIAlertAction(title: "선택", style: .default)
@@ -129,7 +127,7 @@ extension HuhoeMainViewController {
         
         let input = HuhoeMainViewModel.Input(
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
-            changeDate: textRelay.asObservable()
+            changeDate: dateTextRelay.asObservable()
         )
         
         // MARK: - Output

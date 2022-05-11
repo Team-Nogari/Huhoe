@@ -31,4 +31,8 @@ final class HuhoeDateFormatter {
         
         return dateFormatter.string(from: date)
     }
+    
+    func toDateString(date: Date) -> String {
+        return dateFormatter.string(from: date)
+    }
 }
