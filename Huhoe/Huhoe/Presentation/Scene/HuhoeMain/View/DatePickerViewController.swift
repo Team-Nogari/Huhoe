@@ -26,13 +26,13 @@ class DatePickerViewController: UIViewController {
     
     required init(
         date: Date? = Date().yesterday,
+        minimumDate: Date? = Date(timeIntervalSince1970: 1388070000), // 1388070000: Bithumb Public API Bitcoin Candlestick 가장 오래된 UTC 시간
         action: Action?
     ) {
         super.init(nibName: nil, bundle: nil)
         datePicker.date = Date().yesterday
         datePicker.setDate(date ?? Date().yesterday, animated: false)
-        // 1388070000: Bithumb Public API Bitcoin Candlestick 가장 오래된 UTC 시간
-        datePicker.minimumDate = Date(timeIntervalSince1970: 1388070000)
+        datePicker.minimumDate = minimumDate
         datePicker.maximumDate = Date().yesterday
         self.action = action
     }

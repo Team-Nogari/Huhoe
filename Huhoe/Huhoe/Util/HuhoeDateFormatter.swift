@@ -12,20 +12,27 @@ final class HuhoeDateFormatter {
     
     private init() { }
     
-    private let dateFormatter: DateFormatter = DateFormatter()
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy.MM.dd"
+        return formatter
+    }()
+    
+    func toDate(str: String) -> Date {
+        return dateFormatter.date(from: str) ?? Date()
+    }
     
     func toTimeInterval(str: String) -> TimeInterval {
-        dateFormatter.dateFormat = "yyyy.MM.dd"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
-        
-        return dateFormatter.date(from: str)?.timeIntervalSince1970 ?? .zero
+        return toDate(str: str).timeIntervalSince1970
     }
     
     func toDateString(timeInterval: TimeInterval) -> String {
-        dateFormatter.dateFormat = "yyyy.MM.dd"
         let date = Date(timeIntervalSince1970: timeInterval)
         
+        return dateFormatter.string(from: date)
+    }
+    
+    func toDateString(date: Date) -> String {
         return dateFormatter.string(from: date)
     }
 }

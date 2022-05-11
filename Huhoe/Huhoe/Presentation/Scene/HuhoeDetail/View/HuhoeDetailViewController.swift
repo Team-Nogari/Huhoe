@@ -74,21 +74,21 @@ extension HuhoeDetailViewController {
         moneyTextField.text = viewModel?.selectedCoinInformation.coinInvestmentMoney
         currentPriceLabel.text = (viewModel?.selectedCoinInformation.coinCurrentPrice ?? "") + " 원"
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy.MM.dd"
         dateChangeButton.setTitle(viewModel?.selectedCoinInformation.coinInvestmentDate ?? "", for: .normal)
-        let textRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
+        let dateTextRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
+        
+        var datePickerMinimumDate: Date?
         
         dateChangeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let selectedDate = dateFormatter.date(from: textRelay.value)
+                let selectedDate = HuhoeDateFormatter.shared.toDate(str: dateTextRelay.value)
                 
                 let alert = UIAlertController(title: "날짜 선택", message: nil, preferredStyle: .alert)
                 
-                alert.addDatePicker(date: selectedDate) {
-                    let dateString = dateFormatter.string(from: $0)
+                alert.addDatePicker(date: selectedDate, minimumDate: datePickerMinimumDate) {
+                    let dateString = HuhoeDateFormatter.shared.toDateString(date: $0)
                     self?.dateChangeButton.setTitle(dateString, for: .normal)
-                    textRelay.accept(dateString)
+                    dateTextRelay.accept(dateString)
                 }
                 
                 let action = UIAlertAction(title: "선택", style: .default)
@@ -128,7 +128,7 @@ extension HuhoeDetailViewController {
             }
         
         let input = HuhoeDetailViewModel.Input(
-            changeDate: textRelay.asObservable(),
+            changeDate: dateTextRelay.asObservable(),
             changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
             viewDidAppear: Observable.empty(),
             scrollViewDidAppear: scrollViewDidAppear,
@@ -174,6 +174,7 @@ extension HuhoeDetailViewController {
             .subscribe(onNext: { [weak self] coinHistory in
                 let xUnit: Double = UIScreen.main.bounds.width / CGFloat(30)
                 self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit.rounded(.down))
+                datePickerMinimumDate = Date(timeIntervalSince1970: coinHistory.date.first ?? 0)
             })
             .disposed(by: disposeBag)
         
@@ -333,9 +334,10 @@ extension HuhoeDetailViewController {
 private extension UIAlertController {
     func addDatePicker(
         date: Date?,
+        minimumDate: Date?,
         action: DatePickerViewController.Action?
     ) {
-        let datePicker = DatePickerViewController(date: date, action: action)
+        let datePicker = DatePickerViewController(date: date, minimumDate: minimumDate, action: action)
         setValue(datePicker, forKey: "contentViewController")
     }
 }
