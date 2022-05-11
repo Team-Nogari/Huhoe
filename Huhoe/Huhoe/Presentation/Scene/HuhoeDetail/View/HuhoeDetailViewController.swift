@@ -77,13 +77,15 @@ extension HuhoeDetailViewController {
         dateChangeButton.setTitle(viewModel?.selectedCoinInformation.coinInvestmentDate ?? "", for: .normal)
         let dateTextRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
         
+        var datePickerMinimumDate: Date?
+        
         dateChangeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let selectedDate = HuhoeDateFormatter.shared.toDate(str: dateTextRelay.value)
                 
                 let alert = UIAlertController(title: "날짜 선택", message: nil, preferredStyle: .alert)
                 
-                alert.addDatePicker(date: selectedDate) {
+                alert.addDatePicker(date: selectedDate, minimumDate: datePickerMinimumDate) {
                     let dateString = HuhoeDateFormatter.shared.toDateString(date: $0)
                     self?.dateChangeButton.setTitle(dateString, for: .normal)
                     dateTextRelay.accept(dateString)
@@ -172,6 +174,7 @@ extension HuhoeDetailViewController {
             .subscribe(onNext: { [weak self] coinHistory in
                 let xUnit: Double = UIScreen.main.bounds.width / CGFloat(30)
                 self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit.rounded(.down))
+                datePickerMinimumDate = Date(timeIntervalSince1970: coinHistory.date.first ?? 0)
             })
             .disposed(by: disposeBag)
         
@@ -331,9 +334,10 @@ extension HuhoeDetailViewController {
 private extension UIAlertController {
     func addDatePicker(
         date: Date?,
+        minimumDate: Date?,
         action: DatePickerViewController.Action?
     ) {
-        let datePicker = DatePickerViewController(date: date, action: action)
+        let datePicker = DatePickerViewController(date: date, minimumDate: minimumDate, action: action)
         setValue(datePicker, forKey: "contentViewController")
     }
 }
