@@ -63,8 +63,8 @@ final class MoneyTextField: UITextField {
                 return new ?? ""
             }
             .map { text in
-                if text.count > 10 {
-                    return String(text.prefix(10))
+                if text.count > 9 {
+                    return String(text.prefix(9))
                 } else {
                     return text
                 }

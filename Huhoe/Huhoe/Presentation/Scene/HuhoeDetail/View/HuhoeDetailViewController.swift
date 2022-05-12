@@ -100,7 +100,7 @@ extension HuhoeDetailViewController {
         let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
         moneyTextField.rx.text
             .orEmpty
-            .filter { $0 != "" && $0 != "0" && $0.count <= 10}
+            .filter { $0 != "" && $0 != "0" && $0.count <= 9}
             .subscribe(onNext: {
                 moneyTextFieldRelay.accept($0)
             })
@@ -150,7 +150,12 @@ extension HuhoeDetailViewController {
             .asDriver(onErrorJustReturn: (Double.zero, Double.zero))
             .drive(onNext: { [weak self] price, quantity in
                 self?.pastPriceLabel.text = price.toString(digit: 4) + " 원"
-                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \(output.symbol)")
+                
+                var quntity = String(format: "%.4f", quantity)
+                if  quntity.count > 8 {
+                    quntity = quntity.removedSuffix(from: 5)
+                }
+                self?.pastQuantityLabel.text = quntity + (" \(output.symbol)")
             })
             .disposed(by: disposeBag)
         
@@ -253,6 +258,7 @@ extension HuhoeDetailViewController {
         pastPriceLabel.adjustsFontForContentSizeCategory = true
         
         pastQuantityLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        pastQuantityLabel.adjustsFontSizeToFitWidth = true
         pastQuantityLabel.adjustsFontForContentSizeCategory = true
         
         hintLabels.forEach {
@@ -278,6 +284,8 @@ extension HuhoeDetailViewController {
     private func configureCollectionViewLayout() {
         var listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
         listConfig.showsSeparators = false
+        listConfig.backgroundColor = UIColor(named: "BackgroundColor")
+
         coinHistoryCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: listConfig)
     }
     
@@ -342,3 +350,16 @@ private extension UIAlertController {
     }
 }
 
+extension UIView {
+    func dropShadow(
+        shadowColor: CGColor,
+        shadowOffset: CGSize,
+        shadowOpacity: Float,
+        shadowRadius: CGFloat) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = shadowColor
+        self.layer.shadowOffset = shadowOffset
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowRadius = shadowRadius
+    }
+}

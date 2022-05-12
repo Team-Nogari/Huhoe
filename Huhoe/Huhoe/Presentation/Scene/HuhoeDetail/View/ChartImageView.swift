@@ -70,7 +70,7 @@ final class ChartImageView: UIImageView {
         context?.setLineJoin(.round)
         context?.setLineWidth(CGFloat(5))
         context?.setStrokeColor(UIColor.red.cgColor)
-        context?.setShadow(offset: CGSize(width: -2, height: 2), blur: 1, color: UIColor.gray.cgColor)
+        context?.setShadow(offset: CGSize(width: -2, height: 2), blur: 0, color: UIColor.black.cgColor)
         
         return context
     }

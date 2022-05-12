@@ -12,11 +12,11 @@ class ChartPriceAndDateView: UIView {
     @IBOutlet private weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
-        dateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .caption2)
+        dateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .caption1)
         dateLabel.adjustsFontForContentSizeCategory = true
         dateLabel.textColor = .systemGray
         
-        priceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .caption1)
+        priceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .footnote)
         priceLabel.adjustsFontForContentSizeCategory = true
     }
     
