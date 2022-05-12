@@ -150,7 +150,12 @@ extension HuhoeDetailViewController {
             .asDriver(onErrorJustReturn: (Double.zero, Double.zero))
             .drive(onNext: { [weak self] price, quantity in
                 self?.pastPriceLabel.text = price.toString(digit: 4) + " 원"
-                self?.pastQuantityLabel.text = String(format: "%.4f", quantity) + (" \(output.symbol)")
+                
+                var quntity = String(format: "%.4f", quantity)
+                if  quntity.count > 8 {
+                    quntity = quntity.removedSuffix(from: 5)
+                }
+                self?.pastQuantityLabel.text = quntity + (" \(output.symbol)")
             })
             .disposed(by: disposeBag)
         
