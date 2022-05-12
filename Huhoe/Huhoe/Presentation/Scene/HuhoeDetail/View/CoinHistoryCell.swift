@@ -19,10 +19,10 @@ final class CoinHistoryCell: UICollectionViewCell {
     override func awakeFromNib() {
         self.roundedBackgroundView.layer.cornerRadius = 8
         self.roundedBackgroundView.dropShadow(
-            shadowColor: UIColor.label.cgColor,
-            shadowOffset: CGSize(width: 0, height: 3),
-            shadowOpacity: 0.15,
-            shadowRadius: 6
+            shadowColor: UIColor.black.cgColor,
+            shadowOffset: CGSize(width: 3, height: 3),
+            shadowOpacity: 0.7,
+            shadowRadius: 2
         )
         configureLabels()
     }

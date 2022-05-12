@@ -52,7 +52,7 @@ final class ChartScrollView: UIScrollView {
         
         UIView.animate(withDuration: 0.2) {
             self.priceAndDateView.transform = CGAffineTransform(
-                translationX: pointX, y: self.frame.height - CGFloat(38.0)
+                translationX: pointX, y: self.frame.height - CGFloat(44.0)
             ).rotated(by: .pi)
         }
         

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -43,7 +43,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" name="BackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="ZfY-mY-mBr" firstAttribute="leading" secondItem="0Q6-9J-4oI" secondAttribute="leading" id="4qL-mQ-3hX"/>
                                             <constraint firstAttribute="width" constant="100" id="Dxr-9U-Lsu"/>
@@ -164,7 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aDr-XX-Gf4">
-                                <rect key="frame" x="10" y="469.5" width="394" height="426.5"/>
+                                <rect key="frame" x="0.0" y="469.5" width="414" height="426.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="p4j-0w-I9P">
                                     <size key="itemSize" width="128" height="128"/>
@@ -192,7 +192,7 @@
                             <constraint firstItem="S7m-V7-hzZ" firstAttribute="top" secondItem="y0a-mF-C2B" secondAttribute="bottom" constant="16" id="34w-P8-d18"/>
                             <constraint firstAttribute="bottom" secondItem="aDr-XX-Gf4" secondAttribute="bottom" id="6Bn-1i-m0Z"/>
                             <constraint firstItem="z5E-Wf-cLk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6f8-tC-lrG"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aDr-XX-Gf4" secondAttribute="trailing" constant="10" id="7OS-zy-38B"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aDr-XX-Gf4" secondAttribute="trailing" id="7OS-zy-38B"/>
                             <constraint firstItem="Zgc-tL-Y3k" firstAttribute="top" secondItem="S7m-V7-hzZ" secondAttribute="bottom" constant="8" id="BAx-Mw-rkW"/>
                             <constraint firstItem="a2q-Xb-3Q0" firstAttribute="top" secondItem="y0a-mF-C2B" secondAttribute="bottom" constant="2" id="COF-m3-4Rb"/>
                             <constraint firstItem="VjR-x9-VS1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="Iae-sk-fas"/>
@@ -212,7 +212,7 @@
                             <constraint firstItem="L3o-lp-dE7" firstAttribute="top" secondItem="y0a-mF-C2B" secondAttribute="top" id="hbI-XV-hAN"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="L3o-lp-dE7" secondAttribute="trailing" constant="8" id="iBg-7G-uY3"/>
                             <constraint firstItem="Zgc-tL-Y3k" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="rHM-R0-l5r"/>
-                            <constraint firstItem="aDr-XX-Gf4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="vdF-ZG-b7k"/>
+                            <constraint firstItem="aDr-XX-Gf4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vdF-ZG-b7k"/>
                         </constraints>
                     </view>
                     <connections>
@@ -245,9 +245,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
