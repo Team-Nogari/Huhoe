@@ -214,8 +214,9 @@ extension HuhoeDetailViewModel {
                     let calculatedPrice = price * quantity.quantity
                     let profitAndLoss = calculatedPrice - money
                     let rate = profitAndLoss / money * 100
+                    let removeDayDate = filterDate.removedSuffix(from: 3)
                     
-                    let item = CoinHistoryItem(date: filterDate, calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+                    let item = CoinHistoryItem(date: removeDayDate, calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
                     coinHistoryItems.append(item)
                 }
             }

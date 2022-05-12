@@ -23,4 +23,9 @@ extension String {
     var localized: String {
         return NSLocalizedString(self, tableName: "Localizable", value: self, comment: "")
     }
+    
+    func removedSuffix(from index: Int) -> String {
+        let index = self.index(self.startIndex, offsetBy: self.count - index - 1)
+        return String(self[self.startIndex...index])
+    }
 }

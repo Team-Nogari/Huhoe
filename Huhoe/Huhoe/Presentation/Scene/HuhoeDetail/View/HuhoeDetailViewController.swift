@@ -100,7 +100,7 @@ extension HuhoeDetailViewController {
         let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
         moneyTextField.rx.text
             .orEmpty
-            .filter { $0 != "" && $0 != "0" && $0.count <= 10}
+            .filter { $0 != "" && $0 != "0" && $0.count <= 9}
             .subscribe(onNext: {
                 moneyTextFieldRelay.accept($0)
             })
