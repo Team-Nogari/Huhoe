@@ -284,6 +284,8 @@ extension HuhoeDetailViewController {
     private func configureCollectionViewLayout() {
         var listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
         listConfig.showsSeparators = false
+        listConfig.backgroundColor = UIColor(named: "BackgroundColor")
+
         coinHistoryCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: listConfig)
     }
     

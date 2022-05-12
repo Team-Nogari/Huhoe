@@ -124,7 +124,6 @@
                     <constraint firstItem="9Vo-DQ-z7S" firstAttribute="trailing" secondItem="b31-dk-6Ik" secondAttribute="trailing" constant="10" id="yEQ-iM-U1X"/>
                 </constraints>
             </collectionViewCellContentView>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <size key="customSize" width="445" height="112"/>
             <connections>
                 <outlet property="calculatedPriceLabel" destination="bId-u2-rIo" id="cZE-Fb-s6W"/>
@@ -144,9 +143,6 @@
         <namedColor name="CoinCellBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGrayColor">
             <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -21,7 +21,7 @@ final class CoinHistoryCell: UICollectionViewCell {
         self.roundedBackgroundView.dropShadow(
             shadowColor: UIColor.label.cgColor,
             shadowOffset: CGSize(width: 0, height: 3),
-            shadowOpacity: 0.1,
+            shadowOpacity: 0.15,
             shadowRadius: 6
         )
         configureLabels()
