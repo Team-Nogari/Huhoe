@@ -23,6 +23,12 @@ class CoinListCell: UICollectionViewCell {
     override func awakeFromNib() {
         configureLabels()
         self.roundedBackgroundView.layer.cornerRadius = 8
+        self.roundedBackgroundView.dropShadow(
+            shadowColor: UIColor.label.cgColor,
+            shadowOffset: CGSize(width: 0, height: 3),
+            shadowOpacity: 0.1,
+            shadowRadius: 6
+        )
     }
 }
 

@@ -258,6 +258,7 @@ extension HuhoeDetailViewController {
         pastPriceLabel.adjustsFontForContentSizeCategory = true
         
         pastQuantityLabel.font = UIFont.withKOHIBaeum(dynamicFont: .subhead)
+        pastQuantityLabel.adjustsFontSizeToFitWidth = true
         pastQuantityLabel.adjustsFontForContentSizeCategory = true
         
         hintLabels.forEach {
@@ -347,3 +348,16 @@ private extension UIAlertController {
     }
 }
 
+extension UIView {
+    func dropShadow(
+        shadowColor: CGColor,
+        shadowOffset: CGSize,
+        shadowOpacity: Float,
+        shadowRadius: CGFloat) {
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = shadowColor
+        self.layer.shadowOffset = shadowOffset
+        self.layer.shadowOpacity = shadowOpacity
+        self.layer.shadowRadius = shadowRadius
+    }
+}
