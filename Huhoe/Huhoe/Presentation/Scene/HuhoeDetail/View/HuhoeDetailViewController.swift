@@ -159,9 +159,8 @@ extension HuhoeDetailViewController {
             })
             .disposed(by: disposeBag)
         
-        Observable.combineLatest(output.currentCoinHistoryInformation, output.pastCoinHistoryInformation)
+        Observable.zip(output.currentCoinHistoryInformation, output.pastCoinHistoryInformation)
             .observe(on: MainScheduler.asyncInstance)
-            .take(1)
             .subscribe(onNext: { [weak self] current, past in
                 self?.applySnapShot(current, past)
             })
