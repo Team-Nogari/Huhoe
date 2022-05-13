@@ -155,10 +155,20 @@ extension HuhoeMainViewController {
         
         let output = viewModel.transform(input)
         output.coinInfo
+            .debug()
             .retry(5)
             .asDriver(onErrorJustReturn: [])
             .drive(onNext: { [weak self] in
                 self?.applySnapShot($0)
+            })
+            .disposed(by: disposeBag)
+        
+        output.coinInfo
+            .take(1)
+            .asDriver(onErrorJustReturn: [])
+            .drive(onNext: { [weak self] _ in
+                self?.activityIndicator.stop()
+                self?.activityIndicator.isHidden = true
             })
             .disposed(by: disposeBag)
     }
