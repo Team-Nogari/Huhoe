@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Lottie
 
 final class HuhoeMainViewController: UIViewController {
     
@@ -36,6 +37,10 @@ final class HuhoeMainViewController: UIViewController {
     
     @IBOutlet private weak var moneyTextField: UITextField!
     
+    // MARK: - Activity Indicator
+    
+    private let activityIndicator: AnimationView = .init(name: "indicator")
+    
     // MARK: - life Cycle
     
     override func viewDidLoad() {
@@ -43,6 +48,7 @@ final class HuhoeMainViewController: UIViewController {
         configureDateChangeButton()
         configureLabel()
         configureCollectionView()
+        configureActivityIndicator()
         
         bindViewModel()
         bindCollectionView()
@@ -81,6 +87,21 @@ extension HuhoeMainViewController {
         configureCollectionViewDataSource()
         
         coinListCollectionView.keyboardDismissMode = .onDrag
+    }
+    
+    private func configureActivityIndicator() {
+        coinListCollectionView.addSubview(activityIndicator)
+        
+        let indicatorSize = view.frame.width / 2
+        activityIndicator.frame = CGRect(
+            x: (view.frame.width * 0.5) - (indicatorSize * 0.5),
+            y: (view.frame.height * 0.5 * 0.5) - (indicatorSize * 0.5),
+            width: indicatorSize,
+            height: indicatorSize
+        )
+        activityIndicator.contentMode = .scaleAspectFit
+        activityIndicator.loopMode = .loop
+        activityIndicator.play()
     }
 }
 
