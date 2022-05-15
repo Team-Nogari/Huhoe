@@ -45,6 +45,8 @@
 		08CA087928015EBE00C94584 /* CoinListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CA087828015EBE00C94584 /* CoinListUseCase.swift */; };
 		A601695E28223E6B00A7EA08 /* ChartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A601695D28223E6A00A7EA08 /* ChartScrollView.swift */; };
 		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
+		A6514A532830E390001CA646 /* HuhoeAssistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6514A522830E390001CA646 /* HuhoeAssistViewController.storyboard */; };
+		A6514A572830E464001CA646 /* HuhoeAssistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6514A562830E464001CA646 /* HuhoeAssistViewController.swift */; };
 		A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E610280D93C600738DAD /* MoneyTextField.swift */; };
 		A652E615280EB2EC00738DAD /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E614280EB2EC00738DAD /* DatePickerViewController.swift */; };
 		A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655A1F92823AFAA000A0FEC /* ChartInformation.swift */; };
@@ -135,6 +137,8 @@
 		08CA087828015EBE00C94584 /* CoinListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListUseCase.swift; sourceTree = "<group>"; };
 		A601695D28223E6A00A7EA08 /* ChartScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartScrollView.swift; sourceTree = "<group>"; };
 		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
+		A6514A522830E390001CA646 /* HuhoeAssistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HuhoeAssistViewController.storyboard; sourceTree = "<group>"; };
+		A6514A562830E464001CA646 /* HuhoeAssistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeAssistViewController.swift; sourceTree = "<group>"; };
 		A652E610280D93C600738DAD /* MoneyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTextField.swift; sourceTree = "<group>"; };
 		A652E614280EB2EC00738DAD /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		A655A1F92823AFAA000A0FEC /* ChartInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInformation.swift; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 		084F769527FDC26E00BAE500 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				A6514A4D2830E333001CA646 /* HuhoeAssist */,
 				A6EA67D7282A348F006FE5DC /* Common */,
 				089A912D2813025A006D2710 /* HuhoeDetail */,
 				084F769627FDC27600BAE500 /* HuhoeMain */,
@@ -414,6 +419,15 @@
 				084BF6AB28198D5D00916465 /* CoinDetailUseCase.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		A6514A4D2830E333001CA646 /* HuhoeAssist */ = {
+			isa = PBXGroup;
+			children = (
+				A6514A522830E390001CA646 /* HuhoeAssistViewController.storyboard */,
+				A6514A562830E464001CA646 /* HuhoeAssistViewController.swift */,
+			);
+			path = HuhoeAssist;
 			sourceTree = "<group>";
 		};
 		A66028D228169ABD00B249EA /* Websocket */ = {
@@ -673,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0834ED8A281398B400BD6D8C /* CoinHistoryCell.xib in Resources */,
+				A6514A532830E390001CA646 /* HuhoeAssistViewController.storyboard in Resources */,
 				08B238E0280ABF850047D282 /* Localizable.strings in Resources */,
 				A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */,
 				A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */,
@@ -709,6 +724,7 @@
 				A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */,
 				084BF6A928191C6300916465 /* Result+extension.swift in Sources */,
 				A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */,
+				A6514A572830E464001CA646 /* HuhoeAssistViewController.swift in Sources */,
 				081EF55228225FD600836E6B /* ChartPriceAndDateView.swift in Sources */,
 				0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */,
 				08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */,
