@@ -10,13 +10,21 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var flag: Bool = true
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        if flag == true {
+            let assistVC = UIStoryboard(name: "HuhoeAssistPageViewController", bundle: nil).instantiateViewController(withIdentifier: "HuhoeAssistPageViewController")
+            
+            window?.rootViewController = assistVC
+        } else {
+            let mainVC = UINavigationController(rootViewController: UIStoryboard(name: "HuhoeMainViewController", bundle: nil).instantiateViewController(withIdentifier: "HuhoeMainViewController"))
+            
+            window?.rootViewController = mainVC
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

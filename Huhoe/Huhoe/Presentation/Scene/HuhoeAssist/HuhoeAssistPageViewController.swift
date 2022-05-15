@@ -8,22 +8,80 @@
 import UIKit
 
 class HuhoeAssistPageViewController: UIPageViewController {
+    lazy var pages = [
+        self.ViewControllerInstance(name: "FirstPageVC"),
+        self.ViewControllerInstance(name: "SecondPageVC"),
+        self.ViewControllerInstance(name: "ThirdPageVC")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.delegate = self
+        self.dataSource = self
+        
+        if let firstPage = pages.first {
+            setViewControllers([firstPage], direction: .forward, animated: true)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for view in self.view.subviews {
+            if view is UIScrollView{
+                view.frame = UIScreen.main.bounds
+            } else if view is UIPageControl {
+                view.backgroundColor = UIColor.clear
+            }
+        }
     }
-    */
+}
 
+extension HuhoeAssistPageViewController: UIPageViewControllerDataSource {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let pageIndex = pages.firstIndex(of: viewController) else {
+            return nil
+        }
+        
+        let previousIndex = pageIndex - 1
+        
+        if previousIndex < 0 {
+            return nil
+        }
+        
+        return pages[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+        guard let pageIndex = pages.firstIndex(of: viewController) else {
+            return nil
+        }
+        
+        let nextIndex = pageIndex + 1
+        
+        if nextIndex == pages.count {
+            return nil
+        }
+        
+        return pages[nextIndex]
+    }
+}
+
+extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return pages.count
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstPage = pages.first, let firstPageIndex = pages.firstIndex(of: firstPage) else {
+            return 0
+        }
+        
+        return firstPageIndex
+    }
+}
+
+private extension HuhoeAssistPageViewController {
+    func ViewControllerInstance(name: String) -> UIViewController {
+        return UIStoryboard(name: "HuhoeAssistPageViewController", bundle: nil).instantiateViewController(withIdentifier: name)
+    }
 }
