@@ -71,6 +71,16 @@ class HuhoeAssistPageViewController: UIPageViewController {
                 }
                 
                 self.setViewControllers([nextPage], direction: .forward, animated: true)
+                
+                let isLastPage = self.pages.firstIndex(of: nextPage) == self.pages.count - 1
+                
+                if isLastPage == true {
+                    self.skipButton.isHidden = true
+                    self.nextButton.setTitle("Start", for: .normal)
+                } else {
+                    self.skipButton.isHidden = false
+                    self.nextButton.setTitle("Next", for: .normal)
+                } // 버튼이 아닌 페이징을 통해 뒤로갔을 떈 먹히지 않는 문제 개선해야함
             })
             .disposed(by: disposeBag)
         
@@ -104,11 +114,8 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDataSource {
         
         let nextIndex = pageIndex + 1
         
-        
         if nextIndex == pages.count {
             return nil
-        } else if nextIndex == pages.count - 1 {
-            skipButton.isHidden = true
         }
         
         return pages[nextIndex]
