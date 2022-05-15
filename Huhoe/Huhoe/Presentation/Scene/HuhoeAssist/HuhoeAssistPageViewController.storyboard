@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Huhoe Assist Page View Controller-->
+        <scene sceneID="e0M-qR-nXW">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Ecw-ba-OFI" customClass="HuhoeAssistPageViewController" customModule="Huhoe" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEJ-8r-V1q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-674"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="FirstPageVC" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FirstAssistPage" translatesAutoresizingMaskIntoConstraints="NO" id="7OR-ne-VCv">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7OR-ne-VCv" secondAttribute="bottom" id="Dpx-UL-EMy"/>
+                            <constraint firstItem="7OR-ne-VCv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="X1y-qv-MYq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7OR-ne-VCv" secondAttribute="trailing" id="hOH-ov-AjN"/>
+                            <constraint firstItem="7OR-ne-VCv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="pqf-qp-RTz"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="35"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3ml-wM-TbV">
+            <objects>
+                <viewController storyboardIdentifier="SecondPageVC" id="vV5-Gz-oPi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aWo-pZ-Gch">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SecondAssistPage" translatesAutoresizingMaskIntoConstraints="NO" id="jop-B3-WRR">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JXW-uf-XSx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jop-B3-WRR" secondAttribute="bottom" id="64A-G2-Mzk"/>
+                            <constraint firstItem="JXW-uf-XSx" firstAttribute="trailing" secondItem="jop-B3-WRR" secondAttribute="trailing" id="DO8-zc-Aou"/>
+                            <constraint firstItem="jop-B3-WRR" firstAttribute="leading" secondItem="JXW-uf-XSx" secondAttribute="leading" id="cxT-hL-Tid"/>
+                            <constraint firstItem="jop-B3-WRR" firstAttribute="top" secondItem="JXW-uf-XSx" secondAttribute="top" id="xnN-G0-tpl"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ieL-zD-3Lw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825" y="35"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mo4-0d-Vph">
+            <objects>
+                <viewController storyboardIdentifier="ThirdPageVC" id="EJb-2d-uAB" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7WA-bu-VbQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ThirdAssistPage" translatesAutoresizingMaskIntoConstraints="NO" id="xqQ-0O-JcL">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EJE-DD-lXw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="xqQ-0O-JcL" secondAttribute="bottom" id="1VG-E9-7Nn"/>
+                            <constraint firstItem="xqQ-0O-JcL" firstAttribute="leading" secondItem="EJE-DD-lXw" secondAttribute="leading" id="2Ty-gd-Nuh"/>
+                            <constraint firstItem="EJE-DD-lXw" firstAttribute="trailing" secondItem="xqQ-0O-JcL" secondAttribute="trailing" id="FjT-6K-itp"/>
+                            <constraint firstItem="xqQ-0O-JcL" firstAttribute="top" secondItem="EJE-DD-lXw" secondAttribute="top" id="vZK-RT-OEb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TIo-a4-P1J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1510" y="35"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="FirstAssistPage" width="375" height="812"/>
+        <image name="SecondAssistPage" width="375" height="812"/>
+        <image name="ThirdAssistPage" width="375" height="812"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HuhoeAssistViewController: UIPageViewController {
+class HuhoeAssistPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
