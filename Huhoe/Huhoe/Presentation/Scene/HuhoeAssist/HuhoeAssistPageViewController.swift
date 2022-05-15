@@ -6,11 +6,9 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
-class HuhoeAssistPageViewController: UIPageViewController {
-    private let disposeBag = DisposeBag()
+final class HuhoeAssistPageViewController: UIPageViewController {
+    var action: ((Int) -> Void)?
     
     lazy var pages = [
         self.ViewControllerInstance(name: "FirstPageVC"),
@@ -18,77 +16,17 @@ class HuhoeAssistPageViewController: UIPageViewController {
         self.ViewControllerInstance(name: "ThirdPageVC")
     ]
     
-    private var nextButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Next", for: .normal)
-        button.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .title3)
-        button.setTitleColor(UIColor(named: "ButtonColor"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private var skipButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Skip", for: .normal)
-        button.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .title3)
-        button.setTitleColor(UIColor(named: "ButtonColor"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
         configureFirstPage()
-        configureButton()
     }
 
     private func configureFirstPage() {
         if let firstPage = pages.first {
             setViewControllers([firstPage], direction: .forward, animated: true)
         }
-    }
-    
-    private func configureButton() {
-        view.addSubview(skipButton)
-        view.addSubview(nextButton)
-        
-        NSLayoutConstraint.activate([
-            skipButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
-            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            nextButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5)
-        ])
-        
-        nextButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self,
-                      let currentPage = self.viewControllers?.first,
-                      let nextPage = self.dataSource?.pageViewController(self, viewControllerAfter: currentPage) else {
-                    self?.presentMainViewController()
-                    return
-                }
-                
-                self.setViewControllers([nextPage], direction: .forward, animated: true)
-                
-                let isLastPage = self.pages.firstIndex(of: nextPage) == self.pages.count - 1
-                
-                if isLastPage == true {
-                    self.skipButton.isHidden = true
-                    self.nextButton.setTitle("Start", for: .normal)
-                } else {
-                    self.skipButton.isHidden = false
-                    self.nextButton.setTitle("Next", for: .normal)
-                } // 버튼이 아닌 페이징을 통해 뒤로갔을 떈 먹히지 않는 문제 개선해야함
-            })
-            .disposed(by: disposeBag)
-        
-        skipButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.presentMainViewController()
-            })
-            .disposed(by: disposeBag)
     }
 }
 
@@ -104,6 +42,8 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDataSource {
             return nil
         }
         
+        action?(previousIndex)
+        
         return pages[previousIndex]
     }
     
@@ -117,6 +57,8 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDataSource {
         if nextIndex == pages.count {
             return nil
         }
+        
+        action?(nextIndex)
         
         return pages[nextIndex]
     }
@@ -137,10 +79,10 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
     }
 }
 
-private extension HuhoeAssistPageViewController {
+extension HuhoeAssistPageViewController {
     func ViewControllerInstance(name: String) -> UIViewController {
         return UIStoryboard(
-            name: "HuhoeAssistPageViewController",
+            name: "HuhoeAssistViewController",
             bundle: nil
         )
         .instantiateViewController(withIdentifier: name)

@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         
         if flag == true {
-            let assistVC = UIStoryboard(name: "HuhoeAssistPageViewController", bundle: nil).instantiateViewController(withIdentifier: "HuhoeAssistPageViewController")
+            let assistVC = UIStoryboard(name: "HuhoeAssistViewController", bundle: nil).instantiateViewController(withIdentifier: "HuhoeAssistViewController")
             
             window?.rootViewController = assistVC
         } else {
