@@ -18,20 +18,12 @@ class HuhoeAssistPageViewController: UIPageViewController {
         super.viewDidLoad()
         self.delegate = self
         self.dataSource = self
-        
+        configureFirstPage()
+    }
+
+    private func configureFirstPage() {
         if let firstPage = pages.first {
             setViewControllers([firstPage], direction: .forward, animated: true)
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        for view in self.view.subviews {
-            if view is UIScrollView{
-                view.frame = UIScreen.main.bounds
-            } else if view is UIPageControl {
-                view.backgroundColor = UIColor.clear
-            }
         }
     }
 }
@@ -72,7 +64,8 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let firstPage = pages.first, let firstPageIndex = pages.firstIndex(of: firstPage) else {
+        guard let firstPage = pages.first,
+              let firstPageIndex = pages.firstIndex(of: firstPage) else {
             return 0
         }
         
@@ -82,6 +75,10 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
 
 private extension HuhoeAssistPageViewController {
     func ViewControllerInstance(name: String) -> UIViewController {
-        return UIStoryboard(name: "HuhoeAssistPageViewController", bundle: nil).instantiateViewController(withIdentifier: name)
+        return UIStoryboard(
+            name: "HuhoeAssistPageViewController",
+            bundle: nil
+        )
+        .instantiateViewController(withIdentifier: name)
     }
 }
