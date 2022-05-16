@@ -24,6 +24,7 @@ final class HuhoeMainViewController: UIViewController {
     @IBOutlet private var hintLabels: [UILabel]!
     
     @IBOutlet private weak var dateChangeButton: UIButton!
+    @IBOutlet private weak var moreButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
     private var dataSource: DiffableDataSource?
@@ -53,6 +54,9 @@ final class HuhoeMainViewController: UIViewController {
         bindViewModel()
         bindCollectionView()
         bindTapGesture()
+        configureMoreButton()
+        
+        UserDefaults.standard.set(true, forKey: "isAssistView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +73,6 @@ extension HuhoeMainViewController {
         dateChangeButton.layer.cornerRadius = 6
         dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
         dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
-        
     }
     
     private func configureLabel() {
@@ -80,6 +83,19 @@ extension HuhoeMainViewController {
             $0.font = UIFont.withKOHIBaeum(dynamicFont: .headline)
             $0.adjustsFontForContentSizeCategory = true
         }
+    }
+    
+    private func configureMoreButton() {
+        let showAssistAction = UIAction(
+            title: "도움말",
+            image: UIImage(systemName: "questionmark.circle")) { wee in
+                let assistVC = UIStoryboard(name: "HuhoeAssistViewController", bundle: nil)
+                    .instantiateViewController(withIdentifier: "HuhoeAssistViewController")
+                self.modalPresentationStyle = .fullScreen
+                self.present(assistVC, animated: true)
+            }
+        let buttonMenu = UIMenu(title: "", children: [showAssistAction])
+        moreButton.menu = buttonMenu
     }
     
     private func configureCollectionView() {
