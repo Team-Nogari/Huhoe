@@ -30,6 +30,19 @@ final class HuhoeAssistPageViewController: UIPageViewController {
         configureFirstPage()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for view in self.view.subviews {
+            if view is UIScrollView {
+                view.frame = UIScreen.main.bounds
+            } else if view is UIPageControl,
+                      let pageControl = view as? UIPageControl
+            {
+                pageControl.isHidden = true
+            }
+        }
+    }
+    
     private func configureFirstPage() {
         if let firstPage = pages.first {
             setViewControllers([firstPage], direction: .forward, animated: true)
@@ -82,15 +95,15 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
     }
     
     func pageViewController(
-            _ pageViewController: UIPageViewController,
-            didFinishAnimating finished: Bool,
-            previousViewControllers: [UIViewController],
-            transitionCompleted completed: Bool
-        ) {
-            if completed {
-                action?(currentIndex)
-            }
+        _ pageViewController: UIPageViewController,
+        didFinishAnimating finished: Bool,
+        previousViewControllers: [UIViewController],
+        transitionCompleted completed: Bool
+    ) {
+        if completed {
+            action?(currentIndex)
         }
+    }
 }
 
 private extension HuhoeAssistPageViewController {

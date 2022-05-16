@@ -54,7 +54,7 @@ final class HuhoeMainViewController: UIViewController {
         bindViewModel()
         bindCollectionView()
         bindTapGesture()
-        dd()
+        configureMoreButton()
         
         UserDefaults.standard.set(true, forKey: "isAssistView")
     }
@@ -63,20 +63,6 @@ final class HuhoeMainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.isNavigationBarHidden = true
-    }
-    
-    func dd() {
-        let showAssistAction = UIAction(
-            title: "도움말",
-            image: UIImage(systemName: "questionmark.circle")) { wee in
-                let assistVC = UIStoryboard(name: "HuhoeAssistViewController", bundle: nil)
-                    .instantiateViewController(withIdentifier: "HuhoeAssistViewController")
-                self.modalPresentationStyle = .fullScreen
-                self.present(assistVC, animated: true)
-            }
-        let cancel = UIAction(title: "개발자 뭐시기", handler: { _ in print("취소") })
-        let buttonMenu = UIMenu(title: "", children: [showAssistAction, cancel])
-        moreButton.menu = buttonMenu
     }
 }
 
@@ -97,6 +83,19 @@ extension HuhoeMainViewController {
             $0.font = UIFont.withKOHIBaeum(dynamicFont: .headline)
             $0.adjustsFontForContentSizeCategory = true
         }
+    }
+    
+    private func configureMoreButton() {
+        let showAssistAction = UIAction(
+            title: "도움말",
+            image: UIImage(systemName: "questionmark.circle")) { wee in
+                let assistVC = UIStoryboard(name: "HuhoeAssistViewController", bundle: nil)
+                    .instantiateViewController(withIdentifier: "HuhoeAssistViewController")
+                self.modalPresentationStyle = .fullScreen
+                self.present(assistVC, animated: true)
+            }
+        let buttonMenu = UIMenu(title: "", children: [showAssistAction])
+        moreButton.menu = buttonMenu
     }
     
     private func configureCollectionView() {

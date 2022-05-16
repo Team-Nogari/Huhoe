@@ -11,6 +11,7 @@ import RxCocoa
 
 final class HuhoeAssistViewController: UIViewController {
 
+    @IBOutlet private weak var pageControl: UIPageControl!
     private var pageViewController : HuhoeAssistPageViewController?
     
     private let disposeBag = DisposeBag()
@@ -89,6 +90,8 @@ final class HuhoeAssistViewController: UIViewController {
             
             self.pageViewController = pageViewController
             self.pageViewController?.action = { [weak self] pageIndex in
+                self?.pageControl.currentPage = pageIndex
+                
                 let isLastPage = pageIndex == self!.pageViewController!.pages.count - 1
                 
                 if isLastPage == true {
