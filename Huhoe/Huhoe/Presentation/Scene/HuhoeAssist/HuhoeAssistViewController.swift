@@ -31,7 +31,7 @@ final class HuhoeAssistViewController: UIViewController {
     
     private var skipButton: UIButton = {
         let button = UIButton()
-        button.setTitle("넘기기", for: .normal)
+        button.setTitle("건너뛰기", for: .normal)
         button.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .title3)
         button.setTitleColor(.label, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -43,10 +43,10 @@ final class HuhoeAssistViewController: UIViewController {
         view.addSubview(nextButton)
         
         NSLayoutConstraint.activate([
-            skipButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
-            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            nextButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5)
+            skipButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            nextButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
         ])
         
         nextButton.rx.tap

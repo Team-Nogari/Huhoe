@@ -8,13 +8,20 @@
 import UIKit
 
 final class HuhoeAssistPageViewController: UIPageViewController {
-    var action: ((Int) -> Void)?
-    
     lazy var pages = [
         self.ViewControllerInstance(name: "FirstPageVC"),
         self.ViewControllerInstance(name: "SecondPageVC"),
         self.ViewControllerInstance(name: "ThirdPageVC")
     ]
+    
+    var action: ((Int) -> Void)?
+    var currentIndex : Int {
+        guard let viewController = viewControllers?.first else {
+            return Int.zero
+        }
+        
+        return pages.firstIndex(of: viewController) ?? Int.zero
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +49,6 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDataSource {
             return nil
         }
         
-        action?(previousIndex)
-        
         return pages[previousIndex]
     }
     
@@ -57,8 +62,6 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDataSource {
         if nextIndex == pages.count {
             return nil
         }
-        
-        action?(nextIndex)
         
         return pages[nextIndex]
     }
@@ -77,6 +80,17 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
         
         return firstPageIndex
     }
+    
+    func pageViewController(
+            _ pageViewController: UIPageViewController,
+            didFinishAnimating finished: Bool,
+            previousViewControllers: [UIViewController],
+            transitionCompleted completed: Bool
+        ) {
+            if completed {
+                action?(currentIndex)
+            }
+        }
 }
 
 extension HuhoeAssistPageViewController {
