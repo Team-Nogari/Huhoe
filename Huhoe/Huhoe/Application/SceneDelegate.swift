@@ -10,13 +10,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var flag: Bool = true
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let _ = (scene as? UIWindowScene) else { return }
+        let isAssistView = UserDefaults.standard.bool(forKey: "isAssistView")
         
-        if flag == true {
+        if isAssistView == false {
             let assistVC = UIStoryboard(name: "HuhoeAssistViewController", bundle: nil).instantiateViewController(withIdentifier: "HuhoeAssistViewController")
             
             window?.rootViewController = assistVC

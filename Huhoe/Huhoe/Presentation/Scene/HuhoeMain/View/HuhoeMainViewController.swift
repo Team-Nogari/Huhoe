@@ -24,6 +24,7 @@ final class HuhoeMainViewController: UIViewController {
     @IBOutlet private var hintLabels: [UILabel]!
     
     @IBOutlet private weak var dateChangeButton: UIButton!
+    @IBOutlet private weak var moreButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
     private var dataSource: DiffableDataSource?
@@ -53,6 +54,8 @@ final class HuhoeMainViewController: UIViewController {
         bindViewModel()
         bindCollectionView()
         bindTapGesture()
+        
+        UserDefaults.standard.set(true, forKey: "isAssistView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,7 +72,6 @@ extension HuhoeMainViewController {
         dateChangeButton.layer.cornerRadius = 6
         dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
         dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
-        
     }
     
     private func configureLabel() {

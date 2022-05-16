@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q0B-9o-Fkc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q0B-9o-Fkc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -119,6 +119,7 @@
                         <outlet property="coinListCollectionView" destination="In5-2s-g3J" id="RSB-pv-p6z"/>
                         <outlet property="dateChangeButton" destination="pSc-2f-xfM" id="RM5-FV-Hii"/>
                         <outlet property="moneyTextField" destination="y7v-4l-fbj" id="Nde-n9-PPf"/>
+                        <outlet property="moreButton" destination="tUO-bF-JNm" id="qSb-xu-AUh"/>
                         <outlet property="titleLabel" destination="xQW-1s-9Jx" id="2yQ-0w-jS2"/>
                         <outletCollection property="hintLabels" destination="tte-EA-0Sx" collectionClass="NSMutableArray" id="iN3-zu-99K"/>
                         <outletCollection property="hintLabels" destination="xMV-BU-pqG" collectionClass="NSMutableArray" id="WFA-yg-GfD"/>
