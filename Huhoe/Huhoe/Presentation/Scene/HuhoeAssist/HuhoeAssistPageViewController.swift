@@ -9,9 +9,9 @@ import UIKit
 
 final class HuhoeAssistPageViewController: UIPageViewController {
     lazy var pages = [
-        self.ViewControllerInstance(name: "FirstPageVC"),
-        self.ViewControllerInstance(name: "SecondPageVC"),
-        self.ViewControllerInstance(name: "ThirdPageVC")
+        self.viewControllerInstance(name: "FirstPageVC"),
+        self.viewControllerInstance(name: "SecondPageVC"),
+        self.viewControllerInstance(name: "ThirdPageVC")
     ]
     
     var action: ((Int) -> Void)?
@@ -93,19 +93,12 @@ extension HuhoeAssistPageViewController: UIPageViewControllerDelegate {
         }
 }
 
-extension HuhoeAssistPageViewController {
-    func ViewControllerInstance(name: String) -> UIViewController {
+private extension HuhoeAssistPageViewController {
+    func viewControllerInstance(name: String) -> UIViewController {
         return UIStoryboard(
             name: "HuhoeAssistViewController",
             bundle: nil
         )
         .instantiateViewController(withIdentifier: name)
-    }
-    
-    func presentMainViewController() {
-        let storyboard = UIStoryboard(name: "HuhoeMainViewController", bundle: nil)
-        let vc = UINavigationController(rootViewController: storyboard.instantiateViewController(withIdentifier: "HuhoeMainViewController"))
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: false)
     }
 }

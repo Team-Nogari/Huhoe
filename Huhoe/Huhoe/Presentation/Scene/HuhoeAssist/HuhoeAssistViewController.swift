@@ -54,7 +54,7 @@ final class HuhoeAssistViewController: UIViewController {
                 guard let self = self,
                       let currentPage = self.pageViewController?.viewControllers?.first,
                       let nextPage = self.pageViewController?.dataSource?.pageViewController(self.pageViewController!, viewControllerAfter: currentPage) else {
-                          self?.pageViewController?.presentMainViewController()
+                          self?.presentMainViewController()
                     return
                 }
                 
@@ -74,7 +74,7 @@ final class HuhoeAssistViewController: UIViewController {
         
         skipButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.pageViewController?.presentMainViewController()
+                self?.presentMainViewController()
             })
             .disposed(by: disposeBag)
     }
@@ -99,6 +99,22 @@ final class HuhoeAssistViewController: UIViewController {
                     self!.nextButton.setTitle("다음", for: .normal)
                 }
             }
+        }
+    }
+}
+
+private extension HuhoeAssistViewController {
+    func presentMainViewController() {
+        let isAssistView = UserDefaults.standard.bool(forKey: "isAssistView")
+        
+        if isAssistView == true {
+            self.dismiss(animated: true)
+        } else {
+            let storyboard = UIStoryboard(name: "HuhoeMainViewController", bundle: nil)
+            let vc = UINavigationController(rootViewController: storyboard.instantiateViewController(withIdentifier: "HuhoeMainViewController"))
+
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            sceneDelegate?.window?.rootViewController = vc
         }
     }
 }
