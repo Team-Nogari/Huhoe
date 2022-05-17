@@ -63,7 +63,7 @@ extension CandlestickResponseDTO {
             .map { $0.time * 0.001 }
         
         let price = candlestickDTO
-            .map{ $0.openPrice.toDouble }
+            .map{ $0.closePrice.toDouble }
         
         return CoinPriceHistory(
             coinSymbol: coinSymbol,
