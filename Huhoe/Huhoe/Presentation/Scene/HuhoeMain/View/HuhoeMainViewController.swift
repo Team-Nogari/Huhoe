@@ -169,13 +169,29 @@ extension HuhoeMainViewController {
         
         // MARK: - Output
         
-        let output = viewModel.transform(input)
+        var output = viewModel.transform(input)
         output.coinInfo
-            .debug()
-            .retry(5)
-            .asDriver(onErrorJustReturn: [])
-            .drive(onNext: { [weak self] in
+            .observe(on: MainScheduler.asyncInstance)
+            .retry(1)
+            .subscribe(onNext: { [weak self] in
                 self?.applySnapShot($0)
+            }, onError: { [weak self] _ in
+                let alert = UIAlertController(
+                    title: "네트워크 에러",
+                    message: "코인 정보를 가져올 수 없습니다.",
+                    preferredStyle: .alert
+                )
+                
+                let retryAction = UIAlertAction(title: "재시도", style: .default) { _ in
+                    guard let self = self else { return }
+                    
+                    output = self.viewModel.transform(input)
+                    self.activityIndicator.play()
+                    self.activityIndicator.isHidden = false
+                }
+                
+                alert.addAction(retryAction)
+                self?.present(alert, animated: false)
             })
             .disposed(by: disposeBag)
         
@@ -213,12 +229,10 @@ extension HuhoeMainViewController {
                     coinInvestmentMoney: self.moneyTextField.text ?? ""
                 )
                 
-                print(selectedCoin)
-                    
                 detailViewController.viewModel = HuhoeDetailViewModel(
                     selectedCoinInformation: selectedCoin,
                     useCase: detailUseCase
-                ) // 코인 가격, 선택 날짜, 투자금액
+                )
                 
                 self.navigationController?.show(detailViewController, sender: nil)
             })

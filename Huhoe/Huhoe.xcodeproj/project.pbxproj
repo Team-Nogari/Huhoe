@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080DB1492834D516007D90CB /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DB1482834D516007D90CB /* UIView+extension.swift */; };
 		081EF55228225FD600836E6B /* ChartPriceAndDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081EF55128225FD600836E6B /* ChartPriceAndDateView.swift */; };
 		0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834ED872813989000BD6D8C /* CoinHistoryCell.swift */; };
 		0834ED8A281398B400BD6D8C /* CoinHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */; };
@@ -104,6 +105,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		080DB1482834D516007D90CB /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
 		081EF55128225FD600836E6B /* ChartPriceAndDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPriceAndDateView.swift; sourceTree = "<group>"; };
 		0834ED872813989000BD6D8C /* CoinHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinHistoryCell.swift; sourceTree = "<group>"; };
 		0834ED89281398B400BD6D8C /* CoinHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinHistoryCell.xib; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				08A10104281AC41D0038BA8F /* Array+extension.swift */,
 				08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */,
 				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
+				080DB1482834D516007D90CB /* UIView+extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */,
 				089986342831380300FA1801 /* HuhoeAssistViewController.swift in Sources */,
 				A66028D62816A42400B249EA /* WebSocketNetworkService.swift in Sources */,
+				080DB1492834D516007D90CB /* UIView+extension.swift in Sources */,
 				A66028DD2816B78D00B249EA /* TransactionWebSocketNetwork.swift in Sources */,
 				A6E4DE3727FDB3F30005266D /* AppDelegate.swift in Sources */,
 				084BF6AC28198D5D00916465 /* CoinDetailUseCase.swift in Sources */,
@@ -966,10 +970,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL265827ML;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "후회";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -980,7 +985,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Huhoe1.com;
+				PRODUCT_BUNDLE_IDENTIFIER = teamNogari.Huhoe.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -993,11 +998,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL265827ML;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "후회";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1008,8 +1015,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Huhoe1.com;
+				PRODUCT_BUNDLE_IDENTIFIER = teamNogari.Huhoe.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
