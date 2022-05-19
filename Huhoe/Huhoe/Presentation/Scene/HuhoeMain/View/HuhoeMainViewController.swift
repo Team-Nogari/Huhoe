@@ -22,6 +22,7 @@ final class HuhoeMainViewController: UIViewController {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private var hintLabels: [UILabel]!
+    @IBOutlet private weak var moneyLabel: UILabel!
     
     @IBOutlet private weak var dateChangeButton: UIButton!
     @IBOutlet private weak var moreButton: UIButton!
@@ -29,14 +30,12 @@ final class HuhoeMainViewController: UIViewController {
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
     private var dataSource: DiffableDataSource?
     
+    lazy var keyboardView = configureKeyboard()
+    
     // MARK: - ViewModel
     
     private let viewModel = HuhoeMainViewModel()
     private let disposeBag = DisposeBag()
-    
-    // MARK: - Text Field
-    
-    @IBOutlet private weak var moneyTextField: UITextField!
     
     // MARK: - Activity Indicator
     
@@ -83,6 +82,11 @@ extension HuhoeMainViewController {
             $0.font = UIFont.withKOHIBaeum(dynamicFont: .headline)
             $0.adjustsFontForContentSizeCategory = true
         }
+        
+        moneyLabel.font = UIFont.withKOHIBaeum(dynamicFont: .body)
+        moneyLabel.adjustsFontForContentSizeCategory = true
+        moneyLabel.layer.masksToBounds = true
+        moneyLabel.layer.cornerRadius = 6
     }
     
     private func configureMoreButton() {
@@ -96,10 +100,6 @@ extension HuhoeMainViewController {
             }
         let buttonMenu = UIMenu(title: "", children: [showAssistAction])
         moreButton.menu = buttonMenu
-        
-        let assistVC = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: self, options: nil)?.first as! UIView
-
-        view.addSubview(assistVC)
     }
     
     private func configureCollectionView() {
@@ -156,18 +156,21 @@ extension HuhoeMainViewController {
                 self?.present(alert, animated: true)
             }).disposed(by: disposeBag)
             
-        let moneyTextFieldRelay = BehaviorRelay<String?>(value: moneyTextField.text)
-        moneyTextField.rx.text
-            .orEmpty
+        
+        let moneyLabelTextRelay = BehaviorRelay<String?>(value: moneyLabel.text)
+        
+        let moneyLabelTextObservable = moneyLabel.rx.observe(String.self, "text")
+        
+        moneyLabelTextObservable
+            .filterNil()
             .filter { $0 != "" && $0 != "0" && $0.count <= 10}
             .subscribe(onNext: {
-                moneyTextFieldRelay.accept($0)
+                moneyLabelTextRelay.accept($0)
             })
             .disposed(by: disposeBag)
         
-        
         let input = HuhoeMainViewModel.Input(
-            changeMoney: moneyTextFieldRelay.asObservable().filterNil(),
+            changeMoney: moneyLabelTextRelay.asObservable().filterNil(),
             changeDate: dateTextRelay.asObservable()
         )
         
@@ -210,6 +213,12 @@ extension HuhoeMainViewController {
     }
     
     private func bindCollectionView() {
+        coinListCollectionView.rx.willBeginDragging
+            .subscribe(onNext: { [weak self] in
+                self?.keyboardView?.isHidden = true
+            })
+            .disposed(by: disposeBag)
+        
         coinListCollectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
@@ -230,7 +239,7 @@ extension HuhoeMainViewController {
                     coinSymbol: item?.coinSymbol ?? "",
                     coinCurrentPrice: item?.currentPriceString ?? "",
                     coinInvestmentDate: self.dateChangeButton.titleLabel?.text ?? "",
-                    coinInvestmentMoney: self.moneyTextField.text ?? ""
+                    coinInvestmentMoney: self.moneyLabel.text ?? ""
                 )
                 
                 detailViewController.viewModel = HuhoeDetailViewModel(
@@ -291,10 +300,42 @@ extension HuhoeMainViewController {
         view.addGestureRecognizer(tapGesture)
         
         tapGesture.rx.event
-            .subscribe(onNext: { [weak self] _ in
-                self?.view.endEditing(true)
+            .subscribe(onNext: { [weak self] eee in
+                print(eee)
+                self?.keyboardView?.isHidden = true
             })
             .disposed(by: disposeBag)
+        
+        let moneyLabelTapGesture = UITapGestureRecognizer(target: self, action: nil)
+        moneyLabel.addGestureRecognizer(moneyLabelTapGesture)
+        
+        moneyLabelTapGesture.rx.event
+            .subscribe(onNext: { [weak self] _ in
+                self?.keyboardView?.isHidden = false
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func configureKeyboard() -> UIView? {
+        guard let keyboardView = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: nil, options: nil)?.first as? HuhoeKeyboardView else {
+            return nil
+        }
+        let tapGesture = UITapGestureRecognizer(target: nil, action: nil)
+        tapGesture.cancelsTouchesInView = false
+        keyboardView.addGestureRecognizer(tapGesture)
+        
+        keyboardView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(keyboardView)
+        keyboardView.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            keyboardView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            keyboardView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            keyboardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
+        ])
+        
+        return keyboardView
     }
 }
 
