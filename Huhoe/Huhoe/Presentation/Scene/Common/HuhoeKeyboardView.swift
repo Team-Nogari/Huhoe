@@ -6,24 +6,34 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 final class HuhoeKeyboardView: UIView {
 
-    var input: String = ""
+    var input: String = "10000"
+    
+    private(set) lazy var inputRelay = BehaviorRelay<Double>(value: input.toDouble)
     
     @IBAction func touchUpNumberButton(_ sender: UIButton) {
-        input += sender.tag.description
+        guard input != "" || sender.tag != 0 else {
+            return
+        }
         
-        print(input)
+        if input.count < 9 {
+            input += sender.tag.description
+            inputRelay.accept(input.toDouble)
+        }
     }
     
     @IBAction func touchUpRemoveButton(_ sender: UIButton) {
-        input = input.removedSuffix(from: 1)
-        
-        print(input)
+        if input.count > 0 {
+            input.removeLast()
+            inputRelay.accept(input.toDouble)
+        }
     }
     
     @IBAction func touchUpDoneButton(_ sender: UIButton) {
-        
+        isHidden = true
     }
 }

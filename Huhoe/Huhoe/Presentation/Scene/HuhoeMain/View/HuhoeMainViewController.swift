@@ -157,12 +157,19 @@ extension HuhoeMainViewController {
             }).disposed(by: disposeBag)
             
         
-        let moneyLabelTextRelay = BehaviorRelay<String?>(value: moneyLabel.text)
+        keyboardView?.inputRelay
+            .asDriver()
+            .drive(onNext: { [weak self] moneyText in
+                self?.moneyLabel.text = moneyText.toString() + " 원"
+            })
+            .disposed(by: disposeBag)
         
+        let moneyLabelTextRelay = BehaviorRelay<String?>(value: moneyLabel.text)
         let moneyLabelTextObservable = moneyLabel.rx.observe(String.self, "text")
         
         moneyLabelTextObservable
             .filterNil()
+            .map { $0.removeComma.replacingOccurrences(of: " 원", with: "") }
             .filter { $0 != "" && $0 != "0" && $0.count <= 10}
             .subscribe(onNext: {
                 moneyLabelTextRelay.accept($0)
@@ -300,8 +307,7 @@ extension HuhoeMainViewController {
         view.addGestureRecognizer(tapGesture)
         
         tapGesture.rx.event
-            .subscribe(onNext: { [weak self] eee in
-                print(eee)
+            .subscribe(onNext: { [weak self] _ in
                 self?.keyboardView?.isHidden = true
             })
             .disposed(by: disposeBag)
@@ -316,7 +322,7 @@ extension HuhoeMainViewController {
             .disposed(by: disposeBag)
     }
     
-    private func configureKeyboard() -> UIView? {
+    private func configureKeyboard() -> HuhoeKeyboardView? {
         guard let keyboardView = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: nil, options: nil)?.first as? HuhoeKeyboardView else {
             return nil
         }
@@ -332,7 +338,7 @@ extension HuhoeMainViewController {
             keyboardView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             keyboardView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
             keyboardView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-            keyboardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
+            keyboardView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.375)
         ])
         
         return keyboardView
