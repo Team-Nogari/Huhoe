@@ -96,6 +96,10 @@ extension HuhoeMainViewController {
             }
         let buttonMenu = UIMenu(title: "", children: [showAssistAction])
         moreButton.menu = buttonMenu
+        
+        let assistVC = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: self, options: nil)?.first as! UIView
+
+        view.addSubview(assistVC)
     }
     
     private func configureCollectionView() {
