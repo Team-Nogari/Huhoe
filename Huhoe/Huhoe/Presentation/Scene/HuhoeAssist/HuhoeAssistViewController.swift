@@ -34,7 +34,7 @@ final class HuhoeAssistViewController: UIViewController {
         let button = UIButton()
         button.setTitle("건너뛰기", for: .normal)
         button.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .title3)
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
