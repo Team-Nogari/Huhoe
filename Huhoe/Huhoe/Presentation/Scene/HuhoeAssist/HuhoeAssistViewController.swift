@@ -53,15 +53,18 @@ final class HuhoeAssistViewController: UIViewController {
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let self = self,
-                      let currentPage = self.pageViewController?.viewControllers?.first,
-                      let nextPage = self.pageViewController?.dataSource?.pageViewController(self.pageViewController!, viewControllerAfter: currentPage) else {
+                      let pageViewController = self.pageViewController,
+                      let currentPage = pageViewController.viewControllers?.first,
+                      let nextPage = pageViewController.dataSource?.pageViewController(pageViewController, viewControllerAfter: currentPage)
+                       else {
                           self?.presentMainViewController()
                     return
                 }
                 
-                self.pageViewController?.setViewControllers([nextPage], direction: .forward, animated: true)
+                pageViewController.setViewControllers([nextPage], direction: .forward, animated: true)
+                self.pageControl.currentPage = pageViewController.pages.firstIndex(of: nextPage)!
                 
-                let isLastPage = self.pageViewController!.pages.firstIndex(of: nextPage) == self.pageViewController!.pages.count - 1
+                let isLastPage = pageViewController.pages.firstIndex(of: nextPage) == pageViewController.pages.count - 1
                 
                 if isLastPage == true {
                     self.skipButton.isHidden = true
@@ -90,16 +93,20 @@ final class HuhoeAssistViewController: UIViewController {
             
             self.pageViewController = pageViewController
             self.pageViewController?.action = { [weak self] pageIndex in
+                guard let pageCount = self?.pageViewController?.pages.count else {
+                    return
+                }
+                
                 self?.pageControl.currentPage = pageIndex
                 
-                let isLastPage = pageIndex == self!.pageViewController!.pages.count - 1
+                let isLastPage = pageIndex == pageCount - 1
                 
                 if isLastPage == true {
-                    self!.skipButton.isHidden = true
-                    self!.nextButton.setTitle("시작하기", for: .normal)
+                    self?.skipButton.isHidden = true
+                    self?.nextButton.setTitle("시작하기", for: .normal)
                 } else {
-                    self!.skipButton.isHidden = false
-                    self!.nextButton.setTitle("다음", for: .normal)
+                    self?.skipButton.isHidden = false
+                    self?.nextButton.setTitle("다음", for: .normal)
                 }
             }
         }
