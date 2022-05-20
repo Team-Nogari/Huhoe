@@ -30,6 +30,8 @@
 		08A100FA281A33DF0038BA8F /* Observable+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A100F9281A33DF0038BA8F /* Observable+extension.swift */; };
 		08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A100FB281A755D0038BA8F /* Double+extension.swift */; };
 		08A10105281AC41D0038BA8F /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10104281AC41D0038BA8F /* Array+extension.swift */; };
+		08A4346728361F370056D9B5 /* HuhoeKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */; };
+		08A4346928361F400056D9B5 /* HuhoeKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */; };
 		08A6D601282DF3710074B216 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 08A6D600282DF3710074B216 /* Lottie */; };
 		08AA7C8F280F039000305CED /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA7C8E280F039000305CED /* Date+extension.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
@@ -125,6 +127,8 @@
 		08A100F9281A33DF0038BA8F /* Observable+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+extension.swift"; sourceTree = "<group>"; };
 		08A100FB281A755D0038BA8F /* Double+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+extension.swift"; sourceTree = "<group>"; };
 		08A10104281AC41D0038BA8F /* Array+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extension.swift"; sourceTree = "<group>"; };
+		08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeKeyboardView.swift; sourceTree = "<group>"; };
+		08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HuhoeKeyboardView.xib; sourceTree = "<group>"; };
 		08AA7C8E280F039000305CED /* Date+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+extension.swift"; sourceTree = "<group>"; };
 		08ACF49227FFD2C60007E134 /* Ticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticker.swift; sourceTree = "<group>"; };
 		08ACF49427FFD6050007E134 /* TickerResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickerResponse.swift; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 			isa = PBXGroup;
 			children = (
 				A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */,
+				08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */,
+				08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -701,6 +707,7 @@
 				089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */,
 				A6EA67D6282A0362006FE5DC /* KOHIBaeum.ttf in Resources */,
 				A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */,
+				08A4346928361F400056D9B5 /* HuhoeKeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +739,7 @@
 				A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */,
 				A6514A572830E464001CA646 /* HuhoeAssistPageViewController.swift in Sources */,
 				081EF55228225FD600836E6B /* ChartPriceAndDateView.swift in Sources */,
+				08A4346728361F370056D9B5 /* HuhoeKeyboardView.swift in Sources */,
 				0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */,
 				08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */,
 				08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */,
@@ -970,7 +978,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
@@ -984,7 +992,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = teamNogari.Huhoe.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1000,7 +1008,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
@@ -1014,7 +1022,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = teamNogari.Huhoe.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -27,6 +27,7 @@
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxo-hq-hWx">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
                                 <connections>
                                     <segue destination="Ecw-ba-OFI" kind="embed" identifier="pageViewController" id="DcO-Ir-f7x"/>
                                 </connections>
@@ -70,7 +71,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="7OR-ne-VCv" secondAttribute="bottom" id="Dpx-UL-EMy"/>
                             <constraint firstItem="7OR-ne-VCv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="X1y-qv-MYq"/>
@@ -96,7 +97,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="JXW-uf-XSx"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="jop-B3-WRR" firstAttribute="trailing" secondItem="JXW-uf-XSx" secondAttribute="trailing" id="Ix7-IQ-fDb"/>
                             <constraint firstAttribute="bottom" secondItem="jop-B3-WRR" secondAttribute="bottom" id="XhE-Kc-gkj"/>
@@ -122,7 +123,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EJE-DD-lXw"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="xqQ-0O-JcL" secondAttribute="bottom" id="1VG-E9-7Nn"/>
                             <constraint firstItem="xqQ-0O-JcL" firstAttribute="leading" secondItem="EJE-DD-lXw" secondAttribute="leading" id="2Ty-gd-Nuh"/>
@@ -140,6 +141,9 @@
         <image name="FirstAssistPage" width="375" height="812"/>
         <image name="SecondAssistPage" width="375" height="812"/>
         <image name="ThirdAssistPage" width="375" height="812"/>
+        <namedColor name="BackgroundColor">
+            <color red="0.94901960784313721" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="ButtonColor">
             <color red="0.36470588235294116" green="0.37254901960784315" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

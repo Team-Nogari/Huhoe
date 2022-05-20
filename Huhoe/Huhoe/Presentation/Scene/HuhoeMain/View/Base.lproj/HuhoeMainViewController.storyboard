@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q0B-9o-Fkc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Q0B-9o-Fkc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -70,14 +70,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10000" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y7v-4l-fbj" customClass="MoneyTextField" customModule="Huhoe" customModuleProvider="target">
-                                <rect key="frame" x="20" y="250" width="374" height="53.5"/>
-                                <color key="backgroundColor" name="ButtonColor"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1j-6P-Prp">
                                 <rect key="frame" x="370" y="57" width="24" height="22"/>
                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,39 +77,46 @@
                                     <imageReference key="image" image="ellipsis" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjD-q2-FE6">
+                                <rect key="frame" x="20" y="250" width="374" height="53.5"/>
+                                <color key="backgroundColor" name="ButtonColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="y7v-4l-fbj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="20c-gY-twh"/>
-                            <constraint firstItem="XVm-KZ-Qej" firstAttribute="top" secondItem="y7v-4l-fbj" secondAttribute="bottom" constant="20" id="2X3-ep-Tnk"/>
+                            <constraint firstItem="JjD-q2-FE6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="13x-j6-IwR"/>
                             <constraint firstItem="XVm-KZ-Qej" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7RL-xa-NxE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pSc-2f-xfM" secondAttribute="trailing" constant="20" id="8rn-91-yKF"/>
                             <constraint firstItem="xQW-1s-9Jx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9mw-Be-2Rn"/>
+                            <constraint firstItem="JjD-q2-FE6" firstAttribute="height" secondItem="pSc-2f-xfM" secondAttribute="height" id="CFZ-wp-PR5"/>
                             <constraint firstItem="pSc-2f-xfM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Hnf-9N-m8b"/>
+                            <constraint firstItem="XVm-KZ-Qej" firstAttribute="top" secondItem="JjD-q2-FE6" secondAttribute="bottom" constant="20" id="MII-8i-HGk"/>
                             <constraint firstItem="In5-2s-g3J" firstAttribute="top" secondItem="XVm-KZ-Qej" secondAttribute="bottom" constant="8" id="QoN-4M-5PJ"/>
                             <constraint firstItem="tte-EA-0Sx" firstAttribute="top" secondItem="xQW-1s-9Jx" secondAttribute="bottom" constant="20" id="SQV-jg-mN2"/>
                             <constraint firstItem="xQW-1s-9Jx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="TP6-Ia-Ldn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JjD-q2-FE6" secondAttribute="trailing" constant="20" id="Uxp-sw-rQf"/>
                             <constraint firstItem="xMV-BU-pqG" firstAttribute="top" secondItem="pSc-2f-xfM" secondAttribute="bottom" constant="20" id="Vhq-iP-Fbw"/>
                             <constraint firstItem="pSc-2f-xfM" firstAttribute="top" secondItem="tte-EA-0Sx" secondAttribute="bottom" constant="8" id="XWd-Bq-dXy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="In5-2s-g3J" secondAttribute="trailing" id="YD7-O3-hzq"/>
                             <constraint firstItem="xMV-BU-pqG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bdU-hI-tn2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="z1j-6P-Prp" secondAttribute="trailing" constant="20" id="cK7-Th-pSb"/>
-                            <constraint firstItem="y7v-4l-fbj" firstAttribute="top" secondItem="xMV-BU-pqG" secondAttribute="bottom" constant="8" id="cLZ-wo-Vu7"/>
                             <constraint firstAttribute="bottom" secondItem="In5-2s-g3J" secondAttribute="bottom" id="gM0-zg-8cl"/>
                             <constraint firstItem="z1j-6P-Prp" firstAttribute="centerY" secondItem="xQW-1s-9Jx" secondAttribute="centerY" id="k60-et-gvR"/>
                             <constraint firstItem="tte-EA-0Sx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="knB-lZ-1GP"/>
+                            <constraint firstItem="JjD-q2-FE6" firstAttribute="top" secondItem="xMV-BU-pqG" secondAttribute="bottom" constant="8" id="lpv-UC-puo"/>
                             <constraint firstItem="In5-2s-g3J" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pyk-7w-o71"/>
                             <constraint firstItem="pSc-2f-xfM" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.13" id="tp7-b0-5Yr"/>
-                            <constraint firstItem="y7v-4l-fbj" firstAttribute="height" secondItem="pSc-2f-xfM" secondAttribute="height" id="ufj-Xv-k3x"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="y7v-4l-fbj" secondAttribute="trailing" constant="20" id="wnG-yj-5pM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Mqv-1m-e4O"/>
                     <connections>
                         <outlet property="coinListCollectionView" destination="In5-2s-g3J" id="RSB-pv-p6z"/>
                         <outlet property="dateChangeButton" destination="pSc-2f-xfM" id="RM5-FV-Hii"/>
-                        <outlet property="moneyTextField" destination="y7v-4l-fbj" id="Nde-n9-PPf"/>
+                        <outlet property="moneyLabel" destination="JjD-q2-FE6" id="ADN-tg-6oH"/>
                         <outlet property="moreButton" destination="z1j-6P-Prp" id="mMt-vU-7O4"/>
                         <outlet property="titleLabel" destination="xQW-1s-9Jx" id="2yQ-0w-jS2"/>
                         <outletCollection property="hintLabels" destination="tte-EA-0Sx" collectionClass="NSMutableArray" id="iN3-zu-99K"/>

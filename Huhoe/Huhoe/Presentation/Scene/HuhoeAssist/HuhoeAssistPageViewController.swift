@@ -35,9 +35,7 @@ final class HuhoeAssistPageViewController: UIPageViewController {
         for view in self.view.subviews {
             if view is UIScrollView {
                 view.frame = UIScreen.main.bounds
-            } else if view is UIPageControl,
-                      let pageControl = view as? UIPageControl
-            {
+            } else if view is UIPageControl, let pageControl = view as? UIPageControl {
                 pageControl.isHidden = true
             }
         }

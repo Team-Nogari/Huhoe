@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="KOHIBaeum.ttf">
+            <string>KOHIBaeum</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HuhoeKeyboardView" customModule="Huhoe" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="75W-lK-Ikj" customClass="HuhoeKeyboardView" customModule="Huhoe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="468"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EaF-jW-7JZ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="408"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PRE-JJ-iG8">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPj-tO-SYn">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="81.5"/>
+                                    <color key="backgroundColor" name="ButtonColor"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="입력 완료">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpDoneButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="YVR-21-uIt"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bxe-uV-l3G">
+                            <rect key="frame" x="0.0" y="81.5" width="414" height="81.5"/>
+                            <subviews>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVY-ur-Gk6">
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="1">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="yxp-Hc-0Dx"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMe-ev-oOZ">
+                                    <rect key="frame" x="138" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="2">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="XD2-yi-aUl"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gag-MR-hD6">
+                                    <rect key="frame" x="276" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="3">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="aTj-TP-6vR"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ROQ-16-oyV">
+                            <rect key="frame" x="0.0" y="163" width="414" height="82"/>
+                            <subviews>
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQM-rg-hKc">
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="82"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="4">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="JMb-t5-bpl"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4Q-DQ-xBf">
+                                    <rect key="frame" x="138" y="0.0" width="138" height="82"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="5">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="nBr-xk-xko"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2az-k5-UVg">
+                                    <rect key="frame" x="276" y="0.0" width="138" height="82"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="6">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="hB9-ui-AFt"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WbN-2V-Wyv">
+                            <rect key="frame" x="0.0" y="245" width="414" height="81.5"/>
+                            <subviews>
+                                <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lmT-ok-irL">
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="7">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="phM-bN-NfD"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvm-Lg-iC3">
+                                    <rect key="frame" x="138" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="8">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="fn1-fC-Yf4"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDv-Mk-Ukw">
+                                    <rect key="frame" x="276" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="9">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="ZMp-ZU-4ui"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mSo-GE-bRD">
+                            <rect key="frame" x="0.0" y="326.5" width="414" height="81.5"/>
+                            <subviews>
+                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-Q6-iBJ" userLabel="None">
+                                    <rect key="frame" x="0.0" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFu-JH-4YO">
+                                    <rect key="frame" x="138" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="0">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpNumberButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="HH7-EF-cfW"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aLI-ZD-ptP">
+                                    <rect key="frame" x="276" y="0.0" width="138" height="81.5"/>
+                                    <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="&lt;">
+                                        <color key="titleColor" name="ButtonColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="touchUpRemoveButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="vMH-83-scA"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vif-72-jSa"/>
+            <color key="backgroundColor" name="BackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vif-72-jSa" firstAttribute="trailing" secondItem="EaF-jW-7JZ" secondAttribute="trailing" id="MdK-3N-q9Y"/>
+                <constraint firstItem="EaF-jW-7JZ" firstAttribute="top" secondItem="vif-72-jSa" secondAttribute="top" id="Wkd-9t-ZGH"/>
+                <constraint firstItem="EaF-jW-7JZ" firstAttribute="leading" secondItem="vif-72-jSa" secondAttribute="leading" id="hQO-ri-mJy"/>
+                <constraint firstAttribute="bottom" secondItem="EaF-jW-7JZ" secondAttribute="bottom" constant="16" id="jip-hv-G1v"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="42.028985507246382" y="579.24107142857144"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="BackgroundColor">
+            <color red="0.94901960784313721" green="0.95294117647058818" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ButtonColor">
+            <color red="0.36470588235294116" green="0.37254901960784315" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
