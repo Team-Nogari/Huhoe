@@ -61,6 +61,7 @@ extension CandlestickResponseDTO {
     func toDomain(coinSymbol: String) -> CoinPriceHistory {
         let dates = candlestickDTO
             .map { $0.time * 0.001 }
+            .map { HuhoeDateFormatter.shared.toDateString(timeInterval: $0) }
         
         let price = candlestickDTO
             .map{ $0.closePrice.toDouble }
