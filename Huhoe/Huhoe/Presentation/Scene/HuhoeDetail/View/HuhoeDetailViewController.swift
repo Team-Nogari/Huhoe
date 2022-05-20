@@ -190,8 +190,9 @@ extension HuhoeDetailViewController {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] coinHistory in
                 let xUnit: Double = UIScreen.main.bounds.width / CGFloat(30)
+                let minimumDate = HuhoeDateFormatter.shared.toTimeInterval(str: coinHistory.date.first ?? "0")
                 self?.chartImageView.getSize(numberOfData: coinHistory.price.count, xUnit: xUnit.rounded(.down))
-                datePickerMinimumDate = Date(timeIntervalSince1970: coinHistory.date.first ?? 0)
+                datePickerMinimumDate = Date(timeIntervalSince1970: minimumDate)
             })
             .disposed(by: disposeBag)
         

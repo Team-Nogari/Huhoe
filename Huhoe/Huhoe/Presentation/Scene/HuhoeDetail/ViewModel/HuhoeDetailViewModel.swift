@@ -146,7 +146,7 @@ extension HuhoeDetailViewModel {
             priceHistoryObservable
         )
         .map { dateString, money, priceHistory -> PriceAndQuantity in
-            if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
+            if let dateIndex = priceHistory.date.firstIndex(of: dateString),
                 let price = priceHistory.price[safe: dateIndex],
                 let money = Double(money)
             {
@@ -170,7 +170,7 @@ extension HuhoeDetailViewModel {
                    priceHistoryObservable
         )
         .map { realTimePrice, dateString, money, priceHistory -> CoinHistoryItem in
-            if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
+            if let dateIndex = priceHistory.date.firstIndex(of: dateString),
                 let price = priceHistory.price[safe: dateIndex],
                 let money = Double(money)
             {
@@ -200,14 +200,16 @@ extension HuhoeDetailViewModel {
         )
         .map { dateString, money, quantity, priceHistory -> [CoinHistoryItem] in
             let filteredDates = priceHistory.date
-                .filter { $0 > HuhoeDateFormatter.shared.toTimeInterval(str: dateString) }
-                .map { HuhoeDateFormatter.shared.toDateString(timeInterval: $0) }
                 .filter { $0.hasSuffix(".01") }
+                .map { HuhoeDateFormatter.shared.toTimeInterval(str: $0) }
+                .filter { $0 > HuhoeDateFormatter.shared.toTimeInterval(str: dateString) }
+                .map{ HuhoeDateFormatter.shared.toDateString(timeInterval: $0) }
             
             var coinHistoryItems = [CoinHistoryItem]()
+
             
             filteredDates.forEach { filterDate in
-                if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: filterDate)),
+                if let dateIndex = priceHistory.date.firstIndex(of: filterDate),
                    let price = priceHistory.price[safe: dateIndex],
                    let money = Double(money)
                 {
@@ -235,7 +237,7 @@ extension HuhoeDetailViewModel {
                    priceHistoryObservable
         )
         .map { dateString, money, priceHistory -> CoinHistoryItem in
-            if let dateIndex = priceHistory.date.firstIndex(of: HuhoeDateFormatter.shared.toTimeInterval(str: dateString)),
+            if let dateIndex = priceHistory.date.firstIndex(of: dateString),
                 let price = priceHistory.price[safe: dateIndex],
                 let money = Double(money)
             {
@@ -284,8 +286,8 @@ extension HuhoeDetailViewModel {
             
             return ChartInformation(
                 price: Array(price),
-                oldestDate: HuhoeDateFormatter.shared.toDateString(timeInterval: reversedDate[dateRange.max()!]),
-                latestDate: HuhoeDateFormatter.shared.toDateString(timeInterval: reversedDate[dateRange.min()!]),
+                oldestDate: reversedDate[dateRange.max() ?? 0],
+                latestDate: reversedDate[dateRange.min() ?? 0],
                 pointX: pointX
             )
         }
@@ -309,7 +311,7 @@ extension HuhoeDetailViewModel {
             let reversedPrice = Array(coinHistory.price.reversed())
             let reversedDate = Array(coinHistory.date.reversed())
             let price = reversedPrice[Int(dataIndex)].toString()
-            let date = HuhoeDateFormatter.shared.toDateString(timeInterval: reversedDate[Int(dataIndex)])
+            let date = reversedDate[Int(dataIndex)]
             
             return ChartPriceAndDateViewInformation(
                 price: price,
