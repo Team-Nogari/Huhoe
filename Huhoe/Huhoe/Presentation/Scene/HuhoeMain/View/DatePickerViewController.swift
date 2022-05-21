@@ -25,15 +25,15 @@ class DatePickerViewController: UIViewController {
     }()
     
     required init(
-        date: Date? = Date().yesterday,
+        date: Date? = HuhoeDateFormatter.shared.toDate(str: "2022.05.01"),
         minimumDate: Date? = Date(timeIntervalSince1970: 1388070000), // 1388070000: Bithumb Public API Bitcoin Candlestick 가장 오래된 UTC 시간
         action: Action?
     ) {
         super.init(nibName: nil, bundle: nil)
-        datePicker.date = Date().yesterday
+        datePicker.date = date ?? Date().yesterday
         datePicker.setDate(date ?? Date().yesterday, animated: false)
         datePicker.minimumDate = minimumDate
-        datePicker.maximumDate = Date().yesterday
+        datePicker.maximumDate = HuhoeDateFormatter.shared.toDate(str: "2022.05.20").yesterday
         self.action = action
     }
     

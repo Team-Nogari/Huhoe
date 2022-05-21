@@ -135,7 +135,7 @@ extension HuhoeMainViewController {
         
         // MARK: - Input
         
-        dateChangeButton.setTitle(HuhoeDateFormatter.shared.toDateString(date: Date().yesterday), for: .normal)
+        dateChangeButton.setTitle("2022.05.01", for: .normal)
         let dateTextRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
                 
         dateChangeButton.rx.tap
@@ -148,6 +148,7 @@ extension HuhoeMainViewController {
                     let dateString = HuhoeDateFormatter.shared.toDateString(date: $0)
                     self?.dateChangeButton.setTitle(dateString, for: .normal)
                     dateTextRelay.accept(dateString)
+                    print(dateString)
                 }
                 
                 let action = UIAlertAction(title: "선택", style: .default)
