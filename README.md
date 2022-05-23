@@ -18,7 +18,7 @@
 |임지성|황제하|
 |:---:|:---:|
 |<img src="https://i.imgur.com/HlOi6PK.jpg" width="250" height="250">|<img src="https://i.imgur.com/i9r6sJJ.jpg" width="250" height="250">|
-|@yim2627|@HJEHA|
+|[@yim2627](https://github.com/yim2627)|[@HJEHA](https://github.com/HJEHA)|
 
 ## 프로젝트 소개
 
