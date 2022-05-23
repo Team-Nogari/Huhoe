@@ -29,7 +29,7 @@
 
 |온보딩 뷰|메인 화면|상세 화면|
 |:---:|:---:|:---:|
-|<img src="https://i.imgur.com/Pjv8fEn.gif" width="330" height="700">|<img src="https://i.imgur.com/3TBImsm.gif" width="330" height="700">|<img src="https://i.imgur.com/CRFii1Q.gif" width="330" height="700">|
+|<img src="https://i.imgur.com/Pjv8fEn.gif" width="240">|<img src="https://user-images.githubusercontent.com/70251136/169845105-42c57615-f99c-4c74-9011-2bba52f3f403.gif" width="240">|<img src="https://i.imgur.com/CRFii1Q.gif" width="240">|
 
 ## 프로젝트 주요 기능
 ### 비동기 프로그래밍(RxSwift)
