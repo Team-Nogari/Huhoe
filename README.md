@@ -75,4 +75,4 @@
 
 ## 상세 내용 (트러블 슈팅 등) WIKI 작성중
 
-[후회 Wiki](https://github.com/Team-Nogari/Huhoe/wiki/후회-Wiki)
+[후회 Wiki](https://github.com/Team-Nogari/Huhoe/wiki)
