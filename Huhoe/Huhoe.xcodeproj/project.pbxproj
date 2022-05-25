@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080BB121283E70C5008797B5 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 080BB120283E70C5008797B5 /* RxCocoa */; };
+		080BB123283E70C5008797B5 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 080BB122283E70C5008797B5 /* RxRelay */; };
+		080BB125283E70C5008797B5 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 080BB124283E70C5008797B5 /* RxSwift */; };
+		080BB128283E70D0008797B5 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 080BB127283E70D0008797B5 /* Lottie */; };
 		080DB1492834D516007D90CB /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080DB1482834D516007D90CB /* UIView+extension.swift */; };
 		081EF55228225FD600836E6B /* ChartPriceAndDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081EF55128225FD600836E6B /* ChartPriceAndDateView.swift */; };
 		0834ED882813989000BD6D8C /* CoinHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834ED872813989000BD6D8C /* CoinHistoryCell.swift */; };
@@ -21,9 +25,6 @@
 		089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926227FFFEAA00728107 /* CoinPriceHistory.swift */; };
 		089A926F28002B2D00728107 /* TickerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A926E28002B2D00728107 /* TickerRepository.swift */; };
 		089A927128002DC800728107 /* DefaultTickerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089A927028002DC800728107 /* DefaultTickerRepository.swift */; };
-		089CC562282CA6D30003C71C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 089CC561282CA6D30003C71C /* RxCocoa */; };
-		089CC564282CA6D30003C71C /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 089CC563282CA6D30003C71C /* RxRelay */; };
-		089CC566282CA6D30003C71C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 089CC565282CA6D30003C71C /* RxSwift */; };
 		089E803727FF244F0055364F /* TickerAllResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803627FF244F0055364F /* TickerAllResponseDTO+Mapping.swift */; };
 		089E803D27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803C27FF2C8A0055364F /* TransactionResponseDTO+Mapping.swift */; };
 		089E803F27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089E803E27FF2D4D0055364F /* CandlestickResponseDTO+Mapping.swift */; };
@@ -32,7 +33,6 @@
 		08A10105281AC41D0038BA8F /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A10104281AC41D0038BA8F /* Array+extension.swift */; };
 		08A4346728361F370056D9B5 /* HuhoeKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */; };
 		08A4346928361F400056D9B5 /* HuhoeKeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */; };
-		08A6D601282DF3710074B216 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 08A6D600282DF3710074B216 /* Lottie */; };
 		08AA7C8F280F039000305CED /* Date+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AA7C8E280F039000305CED /* Date+extension.swift */; };
 		08ACF49327FFD2C60007E134 /* Ticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49227FFD2C60007E134 /* Ticker.swift */; };
 		08ACF49527FFD6050007E134 /* TickerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ACF49427FFD6050007E134 /* TickerResponse.swift */; };
@@ -194,10 +194,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				089CC566282CA6D30003C71C /* RxSwift in Frameworks */,
-				089CC564282CA6D30003C71C /* RxRelay in Frameworks */,
-				089CC562282CA6D30003C71C /* RxCocoa in Frameworks */,
-				08A6D601282DF3710074B216 /* Lottie in Frameworks */,
+				080BB125283E70C5008797B5 /* RxSwift in Frameworks */,
+				080BB123283E70C5008797B5 /* RxRelay in Frameworks */,
+				080BB121283E70C5008797B5 /* RxCocoa in Frameworks */,
+				080BB128283E70D0008797B5 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,10 +601,10 @@
 			);
 			name = Huhoe;
 			packageProductDependencies = (
-				089CC561282CA6D30003C71C /* RxCocoa */,
-				089CC563282CA6D30003C71C /* RxRelay */,
-				089CC565282CA6D30003C71C /* RxSwift */,
-				08A6D600282DF3710074B216 /* Lottie */,
+				080BB120283E70C5008797B5 /* RxCocoa */,
+				080BB122283E70C5008797B5 /* RxRelay */,
+				080BB124283E70C5008797B5 /* RxSwift */,
+				080BB127283E70D0008797B5 /* Lottie */,
 			);
 			productName = Huhoe;
 			productReference = A6E4DE3327FDB3F30005266D /* Huhoe.app */;
@@ -679,8 +679,8 @@
 			);
 			mainGroup = A6E4DE2A27FDB3F30005266D;
 			packageReferences = (
-				089CC560282CA6D30003C71C /* XCRemoteSwiftPackageReference "RxSwift" */,
-				08A6D5FF282DF3710074B216 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				080BB11F283E70C5008797B5 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				080BB126283E70D0008797B5 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = A6E4DE3427FDB3F30005266D /* Products */;
 			projectDirPath = "";
@@ -1150,7 +1150,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		089CC560282CA6D30003C71C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		080BB11F283E70C5008797B5 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift";
 			requirement = {
@@ -1158,7 +1158,7 @@
 				minimumVersion = 6.0.0;
 			};
 		};
-		08A6D5FF282DF3710074B216 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		080BB126283E70D0008797B5 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios";
 			requirement = {
@@ -1169,24 +1169,24 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		089CC561282CA6D30003C71C /* RxCocoa */ = {
+		080BB120283E70C5008797B5 /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089CC560282CA6D30003C71C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 080BB11F283E70C5008797B5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
 		};
-		089CC563282CA6D30003C71C /* RxRelay */ = {
+		080BB122283E70C5008797B5 /* RxRelay */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089CC560282CA6D30003C71C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 080BB11F283E70C5008797B5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxRelay;
 		};
-		089CC565282CA6D30003C71C /* RxSwift */ = {
+		080BB124283E70C5008797B5 /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 089CC560282CA6D30003C71C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 080BB11F283E70C5008797B5 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		08A6D600282DF3710074B216 /* Lottie */ = {
+		080BB127283E70D0008797B5 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08A6D5FF282DF3710074B216 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 080BB126283E70D0008797B5 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
