@@ -33,6 +33,12 @@ final class HuhoeKeyboardView: UIView {
         }
     }
     
+    @IBAction func touchUpClearButton(_ sender: UIButton) {
+        input = ""
+        
+        inputRelay.accept(input.toDouble)
+    }
+    
     @IBAction func touchUpDoneButton(_ sender: UIButton) {
         isHidden = true
     }
