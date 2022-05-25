@@ -156,13 +156,16 @@
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="mSo-GE-bRD">
                             <rect key="frame" x="0.0" y="326.5" width="414" height="81.5"/>
                             <subviews>
-                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-Q6-iBJ" userLabel="None">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y6H-Q6-iBJ" userLabel="None">
                                     <rect key="frame" x="0.0" y="0.0" width="138" height="81.5"/>
                                     <fontDescription key="fontDescription" name="KOHIBaeum" family="KOHIBaeum" pointSize="20"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    <state key="normal">
+                                    <state key="normal" title="Clear">
                                         <color key="titleColor" name="ButtonColor"/>
                                     </state>
+                                    <connections>
+                                        <action selector="touchUpClearButton:" destination="75W-lK-Ikj" eventType="touchUpInside" id="kYf-jG-7iH"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFu-JH-4YO">
                                     <rect key="frame" x="138" y="0.0" width="138" height="81.5"/>
