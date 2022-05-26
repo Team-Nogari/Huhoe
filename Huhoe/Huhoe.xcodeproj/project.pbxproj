@@ -296,7 +296,6 @@
 				A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */,
 				08BA05282805770E00F7CD53 /* CoinListCell.xib */,
 				08BA052A28057A7500F7CD53 /* CoinListCell.swift */,
-				A652E614280EB2EC00738DAD /* DatePickerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -585,6 +584,7 @@
 		A6EA67D7282A348F006FE5DC /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A652E614280EB2EC00738DAD /* DatePickerViewController.swift */,
 				A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */,
 				08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */,
 				08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */,
