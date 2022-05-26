@@ -11,6 +11,6 @@ protocol CoinPriceHistoryDataSource {
     var coinPriceHistory: [CoinPriceHistory?] { get set }
 }
 
-class DefaultCoinPriceHistoryDataSource: CoinPriceHistoryDataSource {
+final class DefaultCoinPriceHistoryDataSource: CoinPriceHistoryDataSource {
     var coinPriceHistory = [CoinPriceHistory?]()
 }

@@ -13,7 +13,7 @@ protocol TransactionHistoryDataSource {
     func fetch(_ transaction: [Transaction]) -> Completable
 }
 
-class DefaultTransactionHistoryDataSource: TransactionHistoryDataSource {
+final class DefaultTransactionHistoryDataSource: TransactionHistoryDataSource {
     var transactionHistory = [Transaction]()
     
     func fetch(_ transaction: [Transaction]) -> Completable {

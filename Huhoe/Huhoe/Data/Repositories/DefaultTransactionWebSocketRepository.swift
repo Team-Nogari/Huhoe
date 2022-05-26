@@ -14,7 +14,9 @@ final class DefaultTransactionWebSocketRepository {
     init(network: TransactionWebSocketNetwork = TransactionWebSocketNetwork(network: WebSocketNetworkService())) {
         self.network = network
     }
-    
+}
+
+extension DefaultTransactionWebSocketRepository: TransactionWebSocketRepository {
     func fetchTransaction(with coinsymbols: [String]) -> Observable<RealTimeCoinPrice> {
         let transactionObservable = network.fetchTransaction(with: coinsymbols)
             .compactMap { data in

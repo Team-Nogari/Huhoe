@@ -15,12 +15,12 @@ final class TickerNetwork {
         self.network = network
     }
     
-    func fetchTicker(with coinSymbol: String) -> Observable<TickerResponseDTO> {
+    func fetchTicker(with coinSymbol: String) -> Observable<TickerResponseDTO?> {
         return network.fetch(.ticker, with: coinSymbol)
             .map {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                return try! decoder.decode(TickerResponseDTO.self, from: $0) // 강제 수정 필요
+                return try? decoder.decode(TickerResponseDTO.self, from: $0)
             }
     }
 }

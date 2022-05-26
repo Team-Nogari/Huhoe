@@ -56,11 +56,11 @@ final class ChartImageView: UIImageView {
         setImage()
     }
     
-    // MARK: - Privete Method
-    
     func getSize(numberOfData: Int, xUnit: Double) {
         frame.size.width = CGFloat(numberOfData * Int(xUnit))
     }
+    
+    // MARK: - Privete Method
     
     private func pathContext() -> CGContext? {
         UIGraphicsBeginImageContext(layer.frame.size)

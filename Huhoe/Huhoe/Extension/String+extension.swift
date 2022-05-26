@@ -17,15 +17,27 @@ extension String {
     }
     
     var removeComma: String {
-        return self.replacingOccurrences(of: ",", with: "")
+        return self.replacingOccurrences(
+            of: ",",
+            with: ""
+        )
     }
     
     var localized: String {
-        return NSLocalizedString(self, tableName: "Localizable", value: self, comment: "")
+        return NSLocalizedString(
+            self,
+            tableName: "Localizable",
+            value: self,
+            comment: ""
+        )
     }
     
     func removedSuffix(from index: Int) -> String {
-        let index = self.index(self.startIndex, offsetBy: self.count - index - 1)
+        let index = self.index(
+            self.startIndex,
+            offsetBy: self.count - index - 1
+        )
+        
         return String(self[self.startIndex...index])
     }
 }

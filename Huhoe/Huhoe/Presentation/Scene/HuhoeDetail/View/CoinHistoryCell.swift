@@ -8,13 +8,20 @@
 import UIKit
 
 final class CoinHistoryCell: UICollectionViewCell {
+    
+    // MARK: - Type Properties
+    
     static let identifier = String(describing: CoinHistoryCell.self)
+    
+    // MARK: - IBOutlet
     
     @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var calculatedPriceLabel: UILabel!
     @IBOutlet private weak var profitAndLossLabel: UILabel!
     @IBOutlet private weak var profitAndLossRateLabel: UILabel!
+    
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         self.roundedBackgroundView.layer.cornerRadius = 8
@@ -26,8 +33,12 @@ final class CoinHistoryCell: UICollectionViewCell {
         )
         configureLabels()
     }
+}
     
-    private func configureLabels() {
+// MARK: - Private Configure
+
+private extension CoinHistoryCell {
+    func configureLabels() {
         calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
         calculatedPriceLabel.adjustsFontForContentSizeCategory = true
         
@@ -41,6 +52,33 @@ final class CoinHistoryCell: UICollectionViewCell {
         profitAndLossRateLabel.adjustsFontForContentSizeCategory = true
     }
     
+    func configureProfitAndLossLabel(
+        profitAndLossString: String,
+        rate: Double
+    ) {
+        if rate > 0 {
+            profitAndLossLabel.text = "+" + profitAndLossString + "원"
+        } else {
+            profitAndLossLabel.text = profitAndLossString + "원"
+        }
+    }
+    
+    func configureLabelColor(rate: Double) {
+        if rate < 0 {
+            calculatedPriceLabel.textColor = .systemBlue
+            profitAndLossLabel.textColor = .systemBlue
+            profitAndLossRateLabel.textColor = .systemBlue
+        } else {
+            calculatedPriceLabel.textColor = .systemRed
+            profitAndLossLabel.textColor = .systemRed
+            profitAndLossRateLabel.textColor = .systemRed
+        }
+    }
+}
+
+// MARK: - Configure
+
+extension CoinHistoryCell {
     func configureCell(item: CoinHistoryItem) {
         calculatedPriceLabel.text = item.calculatedPriceString + "원"
         profitAndLossRateLabel.text = item.rateString + "%"
@@ -52,25 +90,5 @@ final class CoinHistoryCell: UICollectionViewCell {
         )
         
         configureLabelColor(rate: item.rate)
-    }
-    
-    private func configureProfitAndLossLabel(profitAndLossString: String, rate: Double) {
-        if rate > 0 {
-            profitAndLossLabel.text = "+" + profitAndLossString + "원"
-        } else {
-            profitAndLossLabel.text = profitAndLossString + "원"
-        }
-    }
-    
-    private func configureLabelColor(rate: Double) {
-        if rate < 0 {
-            calculatedPriceLabel.textColor = .systemBlue
-            profitAndLossLabel.textColor = .systemBlue
-            profitAndLossRateLabel.textColor = .systemBlue
-        } else {
-            calculatedPriceLabel.textColor = .systemRed
-            profitAndLossLabel.textColor = .systemRed
-            profitAndLossRateLabel.textColor = .systemRed
-        }
     }
 }

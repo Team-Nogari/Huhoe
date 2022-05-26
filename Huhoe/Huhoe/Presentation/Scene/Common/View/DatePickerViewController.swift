@@ -8,7 +8,7 @@
 import UIKit
 import RxCocoa
 
-class DatePickerViewController: UIViewController {
+final class DatePickerViewController: UIViewController {
     typealias Action = (Date) -> Void
     var action: Action?
     

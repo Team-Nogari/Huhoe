@@ -12,19 +12,16 @@ final class CoinListUseCase {
     let tickerRepository: TickerRepository
     let transactionRepository: TransactionHistoryRepository
     let candlestickRepository: CandlestickRepository
-    let transactionWebSocketRepository: DefaultTransactionWebSocketRepository // 추상화 필요
     private let disposeBag = DisposeBag()
     
     init(
         tickerRepository: TickerRepository = DefaultTickerRepository(),
         transactionRepository: TransactionHistoryRepository = DefaultTransactionHistoryRepository(),
-        candlestickRepository: CandlestickRepository = DefaultCandlestickRepository(),
-        transactionWebSocketRepository: DefaultTransactionWebSocketRepository = DefaultTransactionWebSocketRepository()
+        candlestickRepository: CandlestickRepository = DefaultCandlestickRepository()
     ) {
         self.tickerRepository = tickerRepository
         self.transactionRepository = transactionRepository
         self.candlestickRepository = candlestickRepository
-        self.transactionWebSocketRepository = transactionWebSocketRepository
     }
 }
 

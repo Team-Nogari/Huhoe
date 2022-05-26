@@ -11,6 +11,6 @@ protocol TickerDataSource {
     var tickers: [Ticker] { get set }
 }
 
-class DefaultTickerDatsSource: TickerDataSource {
+final class DefaultTickerDatsSource: TickerDataSource {
     var tickers = [Ticker]()
 }

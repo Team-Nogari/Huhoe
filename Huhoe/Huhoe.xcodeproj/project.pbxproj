@@ -41,6 +41,10 @@
 		08B238E0280ABF850047D282 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08B238E2280ABF850047D282 /* Localizable.strings */; };
 		08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BA05282805770E00F7CD53 /* CoinListCell.xib */; };
 		08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA052A28057A7500F7CD53 /* CoinListCell.swift */; };
+		08C1873B283FAB3100307DA2 /* TransactionWebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1873A283FAB3100307DA2 /* TransactionWebSocketRepository.swift */; };
+		08C1873E283FB33B00307DA2 /* RealTimeCoinPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1873D283FB33B00307DA2 /* RealTimeCoinPrice.swift */; };
+		08C18740283FB69100307DA2 /* HuhoeNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1873F283FB69100307DA2 /* HuhoeNumberFormatter.swift */; };
+		08C18744283FC44F00307DA2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C18743283FC44F00307DA2 /* ViewModel.swift */; };
 		08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */; };
 		08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */; };
 		08C4BA8E2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */; };
@@ -51,7 +55,6 @@
 		A64FC9AE27FF3A5600DFA82E /* CandlestickNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */; };
 		A6514A532830E390001CA646 /* HuhoeAssistViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6514A522830E390001CA646 /* HuhoeAssistViewController.storyboard */; };
 		A6514A572830E464001CA646 /* HuhoeAssistPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6514A562830E464001CA646 /* HuhoeAssistPageViewController.swift */; };
-		A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E610280D93C600738DAD /* MoneyTextField.swift */; };
 		A652E615280EB2EC00738DAD /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A652E614280EB2EC00738DAD /* DatePickerViewController.swift */; };
 		A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655A1F92823AFAA000A0FEC /* ChartInformation.swift */; };
 		A655A1FC2823BF79000A0FEC /* ChartPriceAndDateViewInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655A1FB2823BF79000A0FEC /* ChartPriceAndDateViewInformation.swift */; };
@@ -137,6 +140,10 @@
 		08B238E1280ABF850047D282 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08BA05282805770E00F7CD53 /* CoinListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinListCell.xib; sourceTree = "<group>"; };
 		08BA052A28057A7500F7CD53 /* CoinListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListCell.swift; sourceTree = "<group>"; };
+		08C1873A283FAB3100307DA2 /* TransactionWebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebSocketRepository.swift; sourceTree = "<group>"; };
+		08C1873D283FB33B00307DA2 /* RealTimeCoinPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeCoinPrice.swift; sourceTree = "<group>"; };
+		08C1873F283FB69100307DA2 /* HuhoeNumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeNumberFormatter.swift; sourceTree = "<group>"; };
+		08C18743283FC44F00307DA2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTickerDataSource.swift; sourceTree = "<group>"; };
 		08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryDataSource.swift; sourceTree = "<group>"; };
 		08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoinPriceHistoryDataSource.swift; sourceTree = "<group>"; };
@@ -147,7 +154,6 @@
 		A64FC9AD27FF3A5600DFA82E /* CandlestickNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandlestickNetwork.swift; sourceTree = "<group>"; };
 		A6514A522830E390001CA646 /* HuhoeAssistViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HuhoeAssistViewController.storyboard; sourceTree = "<group>"; };
 		A6514A562830E464001CA646 /* HuhoeAssistPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeAssistPageViewController.swift; sourceTree = "<group>"; };
-		A652E610280D93C600738DAD /* MoneyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyTextField.swift; sourceTree = "<group>"; };
 		A652E614280EB2EC00738DAD /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		A655A1F92823AFAA000A0FEC /* ChartInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInformation.swift; sourceTree = "<group>"; };
 		A655A1FB2823BF79000A0FEC /* ChartPriceAndDateViewInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPriceAndDateViewInformation.swift; sourceTree = "<group>"; };
@@ -296,8 +302,6 @@
 				A6E4DE3A27FDB3F30005266D /* HuhoeMainViewController.swift */,
 				08BA05282805770E00F7CD53 /* CoinListCell.xib */,
 				08BA052A28057A7500F7CD53 /* CoinListCell.swift */,
-				A652E610280D93C600738DAD /* MoneyTextField.swift */,
-				A652E614280EB2EC00738DAD /* DatePickerViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,7 +329,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		089A925F27FFE41E00728107 /* Util */ = {
+		089A925F27FFE41E00728107 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				089A926027FFE43300728107 /* String+extension.swift */,
@@ -336,10 +340,9 @@
 				A665996C281A92C800285E84 /* UIFont+extension.swift */,
 				08A10104281AC41D0038BA8F /* Array+extension.swift */,
 				08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */,
-				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
 				080DB1482834D516007D90CB /* UIView+extension.swift */,
 			);
-			path = Util;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		089A926B28002AD300728107 /* Repositories */ = {
@@ -367,6 +370,7 @@
 				089A926E28002B2D00728107 /* TickerRepository.swift */,
 				A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */,
 				08CA08732801223D00C94584 /* CandlestickRepository.swift */,
+				08C1873A283FAB3100307DA2 /* TransactionWebSocketRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -397,6 +401,7 @@
 				08ACF49227FFD2C60007E134 /* Ticker.swift */,
 				089A925D27FFE2E100728107 /* Transaction.swift */,
 				089A926227FFFEAA00728107 /* CoinPriceHistory.swift */,
+				08C1873D283FB33B00307DA2 /* RealTimeCoinPrice.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -409,6 +414,34 @@
 				A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08C1873C283FACAE00307DA2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
+				08C1873F283FB69100307DA2 /* HuhoeNumberFormatter.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		08C18741283FC43900307DA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				08C18743283FC44F00307DA2 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08C18742283FC44100307DA2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A652E614280EB2EC00738DAD /* DatePickerViewController.swift */,
+				A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */,
+				08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */,
+				08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		08C4BA882809385B00482CB7 /* Data Source */ = {
@@ -510,7 +543,8 @@
 		A6E4DE3527FDB3F30005266D /* Huhoe */ = {
 			isa = PBXGroup;
 			children = (
-				089A925F27FFE41E00728107 /* Util */,
+				08C1873C283FACAE00307DA2 /* Utilities */,
+				089A925F27FFE41E00728107 /* Extension */,
 				084F769427FDBE7500BAE500 /* Application */,
 				084F769327FDBB4D00BAE500 /* Presentation */,
 				084F769227FDBA0900BAE500 /* Data */,
@@ -577,9 +611,8 @@
 		A6EA67D7282A348F006FE5DC /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				A6EA67D8282A34A8006FE5DC /* CustomDynamicFont.swift */,
-				08A4346628361F370056D9B5 /* HuhoeKeyboardView.swift */,
-				08A4346828361F400056D9B5 /* HuhoeKeyboardView.xib */,
+				08C18742283FC44100307DA2 /* View */,
+				08C18741283FC43900307DA2 /* ViewModel */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -733,6 +766,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6EA67D228251C4B006FE5DC /* SelectedCoinInformation.swift in Sources */,
+				08C1873E283FB33B00307DA2 /* RealTimeCoinPrice.swift in Sources */,
 				089A927128002DC800728107 /* DefaultTickerRepository.swift in Sources */,
 				A66520842800649200783C58 /* DefaultTransactionHistoryRepository.swift in Sources */,
 				084BF6A928191C6300916465 /* Result+extension.swift in Sources */,
@@ -744,9 +778,9 @@
 				08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */,
 				08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */,
 				08A100FA281A33DF0038BA8F /* Observable+extension.swift in Sources */,
+				08C1873B283FAB3100307DA2 /* TransactionWebSocketRepository.swift in Sources */,
 				A665996F281AD5D300285E84 /* CoinHistoryItem.swift in Sources */,
 				A6E4DE7327FEEEC10005266D /* HttpNetwork.swift in Sources */,
-				A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */,
 				089A926327FFFEAA00728107 /* CoinPriceHistory.swift in Sources */,
 				A66028D128169AB900B249EA /* TransactionWebSocketResponseDTO.swift in Sources */,
 				A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */,
@@ -782,12 +816,14 @@
 				08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */,
 				A6E4DE7827FF11AF0005266D /* APIPath.swift in Sources */,
 				A6EA67D428294E6B006FE5DC /* HuhoeDateFormatter.swift in Sources */,
+				08C18740283FB69100307DA2 /* HuhoeNumberFormatter.swift in Sources */,
 				08CA0876280122D100C94584 /* DefaultCandlestickRepository.swift in Sources */,
 				A6E4DE7527FEEF640005266D /* TickerNetwork.swift in Sources */,
 				A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */,
 				08AA7C8F280F039000305CED /* Date+extension.swift in Sources */,
 				A6652086280064DF00783C58 /* TransactionHistoryRepository.swift in Sources */,
 				A6E4DE7D27FF17C40005266D /* HttpNetworkError.swift in Sources */,
+				08C18744283FC44F00307DA2 /* ViewModel.swift in Sources */,
 				08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */,
 				A6E4DE7A27FF15DF0005266D /* URLSessionProtocol.swift in Sources */,
 				A6E4DE3927FDB3F30005266D /* SceneDelegate.swift in Sources */,
@@ -978,7 +1014,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
@@ -992,7 +1028,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = teamNogari.Huhoe.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1008,7 +1044,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = XXJA3T7PA3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Huhoe/Resource/Info.plist;
@@ -1022,7 +1058,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.6.2;
 				PRODUCT_BUNDLE_IDENTIFIER = teamNogari.Huhoe.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
