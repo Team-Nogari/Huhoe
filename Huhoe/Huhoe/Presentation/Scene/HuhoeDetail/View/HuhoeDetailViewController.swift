@@ -22,6 +22,11 @@ final class HuhoeDetailViewController: UIViewController {
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinHistoryItem>
     private var dataSource: DiffableDataSource?
    
+    // MARK: - Hint Labels
+    
+    @IBOutlet private var hintLabels: [UILabel]!
+    @IBOutlet private weak var collectionViewHintLabel: UILabel!
+        
     // MARK: - IBOutlet
     
     @IBOutlet private weak var currentPriceLabel: UILabel!
@@ -32,11 +37,10 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
     @IBOutlet private weak var chartScrollView: ChartScrollView!
     @IBOutlet private weak var chartImageView: ChartImageView!
-    
-    @IBOutlet private var hintLabels: [UILabel]!
-    @IBOutlet private weak var collectionViewHintLabel: UILabel!
     @IBOutlet private weak var chartOldDateLabel: UILabel!
     @IBOutlet private weak var chartLatestDateLabel: UILabel!
+    
+    // MARK: - Keyboard
     
     lazy var keyboardView = configureKeyboard()
     

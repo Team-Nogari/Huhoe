@@ -33,9 +33,11 @@ final class CoinHistoryCell: UICollectionViewCell {
         )
         configureLabels()
     }
+}
     
-    // MARK: - Configure
-    
+// MARK: - Configure
+
+extension CoinHistoryCell {
     private func configureLabels() {
         calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
         calculatedPriceLabel.adjustsFontForContentSizeCategory = true
@@ -63,7 +65,10 @@ final class CoinHistoryCell: UICollectionViewCell {
         configureLabelColor(rate: item.rate)
     }
     
-    private func configureProfitAndLossLabel(profitAndLossString: String, rate: Double) {
+    private func configureProfitAndLossLabel(
+        profitAndLossString: String,
+        rate: Double
+    ) {
         if rate > 0 {
             profitAndLossLabel.text = "+" + profitAndLossString + "원"
         } else {

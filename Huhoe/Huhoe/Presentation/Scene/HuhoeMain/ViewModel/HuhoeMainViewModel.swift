@@ -9,6 +9,9 @@ import Foundation
 import RxSwift
 
 final class HuhoeMainViewModel: ViewModel {
+    
+    // MARK: - Input
+    
     final class Input {
         let changeMoney: Observable<String>
         let changeDate: Observable<String>
@@ -19,6 +22,8 @@ final class HuhoeMainViewModel: ViewModel {
         }
     }
     
+    // MARK: - Output
+    
     final class Output {
         let coinInfo: Observable<[CoinInfoItem]>
         
@@ -27,12 +32,18 @@ final class HuhoeMainViewModel: ViewModel {
         }
     }
     
+    // MARK: - Properties
+    
     let useCase: CoinListUseCase
     var disposeBag: DisposeBag = DisposeBag()
+    
+    // MARK: - Initializer
     
     init(useCase: CoinListUseCase = CoinListUseCase()) {
         self.useCase = useCase
     }
+    
+    // MARK: - Methods
     
     func transform(_ input: Input) -> Output {
         let coinInfo = Observable.combineLatest(useCase.fetch(), input.changeDate, input.changeMoney)

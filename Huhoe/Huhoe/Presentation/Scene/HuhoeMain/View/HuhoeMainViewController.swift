@@ -18,17 +18,22 @@ final class HuhoeMainViewController: UIViewController {
         case main
     }
     
+    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
+    private var dataSource: DiffableDataSource?
+    
     // MARK: - Hint Labels
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private var hintLabels: [UILabel]!
     @IBOutlet private weak var moneyLabel: UILabel!
     
+    // MARK: - IBOutlet
+    
     @IBOutlet private weak var dateChangeButton: UIButton!
     @IBOutlet private weak var moreButton: UIButton!
     @IBOutlet private weak var coinListCollectionView: UICollectionView!
-    private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinInfoItem>
-    private var dataSource: DiffableDataSource?
+   
+    // MARK: - Keyboard
     
     lazy var keyboardView = configureKeyboard()
     
@@ -41,7 +46,7 @@ final class HuhoeMainViewController: UIViewController {
     
     private let activityIndicator: AnimationView = .init(name: "indicator")
     
-    // MARK: - life Cycle
+    // MARK: - Override Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()

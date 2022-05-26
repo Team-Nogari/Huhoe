@@ -7,8 +7,13 @@
 
 import UIKit
 
-class CoinListCell: UICollectionViewCell {
+final class CoinListCell: UICollectionViewCell {
+    
+    // MARK: - Type Properties
+    
     static let identifier = String(describing: CoinListCell.self)
+    
+    // MARK: - IBOutlet
     
     @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var coinNameLabel: UILabel!
@@ -19,6 +24,8 @@ class CoinListCell: UICollectionViewCell {
     @IBOutlet private weak var oldPriceLabel: UILabel!
     
     @IBOutlet private var hintLabels: [UILabel]!
+    
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         configureLabels()
@@ -31,6 +38,8 @@ class CoinListCell: UICollectionViewCell {
         )
     }
 }
+
+// MARK: - Configure
 
 extension CoinListCell {
     private func configureLabels() {
@@ -74,7 +83,10 @@ extension CoinListCell {
         configureLabelColor(rate: item.rate)
     }
     
-    private func configureProfitAndLossLabel(profitAndLossString: String, rate: Double) {
+    private func configureProfitAndLossLabel(
+        profitAndLossString: String,
+        rate: Double
+    ) {
         if rate > 0 {
             profitAndLossLabel.text = "+" + profitAndLossString + "원"
         } else {
