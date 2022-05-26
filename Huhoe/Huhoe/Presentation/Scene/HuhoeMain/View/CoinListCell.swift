@@ -39,10 +39,10 @@ final class CoinListCell: UICollectionViewCell {
     }
 }
 
-// MARK: - Configure
+// MARK: - Private Configure
 
-extension CoinListCell {
-    private func configureLabels() {
+private extension CoinListCell {
+    func configureLabels() {
         calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
         calculatedPriceLabel.adjustsFontForContentSizeCategory = true
         
@@ -64,6 +64,33 @@ extension CoinListCell {
         }
     }
     
+    func configureProfitAndLossLabel(
+        profitAndLossString: String,
+        rate: Double
+    ) {
+        if rate > 0 {
+            profitAndLossLabel.text = "+" + profitAndLossString + "원"
+        } else {
+            profitAndLossLabel.text = profitAndLossString + "원"
+        }
+    }
+    
+    func configureLabelColor(rate: Double) {
+        if rate < 0 {
+            calculatedPriceLabel.textColor = .systemBlue
+            profitAndLossLabel.textColor = .systemBlue
+            profitAndLossRateLabel.textColor = .systemBlue
+        } else {
+            calculatedPriceLabel.textColor = .systemRed
+            profitAndLossLabel.textColor = .systemRed
+            profitAndLossRateLabel.textColor = .systemRed
+        }
+    }
+}
+
+// MARK: - Configure
+
+extension CoinListCell {
     func configureCell(item: CoinInfoItem) {
         coinNameLabel.attributedText = NSMutableAttributedString()
             .text(item.coinName)
@@ -81,28 +108,5 @@ extension CoinListCell {
         )
         
         configureLabelColor(rate: item.rate)
-    }
-    
-    private func configureProfitAndLossLabel(
-        profitAndLossString: String,
-        rate: Double
-    ) {
-        if rate > 0 {
-            profitAndLossLabel.text = "+" + profitAndLossString + "원"
-        } else {
-            profitAndLossLabel.text = profitAndLossString + "원"
-        }
-    }
-    
-    private func configureLabelColor(rate: Double) {
-        if rate < 0 {
-            calculatedPriceLabel.textColor = .systemBlue
-            profitAndLossLabel.textColor = .systemBlue
-            profitAndLossRateLabel.textColor = .systemBlue
-        } else {
-            calculatedPriceLabel.textColor = .systemRed
-            profitAndLossLabel.textColor = .systemRed
-            profitAndLossRateLabel.textColor = .systemRed
-        }
     }
 }

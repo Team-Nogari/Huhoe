@@ -147,11 +147,11 @@ final class HuhoeDetailViewModel: ViewModel {
     }
 }
 
-extension HuhoeDetailViewModel {
+private extension HuhoeDetailViewModel {
     
     // MARK: - Observalbe Factory Methods
     
-    private func makePriceAndQuantityObservable(
+    func makePriceAndQuantityObservable(
         input: Input,
         priceHistoryObservable: Observable<CoinPriceHistory>
     ) -> Observable<PriceAndQuantity> {
@@ -173,7 +173,7 @@ extension HuhoeDetailViewModel {
         }
     }
     
-    private func makeTodayCoinInfoObservable(
+    func makeTodayCoinInfoObservable(
         realTimePriceObservable: Observable<Double>,
         input: Input,
         priceHistoryObservable: Observable<CoinPriceHistory>
@@ -212,7 +212,7 @@ extension HuhoeDetailViewModel {
         }
     }
     
-    private func makePastCoinInfoObservable(
+    func makePastCoinInfoObservable(
         input: Input,
         quantity: Observable<PriceAndQuantity>,
         priceHistoryObservable: Observable<CoinPriceHistory>
@@ -257,7 +257,7 @@ extension HuhoeDetailViewModel {
         }
     }
     
-    private func makeCurrentCoinInfoObservable(
+    func makeCurrentCoinInfoObservable(
         input: Input,
         priceHistoryObservable: Observable<CoinPriceHistory>
     ) -> Observable<CoinHistoryItem> {
@@ -294,7 +294,7 @@ extension HuhoeDetailViewModel {
         }
     }
     
-    private func makeChartInformationObservable(
+    func makeChartInformationObservable(
         coinPriceHistoryObservable: Observable<CoinPriceHistory>,
         input: Input
     ) -> Observable<ChartInformation> {
@@ -333,7 +333,7 @@ extension HuhoeDetailViewModel {
         }
     }
     
-    private func makeChartPriceAndDateViewInformationObservable(
+    func makeChartPriceAndDateViewInformationObservable(
         coinPriceHistoryObservable: Observable<CoinPriceHistory>,
         input: Input
     ) -> Observable<ChartPriceAndDateViewInformation> {

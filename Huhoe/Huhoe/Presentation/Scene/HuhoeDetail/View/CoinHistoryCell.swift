@@ -35,10 +35,10 @@ final class CoinHistoryCell: UICollectionViewCell {
     }
 }
     
-// MARK: - Configure
+// MARK: - Private Configure
 
-extension CoinHistoryCell {
-    private func configureLabels() {
+private extension CoinHistoryCell {
+    func configureLabels() {
         calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
         calculatedPriceLabel.adjustsFontForContentSizeCategory = true
         
@@ -52,6 +52,33 @@ extension CoinHistoryCell {
         profitAndLossRateLabel.adjustsFontForContentSizeCategory = true
     }
     
+    func configureProfitAndLossLabel(
+        profitAndLossString: String,
+        rate: Double
+    ) {
+        if rate > 0 {
+            profitAndLossLabel.text = "+" + profitAndLossString + "원"
+        } else {
+            profitAndLossLabel.text = profitAndLossString + "원"
+        }
+    }
+    
+    func configureLabelColor(rate: Double) {
+        if rate < 0 {
+            calculatedPriceLabel.textColor = .systemBlue
+            profitAndLossLabel.textColor = .systemBlue
+            profitAndLossRateLabel.textColor = .systemBlue
+        } else {
+            calculatedPriceLabel.textColor = .systemRed
+            profitAndLossLabel.textColor = .systemRed
+            profitAndLossRateLabel.textColor = .systemRed
+        }
+    }
+}
+
+// MARK: - Configure
+
+extension CoinHistoryCell {
     func configureCell(item: CoinHistoryItem) {
         calculatedPriceLabel.text = item.calculatedPriceString + "원"
         profitAndLossRateLabel.text = item.rateString + "%"
@@ -63,28 +90,5 @@ extension CoinHistoryCell {
         )
         
         configureLabelColor(rate: item.rate)
-    }
-    
-    private func configureProfitAndLossLabel(
-        profitAndLossString: String,
-        rate: Double
-    ) {
-        if rate > 0 {
-            profitAndLossLabel.text = "+" + profitAndLossString + "원"
-        } else {
-            profitAndLossLabel.text = profitAndLossString + "원"
-        }
-    }
-    
-    private func configureLabelColor(rate: Double) {
-        if rate < 0 {
-            calculatedPriceLabel.textColor = .systemBlue
-            profitAndLossLabel.textColor = .systemBlue
-            profitAndLossRateLabel.textColor = .systemBlue
-        } else {
-            calculatedPriceLabel.textColor = .systemRed
-            profitAndLossLabel.textColor = .systemRed
-            profitAndLossRateLabel.textColor = .systemRed
-        }
     }
 }

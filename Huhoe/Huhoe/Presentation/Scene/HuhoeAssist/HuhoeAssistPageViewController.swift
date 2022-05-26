@@ -49,7 +49,7 @@ final class HuhoeAssistPageViewController: UIPageViewController {
         }
     }
     
-    // MARK: - Configure
+// MARK: - Configure
     
     private func configureFirstPage() {
         if let firstPage = pages.first {

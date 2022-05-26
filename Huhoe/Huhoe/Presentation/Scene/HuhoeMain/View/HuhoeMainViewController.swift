@@ -35,7 +35,7 @@ final class HuhoeMainViewController: UIViewController {
    
     // MARK: - Keyboard
     
-    lazy var keyboardView = configureKeyboard()
+    private lazy var keyboardView = configureKeyboard()
     
     // MARK: - ViewModel
     
@@ -72,14 +72,14 @@ final class HuhoeMainViewController: UIViewController {
 
 // MARK: - Configure View
 
-extension HuhoeMainViewController {
-    private func configureDateChangeButton() {
+private extension HuhoeMainViewController {
+    func configureDateChangeButton() {
         dateChangeButton.layer.cornerRadius = 6
         dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
         dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
     }
     
-    private func configureLabel() {
+    func configureLabel() {
         titleLabel.font = UIFont.withKOHIBaeum(dynamicFont: .largeTitle)
         titleLabel.adjustsFontForContentSizeCategory = true
         
@@ -94,7 +94,7 @@ extension HuhoeMainViewController {
         moneyLabel.layer.cornerRadius = 6
     }
     
-    private func configureMoreButton() {
+    func configureMoreButton() {
         let showAssistAction = UIAction(
             title: "도움말",
             image: UIImage(systemName: "questionmark.circle")) { wee in
@@ -107,14 +107,14 @@ extension HuhoeMainViewController {
         moreButton.menu = buttonMenu
     }
     
-    private func configureCollectionView() {
+    func configureCollectionView() {
         configureCollectionViewLayout()
         configureCollectionViewDataSource()
         
         coinListCollectionView.keyboardDismissMode = .onDrag
     }
     
-    private func configureActivityIndicator() {
+    func configureActivityIndicator() {
         coinListCollectionView.addSubview(activityIndicator)
         
         let indicatorSize = view.frame.width / 2
@@ -132,11 +132,11 @@ extension HuhoeMainViewController {
 
 // MARK: - View Model Methods
 
-extension HuhoeMainViewController {
+private extension HuhoeMainViewController {
     
     // MARK: - Bind ViewModel
     
-    private func bindViewModel() {
+    func bindViewModel() {
         
         // MARK: - Input
         
@@ -224,7 +224,7 @@ extension HuhoeMainViewController {
             .disposed(by: disposeBag)
     }
     
-    private func bindCollectionView() {
+    func bindCollectionView() {
         coinListCollectionView.rx.willBeginDragging
             .subscribe(onNext: { [weak self] in
                 self?.keyboardView?.isHidden = true
@@ -267,15 +267,15 @@ extension HuhoeMainViewController {
 
 // MARK: - Collection View Methods
 
-extension HuhoeMainViewController {
-    private func configureCollectionViewLayout() {
+private extension HuhoeMainViewController {
+    func configureCollectionViewLayout() {
         var listConfig = UICollectionLayoutListConfiguration(appearance: .plain)
         listConfig.showsSeparators = false
         listConfig.backgroundColor = UIColor(named: "BackgroundColor")
         coinListCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: listConfig)
     }
     
-    private func configureCollectionViewDataSource() {
+    func configureCollectionViewDataSource() {
         typealias CellRegistration = UICollectionView.CellRegistration<CoinListCell, CoinInfoItem>
         
         let cellNib = UINib(nibName: CoinListCell.identifier, bundle: nil)
@@ -293,7 +293,7 @@ extension HuhoeMainViewController {
         }
     }
     
-    private func applySnapShot(_ items: [CoinInfoItem]) {
+    func applySnapShot(_ items: [CoinInfoItem]) {
         var snapShot = NSDiffableDataSourceSnapshot<Section, CoinInfoItem>()
         
         snapShot.appendSections([.main])
@@ -305,8 +305,8 @@ extension HuhoeMainViewController {
 
 // MARK: - Keyboard
 
-extension HuhoeMainViewController {
-    private func bindTapGesture() {
+private extension HuhoeMainViewController {
+    func bindTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -327,7 +327,7 @@ extension HuhoeMainViewController {
             .disposed(by: disposeBag)
     }
     
-    private func configureKeyboard() -> HuhoeKeyboardView? {
+    func configureKeyboard() -> HuhoeKeyboardView? {
         guard let keyboardView = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: nil, options: nil)?.first as? HuhoeKeyboardView else {
             return nil
         }

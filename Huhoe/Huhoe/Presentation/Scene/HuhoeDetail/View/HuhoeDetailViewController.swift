@@ -233,8 +233,8 @@ extension HuhoeDetailViewController {
 
 // MARK: - Configure
 
-extension HuhoeDetailViewController {
-    private func configureTitle() {
+private extension HuhoeDetailViewController {
+    func configureTitle() {
         let titleView: UILabel = {
             let label = UILabel()
             label.attributedText = NSMutableAttributedString()
@@ -248,25 +248,25 @@ extension HuhoeDetailViewController {
         navigationItem.titleView = titleView
     }
     
-    private func configureBackButton() {
+    func configureBackButton() {
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.topItem?.title = String()
     }
     
-    private func configureDateChangeButton() {
+    func configureDateChangeButton() {
         dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
         dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
         dateChangeButton.layer.cornerRadius = 6
     }
     
-    private func configureCollectionView() {
+    func configureCollectionView() {
         configureCollectionViewLayout()
         configureCollectionViewDataSource()
         
         coinHistoryCollectionView.keyboardDismissMode = .onDrag
     }
     
-    private func configureLabel() {
+    func configureLabel() {
         currentPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title1)
         currentPriceLabel.adjustsFontForContentSizeCategory = true
         
@@ -297,7 +297,7 @@ extension HuhoeDetailViewController {
         moneyLabel.layer.cornerRadius = 6
     }
     
-    private func configureChartView() {
+    func configureChartView() {
         UIView.animate(withDuration: 0.0, animations: {
             self.chartScrollView.transform = CGAffineTransform(rotationAngle: .pi)
             self.chartImageView.transform = CGAffineTransform(rotationAngle: .pi)
@@ -349,8 +349,8 @@ extension HuhoeDetailViewController {
 
 // MARK: - Keyboard
 
-extension HuhoeDetailViewController {
-    private func bindTapGesture() {
+private extension HuhoeDetailViewController {
+    func bindTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -371,7 +371,7 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
     }
     
-    private func configureKeyboard() -> HuhoeKeyboardView? {
+    func configureKeyboard() -> HuhoeKeyboardView? {
         guard let keyboardView = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: nil, options: nil)?.first as? HuhoeKeyboardView else {
             return nil
         }
