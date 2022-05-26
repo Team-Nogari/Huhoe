@@ -12,7 +12,8 @@ extension UIView {
         shadowColor: CGColor,
         shadowOffset: CGSize,
         shadowOpacity: Float,
-        shadowRadius: CGFloat) {
+        shadowRadius: CGFloat
+    ) {
         self.layer.masksToBounds = false
         self.layer.shadowColor = shadowColor
         self.layer.shadowOffset = shadowOffset

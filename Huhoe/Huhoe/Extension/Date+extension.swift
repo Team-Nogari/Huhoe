@@ -9,7 +9,10 @@ import Foundation
 
 extension Date {
     var yesterday: Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: self) ?? Date()
+        return Calendar.current.date(
+            byAdding: .day,
+            value: -1,
+            to: self
+        ) ?? Date()
     }
-}
-    
+}  

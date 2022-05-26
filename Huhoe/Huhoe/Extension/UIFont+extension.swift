@@ -9,7 +9,10 @@ import UIKit
 
 extension UIFont {
     static func withKOHIBaeum(dynamicFont: CustomDynamicFont) -> UIFont {
-        guard let font = UIFont(name: "KOHIBaeum", size: dynamicFont.size) else {
+        guard let font = UIFont(
+            name: "KOHIBaeum",
+            size: dynamicFont.size
+        ) else {
             return UIFont()
         }
         
