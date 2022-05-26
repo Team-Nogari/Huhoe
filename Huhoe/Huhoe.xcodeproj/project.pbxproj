@@ -327,7 +327,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		089A925F27FFE41E00728107 /* Util */ = {
+		089A925F27FFE41E00728107 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				089A926027FFE43300728107 /* String+extension.swift */,
@@ -338,10 +338,9 @@
 				A665996C281A92C800285E84 /* UIFont+extension.swift */,
 				08A10104281AC41D0038BA8F /* Array+extension.swift */,
 				08AD9E2128295370001BEFA2 /* NSMutableAttributedString+extension.swift */,
-				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
 				080DB1482834D516007D90CB /* UIView+extension.swift */,
 			);
-			path = Util;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		089A926B28002AD300728107 /* Repositories */ = {
@@ -412,6 +411,14 @@
 				A6EA67D128251C4B006FE5DC /* SelectedCoinInformation.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		08C1873C283FACAE00307DA2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A6EA67D328294E6B006FE5DC /* HuhoeDateFormatter.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		08C4BA882809385B00482CB7 /* Data Source */ = {
@@ -513,7 +520,8 @@
 		A6E4DE3527FDB3F30005266D /* Huhoe */ = {
 			isa = PBXGroup;
 			children = (
-				089A925F27FFE41E00728107 /* Util */,
+				08C1873C283FACAE00307DA2 /* Utilities */,
+				089A925F27FFE41E00728107 /* Extension */,
 				084F769427FDBE7500BAE500 /* Application */,
 				084F769327FDBB4D00BAE500 /* Presentation */,
 				084F769227FDBA0900BAE500 /* Data */,
