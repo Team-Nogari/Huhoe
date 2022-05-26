@@ -21,8 +21,12 @@ extension DefaultTickerRepository: TickerRepository {
     func fetchTicker(coinSymbol: String) -> Observable<[Ticker]> {
         return network.fetchTicker(with: coinSymbol)
             .map {
-                let tickersCount = $0.toDomain().tickers.count
-                let sortedTicker = $0.toDomain().tickers
+                guard let tickerDTO = $0 else {
+                    return []
+                }
+                
+                let tickersCount = tickerDTO.toDomain().tickers.count
+                let sortedTicker = tickerDTO.toDomain().tickers
                     .sorted {
                         $0.accTradeValue24Hour > $1.accTradeValue24Hour
                     }
