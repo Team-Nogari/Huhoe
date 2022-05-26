@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChartPriceAndDateView: UIView {
+final class ChartPriceAndDateView: UIView {
 
     // MARK: - IBOutlet
     
