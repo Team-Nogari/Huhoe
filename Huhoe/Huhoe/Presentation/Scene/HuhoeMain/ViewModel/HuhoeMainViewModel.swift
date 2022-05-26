@@ -8,15 +8,6 @@
 import Foundation
 import RxSwift
 
-protocol ViewModel {
-    associatedtype Input
-    associatedtype Output
-    
-    var disposeBag: DisposeBag { get set }
-    
-    func transform(_ input: Input) -> Output
-}
-
 final class HuhoeMainViewModel: ViewModel {
     final class Input {
         let changeMoney: Observable<String>
