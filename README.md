@@ -1,6 +1,7 @@
 # 후회 - 그 때 샀으면 지금 얼마일까?
 
-![image](https://user-images.githubusercontent.com/70251136/169486601-47e9ec88-1df7-4570-b6f9-467075d7e099.png)
+![후회 설명_사이즈조절](https://user-images.githubusercontent.com/98801129/170416529-a5ac51a9-c24e-4e7a-bdc3-870fea19a52f.png)
+
 
 > **후회 - 그 때 샀으면 지금 얼마일까?**
 > 
