@@ -9,7 +9,12 @@ import Foundation
 import RxSwift
 
 final class HuhoeDetailViewModel: ViewModel {
+    
+    // MARK: - Typealias
+    
     typealias PriceAndQuantity = (price: Double, quantity: Double)
+    
+    // MARK: - Input
     
     final class Input {
         let changeDate: Observable<String>
@@ -32,6 +37,8 @@ final class HuhoeDetailViewModel: ViewModel {
             self.didTapScrollView = didTapScrollView
         }
     }
+    
+    // MARK: - Output
     
     final class Output {
         let realTimePrice: Observable<String>
@@ -67,15 +74,20 @@ final class HuhoeDetailViewModel: ViewModel {
         }
     }
     
+    // MARK: - Properties
+    
     let useCase: CoinDetailUseCase
     var disposeBag: DisposeBag = DisposeBag()
-    
     let selectedCoinInformation: SelectedCoinInformation
+    
+    // MARK: - Initializer
     
     init(selectedCoinInformation: SelectedCoinInformation, useCase: CoinDetailUseCase = CoinDetailUseCase()) {
         self.selectedCoinInformation = selectedCoinInformation
         self.useCase = useCase
     }
+    
+    // MARK: - Methods
     
     func transform(_ input: Input) -> Output {
         let realTimePriceObservable = useCase.fetchTransactionWebSocket(with: [selectedCoinInformation.coinSymbol + "_KRW"])
@@ -136,6 +148,9 @@ final class HuhoeDetailViewModel: ViewModel {
 }
 
 extension HuhoeDetailViewModel {
+    
+    // MARK: - Observalbe Factory Methods
+    
     private func makePriceAndQuantityObservable(
         input: Input,
         priceHistoryObservable: Observable<CoinPriceHistory>
@@ -180,10 +195,20 @@ extension HuhoeDetailViewModel {
                 let profitAndLoss = calculatedPrice - money
                 let rate = profitAndLoss / money * 100
                        
-                return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+                return CoinHistoryItem(
+                    date: "오늘",
+                    calculatedPrice: calculatedPrice,
+                    rate: rate,
+                    profitAndLoss: profitAndLoss
+                )
             }
                    
-            return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
+            return CoinHistoryItem(
+                date: "",
+                calculatedPrice: 0,
+                rate: 0,
+                profitAndLoss: 0
+            )
         }
     }
     
@@ -218,7 +243,12 @@ extension HuhoeDetailViewModel {
                     let rate = profitAndLoss / money * 100
                     let removeDayDate = filterDate.removedSuffix(from: 3)
                     
-                    let item = CoinHistoryItem(date: removeDayDate, calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+                    let item = CoinHistoryItem(
+                        date: removeDayDate,
+                        calculatedPrice: calculatedPrice,
+                        rate: rate,
+                        profitAndLoss: profitAndLoss
+                    )
                     coinHistoryItems.append(item)
                 }
             }
@@ -247,10 +277,20 @@ extension HuhoeDetailViewModel {
                 let profitAndLoss = calculatedPrice - money
                 let rate = profitAndLoss / money * 100
                        
-                return CoinHistoryItem(date: "오늘", calculatedPrice: calculatedPrice, rate: rate, profitAndLoss: profitAndLoss)
+                return CoinHistoryItem(
+                    date: "오늘",
+                    calculatedPrice: calculatedPrice,
+                    rate: rate,
+                    profitAndLoss: profitAndLoss
+                )
             }
                    
-            return CoinHistoryItem(date: "", calculatedPrice: 0, rate: 0, profitAndLoss: 0)
+            return CoinHistoryItem(
+                date: "",
+                calculatedPrice: 0,
+                rate: 0,
+                profitAndLoss: 0
+            )
         }
     }
     

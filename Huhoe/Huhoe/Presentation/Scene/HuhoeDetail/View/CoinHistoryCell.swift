@@ -8,13 +8,20 @@
 import UIKit
 
 final class CoinHistoryCell: UICollectionViewCell {
+    
+    // MARK: - Type Properties
+    
     static let identifier = String(describing: CoinHistoryCell.self)
+    
+    // MARK: - IBOutlet
     
     @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var calculatedPriceLabel: UILabel!
     @IBOutlet private weak var profitAndLossLabel: UILabel!
     @IBOutlet private weak var profitAndLossRateLabel: UILabel!
+    
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         self.roundedBackgroundView.layer.cornerRadius = 8
@@ -26,6 +33,8 @@ final class CoinHistoryCell: UICollectionViewCell {
         )
         configureLabels()
     }
+    
+    // MARK: - Configure
     
     private func configureLabels() {
         calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)

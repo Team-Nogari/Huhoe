@@ -41,8 +41,11 @@ final class HuhoeDetailViewController: UIViewController {
     lazy var keyboardView = configureKeyboard()
     
     // MARK: - ViewModel
+    
     var viewModel: HuhoeDetailViewModel?
     private let disposeBag = DisposeBag()
+    
+    // MARK: - Override Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,10 +77,14 @@ extension HuhoeDetailViewController {
         
         // MARK: - Input
         
-        keyboardView?.input = viewModel!.selectedCoinInformation.coinInvestmentMoney.removeComma.replacingOccurrences(of: " 원", with: "")
-        currentPriceLabel.text = (viewModel?.selectedCoinInformation.coinCurrentPrice ?? "") + " 원"
+        guard let viewModel = viewModel else {
+            return
+        }
         
-        dateChangeButton.setTitle(viewModel?.selectedCoinInformation.coinInvestmentDate ?? "", for: .normal)
+        keyboardView?.input = viewModel.selectedCoinInformation.coinInvestmentMoney.removeComma.replacingOccurrences(of: " 원", with: "")
+        currentPriceLabel.text = viewModel.selectedCoinInformation.coinCurrentPrice + " 원"
+        
+        dateChangeButton.setTitle(viewModel.selectedCoinInformation.coinInvestmentDate, for: .normal)
         let dateTextRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
         
         var datePickerMinimumDate: Date?
@@ -150,9 +157,7 @@ extension HuhoeDetailViewController {
         
         // MARK: - Output
         
-        guard let output = viewModel?.transform(input) else {
-            return
-        }
+        let output = viewModel.transform(input)
         
         output.realTimePrice
             .observe(on: MainScheduler.asyncInstance)
@@ -222,7 +227,7 @@ extension HuhoeDetailViewController {
     }
 }
 
-// MARK: - Configure View
+// MARK: - Configure
 
 extension HuhoeDetailViewController {
     private func configureTitle() {

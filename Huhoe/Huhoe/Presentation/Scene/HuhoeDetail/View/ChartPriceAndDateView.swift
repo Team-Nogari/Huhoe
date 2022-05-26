@@ -8,8 +8,13 @@
 import UIKit
 
 class ChartPriceAndDateView: UIView {
+
+    // MARK: - IBOutlet
+    
     @IBOutlet private weak var priceLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
+    
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         dateLabel.font = UIFont.withKOHIBaeum(dynamicFont: .caption1)
@@ -19,6 +24,8 @@ class ChartPriceAndDateView: UIView {
         priceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .footnote)
         priceLabel.adjustsFontForContentSizeCategory = true
     }
+    
+    // MARK: - Methods
     
     func setLabelText(price: String, date: String) {
         priceLabel.text = price + "원"
