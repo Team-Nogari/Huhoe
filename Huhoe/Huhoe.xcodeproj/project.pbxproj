@@ -41,6 +41,7 @@
 		08B238E0280ABF850047D282 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08B238E2280ABF850047D282 /* Localizable.strings */; };
 		08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08BA05282805770E00F7CD53 /* CoinListCell.xib */; };
 		08BA052B28057A7500F7CD53 /* CoinListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BA052A28057A7500F7CD53 /* CoinListCell.swift */; };
+		08C1873B283FAB3100307DA2 /* TransactionWebSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C1873A283FAB3100307DA2 /* TransactionWebSocketRepository.swift */; };
 		08C4BA8A2809388400482CB7 /* DefaultTickerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */; };
 		08C4BA8C2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */; };
 		08C4BA8E2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */; };
@@ -137,6 +138,7 @@
 		08B238E1280ABF850047D282 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		08BA05282805770E00F7CD53 /* CoinListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinListCell.xib; sourceTree = "<group>"; };
 		08BA052A28057A7500F7CD53 /* CoinListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinListCell.swift; sourceTree = "<group>"; };
+		08C1873A283FAB3100307DA2 /* TransactionWebSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebSocketRepository.swift; sourceTree = "<group>"; };
 		08C4BA892809388400482CB7 /* DefaultTickerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTickerDataSource.swift; sourceTree = "<group>"; };
 		08C4BA8B2809415D00482CB7 /* DefaultTransactionHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTransactionHistoryDataSource.swift; sourceTree = "<group>"; };
 		08C4BA8D2809445A00482CB7 /* DefaultCoinPriceHistoryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCoinPriceHistoryDataSource.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				089A926E28002B2D00728107 /* TickerRepository.swift */,
 				A6652085280064DF00783C58 /* TransactionHistoryRepository.swift */,
 				08CA08732801223D00C94584 /* CandlestickRepository.swift */,
+				08C1873A283FAB3100307DA2 /* TransactionWebSocketRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				08A100FC281A755E0038BA8F /* Double+extension.swift in Sources */,
 				08CA08742801223D00C94584 /* CandlestickRepository.swift in Sources */,
 				08A100FA281A33DF0038BA8F /* Observable+extension.swift in Sources */,
+				08C1873B283FAB3100307DA2 /* TransactionWebSocketRepository.swift in Sources */,
 				A665996F281AD5D300285E84 /* CoinHistoryItem.swift in Sources */,
 				A6E4DE7327FEEEC10005266D /* HttpNetwork.swift in Sources */,
 				A652E611280D93C600738DAD /* MoneyTextField.swift in Sources */,

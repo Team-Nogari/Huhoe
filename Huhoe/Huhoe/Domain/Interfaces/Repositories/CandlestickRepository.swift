@@ -13,4 +13,3 @@ protocol CandlestickRepository {
     func fetchCandlestick(coinSymbol: [String]) -> Observable<[CoinPriceHistory]>
     func fetchCoinPriceHistory(with coinSymbol: String) -> Observable<CoinPriceHistory>
 }
-

@@ -10,12 +10,12 @@ import RxSwift
 
 final class CoinDetailUseCase {
     let candlestickRepository: CandlestickRepository
-    let transactionWebSocketRepository: DefaultTransactionWebSocketRepository // 추상화 필요
+    let transactionWebSocketRepository: TransactionWebSocketRepository
     private let disposeBag = DisposeBag()
     
     init(
         candlestickRepository: CandlestickRepository = DefaultCandlestickRepository(),
-        transactionWebSocketRepository: DefaultTransactionWebSocketRepository = DefaultTransactionWebSocketRepository()
+        transactionWebSocketRepository: TransactionWebSocketRepository = DefaultTransactionWebSocketRepository()
     ) {
         self.candlestickRepository = candlestickRepository
         self.transactionWebSocketRepository = transactionWebSocketRepository

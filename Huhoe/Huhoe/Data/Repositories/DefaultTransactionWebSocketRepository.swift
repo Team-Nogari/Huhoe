@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 
-final class DefaultTransactionWebSocketRepository {
+final class DefaultTransactionWebSocketRepository: TransactionWebSocketRepository {
     let network: TransactionWebSocketNetwork
     
     init(network: TransactionWebSocketNetwork = TransactionWebSocketNetwork(network: WebSocketNetworkService())) {
