@@ -25,7 +25,6 @@ final class MockURLProtocol: URLProtocol {
     }
     
     override func startLoading() {
-                
         switch MockURLProtocol.responseType {
         case .suceess(let response, let data):
             client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)

@@ -59,6 +59,8 @@
 		A655A1FA2823AFAA000A0FEC /* ChartInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655A1F92823AFAA000A0FEC /* ChartInformation.swift */; };
 		A655A1FC2823BF79000A0FEC /* ChartPriceAndDateViewInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A655A1FB2823BF79000A0FEC /* ChartPriceAndDateViewInformation.swift */; };
 		A65B26822840A35400B5C5ED /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B26812840A35400B5C5ED /* MockURLProtocol.swift */; };
+		A65B26872840C35000B5C5ED /* MockTickerData.json in Resources */ = {isa = PBXBuildFile; fileRef = A65B26862840C35000B5C5ED /* MockTickerData.json */; };
+		A65B26882840C51300B5C5ED /* MockTickerData.json in Resources */ = {isa = PBXBuildFile; fileRef = A65B26862840C35000B5C5ED /* MockTickerData.json */; };
 		A66028D128169AB900B249EA /* TransactionWebSocketResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D028169AB900B249EA /* TransactionWebSocketResponseDTO.swift */; };
 		A66028D62816A42400B249EA /* WebSocketNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D52816A42400B249EA /* WebSocketNetworkService.swift */; };
 		A66028D82816A44500B249EA /* URLSessionWebSocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */; };
@@ -77,7 +79,7 @@
 		A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3C27FDB3F30005266D /* HuhoeMainViewController.storyboard */; };
 		A6E4DE4027FDB3F50005266D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE3F27FDB3F50005266D /* Assets.xcassets */; };
 		A6E4DE4327FDB3F50005266D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6E4DE4127FDB3F50005266D /* LaunchScreen.storyboard */; };
-		A6E4DE4E27FDB3F50005266D /* HuhoeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */; };
+		A6E4DE4E27FDB3F50005266D /* HttpNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE4D27FDB3F50005266D /* HttpNetworkTests.swift */; };
 		A6E4DE5827FDB3F50005266D /* HuhoeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */; };
 		A6E4DE5A27FDB3F50005266D /* HuhoeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */; };
 		A6E4DE7027FEEAF40005266D /* HttpNetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E4DE6F27FEEAF40005266D /* HttpNetworkProvider.swift */; };
@@ -158,6 +160,7 @@
 		A655A1F92823AFAA000A0FEC /* ChartInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartInformation.swift; sourceTree = "<group>"; };
 		A655A1FB2823BF79000A0FEC /* ChartPriceAndDateViewInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPriceAndDateViewInformation.swift; sourceTree = "<group>"; };
 		A65B26812840A35400B5C5ED /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		A65B26862840C35000B5C5ED /* MockTickerData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockTickerData.json; sourceTree = "<group>"; };
 		A66028D028169AB900B249EA /* TransactionWebSocketResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionWebSocketResponseDTO.swift; sourceTree = "<group>"; };
 		A66028D52816A42400B249EA /* WebSocketNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketNetworkService.swift; sourceTree = "<group>"; };
 		A66028D72816A44500B249EA /* URLSessionWebSocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionWebSocketProtocol.swift; sourceTree = "<group>"; };
@@ -179,7 +182,7 @@
 		A6E4DE4227FDB3F50005266D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6E4DE4427FDB3F50005266D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6E4DE4927FDB3F50005266D /* HuhoeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeTests.swift; sourceTree = "<group>"; };
+		A6E4DE4D27FDB3F50005266D /* HttpNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpNetworkTests.swift; sourceTree = "<group>"; };
 		A6E4DE5327FDB3F50005266D /* HuhoeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HuhoeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6E4DE5727FDB3F50005266D /* HuhoeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITests.swift; sourceTree = "<group>"; };
 		A6E4DE5927FDB3F50005266D /* HuhoeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuhoeUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -477,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				A65B26812840A35400B5C5ED /* MockURLProtocol.swift */,
+				A65B26862840C35000B5C5ED /* MockTickerData.json */,
 			);
 			path = TestDouble;
 			sourceTree = "<group>";
@@ -565,7 +569,7 @@
 			isa = PBXGroup;
 			children = (
 				A65B267E2840949A00B5C5ED /* TestDouble */,
-				A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */,
+				A6E4DE4D27FDB3F50005266D /* HttpNetworkTests.swift */,
 			);
 			path = HuhoeTests;
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 				08BA05292805770E00F7CD53 /* CoinListCell.xib in Resources */,
 				089A9130281305A4006D2710 /* HuhoeDetailViewController.storyboard in Resources */,
 				A6EA67D6282A0362006FE5DC /* KOHIBaeum.ttf in Resources */,
+				A65B26882840C51300B5C5ED /* MockTickerData.json in Resources */,
 				A6E4DE3E27FDB3F30005266D /* HuhoeMainViewController.storyboard in Resources */,
 				08A4346928361F400056D9B5 /* HuhoeKeyboardView.xib in Resources */,
 			);
@@ -748,6 +753,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65B26872840C35000B5C5ED /* MockTickerData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -837,7 +843,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E4DE4E27FDB3F50005266D /* HuhoeTests.swift in Sources */,
+				A6E4DE4E27FDB3F50005266D /* HttpNetworkTests.swift in Sources */,
 				A65B26822840A35400B5C5ED /* MockURLProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
