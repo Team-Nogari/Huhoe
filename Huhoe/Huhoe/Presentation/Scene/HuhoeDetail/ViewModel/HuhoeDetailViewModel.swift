@@ -228,7 +228,7 @@ private extension HuhoeDetailViewModel {
                 .filter { $0.hasSuffix(".01") }
                 .map { HuhoeDateFormatter.shared.toTimeInterval(str: $0) }
                 .filter { $0 > HuhoeDateFormatter.shared.toTimeInterval(str: dateString) }
-                .map{ HuhoeDateFormatter.shared.toDateString(timeInterval: $0) }
+                .map { HuhoeDateFormatter.shared.toDateString(timeInterval: $0) }
             
             var coinHistoryItems = [CoinHistoryItem]()
 

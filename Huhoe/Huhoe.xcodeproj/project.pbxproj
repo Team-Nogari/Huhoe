@@ -473,6 +473,13 @@
 			path = HuhoeAssist;
 			sourceTree = "<group>";
 		};
+		A65B267E2840949A00B5C5ED /* TestDouble */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TestDouble;
+			sourceTree = "<group>";
+		};
 		A66028D228169ABD00B249EA /* Websocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +564,7 @@
 		A6E4DE4C27FDB3F50005266D /* HuhoeTests */ = {
 			isa = PBXGroup;
 			children = (
+				A65B267E2840949A00B5C5ED /* TestDouble */,
 				A6E4DE4D27FDB3F50005266D /* HuhoeTests.swift */,
 			);
 			path = HuhoeTests;

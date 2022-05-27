@@ -10,9 +10,9 @@ import RxSwift
 
 final class HttpNetwork {
     private let endPoint: String
-    private let session: URLSessionProtocol
+    private let session: URLSession
     
-    init(endPoint: String, session: URLSessionProtocol = URLSession.shared) {
+    init(endPoint: String, session: URLSession = URLSession.shared) {
         self.endPoint = endPoint
         self.session = session
     }
