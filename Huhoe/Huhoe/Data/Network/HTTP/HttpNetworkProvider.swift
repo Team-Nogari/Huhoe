@@ -9,23 +9,25 @@ import Foundation
 
 final class HttpNetworkProvider {
     private let apiEndPoint: String
+    private let session: URLSession
     
-    init() {
-        apiEndPoint = "https://api.bithumb.com/public"
+    init(session: URLSession = URLSession.shared) {
+        self.apiEndPoint = "https://api.bithumb.com/public"
+        self.session = session
     }
     
     func makeTickerNetwork() -> TickerNetwork {
-        let network = HttpNetwork(endPoint: apiEndPoint)
+        let network = HttpNetwork(endPoint: apiEndPoint, session: session)
         return TickerNetwork(network: network)
     }
     
     func makeTransactionHistoryNetwork() -> TransactionHistoryNetwork {
-        let network = HttpNetwork(endPoint: apiEndPoint)
+        let network = HttpNetwork(endPoint: apiEndPoint, session: session)
         return TransactionHistoryNetwork(network: network)
     }
     
     func makeCandlestickNetwork() -> CandlestickNetwork {
-        let network = HttpNetwork(endPoint: apiEndPoint)
+        let network = HttpNetwork(endPoint: apiEndPoint, session: session)
         return CandlestickNetwork(network: network)
     }
 }

@@ -12,7 +12,7 @@ final class HttpNetwork {
     private let endPoint: String
     private let session: URLSession
     
-    init(endPoint: String, session: URLSession = URLSession.shared) {
+    init(endPoint: String, session: URLSession) {
         self.endPoint = endPoint
         self.session = session
     }
