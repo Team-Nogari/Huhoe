@@ -28,6 +28,7 @@ final class CoinListUseCase {
 extension CoinListUseCase {
     func fetch() -> Observable<([Ticker], [Transaction], [CoinPriceHistory])> {
         let tickerObservable = tickerRepository.fetchTicker(coinSymbol: "ALL")
+            .share()
             
         let transactionObservable = tickerObservable
             .flatMap { tickers -> Observable<[Transaction]> in
@@ -37,6 +38,7 @@ extension CoinListUseCase {
                 
                 return self.transactionRepository.fetchTransactionHistory(coinSymbol: symbols)
             }
+            .share()
         
         let coinPriceHistoryObservable = tickerObservable
             .flatMap { tickers -> Observable<[CoinPriceHistory]> in
@@ -46,7 +48,8 @@ extension CoinListUseCase {
                 
                 return self.candlestickRepository.fetchCandlestick(coinSymbol: symbols)
             }
-        
+            .share()
+            
         return Observable.zip(tickerObservable, transactionObservable, coinPriceHistoryObservable)
     }
 }
