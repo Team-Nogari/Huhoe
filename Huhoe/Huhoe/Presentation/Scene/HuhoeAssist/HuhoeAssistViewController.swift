@@ -11,15 +11,14 @@ import RxCocoa
 
 final class HuhoeAssistViewController: UIViewController {
 
+    // MARK: - IBOutlet
+    
     @IBOutlet private weak var pageControl: UIPageControl!
+    
+    // MARK: - Properties
+    
     private var pageViewController : HuhoeAssistPageViewController?
-    
     private let disposeBag = DisposeBag()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureButton()
-    }
     
     private var nextButton: UIButton = {
         let button = UIButton()
@@ -38,52 +37,13 @@ final class HuhoeAssistViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    private func configureButton() {
-        view.addSubview(skipButton)
-        view.addSubview(nextButton)
-        
-        NSLayoutConstraint.activate([
-            skipButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            nextButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
-        ])
-        
-        nextButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                guard let self = self,
-                      let pageViewController = self.pageViewController,
-                      let currentPage = pageViewController.viewControllers?.first,
-                      let nextPage = pageViewController.dataSource?.pageViewController(pageViewController, viewControllerAfter: currentPage)
-                       else {
-                          self?.presentMainViewController()
-                    return
-                }
-                
-                pageViewController.setViewControllers([nextPage], direction: .forward, animated: true)
-                self.pageControl.currentPage = pageViewController.pages.firstIndex(of: nextPage)!
-                
-                let isLastPage = pageViewController.pages.firstIndex(of: nextPage) == pageViewController.pages.count - 1
-                
-                if isLastPage == true {
-                    self.skipButton.isHidden = true
-                    self.nextButton.setTitle("시작하기", for: .normal)
-                } else {
-                    self.skipButton.isHidden = false
-                    self.nextButton.setTitle("다음", for: .normal)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        skipButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.presentMainViewController()
-            })
-            .disposed(by: disposeBag)
-    }
     
-    // MARK: - Override Method
+    // MARK: - Override Methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureButton()
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "pageViewController" {
@@ -111,7 +71,62 @@ final class HuhoeAssistViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Configure
+    
+    private func configureButton() {
+        view.addSubview(skipButton)
+        view.addSubview(nextButton)
+        
+        NSLayoutConstraint.activate([
+            skipButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            skipButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+            nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            nextButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8)
+        ])
+        
+        nextButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self,
+                      let pageViewController = self.pageViewController,
+                      let currentPage = pageViewController.viewControllers?.first,
+                      let nextPage = pageViewController.dataSource?.pageViewController(
+                        pageViewController,
+                        viewControllerAfter: currentPage
+                      )
+                else {
+                    self?.presentMainViewController()
+                    return
+                }
+                
+                pageViewController.setViewControllers(
+                    [nextPage],
+                    direction: .forward,
+                    animated: true
+                )
+                self.pageControl.currentPage = pageViewController.pages.firstIndex(of: nextPage)!
+                
+                let isLastPage = pageViewController.pages.firstIndex(of: nextPage) == pageViewController.pages.count - 1
+                
+                if isLastPage == true {
+                    self.skipButton.isHidden = true
+                    self.nextButton.setTitle("시작하기", for: .normal)
+                } else {
+                    self.skipButton.isHidden = false
+                    self.nextButton.setTitle("다음", for: .normal)
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        skipButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.presentMainViewController()
+            })
+            .disposed(by: disposeBag)
+    }
 }
+
+// MARK: - Private Extension
 
 private extension HuhoeAssistViewController {
     func presentMainViewController() {

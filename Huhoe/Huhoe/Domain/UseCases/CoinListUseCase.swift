@@ -12,25 +12,23 @@ final class CoinListUseCase {
     let tickerRepository: TickerRepository
     let transactionRepository: TransactionHistoryRepository
     let candlestickRepository: CandlestickRepository
-    let transactionWebSocketRepository: DefaultTransactionWebSocketRepository // 추상화 필요
     private let disposeBag = DisposeBag()
     
     init(
         tickerRepository: TickerRepository = DefaultTickerRepository(),
         transactionRepository: TransactionHistoryRepository = DefaultTransactionHistoryRepository(),
-        candlestickRepository: CandlestickRepository = DefaultCandlestickRepository(),
-        transactionWebSocketRepository: DefaultTransactionWebSocketRepository = DefaultTransactionWebSocketRepository()
+        candlestickRepository: CandlestickRepository = DefaultCandlestickRepository()
     ) {
         self.tickerRepository = tickerRepository
         self.transactionRepository = transactionRepository
         self.candlestickRepository = candlestickRepository
-        self.transactionWebSocketRepository = transactionWebSocketRepository
     }
 }
 
 extension CoinListUseCase {
     func fetch() -> Observable<([Ticker], [Transaction], [CoinPriceHistory])> {
         let tickerObservable = tickerRepository.fetchTicker(coinSymbol: "ALL")
+            .share()
             
         let transactionObservable = tickerObservable
             .flatMap { tickers -> Observable<[Transaction]> in
@@ -40,6 +38,7 @@ extension CoinListUseCase {
                 
                 return self.transactionRepository.fetchTransactionHistory(coinSymbol: symbols)
             }
+            .share()
         
         let coinPriceHistoryObservable = tickerObservable
             .flatMap { tickers -> Observable<[CoinPriceHistory]> in
@@ -49,7 +48,8 @@ extension CoinListUseCase {
                 
                 return self.candlestickRepository.fetchCandlestick(coinSymbol: symbols)
             }
-        
+            .share()
+            
         return Observable.zip(tickerObservable, transactionObservable, coinPriceHistoryObservable)
     }
 }

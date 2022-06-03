@@ -51,11 +51,6 @@ struct TransactionWebSocketData: Decodable {
     }
 }
 
-struct RealTimeCoinPrice {
-    let coinSymbol: String
-    let price: Double
-}
-
 extension TransactionWebSocketResponseDTO {
     func toDomain() -> RealTimeCoinPrice {
         if let item = transactionWebSocketData.list.first {

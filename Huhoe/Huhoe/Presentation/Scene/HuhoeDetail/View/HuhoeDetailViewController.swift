@@ -22,6 +22,11 @@ final class HuhoeDetailViewController: UIViewController {
     private typealias DiffableDataSource = UICollectionViewDiffableDataSource<Section, CoinHistoryItem>
     private var dataSource: DiffableDataSource?
    
+    // MARK: - Hint Labels
+    
+    @IBOutlet private var hintLabels: [UILabel]!
+    @IBOutlet private weak var collectionViewHintLabel: UILabel!
+        
     // MARK: - IBOutlet
     
     @IBOutlet private weak var currentPriceLabel: UILabel!
@@ -32,17 +37,19 @@ final class HuhoeDetailViewController: UIViewController {
     @IBOutlet private weak var coinHistoryCollectionView: UICollectionView!
     @IBOutlet private weak var chartScrollView: ChartScrollView!
     @IBOutlet private weak var chartImageView: ChartImageView!
-    
-    @IBOutlet private var hintLabels: [UILabel]!
-    @IBOutlet private weak var collectionViewHintLabel: UILabel!
     @IBOutlet private weak var chartOldDateLabel: UILabel!
     @IBOutlet private weak var chartLatestDateLabel: UILabel!
+    
+    // MARK: - Keyboard
     
     lazy var keyboardView = configureKeyboard()
     
     // MARK: - ViewModel
+    
     var viewModel: HuhoeDetailViewModel?
     private let disposeBag = DisposeBag()
+    
+    // MARK: - Override Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,10 +81,14 @@ extension HuhoeDetailViewController {
         
         // MARK: - Input
         
-        keyboardView?.input = viewModel!.selectedCoinInformation.coinInvestmentMoney.removeComma.replacingOccurrences(of: " 원", with: "")
-        currentPriceLabel.text = (viewModel?.selectedCoinInformation.coinCurrentPrice ?? "") + " 원"
+        guard let viewModel = viewModel else {
+            return
+        }
         
-        dateChangeButton.setTitle(viewModel?.selectedCoinInformation.coinInvestmentDate ?? "", for: .normal)
+        keyboardView?.input = viewModel.selectedCoinInformation.coinInvestmentMoney.removeComma.replacingOccurrences(of: " 원", with: "")
+        currentPriceLabel.text = viewModel.selectedCoinInformation.coinCurrentPrice + " 원"
+        
+        dateChangeButton.setTitle(viewModel.selectedCoinInformation.coinInvestmentDate, for: .normal)
         let dateTextRelay = BehaviorRelay<String>(value: dateChangeButton.titleLabel?.text ?? "")
         
         var datePickerMinimumDate: Date?
@@ -150,9 +161,7 @@ extension HuhoeDetailViewController {
         
         // MARK: - Output
         
-        guard let output = viewModel?.transform(input) else {
-            return
-        }
+        let output = viewModel.transform(input)
         
         output.realTimePrice
             .observe(on: MainScheduler.asyncInstance)
@@ -222,10 +231,10 @@ extension HuhoeDetailViewController {
     }
 }
 
-// MARK: - Configure View
+// MARK: - Configure
 
-extension HuhoeDetailViewController {
-    private func configureTitle() {
+private extension HuhoeDetailViewController {
+    func configureTitle() {
         let titleView: UILabel = {
             let label = UILabel()
             label.attributedText = NSMutableAttributedString()
@@ -239,25 +248,25 @@ extension HuhoeDetailViewController {
         navigationItem.titleView = titleView
     }
     
-    private func configureBackButton() {
+    func configureBackButton() {
         navigationController?.navigationBar.tintColor = .label
         navigationController?.navigationBar.topItem?.title = String()
     }
     
-    private func configureDateChangeButton() {
+    func configureDateChangeButton() {
         dateChangeButton.titleLabel?.font = UIFont.withKOHIBaeum(dynamicFont: .body)
         dateChangeButton.titleLabel?.adjustsFontForContentSizeCategory = true
         dateChangeButton.layer.cornerRadius = 6
     }
     
-    private func configureCollectionView() {
+    func configureCollectionView() {
         configureCollectionViewLayout()
         configureCollectionViewDataSource()
         
         coinHistoryCollectionView.keyboardDismissMode = .onDrag
     }
     
-    private func configureLabel() {
+    func configureLabel() {
         currentPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title1)
         currentPriceLabel.adjustsFontForContentSizeCategory = true
         
@@ -288,7 +297,7 @@ extension HuhoeDetailViewController {
         moneyLabel.layer.cornerRadius = 6
     }
     
-    private func configureChartView() {
+    func configureChartView() {
         UIView.animate(withDuration: 0.0, animations: {
             self.chartScrollView.transform = CGAffineTransform(rotationAngle: .pi)
             self.chartImageView.transform = CGAffineTransform(rotationAngle: .pi)
@@ -340,8 +349,8 @@ extension HuhoeDetailViewController {
 
 // MARK: - Keyboard
 
-extension HuhoeDetailViewController {
-    private func bindTapGesture() {
+private extension HuhoeDetailViewController {
+    func bindTapGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: nil)
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
@@ -362,7 +371,7 @@ extension HuhoeDetailViewController {
             .disposed(by: disposeBag)
     }
     
-    private func configureKeyboard() -> HuhoeKeyboardView? {
+    func configureKeyboard() -> HuhoeKeyboardView? {
         guard let keyboardView = Bundle.main.loadNibNamed("HuhoeKeyboardView", owner: nil, options: nil)?.first as? HuhoeKeyboardView else {
             return nil
         }

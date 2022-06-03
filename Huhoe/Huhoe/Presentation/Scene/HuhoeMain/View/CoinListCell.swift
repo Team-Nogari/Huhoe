@@ -7,8 +7,13 @@
 
 import UIKit
 
-class CoinListCell: UICollectionViewCell {
+final class CoinListCell: UICollectionViewCell {
+    
+    // MARK: - Type Properties
+    
     static let identifier = String(describing: CoinListCell.self)
+    
+    // MARK: - IBOutlet
     
     @IBOutlet private weak var roundedBackgroundView: UIView!
     @IBOutlet private weak var coinNameLabel: UILabel!
@@ -19,6 +24,8 @@ class CoinListCell: UICollectionViewCell {
     @IBOutlet private weak var oldPriceLabel: UILabel!
     
     @IBOutlet private var hintLabels: [UILabel]!
+    
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         configureLabels()
@@ -32,8 +39,10 @@ class CoinListCell: UICollectionViewCell {
     }
 }
 
-extension CoinListCell {
-    private func configureLabels() {
+// MARK: - Private Configure
+
+private extension CoinListCell {
+    func configureLabels() {
         calculatedPriceLabel.font = UIFont.withKOHIBaeum(dynamicFont: .title2)
         calculatedPriceLabel.adjustsFontForContentSizeCategory = true
         
@@ -55,6 +64,33 @@ extension CoinListCell {
         }
     }
     
+    func configureProfitAndLossLabel(
+        profitAndLossString: String,
+        rate: Double
+    ) {
+        if rate > 0 {
+            profitAndLossLabel.text = "+" + profitAndLossString + "원"
+        } else {
+            profitAndLossLabel.text = profitAndLossString + "원"
+        }
+    }
+    
+    func configureLabelColor(rate: Double) {
+        if rate < 0 {
+            calculatedPriceLabel.textColor = .systemBlue
+            profitAndLossLabel.textColor = .systemBlue
+            profitAndLossRateLabel.textColor = .systemBlue
+        } else {
+            calculatedPriceLabel.textColor = .systemRed
+            profitAndLossLabel.textColor = .systemRed
+            profitAndLossRateLabel.textColor = .systemRed
+        }
+    }
+}
+
+// MARK: - Configure
+
+extension CoinListCell {
     func configureCell(item: CoinInfoItem) {
         coinNameLabel.attributedText = NSMutableAttributedString()
             .text(item.coinName)
@@ -72,25 +108,5 @@ extension CoinListCell {
         )
         
         configureLabelColor(rate: item.rate)
-    }
-    
-    private func configureProfitAndLossLabel(profitAndLossString: String, rate: Double) {
-        if rate > 0 {
-            profitAndLossLabel.text = "+" + profitAndLossString + "원"
-        } else {
-            profitAndLossLabel.text = profitAndLossString + "원"
-        }
-    }
-    
-    private func configureLabelColor(rate: Double) {
-        if rate < 0 {
-            calculatedPriceLabel.textColor = .systemBlue
-            profitAndLossLabel.textColor = .systemBlue
-            profitAndLossRateLabel.textColor = .systemBlue
-        } else {
-            calculatedPriceLabel.textColor = .systemRed
-            profitAndLossLabel.textColor = .systemRed
-            profitAndLossRateLabel.textColor = .systemRed
-        }
     }
 }

@@ -15,6 +15,7 @@ final class ChartScrollView: UIScrollView {
     @IBOutlet private weak var priceAndDateView: ChartPriceAndDateView!
     
     // MARK: - Property
+    
     let touchPointRelay: PublishRelay<Double> = PublishRelay<Double>()
     
     let lineLayer: CALayer = {
@@ -23,7 +24,7 @@ final class ChartScrollView: UIScrollView {
         return layer
     }()
     
-    // MARK: - Method
+    // MARK: - Override Methods
     
     override func awakeFromNib() {
         self.layer.addSublayer(lineLayer)
@@ -38,6 +39,8 @@ final class ChartScrollView: UIScrollView {
         touchPointRelay.accept(point.x)
     }
         
+    // MARK: - Methods
+    
     func moveFloatingPriceAndDateView(offsetX: Double, price: String, date: String) {
         priceAndDateView.isHidden = false
         priceAndDateView.setLabelText(price: price, date: date)

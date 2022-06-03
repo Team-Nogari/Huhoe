@@ -7,7 +7,6 @@
 
 import Foundation
 import RxSwift
-import RxRelay
 
 final class DefaultTransactionHistoryRepository {
     var dataSource: TransactionHistoryDataSource = DefaultTransactionHistoryDataSource()
@@ -21,7 +20,7 @@ final class DefaultTransactionHistoryRepository {
 extension DefaultTransactionHistoryRepository: TransactionHistoryRepository {
     func fetchTransactionHistory(coinSymbol: [String]) -> Observable<[Transaction]> {
         let transactionObservables = coinSymbol.map { coin in
-            network.fetchTransactionHistory(with: coin).map { $0.toDomain(coinSymbol: coin) }
+            network.fetchTransactionHistory(with: coin).compactMap { $0?.toDomain(coinSymbol: coin) }
         }
         
         _ = Observable.zip(transactionObservables)

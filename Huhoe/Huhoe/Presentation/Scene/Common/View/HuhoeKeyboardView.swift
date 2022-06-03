@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RxSwift
 import RxRelay
 
 final class HuhoeKeyboardView: UIView {
@@ -15,7 +14,7 @@ final class HuhoeKeyboardView: UIView {
     
     private(set) lazy var inputRelay = BehaviorRelay<Double>(value: input.toDouble)
     
-    @IBAction func touchUpNumberButton(_ sender: UIButton) {
+    @IBAction private func touchUpNumberButton(_ sender: UIButton) {
         guard input != "" || sender.tag != 0 else {
             return
         }
@@ -26,20 +25,20 @@ final class HuhoeKeyboardView: UIView {
         }
     }
     
-    @IBAction func touchUpRemoveButton(_ sender: UIButton) {
+    @IBAction private func touchUpRemoveButton(_ sender: UIButton) {
         if input.count > 0 {
             input.removeLast()
             inputRelay.accept(input.toDouble)
         }
     }
     
-    @IBAction func touchUpClearButton(_ sender: UIButton) {
+    @IBAction private func touchUpClearButton(_ sender: UIButton) {
         input = ""
         
         inputRelay.accept(input.toDouble)
     }
     
-    @IBAction func touchUpDoneButton(_ sender: UIButton) {
+    @IBAction private func touchUpDoneButton(_ sender: UIButton) {
         isHidden = true
     }
 }
